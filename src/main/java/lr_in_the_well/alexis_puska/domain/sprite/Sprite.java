@@ -3,14 +3,18 @@ package lr_in_the_well.alexis_puska.domain.sprite;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
-public class Sprite implements Serializable{
-    
+@NoArgsConstructor
+public class Sprite implements Serializable {
+
     private static final long serialVersionUID = -8772069448741457644L;
-    
+
     private int y;
     private int x;
     private int n;

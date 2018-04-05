@@ -3,7 +3,7 @@ package lr_in_the_well.alexis_puska;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.InputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -37,12 +37,11 @@ public class App extends JFrame {
     }
 
     private void Launch() {
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("json/json_level_parser.json").getFile());
-        LevelFile levelFile = fileService.readJsonFile(file);
+        InputStream in = this.getClass().getResourceAsStream("/json/json_level_parser.json");
+        LevelFile levelFile = fileService.readJsonFile(in);
 
         BufferedImage bf = this.spriteService.getSprite("level_background", 1);
+        LOG.info("Nb level in file : " + levelFile.getLevel().size());
 
         JPanel panel = new JPanel();
         panel.setSize(1800, 1100);
@@ -59,5 +58,4 @@ public class App extends JFrame {
         this.setVisible(true);
         this.setSize(10, 10);
     }
-
 }

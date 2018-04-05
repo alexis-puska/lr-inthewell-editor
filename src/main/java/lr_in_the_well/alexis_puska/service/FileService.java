@@ -2,6 +2,7 @@ package lr_in_the_well.alexis_puska.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -25,16 +26,11 @@ public class FileService {
         this.objectMapper = new ObjectMapper();
     }
 
-    public LevelFile readJsonFile(File file) {
+    public LevelFile readJsonFile(InputStream in) {
         LevelFile levelFile = null;
-        LOG.info("Read level json file : " + file.getAbsolutePath());
         try {
-            if (file.createNewFile()) {
-                LOG.info("New File created !");
-            } else {
-                levelFile = objectMapper.readValue(file, LevelFile.class);
-                LOG.info("Number of level inside file : " + levelFile.getLevel().size());
-            }
+            levelFile = objectMapper.readValue(in, LevelFile.class);
+            LOG.info("Number of level inside file : " + levelFile.getLevel().size());
         } catch (JsonParseException e) {
             LOG.error("JsonParseException : " + e.getMessage());
         } catch (JsonMappingException e) {
@@ -57,15 +53,10 @@ public class FileService {
         LOG.info("Write level json file : SUCCESS");
     }
 
-    public SpriteFileContent readJsonSpriteFile(File file) {
+    public SpriteFileContent readJsonSpriteFile(InputStream in) {
         SpriteFileContent list = null;
-        LOG.info("Read sprite json file : " + file.getAbsolutePath());
         try {
-            if (file.createNewFile()) {
-                LOG.info("New File created !");
-            } else {
-                list = objectMapper.readValue(file, SpriteFileContent.class);
-            }
+            list = objectMapper.readValue(in, SpriteFileContent.class);
         } catch (JsonParseException e) {
             LOG.error("JsonParseException : " + e.getMessage());
         } catch (JsonMappingException e) {

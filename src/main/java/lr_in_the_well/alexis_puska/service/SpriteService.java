@@ -1,8 +1,8 @@
 package lr_in_the_well.alexis_puska.service;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,13 +18,11 @@ public class SpriteService {
 
     private final static Logger LOG = Logger.getLogger(SpriteService.class);
 
-    private final ClassLoader classLoader;
     private final FileService fileService;
     private Map<String, BufferedImage[]> sprites;
 
     public SpriteService(FileService fileService) {
         this.fileService = fileService;
-        this.classLoader = getClass().getClassLoader();
         sprites = new HashMap<>();
         LOG.info("Load Sprites : START");
         initSprite();
@@ -36,24 +34,24 @@ public class SpriteService {
     }
 
     private void initSprite() {
-        File spriteDesciptor = new File(classLoader.getResource("json/json_image_parser.json").getFile());
-        SpriteFileContent spriteFile = fileService.readJsonSpriteFile(spriteDesciptor);
+        InputStream in = this.getClass().getResourceAsStream("/json/json_image_parser.json");
+
+        SpriteFileContent spriteFile = fileService.readJsonSpriteFile(in);
         try {
             BufferedImage temp = null;
             for (SpriteFile file : spriteFile.getSpriteFile()) {
                 switch (file.getFile()) {
                 case "sprite_rayon_teleporter":
-                    temp = ImageIO
-                            .read(new File(classLoader.getResource("sprite/sprite_rayon_teleporter.png").getFile()));
+                    temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_rayon_teleporter.png"));
                     break;
                 case "sprite_light":
-                    temp = ImageIO.read(new File(classLoader.getResource("sprite/sprite_light.png").getFile()));
+                    temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_light.png"));
                     break;
                 case "sprite_level":
-                    temp = ImageIO.read(new File(classLoader.getResource("sprite/sprite_level.png").getFile()));
+                    temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_level.png"));
                     break;
                 case "sprite_ennemies":
-                    temp = ImageIO.read(new File(classLoader.getResource("sprite/sprite_ennemies.png").getFile()));
+                    temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_ennemies.png"));
                     break;
                 }
                 for (Sprite area : file.getArea()) {
