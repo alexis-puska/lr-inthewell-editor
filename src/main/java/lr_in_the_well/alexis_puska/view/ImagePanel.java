@@ -1,4 +1,4 @@
-package lr_in_the_well.alexis_puska;
+package lr_in_the_well.alexis_puska.view;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

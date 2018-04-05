@@ -1,4 +1,4 @@
-package lr_in_the_well.alexis_puska.domain;
+package lr_in_the_well.alexis_puska.domain.level;
 
 import java.io.Serializable;
 
@@ -7,11 +7,11 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Door  implements Serializable {
+public class Ennemie implements Serializable {
 
 	private static final long serialVersionUID = -3148349064427411770L;
-	int type;
-	boolean locked;
-	int toLevel;
-	int requieredKey;
+	private int id;
+	private int x;
+	private int y;
+	private int type;
 }

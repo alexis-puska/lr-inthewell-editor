@@ -1,4 +1,4 @@
-package lr_in_the_well.alexis_puska.domain;
+package lr_in_the_well.alexis_puska.domain.level;
 
 import java.io.Serializable;
 import java.util.ArrayList;

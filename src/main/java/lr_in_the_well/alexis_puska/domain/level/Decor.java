@@ -1,4 +1,4 @@
-package lr_in_the_well.alexis_puska.domain;
+package lr_in_the_well.alexis_puska.domain.level;
 
 import java.io.Serializable;
 
@@ -7,12 +7,14 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Pick implements Serializable {
+public class Decor implements Serializable {
 
 	private static final long serialVersionUID = -3148349064427411770L;
 	private int id;
 	private int x;
 	private int y;
-	private boolean visible;
-	private int direction;
+	private boolean display;
+	private boolean back;
+	private String anim;
+	private int indexAnim;
 }

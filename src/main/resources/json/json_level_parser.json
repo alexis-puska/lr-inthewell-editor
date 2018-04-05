@@ -1,4 +1,4 @@
-[
+{"level" :[
 	{
 		"id":0,
 		"showPlatform":false,
@@ -4250,3 +4250,4 @@
 		"startPointObjets":[]
 	}
 ]
+}
