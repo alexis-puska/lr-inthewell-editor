@@ -16,6 +16,8 @@ import lr_in_the_well.alexis_puska.domain.sprite.SpriteFileContent;
 
 public class SpriteService {
 
+    
+    
     private final static Logger LOG = Logger.getLogger(SpriteService.class);
 
     private final FileService fileService;

@@ -12,6 +12,9 @@ import lr_in_the_well.alexis_puska.service.SpriteService;
 public class DrawPanel extends Canvas {
 
     private static final long serialVersionUID = -617780220828076518L;
+    public final static int SCREEN_SIZE_X = 420;
+    public final static int SCREEN_SIZE_Y = 500;
+
     private Level level;
     private SpriteService spriteService;
 
@@ -30,23 +33,23 @@ public class DrawPanel extends Canvas {
         int x, y;
         g2.setColor(Color.RED);
         x = 0;
-        while (x < 420) {
-            g2.drawLine(x, 0, x, 500);
+        while (x < SCREEN_SIZE_X) {
+            g2.drawLine(x, 0, x, SCREEN_SIZE_Y);
             x += 20;
         }
         y = 0;
-        while (y < 500) {
+        while (y < SCREEN_SIZE_Y) {
             y += 20;
-            g2.drawLine(0, y, 420, y);
+            g2.drawLine(0, y, SCREEN_SIZE_X, y);
         }
     }
-    
-    private void drawBackground(Graphics2D g2){
+
+    private void drawBackground(Graphics2D g2) {
         BufferedImage bf = spriteService.getSprite("level_background", level.getBackground());
         int x = 0;
         int y = 0;
-        while (x < 420) {
-            while (y < 500) {
+        while (x < SCREEN_SIZE_X) {
+            while (y < SCREEN_SIZE_Y) {
                 g2.drawImage(bf, null, x, y);
                 y += bf.getHeight();
             }

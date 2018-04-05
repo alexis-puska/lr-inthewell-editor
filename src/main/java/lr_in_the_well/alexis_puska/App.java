@@ -58,7 +58,7 @@ public class App extends JFrame {
             }
         });
         panel.add(g2D);
-        g2D.setSize(420, 500);
+        g2D.setSize(DrawPanel.SCREEN_SIZE_X, DrawPanel.SCREEN_SIZE_Y);
         g2D.setVisible(true);
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(panel, BorderLayout.CENTER);
