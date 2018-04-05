@@ -30,7 +30,8 @@ public class SpriteService {
     }
 
     public BufferedImage getSprite(String animation, int index) {
-        return sprites.get(animation)[index];
+        BufferedImage[] spritesAnimation = sprites.get(animation);
+        return spritesAnimation[index];
     }
 
     private void initSprite() {
@@ -58,12 +59,15 @@ public class SpriteService {
                     LOG.info("Crop sprite animation : " + area.getAnimation());
                     BufferedImage[] sprite = new BufferedImage[area.getN()];
                     int n = 0;
-                    for (int x = 0; x < area.getNx(); x++) {
-                        for (int y = 0; y < area.getNy(); y++) {
+                    for (int y = 0; y < area.getNy(); y++) {
+                        for (int x = 0; x < area.getNx(); x++) {
+
                             if (n >= area.getN()) {
                                 break;
                             }
-                            sprite[n] = temp.getSubimage(area.getX(), area.getY(), area.getSx(), area.getSy());
+                            int xCalc = area.getX() + (x * area.getSx());
+                            int yCalc = area.getY() + (y * area.getSy());
+                            sprite[n] = temp.getSubimage(xCalc, yCalc, area.getSx(), area.getSy());
                             n++;
                         }
                     }

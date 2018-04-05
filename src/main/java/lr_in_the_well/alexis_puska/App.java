@@ -2,9 +2,11 @@ package lr_in_the_well.alexis_puska;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.image.BufferedImage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.InputStream;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,6 +25,7 @@ public class App extends JFrame {
 
     private final FileService fileService;
     private final SpriteService spriteService;
+    private int levelSelected;
 
     public static void main(String[] args) {
         App app = new App();
@@ -36,29 +39,34 @@ public class App extends JFrame {
     }
 
     private void Launch() {
+        levelSelected = 0;
         InputStream in = this.getClass().getResourceAsStream("/json/json_level_parser.json");
         LevelFile levelFile = fileService.readJsonFile(in);
 
-        BufferedImage bf = this.spriteService.getSprite("level_background", 0);
         LOG.info("Nb level in file : " + levelFile.getLevel().size());
 
         JPanel panel = new JPanel();
-        panel.setSize(1800, 1100);
-        panel.setBackground(Color.CYAN);
-        DrawPanel g2D = new DrawPanel(bf);
-
+        panel.setSize(800, 600);
+        panel.setBackground(Color.LIGHT_GRAY);
+        DrawPanel g2D = new DrawPanel(spriteService, levelFile.getLevel().get(levelSelected));
+        JButton but = new JButton("ici");
+        but.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                levelSelected++;
+                g2D.updateLevel(levelFile.getLevel().get(levelSelected));
+            }
+        });
         panel.add(g2D);
-        g2D.setSize(300, 300);
+        g2D.setSize(420, 500);
         g2D.setVisible(true);
         this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(panel, BorderLayout.EAST);
+        this.getContentPane().add(panel, BorderLayout.CENTER);
+        this.getContentPane().add(but, BorderLayout.NORTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.setSize(100, 100);
-        while(true){
-            g2D.repaint();
-        }
+        this.setSize(800, 600);
     }
 }

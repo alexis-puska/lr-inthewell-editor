@@ -17,12 +17,12 @@ public class Level implements Serializable {
 
     private static final long serialVersionUID = -3619458033448491606L;
 
-    private long id;
-    private long next;
+    private int id;
+    private int next;
     private boolean showPlatform;
-    private long background;
-    private long verticalPlateform;
-    private long horizontalPlateform;
+    private int background;
+    private int verticalPlateform;
+    private int horizontalPlateform;
     private List<Decor> decor;
     private List<Event> event;
     private List<Door> door;
@@ -37,7 +37,7 @@ public class Level implements Serializable {
     private List<StartEffectObjets> startEffectObjets;
     private List<StartPointObjets> startPointObjets;
 
-    public Level(long id, boolean showPlatform, long background, long verticalPlateform, long horizontalPlateform) {
+    public Level(int id, boolean showPlatform, int background, int verticalPlateform, int horizontalPlateform) {
         super();
         this.id = id;
         this.showPlatform = showPlatform;
