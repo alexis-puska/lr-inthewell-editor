@@ -4309,3 +4309,1803 @@
 2018-04-05 15:11:52 INFO  SpriteService:29 - Load Sprites : DONE
 2018-04-05 15:11:52 INFO  FileService:33 - Number of level inside file : 104
 2018-04-05 15:11:52 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:13:32 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:13:32 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:13:32 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:13:32 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:13:32 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:32 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:13:32 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:13:32 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:13:32 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:13:32 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:32 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:13:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:13:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:13:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:13:33 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:13:33 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:13:33 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:13:33 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:13:49 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:13:49 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:13:49 INFO  SpriteService:71 - need merge
+2018-04-05 15:13:49 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:13:50 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:13:50 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:13:50 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:13:50 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:16:22 INFO  App:35 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:16:22 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:23 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:23 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:16:24 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:16:24 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:16:24 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:16:24 INFO  App:45 - Nb level in file : 104
+2018-04-05 15:16:57 INFO  App:35 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:16:57 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:16:58 INFO  SpriteService:71 - need merge
+2018-04-05 15:16:58 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:16:59 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:16:59 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:16:59 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:16:59 INFO  App:45 - Nb level in file : 104
+2018-04-05 15:21:54 INFO  App:33 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:21:54 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:21:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:21:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:21:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:21:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:21:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:21:54 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:21:55 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:21:55 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:21:55 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:21:55 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:21:55 INFO  SpriteService:71 - need merge
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:21:55 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:21:55 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:21:55 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:21:55 INFO  App:43 - Nb level in file : 104
+2018-04-05 15:26:38 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:26:38 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:26:38 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:26:38 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:26:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:38 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:26:38 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:26:38 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:26:38 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:26:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:38 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:26:39 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:26:39 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:26:39 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:26:39 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:26:39 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:26:39 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:26:39 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:26:39 INFO  SpriteService:71 - need merge
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:26:39 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:26:39 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:26:39 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:26:39 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:29:37 INFO  App:35 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:29:37 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:29:38 INFO  SpriteService:71 - need merge
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:29:38 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:29:38 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:29:39 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:29:39 INFO  App:45 - Nb level in file : 104
+2018-04-05 15:30:28 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:30:28 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:30:28 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:30:28 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:30:28 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:28 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:30:28 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:30:28 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:30:28 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:30:28 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:30:29 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:30:29 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:30:29 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:30:29 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:30:29 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:30:29 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:30:29 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:30:29 INFO  SpriteService:71 - need merge
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:30:29 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:30:29 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:30:29 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:30:29 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:32:01 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:32:01 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:02 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:32:03 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:32:03 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:32:03 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:32:03 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:32:32 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:32:33 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:32:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:32:33 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:32:34 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:32:34 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:32:34 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:32:34 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:33:34 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:33:34 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:33:35 INFO  SpriteService:71 - need merge
+2018-04-05 15:33:35 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:33:36 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:33:36 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:33:36 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:33:36 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:34:33 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:34:33 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:34:33 INFO  SpriteService:71 - need merge
+2018-04-05 15:34:33 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:34:34 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:34:34 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:34:34 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:34:34 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:35:12 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:35:12 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:35:12 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:35:12 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:35:12 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:12 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:35:12 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:35:12 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:35:12 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:35:12 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:12 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:35:13 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:13 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:13 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:13 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:35:13 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:35:13 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:13 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:13 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:35:13 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:35:13 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:35:13 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:35:13 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:35:43 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:35:44 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:44 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:44 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:35:45 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:35:45 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:35:45 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:35:45 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:35:58 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:35:58 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:35:59 INFO  SpriteService:71 - need merge
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:35:59 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:35:59 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:36:00 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:36:00 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:37:04 INFO  App:34 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:37:04 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:05 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:37:05 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:37:05 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:37:05 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:37:05 INFO  App:44 - Nb level in file : 104
+2018-04-05 15:37:52 INFO  App:35 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:37:52 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:37:53 INFO  SpriteService:71 - need merge
+2018-04-05 15:37:53 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:37:54 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:37:54 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:37:54 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:37:54 INFO  App:45 - Nb level in file : 104
+2018-04-05 15:38:53 INFO  App:33 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:38:54 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:38:54 INFO  SpriteService:71 - need merge
+2018-04-05 15:38:54 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:38:55 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:38:55 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:38:55 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:38:55 INFO  App:43 - Nb level in file : 104
+2018-04-05 15:41:48 INFO  App:33 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:41:48 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:41:48 INFO  SpriteService:71 - need merge
+2018-04-05 15:41:48 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:41:49 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:41:49 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:41:49 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:41:49 INFO  App:43 - Nb level in file : 104
+2018-04-05 15:42:49 INFO  App:33 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:42:49 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:42:50 INFO  SpriteService:71 - need merge
+2018-04-05 15:42:50 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:42:51 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:42:51 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:42:51 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:42:51 INFO  App:43 - Nb level in file : 104
+2018-04-05 15:43:10 INFO  App:33 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:43:10 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:43:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:43:11 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:43:12 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:43:12 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:43:12 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:43:12 INFO  App:43 - Nb level in file : 104
+2018-04-05 15:47:10 INFO  App:33 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:47:10 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:47:11 INFO  SpriteService:71 - need merge
+2018-04-05 15:47:11 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:47:12 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:47:12 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:47:12 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:47:12 INFO  App:43 - Nb level in file : 104
+2018-04-05 15:49:02 INFO  App:33 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:49:02 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:49:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:49:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:49:02 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:49:02 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:03 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:03 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:03 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:49:03 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:49:03 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:03 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:03 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:49:03 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:49:03 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:49:03 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:49:03 INFO  App:43 - Nb level in file : 104
+2018-04-05 15:49:30 INFO  App:33 - Welcome in lr-inthewell-editor App !
+2018-04-05 15:49:30 INFO  SpriteService:27 - Load Sprites : START
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : teleporter
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : rayon
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : base_teleporter
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : pick
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : light
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : platform
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : end_platform
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : level_background
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : border_right
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : border_left
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : border_score
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : life+
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : life
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : fly
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : ghost
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : hammer
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : ice
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : cristalsBonus
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : lettre1
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : lettreGame
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : fire
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : mapEvent
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : cristals
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : canne
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : mirror
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : level0
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : level1
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : button
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : discuss
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : serrure
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : block
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : bed
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : doors
+2018-04-05 15:49:30 INFO  SpriteService:71 - need merge
+2018-04-05 15:49:30 INFO  SpriteService:58 - Crop sprite animation : carotteux
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : abricot
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : annanas
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : banane
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : blob
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : bombinos
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : cerise
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : citron
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : fraise_ball
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : framboise
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : kiwi
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : litchi
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : orange
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : pasteque
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : poire
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : pomme
+2018-04-05 15:49:31 INFO  SpriteService:58 - Crop sprite animation : scie
+2018-04-05 15:49:31 INFO  SpriteService:29 - Load Sprites : DONE
+2018-04-05 15:49:31 INFO  FileService:33 - Number of level inside file : 104
+2018-04-05 15:49:31 INFO  App:43 - Nb level in file : 104

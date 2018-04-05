@@ -5,9 +5,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
@@ -15,6 +13,7 @@ import org.apache.log4j.Logger;
 import lr_in_the_well.alexis_puska.domain.level.LevelFile;
 import lr_in_the_well.alexis_puska.service.FileService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
+import lr_in_the_well.alexis_puska.view.DrawPanel;
 
 public class App extends JFrame {
 
@@ -40,22 +39,26 @@ public class App extends JFrame {
         InputStream in = this.getClass().getResourceAsStream("/json/json_level_parser.json");
         LevelFile levelFile = fileService.readJsonFile(in);
 
-        BufferedImage bf = this.spriteService.getSprite("level_background", 1);
+        BufferedImage bf = this.spriteService.getSprite("level_background", 0);
         LOG.info("Nb level in file : " + levelFile.getLevel().size());
 
         JPanel panel = new JPanel();
         panel.setSize(1800, 1100);
         panel.setBackground(Color.CYAN);
-        ImageIcon icon = new ImageIcon(bf);
-        JLabel label = new JLabel();
-        label.setIcon(icon);
-        panel.add(label);
+        DrawPanel g2D = new DrawPanel(bf);
+
+        panel.add(g2D);
+        g2D.setSize(300, 300);
+        g2D.setVisible(true);
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(panel, BorderLayout.EAST);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.setSize(10, 10);
+        this.setSize(100, 100);
+        while(true){
+            g2D.repaint();
+        }
     }
 }
