@@ -111,8 +111,8 @@ public class App extends JFrame {
 
 	private void buildEnnemiePanelButton() {
 		GridLayout layout = new GridLayout();
-		layout.setColumns(Constante.NB_COLUMN_NAVIGATION);
-		layout.setRows(Constante.NB_ROW_NAVIGATION);
+		layout.setColumns(Constante.NB_COLUMN_ENNEMIE);
+		layout.setRows(Constante.NB_ROW_ENNEMIE);
 		JPanel panelNavigation = new JPanel();
 		panelNavigation.setLayout(layout);
 		panelNavigation.setBorder(BorderFactory.createTitledBorder("Ennemies"));
@@ -188,8 +188,8 @@ public class App extends JFrame {
 
 	private void buildElementPanelButton() {
 		GridLayout layout = new GridLayout();
-		layout.setColumns(Constante.NB_COLUMN_NAVIGATION);
-		layout.setRows(Constante.NB_ROW_NAVIGATION);
+		layout.setColumns(Constante.NB_COLUMN_ELEMENT);
+		layout.setRows(Constante.NB_ROW_ELEMENT);
 		JPanel panelNavigation = new JPanel();
 		panelNavigation.setLayout(layout);
 		panelNavigation.setBorder(BorderFactory.createTitledBorder("Elements"));
@@ -200,8 +200,8 @@ public class App extends JFrame {
 
 	private void buildParameterPanelButton() {
 		GridLayout layout = new GridLayout();
-		layout.setColumns(Constante.NB_COLUMN_NAVIGATION);
-		layout.setRows(Constante.NB_ROW_NAVIGATION);
+		layout.setColumns(Constante.NB_COLUMN_PARAMETER);
+		layout.setRows(Constante.NB_ROW_PARAMETER);
 		JPanel panelNavigation = new JPanel();
 		panelNavigation.setLayout(layout);
 		panelNavigation.setBorder(BorderFactory.createTitledBorder("Parameters"));
