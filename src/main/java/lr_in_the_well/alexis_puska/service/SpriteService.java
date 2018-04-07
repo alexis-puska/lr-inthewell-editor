@@ -31,11 +31,20 @@ public class SpriteService {
         LOG.info("Load Sprites : DONE");
     }
 
+    /**
+     * return a specific sprite 
+     * @param animation name of animation
+     * @param index index of animation
+     * @return Buffered Image
+     */
     public BufferedImage getSprite(String animation, int index) {
         BufferedImage[] spritesAnimation = sprites.get(animation);
         return spritesAnimation[index];
     }
 
+    /**
+     * parse json file and create buffer sprite in memory
+     */
     private void initSprite() {
         InputStream in = this.getClass().getResourceAsStream("/json/json_image_parser.json");
 
@@ -87,6 +96,12 @@ public class SpriteService {
         }
     }
 
+    /**
+     * Merge 2 table of buffered Image
+     * @param bufferedImages Table of image
+     * @param sprite Table of image
+     * @return Table of image merged
+     */
     private BufferedImage[] mergeBufferedImage(BufferedImage[] bufferedImages, BufferedImage[] sprite) {
         BufferedImage[] merged = new BufferedImage[bufferedImages.length + sprite.length];
         int index = 0;
