@@ -40,6 +40,9 @@ public class LevelService {
 		if (vertical) {
 			p.setVertical(true);
 			p.setVisible(true);
+			if (d > 24) {
+				d = 24;
+			}
 			int l = d - y;
 			if (l < 0) {
 				l *= -1;
@@ -55,6 +58,9 @@ public class LevelService {
 		} else {
 			p.setVertical(false);
 			p.setVisible(true);
+			if (d > 19) {
+				d = 19;
+			}
 			int l = d - x;
 			if (l < 0) {
 				l *= -1;
@@ -76,6 +82,12 @@ public class LevelService {
 		Level level = levels.get(current);
 		Teleporter t = new Teleporter();
 		t.setId(getIdFromIdentifiable(level.getPlatform()));
+		if (x2 > 19) {
+			x2 = 19;
+		}
+		if (y2 > 24) {
+			y2 = 24;
+		}
 		int lx = x2 - x;
 		int ly = y2 - y;
 		boolean vertical = false;
@@ -119,6 +131,12 @@ public class LevelService {
 		Level level = levels.get(current);
 		Rayon r = new Rayon();
 		r.setId(getIdFromIdentifiable(level.getRayon()));
+		if (x2 > 19) {
+			x2 = 19;
+		}
+		if (y2 > 24) {
+			y2 = 24;
+		}
 		int lx = x2 - x;
 		int ly = y2 - y;
 		boolean vertical = false;

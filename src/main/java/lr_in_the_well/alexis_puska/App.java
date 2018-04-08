@@ -73,7 +73,11 @@ public class App extends JFrame {
 
 	// draw
 	private JPanel panelDraw;
+	private BorderLayout drawLayout;
 	private DrawPanel drawPanel;
+
+	// Properties pane
+	private JPanel identifiablePropertiesPanel;
 
 	// navigations
 	private JPanel panelNavigation;
@@ -168,11 +172,13 @@ public class App extends JFrame {
 	}
 
 	private void buildDrawElement() {
-		panelDraw.setSize(800, 600);
-		panelDraw.setBackground(Color.LIGHT_GRAY);
-		panelDraw.add(drawPanel);
 		drawPanel.setSize(Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
 		drawPanel.setVisible(true);
+
+		panelDraw.setBackground(Color.LIGHT_GRAY);
+		panelDraw.setLayout(drawLayout);
+		panelDraw.add(drawPanel, BorderLayout.CENTER);
+
 		this.getContentPane().add(panelDraw, BorderLayout.CENTER);
 	}
 
@@ -296,6 +302,7 @@ public class App extends JFrame {
 
 		// draw
 		panelDraw = new JPanel();
+		drawLayout = new BorderLayout();
 		drawPanel = new DrawPanel(spriteService, levelService);
 
 		// navigation
@@ -898,6 +905,9 @@ public class App extends JFrame {
 
 	private void selectElement(int x, int y) {
 		Identifiable obj = levelService.getProperties(x, y);
+		if (identifiablePropertiesPanel != null) {
+			panelDraw.remove(identifiablePropertiesPanel);
+		}
 		if (obj != null) {
 			if (obj.getClass().equals(Ennemie.class)) {
 				treatEnnemieProperties((Ennemie) obj);
@@ -917,37 +927,53 @@ public class App extends JFrame {
 				treatTeleporterProperties((Teleporter) obj);
 			}
 		}
+		panelDraw.updateUI();
 	}
 
 	private void treatEnnemieProperties(Ennemie ennemie) {
+		buildPropertiesPane("Ennemie properties");
 		LOG.info("build ennemie parameters panel ! : " + ennemie.getId());
 	}
 
 	private void treatDecorProperties(Decor decor) {
+		buildPropertiesPane("Decor properties");
 		LOG.info("build decor parameters panel ! : " + decor.getId());
 	}
 
 	private void treatDoorProperties(Door door) {
+		buildPropertiesPane("Door properties");
 		LOG.info("build door parameters panel ! : " + door.getId());
 	}
 
 	private void treatLockProperties(Lock lock) {
+		buildPropertiesPane("Lock properties");
 		LOG.info("build lock parameters panel ! : " + lock.getId());
 	}
 
 	private void treatPickProperties(Pick pick) {
+		buildPropertiesPane("Pick properties");
 		LOG.info("build pick parameters panel ! : " + pick.getId());
 	}
 
 	private void treatPlatformProperties(Platform platform) {
+		buildPropertiesPane("Platform properties");
 		LOG.info("build platform parameters panel ! : " + platform.getId());
 	}
 
 	private void treatRayonProperties(Rayon rayon) {
+		buildPropertiesPane("Rayon properties");
 		LOG.info("build rayon parameters panel ! : " + rayon.getId());
 	}
 
 	private void treatTeleporterProperties(Teleporter teleporter) {
+		buildPropertiesPane("Teleporter properties");
 		LOG.info("build teleporter parameters panel ! : " + teleporter.getId());
+	}
+
+	private void buildPropertiesPane(String name) {
+		identifiablePropertiesPanel = new JPanel();
+		Border ennemiesBorder = BorderFactory.createTitledBorder(name);
+		identifiablePropertiesPanel.setBorder(ennemiesBorder);
+		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 }

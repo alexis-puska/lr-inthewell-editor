@@ -1,10 +1,12 @@
 package lr_in_the_well.alexis_puska.view;
 
+import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -81,6 +83,14 @@ public class DrawPanel extends Canvas {
 			y += Constante.GRID_SIZE;
 			g2.drawLine(0, y, Constante.SCREEN_SIZE_X, y);
 		}
+		Stroke savedStrock = g2.getStroke();
+		g2.setStroke(new BasicStroke(3));
+		g2.drawLine(0, 0, Constante.SCREEN_SIZE_X, 0);
+		g2.drawLine(0, 0, 0, Constante.SCREEN_SIZE_Y);
+		g2.drawLine(Constante.SCREEN_SIZE_X, 0, Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
+		g2.drawLine(0, Constante.SCREEN_SIZE_Y, Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
+
+		g2.setStroke(savedStrock);
 	}
 
 	/**
@@ -140,7 +150,7 @@ public class DrawPanel extends Canvas {
 	 */
 	private void drawRayon(Graphics2D g2) {
 		for (Rayon rayon : levelService.getCurrentLevel().getRayon()) {
-			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType()*2);
+			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType() * 2);
 			if (rayon.isVertical()) {
 				for (int i = rayon.getY(); i < rayon.getY() + rayon.getLength(); i++) {
 					g2.drawImage(bf, rayon.getX() * Constante.GRID_SIZE, i * Constante.GRID_SIZE, null);
@@ -149,16 +159,18 @@ public class DrawPanel extends Canvas {
 				for (int i = 0; i < rayon.getLength(); i++) {
 					AffineTransform backup = g2.getTransform();
 					AffineTransform trans = new AffineTransform();
-					trans.rotate((Math.PI / 2), (rayon.getX()+i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE);
+					trans.rotate((Math.PI / 2), (rayon.getX() + i) * Constante.GRID_SIZE,
+							rayon.getY() * Constante.GRID_SIZE);
 					trans.translate(0, -Constante.GRID_SIZE);
 					g2.transform(trans);
-					g2.drawImage(bf, (rayon.getX()+i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE, null);
+					g2.drawImage(bf, (rayon.getX() + i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE,
+							null);
 					g2.setTransform(backup); // restore previous transform
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * draw rayon of the level
 	 * 
@@ -176,7 +188,8 @@ public class DrawPanel extends Canvas {
 				for (int i = 0; i < teleporter.getLength(); i++) {
 					AffineTransform backup = g2.getTransform();
 					AffineTransform trans = new AffineTransform();
-					trans.rotate((Math.PI / 2), (teleporter.getX()+i) * Constante.GRID_SIZE, teleporter.getY() * Constante.GRID_SIZE);
+					trans.rotate((Math.PI / 2), (teleporter.getX() + i) * Constante.GRID_SIZE,
+							teleporter.getY() * Constante.GRID_SIZE);
 					trans.translate(0, -Constante.GRID_SIZE);
 					g2.transform(trans);
 					g2.drawImage(bf.getSubimage(0, 0, Constante.GRID_SIZE, Constante.GRID_SIZE),
