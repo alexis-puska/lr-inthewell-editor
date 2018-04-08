@@ -10,11 +10,15 @@ import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
+import lr_in_the_well.alexis_puska.domain.level.StartEffectObjets;
+import lr_in_the_well.alexis_puska.domain.level.StartPlayer;
+import lr_in_the_well.alexis_puska.domain.level.StartPointObjets;
 import lr_in_the_well.alexis_puska.domain.level.Teleporter;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
@@ -51,6 +55,9 @@ public class DrawPanel extends Canvas {
 			drawPlatform(g2);
 			drawRayon(g2);
 			drawEnnemies(g2);
+			drawStartPlayer(g2);
+			drawEffectObject(g2);
+			drawPontObject(g2);
 			drawGrid(g2);
 		} else {
 			Font font = new Font("Serif", Font.PLAIN, 20);
@@ -62,6 +69,54 @@ public class DrawPanel extends Canvas {
 		}
 		g2.dispose();
 		bs.show();
+	}
+
+	private void drawStartPlayer(Graphics2D g2) {
+		List<StartPlayer> sp = levelService.getCurrentLevel().getStartPlayers();
+		if (sp != null && !sp.isEmpty()) {
+			Stroke savedStrock = g2.getStroke();
+			g2.setColor(Color.GREEN);
+			Font font = new Font("Arial", Font.PLAIN, 20);
+			g2.setFont(font);
+			g2.setStroke(new BasicStroke(2));
+			for (StartPlayer s : sp) {
+				g2.drawString("S", s.getX() * Constante.GRID_SIZE + 2,
+						(s.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+			}
+			g2.setStroke(savedStrock);
+		}
+	}
+	
+	private void drawEffectObject(Graphics2D g2) {
+		List<StartEffectObjets> sp = levelService.getCurrentLevel().getStartEffectObjets();
+		if (sp != null && !sp.isEmpty()) {
+			Stroke savedStrock = g2.getStroke();
+			g2.setColor(Color.CYAN);
+			Font font = new Font("Arial", Font.PLAIN, 20);
+			g2.setFont(font);
+			g2.setStroke(new BasicStroke(2));
+			for (StartEffectObjets s : sp) {
+				g2.drawString("E", s.getX() * Constante.GRID_SIZE + 2,
+						(s.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+			}
+			g2.setStroke(savedStrock);
+		}
+	}
+	
+	private void drawPontObject(Graphics2D g2) {
+		List<StartPointObjets> sp = levelService.getCurrentLevel().getStartPointObjets();
+		if (sp != null && !sp.isEmpty()) {
+			Stroke savedStrock = g2.getStroke();
+			g2.setColor(Color.YELLOW);
+			Font font = new Font("Arial", Font.PLAIN, 20);
+			g2.setFont(font);
+			g2.setStroke(new BasicStroke(2));
+			for (StartPointObjets s : sp) {
+				g2.drawString("P", s.getX() * Constante.GRID_SIZE + 2,
+						(s.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+			}
+			g2.setStroke(savedStrock);
+		}
 	}
 
 	/**

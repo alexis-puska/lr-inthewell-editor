@@ -194,21 +194,32 @@ public class LevelService {
 	public void addPick(int x, int y) {
 
 	}
+	
+	public void addLock(int x, int y) {
+	
+	}
+
+	public void addDoor(int x, int y) {
+		
+	}
 
 	public void addEvent(int x, int y) {
 
 	}
 
 	public void addPlayerSpawn(int x, int y) {
-
+		Level level = levels.get(current);
+		level.getStartPlayers().add(new StartPlayer(x, y));
 	}
 
 	public void addObjectPoint(int x, int y) {
-
+		Level level = levels.get(current);
+		level.getStartPointObjets().add(new StartPointObjets(x, y));
 	}
 
 	public void addObjectEffect(int x, int y) {
-
+		Level level = levels.get(current);
+		level.getStartEffectObjets().add(new StartEffectObjets(x, y));
 	}
 
 	public void deleteElement(int x, int y) {
@@ -471,4 +482,6 @@ public class LevelService {
 		}
 		return null;
 	}
+
+	
 }

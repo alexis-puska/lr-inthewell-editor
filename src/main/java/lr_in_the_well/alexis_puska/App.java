@@ -127,6 +127,8 @@ public class App extends JFrame {
 	private JButton teleporterButton;
 	private JButton rayonButton;
 	private JButton pickButton;
+	private JButton doorButton;
+	private JButton lockButton;
 	private JButton eventButton;
 	private JButton startButton;
 	private JButton pointButton;
@@ -255,6 +257,8 @@ public class App extends JFrame {
 		panelElement.add(teleporterButton);
 		panelElement.add(rayonButton);
 		panelElement.add(pickButton);
+		panelElement.add(doorButton);
+		panelElement.add(lockButton);
 		panelElement.add(eventButton);
 		panelElement.add(startButton);
 		panelElement.add(pointButton);
@@ -362,6 +366,8 @@ public class App extends JFrame {
 		teleporterButton = new JButton("Teleporter");
 		rayonButton = new JButton("Rayon");
 		pickButton = new JButton("Pick");
+		doorButton = new JButton("Door");
+		lockButton = new JButton("Lock");
 		eventButton = new JButton("Event");
 		startButton = new JButton("player spawn");
 		pointButton = new JButton("point spawn");
@@ -635,6 +641,18 @@ public class App extends JFrame {
 				action = ActionEnum.ADD_PICK;
 			}
 		});
+		pickButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				action = ActionEnum.ADD_LOCK;
+			}
+		});
+		pickButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				action = ActionEnum.ADD_DOOR;
+			}
+		});
 		eventButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -682,6 +700,12 @@ public class App extends JFrame {
 			break;
 		case ADD_DECOR:
 			this.addDecor(caseX, caseY);
+			break;
+		case ADD_LOCK:
+			this.addLock(caseX, caseY);
+			break;
+		case ADD_DOOR:
+			this.addDoor(caseX, caseY);
 			break;
 		case ADD_VORTEX:
 			this.addVortex(caseX, caseY);
@@ -771,6 +795,8 @@ public class App extends JFrame {
 		case ADD_DECOR:
 		case ADD_VORTEX:
 		case ADD_PICK:
+		case ADD_DOOR:
+		case ADD_LOCK:
 		case ADD_EVENT:
 		case ADD_PLAYER_SPAWN:
 		case ADD_OBJECT_POINT:
@@ -813,6 +839,8 @@ public class App extends JFrame {
 		case ADD_TELEPORTER:
 		case ADD_RAYON:
 		case ADD_PICK:
+		case ADD_DOOR:
+		case ADD_LOCK:
 		case ADD_EVENT:
 		case ADD_PLAYER_SPAWN:
 		case ADD_OBJECT_POINT:
@@ -875,6 +903,16 @@ public class App extends JFrame {
 
 	private void addPick(int x, int y) {
 		levelService.addPick(x, y);
+		drawPanel.repaint();
+	}
+
+	private void addDoor(int x, int y) {
+		levelService.addLock(x, y);
+		drawPanel.repaint();
+	}
+
+	private void addLock(int x, int y) {
+		levelService.addDoor(x, y);
 		drawPanel.repaint();
 	}
 
