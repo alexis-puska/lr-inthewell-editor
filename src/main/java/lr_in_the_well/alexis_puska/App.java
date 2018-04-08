@@ -355,6 +355,7 @@ public class App extends JFrame {
 			public void caretUpdate(javax.swing.event.CaretEvent e) {
 				JTextField text = (JTextField) e.getSource();
 				if (text.getText() != null && !text.getText().isEmpty()) {
+					levelService.setCurrentLevel(Integer.parseInt(text.getText()));
 					drawPanel.repaint();
 				}
 				LOG.info("ChangeLevel : " + text.getText());

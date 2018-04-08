@@ -226,4 +226,8 @@ public class LevelService {
 		return current;
 	}
 
+	public void setCurrentLevel(int parseInt) {
+		current = parseInt;
+	}
+
 }

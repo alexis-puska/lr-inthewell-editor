@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
+import lr_in_the_well.alexis_puska.domain.level.Rayon;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
 
@@ -44,6 +45,7 @@ public class DrawPanel extends Canvas {
 		if (levelService.getCurrentLevel() != null) {
 			drawBackground(g2);
 			drawPlatform(g2);
+			drawRayon(g2);
 			drawEnnemies(g2);
 			drawGrid(g2);
 		} else {
@@ -125,6 +127,58 @@ public class DrawPanel extends Canvas {
 			} else {
 				g2.drawImage(bf.getSubimage(0, 0, platform.getLength() * Constante.GRID_SIZE, Constante.GRID_SIZE),
 						platform.getX() * Constante.GRID_SIZE, platform.getY() * Constante.GRID_SIZE, null);
+			}
+		}
+	}
+
+	/**
+	 * draw rayon of the level
+	 * 
+	 * @param g2
+	 */
+	private void drawRayon(Graphics2D g2) {
+		for (Rayon rayon : levelService.getCurrentLevel().getRayon()) {
+			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType()*2);
+			if (rayon.isVertical()) {
+				for (int i = rayon.getY(); i < rayon.getY() + rayon.getLength(); i++) {
+					g2.drawImage(bf, rayon.getX() * Constante.GRID_SIZE, i * Constante.GRID_SIZE, null);
+				}
+			} else {
+				for (int i = 0; i < rayon.getLength(); i++) {
+					AffineTransform backup = g2.getTransform();
+					AffineTransform trans = new AffineTransform();
+					trans.rotate((Math.PI / 2), (rayon.getX()+i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE);
+					trans.translate(0, -Constante.GRID_SIZE);
+					g2.transform(trans);
+					g2.drawImage(bf, (rayon.getX()+i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE, null);
+					g2.setTransform(backup); // restore previous transform
+				}
+			}
+		}
+	}
+	
+	/**
+	 * draw rayon of the level
+	 * 
+	 * @param g2
+	 */
+	private void drawTeleporter(Graphics2D g2) {
+		for (Rayon rayon : levelService.getCurrentLevel().getRayon()) {
+			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType()*2);
+			if (rayon.isVertical()) {
+				for (int i = rayon.getY(); i < rayon.getY() + rayon.getLength(); i++) {
+					g2.drawImage(bf, rayon.getX() * Constante.GRID_SIZE, i * Constante.GRID_SIZE, null);
+				}
+			} else {
+				for (int i = 0; i < rayon.getLength(); i++) {
+					AffineTransform backup = g2.getTransform();
+					AffineTransform trans = new AffineTransform();
+					trans.rotate((Math.PI / 2), (rayon.getX()+i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE);
+					trans.translate(0, -Constante.GRID_SIZE);
+					g2.transform(trans);
+					g2.drawImage(bf, (rayon.getX()+i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE, null);
+					g2.setTransform(backup); // restore previous transform
+				}
 			}
 		}
 	}
