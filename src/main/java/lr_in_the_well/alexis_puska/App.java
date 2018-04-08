@@ -9,24 +9,24 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.InputStream;
-import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.event.CaretListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 import org.apache.log4j.Logger;
 
 import lr_in_the_well.alexis_puska.constant.ActionEnum;
 import lr_in_the_well.alexis_puska.constant.Constante;
-import lr_in_the_well.alexis_puska.domain.level.Level;
-import lr_in_the_well.alexis_puska.domain.level.Platform;
 import lr_in_the_well.alexis_puska.service.FileService;
+import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
 import lr_in_the_well.alexis_puska.view.DrawPanel;
 
@@ -39,14 +39,15 @@ public class App extends JFrame {
 	// services
 	private final FileService fileService;
 	private final SpriteService spriteService;
+	private final LevelService levelService;
 
-	private int levelSelected;
 	private int xFirst;
 	private int yFirst;
 	private ActionEnum action;
 
-	// levels
-	private Map<Integer, Level> levels;
+	// West Panel
+	private JPanel westPanel;
+	private GridLayout westLayout;
 
 	// draw
 	private JPanel panelDraw;
@@ -61,9 +62,11 @@ public class App extends JFrame {
 	private JButton addLevel;
 	private JButton delLevel;
 	private JTextField currentLevelIndex;
+	private JButton chooseFile;
+	private JFileChooser fileChooser;
+	private FileNameExtensionFilter fileChooserFilter;
 
 	// ennemies component
-
 	private JPanel panelEnnemies;
 	private Border borderEnnemies;
 	private GridLayout layoutEnnemies;
@@ -82,6 +85,8 @@ public class App extends JFrame {
 	private JButton pastequeButton;
 	private JButton pruneButton;
 	private JButton scieButton;
+	private JButton poireButton;
+	private JButton blobButton;
 
 	// elements component
 	private JPanel panelElement;
@@ -115,17 +120,17 @@ public class App extends JFrame {
 		LOG.info("Welcome in lr-inthewell-editor App !");
 		this.fileService = new FileService();
 		this.spriteService = new SpriteService(fileService);
+		this.levelService = new LevelService(
+				fileService.readJsonFile(this.getClass().getResourceAsStream("/json/json_level_parser.json")));
 		this.action = ActionEnum.SELECT;
 	}
 
 	private void Launch() {
-		levelSelected = 0;
-		InputStream in = this.getClass().getResourceAsStream("/json/json_level_parser.json");
-		levels = fileService.readJsonFile(in);
-		LOG.info("Nb level in file : " + levels.size());
+		LOG.info("Nb level in file : " + levelService.getNbLevel());
 		this.getContentPane().setLayout(new BorderLayout());
 		initComponent();
 		initListeners();
+		buildWestPanel();
 		buildDrawElement();
 		buildNavigationPanelButton();
 		buildElementPanelButton();
@@ -139,14 +144,18 @@ public class App extends JFrame {
 	}
 
 	private void buildDrawElement() {
-
 		panelDraw.setSize(800, 600);
 		panelDraw.setBackground(Color.LIGHT_GRAY);
-
 		panelDraw.add(drawPanel);
 		drawPanel.setSize(Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
 		drawPanel.setVisible(true);
 		this.getContentPane().add(panelDraw, BorderLayout.CENTER);
+	}
+
+	private void buildWestPanel() {
+		westLayout.setRows(2);
+		westPanel.setLayout(westLayout);
+		this.getContentPane().add(westPanel, BorderLayout.WEST);
 	}
 
 	private void buildEnnemiePanelButton() {
@@ -167,18 +176,21 @@ public class App extends JFrame {
 		panelEnnemies.add(pastequeButton);
 		panelEnnemies.add(pruneButton);
 		panelEnnemies.add(scieButton);
-		this.getContentPane().add(panelEnnemies, BorderLayout.EAST);
+		panelEnnemies.add(poireButton);
+		panelEnnemies.add(blobButton);
+		westPanel.add(panelEnnemies);
 	}
 
 	private void buildNavigationPanelButton() {
 		panelNavigation.setBorder(borderNavigation);
 		panelNavigation.setLayout(layoutNavigation);
-		currentLevelIndex.setText(Integer.toString(levelSelected));
+		currentLevelIndex.setText(Integer.toString(levelService.getCurrentLevelIndex()));
 		panelNavigation.add(previousLevel);
 		panelNavigation.add(currentLevelIndex);
 		panelNavigation.add(nextLevel);
 		panelNavigation.add(addLevel);
 		panelNavigation.add(delLevel);
+		panelNavigation.add(chooseFile);
 		this.getContentPane().add(panelNavigation, BorderLayout.NORTH);
 	}
 
@@ -197,7 +209,7 @@ public class App extends JFrame {
 		panelElement.add(startButton);
 		panelElement.add(pointButton);
 		panelElement.add(effectButton);
-		this.getContentPane().add(panelElement, BorderLayout.WEST);
+		westPanel.add(panelElement);
 	}
 
 	private void buildParameterPanelButton() {
@@ -209,21 +221,28 @@ public class App extends JFrame {
 	}
 
 	private void nextLevel() {
-		levelSelected++;
-		currentLevelIndex.setText(Integer.toString(levelSelected));
-		drawPanel.updateLevel(levels.get(levelSelected));
+		currentLevelIndex.setText(Integer.toString(levelService.incCurrentLevelIndex()));
+		drawPanel.repaint();
 	}
 
 	private void previousLevel() {
-		levelSelected--;
-		currentLevelIndex.setText(Integer.toString(levelSelected));
-		drawPanel.updateLevel(levels.get(levelSelected));
+		currentLevelIndex.setText(Integer.toString(levelService.decCurrentLevelIndex()));
+		drawPanel.repaint();
 	}
 
 	private void initComponent() {
+
+		fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+		fileChooserFilter = new FileNameExtensionFilter("Hammerfest JSON level file", "json");
+		fileChooser.setFileFilter(fileChooserFilter);
+
+		// westPanel
+		westPanel = new JPanel();
+		westLayout = new GridLayout();
+
 		// draw
 		panelDraw = new JPanel();
-		drawPanel = new DrawPanel(spriteService, levels.get(levelSelected));
+		drawPanel = new DrawPanel(spriteService, levelService);
 
 		// navigation
 		panelNavigation = new JPanel();
@@ -235,6 +254,7 @@ public class App extends JFrame {
 		previousLevel = new JButton("Previous");
 		addLevel = new JButton("Add");
 		delLevel = new JButton("Delete");
+		chooseFile = new JButton("Choose file");
 		currentLevelIndex = new JTextField();
 
 		// ennemies
@@ -257,6 +277,8 @@ public class App extends JFrame {
 		pastequeButton = new JButton("pastèque");
 		pruneButton = new JButton("prune");
 		scieButton = new JButton("scie");
+		poireButton = new JButton("poire");
+		blobButton = new JButton("blob");
 		bananeButton = new JButton("Banane");
 
 		// element
@@ -289,6 +311,11 @@ public class App extends JFrame {
 
 	private void initListeners() {
 
+		/**********************
+		 *
+		 * DRAW
+		 * 
+		 ***********************/		
 		drawPanel.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -319,13 +346,16 @@ public class App extends JFrame {
 			}
 		});
 
-		// navigation
+		/**********************
+		 *
+		 * NAVIGATION
+		 * 
+		 ***********************/
 		currentLevelIndex.addCaretListener(new CaretListener() {
 			public void caretUpdate(javax.swing.event.CaretEvent e) {
 				JTextField text = (JTextField) e.getSource();
 				if (text.getText() != null && !text.getText().isEmpty()) {
-					levelSelected = Integer.parseInt(text.getText());
-					drawPanel.updateLevel(levels.get(levelSelected));
+					drawPanel.repaint();
 				}
 				LOG.info("ChangeLevel : " + text.getText());
 			}
@@ -371,6 +401,21 @@ public class App extends JFrame {
 				nextLevel();
 			}
 		});
+		chooseFile.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int returnVal = fileChooser.showOpenDialog(panelNavigation);
+				if (returnVal == JFileChooser.APPROVE_OPTION) {
+					System.out.println("You chose to open this file: " + fileChooser.getSelectedFile().getName());
+				}
+			}
+		});
+
+		/**********************
+		 *
+		 * ENNEMIES
+		 * 
+		 ***********************/
 		ceriseButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -461,6 +506,24 @@ public class App extends JFrame {
 				action = ActionEnum.ADD_SCIE;
 			}
 		});
+		poireButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				action = ActionEnum.ADD_POIRE;
+			}
+		});
+		blobButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				action = ActionEnum.ADD_BLOB;
+			}
+		});
+		
+		/**********************
+		 *
+		 * ELEMENT
+		 * 
+		 ***********************/
 		selectButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -534,7 +597,6 @@ public class App extends JFrame {
 				action = ActionEnum.ADD_OBJECT_EFFECT;
 			}
 		});
-
 	}
 
 	private void release(int x, int y) {
@@ -562,22 +624,58 @@ public class App extends JFrame {
 		case ADD_PLAYER_SPAWN:
 		case ADD_OBJECT_POINT:
 		case ADD_OBJECT_EFFECT:
+			break;
 		case ADD_CERISE:
+			this.addEnnemie(caseX, caseY, 0);
+			break;
 		case ADD_ORANGE:
+			this.addEnnemie(caseX, caseY, 1);
+			break;
 		case ADD_POMME:
+			this.addEnnemie(caseX, caseY, 2);
+			break;
 		case ADD_BANANE:
+			this.addEnnemie(caseX, caseY, 3);
+			break;
 		case ADD_LITCHI:
+			this.addEnnemie(caseX, caseY, 8);
+			break;
 		case ADD_FRAISE:
+			this.addEnnemie(caseX, caseY, 9);
+			break;
 		case ADD_FRAMBOISE:
+			this.addEnnemie(caseX, caseY, 14);
+			break;
 		case ADD_CITRON:
+			this.addEnnemie(caseX, caseY, 4);
+			break;
 		case ADD_ABRICOT:
+			this.addEnnemie(caseX, caseY, 7);
+			break;
 		case ADD_ABRICOT_NAIN:
+			this.addEnnemie(caseX, caseY, 15);
+			break;
 		case ADD_ANANAS:
+			this.addEnnemie(caseX, caseY, 12);
+			break;
 		case ADD_KIWI:
+			this.addEnnemie(caseX, caseY, 10);
+			break;
 		case ADD_PASTEQUE:
+			this.addEnnemie(caseX, caseY, 11);
+			break;
 		case ADD_PRUNE:
+			this.addEnnemie(caseX, caseY, 5);
+			break;
 		case ADD_SCIE:
-
+			this.addEnnemie(caseX, caseY, 16);
+			break;
+		case ADD_POIRE:
+			this.addEnnemie(caseX, caseY, 6);
+			break;
+		case ADD_BLOB:
+			this.addEnnemie(caseX, caseY, 13);
+			break;
 		}
 	}
 
@@ -586,7 +684,6 @@ public class App extends JFrame {
 		int caseY = y / Constante.GRID_SIZE;
 		LOG.info("x : " + caseX + " y : " + caseY);
 		switch (action) {
-
 		case DRAW_VERTICAL_PLATFORM:
 		case DRAW_HORIZONTAL_PLATFORM:
 		case ADD_TELEPORTER:
@@ -617,7 +714,9 @@ public class App extends JFrame {
 		case ADD_PASTEQUE:
 		case ADD_PRUNE:
 		case ADD_SCIE:
-
+		case ADD_BLOB:
+		case ADD_POIRE:
+			break;
 		}
 	}
 
@@ -628,7 +727,11 @@ public class App extends JFrame {
 
 		switch (action) {
 		case SELECT:
+			selectElement(caseX, caseY);
+			break;
 		case DELETE:
+			deleteElement(caseX, caseY);
+			break;
 		case DRAW_VERTICAL_PLATFORM:
 		case DRAW_HORIZONTAL_PLATFORM:
 		case ADD_VORTEX:
@@ -654,8 +757,15 @@ public class App extends JFrame {
 		case ADD_PASTEQUE:
 		case ADD_PRUNE:
 		case ADD_SCIE:
-
+		case ADD_BLOB:
+		case ADD_POIRE:
+			break;
 		}
+	}
+
+	private void selectElement(int x, int y) {
+		// TODO Auto-generated method stub
+
 	}
 
 	private void addRayon(int xFirst2, int yFirst2, int caseX, int caseY) {
@@ -667,51 +777,22 @@ public class App extends JFrame {
 	}
 
 	private void addHorizontalPlatform(int x, int y, int x2) {
-		Level level = levels.get(levelSelected);
-		int nbPlatform = level.getPlatform().size();
-		Platform p = new Platform();
-		p.setId(nbPlatform);
-		p.setVertical(false);
-		p.setVisible(true);
-		int l = x2 - x;
-		if (l < 0) {
-			l *=-1;
-		}
-		l++;
-		if (x2 > x) {
-			p.setX(x);
-		} else {
-			p.setX(x2);
-		}
-		p.setLength(l);
-		p.setY(y);
-		level.getPlatform().add(p);
-		levels.put(level.getId(), level);
+		levelService.addPlatform(x, y, x2, false);
 		drawPanel.repaint();
 	}
 
 	private void addVerticalPlatform(int x, int y, int y2) {
-		Level level = levels.get(levelSelected);
-		int nbPlatform = level.getPlatform().size();
-		Platform p = new Platform();
-		p.setId(nbPlatform);
-		p.setVertical(true);
-		p.setVisible(true);
-		int l = y2 - y;
-		if (l < 0) {
-			l *=-1;
-		}
-		l++;
-		if (y2 > y) {
-			p.setY(y);
-		} else {
-			p.setY(y2);
-		}
-		p.setLength(l);
-		p.setX(x);
-		level.getPlatform().add(p);
-		levels.put(level.getId(), level);
+		levelService.addPlatform(x, y, y2, true);
 		drawPanel.repaint();
 	}
 
+	private void addEnnemie(int x, int y, int type) {
+		levelService.addEnnemie(x, y, type);
+		drawPanel.repaint();
+	}
+
+	private void deleteElement(int x, int y) {
+		levelService.deleteElement(x, y);
+		drawPanel.repaint();
+	}
 }

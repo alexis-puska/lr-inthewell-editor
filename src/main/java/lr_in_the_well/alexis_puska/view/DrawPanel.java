@@ -11,27 +11,21 @@ import java.awt.image.BufferedImage;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
-import lr_in_the_well.alexis_puska.domain.level.Level;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
+import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
 
 public class DrawPanel extends Canvas {
 
 	private static final long serialVersionUID = -617780220828076518L;
 
-	private Level level;
+	private LevelService levelService;
 	private SpriteService spriteService;
 
-	public DrawPanel(SpriteService spriteService, Level level) {
+	public DrawPanel(SpriteService spriteService, LevelService levelService) {
 		super();
 		this.spriteService = spriteService;
-		this.level = level;
-
-	}
-
-	public void updateLevel(Level level) {
-		this.level = level;
-		this.repaint();
+		this.levelService = levelService;
 	}
 
 	/**
@@ -47,7 +41,7 @@ public class DrawPanel extends Canvas {
 			bs = getBufferStrategy();
 		}
 		Graphics2D g2 = (Graphics2D) bs.getDrawGraphics();
-		if (level != null) {
+		if (levelService.getCurrentLevel() != null) {
 			drawBackground(g2);
 			drawPlatform(g2);
 			drawEnnemies(g2);
@@ -91,7 +85,7 @@ public class DrawPanel extends Canvas {
 	 * @param g2
 	 */
 	private void drawBackground(Graphics2D g2) {
-		BufferedImage bf = spriteService.getSprite("level_background", level.getBackground());
+		BufferedImage bf = spriteService.getSprite("level_background", levelService.getCurrentLevel().getBackground());
 		int x = 0;
 		int y = 0;
 		while (x < Constante.SCREEN_SIZE_X) {
@@ -110,9 +104,9 @@ public class DrawPanel extends Canvas {
 	 * @param g2
 	 */
 	private void drawPlatform(Graphics2D g2) {
-		BufferedImage bf = spriteService.getSprite("platform", level.getHorizontalPlateform());
-		BufferedImage bfv = spriteService.getSprite("platform", level.getVerticalPlateform());
-		for (Platform platform : level.getPlatform()) {
+		BufferedImage bf = spriteService.getSprite("platform", levelService.getCurrentLevel().getHorizontalPlateform());
+		BufferedImage bfv = spriteService.getSprite("platform", levelService.getCurrentLevel().getVerticalPlateform());
+		for (Platform platform : levelService.getCurrentLevel().getPlatform()) {
 
 			if (platform.isVertical()) {
 
@@ -142,7 +136,7 @@ public class DrawPanel extends Canvas {
 	 */
 	private void drawEnnemies(Graphics2D g2) {
 		BufferedImage bf = spriteService.getSprite("cerise", 0);
-		for (Ennemie ennemie : level.getEnnemies()) {
+		for (Ennemie ennemie : levelService.getCurrentLevel().getEnnemies()) {
 			switch (ennemie.getType()) {
 			case 0:
 				bf = spriteService.getSprite("cerise", 0);
@@ -196,11 +190,10 @@ public class DrawPanel extends Canvas {
 				bf = spriteService.getSprite("scie", 0);
 				break;
 			}
-			int x = (ennemie.getX() * Constante.GRID_SIZE) - (bf.getWidth() / 2);
+			int x = (ennemie.getX() * Constante.GRID_SIZE) + (Constante.GRID_SIZE / 2) - (bf.getWidth() / 2);
 			int y = ((ennemie.getY() + 1) * Constante.GRID_SIZE) - bf.getHeight();
 			g2.drawImage(bf, x, y, null);
 		}
 	}
 
-	
 }

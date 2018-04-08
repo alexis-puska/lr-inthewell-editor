@@ -27,5 +27,7 @@ public enum ActionEnum {
 	ADD_KIWI,
 	ADD_PASTEQUE,
 	ADD_PRUNE,
-	ADD_SCIE;
+	ADD_SCIE,
+	ADD_POIRE,
+	ADD_BLOB;
 }

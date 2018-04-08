@@ -11,11 +11,18 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Lock implements Serializable {
+public class Lock extends Identifiable implements Serializable {
 
-    private static final long serialVersionUID = -3148349064427411770L;
-    private int id;
-    private int x;
-    private int y;
-    private int requieredKeyId;
+	private static final long serialVersionUID = -3148349064427411770L;
+	private int x;
+	private int y;
+	private int requieredKeyId;
+
+	public Lock(int id, int x, int y, int requieredKeyId) {
+		super(id);
+		this.x = x;
+		this.y = y;
+		this.requieredKeyId = requieredKeyId;
+	}
+
 }

@@ -38,6 +38,7 @@ public class SpriteService {
      * @return Buffered Image
      */
     public BufferedImage getSprite(String animation, int index) {
+    		LOG.info("animation : " + animation);
         BufferedImage[] spritesAnimation = sprites.get(animation);
         return spritesAnimation[index];
     }

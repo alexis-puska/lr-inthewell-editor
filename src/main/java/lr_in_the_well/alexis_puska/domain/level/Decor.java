@@ -2,23 +2,31 @@ package lr_in_the_well.alexis_puska.domain.level;
 
 import java.io.Serializable;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class Decor implements Serializable {
+public class Decor extends Identifiable implements Serializable {
 
-    private static final long serialVersionUID = -3148349064427411770L;
-    private int id;
-    private int x;
-    private int y;
-    private boolean display;
-    private boolean back;
-    private String anim;
-    private int indexAnim;
+	private static final long serialVersionUID = -3148349064427411770L;
+	private int x;
+	private int y;
+	private boolean display;
+	private boolean back;
+	private String anim;
+	private int indexAnim;
+
+	public Decor(int id, int x, int y, boolean display, boolean back, String anim, int indexAnim) {
+		super(id);
+		this.x = x;
+		this.y = y;
+		this.display = display;
+		this.back = back;
+		this.anim = anim;
+		this.indexAnim = indexAnim;
+	}
+
 }

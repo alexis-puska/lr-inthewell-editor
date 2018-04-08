@@ -65,7 +65,7 @@
 		"area": [
 			{"x": 0, "y":    0, "nx": 1   ,"ny":1, "n": 17,"sx":   21, "sy":   29, "r": true, "animation": "abricot"},
 			{"x": 0, "y":    0, "nx": 1   ,"ny":1, "n": 17,"sx":   21, "sy":   29, "r": true, "animation": "nainbricot"},
-			{"x": 0, "y":  177, "nx": 1   ,"ny":1, "n": 15,"sx":   39, "sy":   49, "r": true, "animation": "annanas"},
+			{"x": 0, "y":  177, "nx": 1   ,"ny":1, "n": 15,"sx":   39, "sy":   49, "r": true, "animation": "ananas"},
 			{"x": 0, "y":  606, "nx": 1   ,"ny":1, "n": 14,"sx":   24, "sy":   43, "r": true, "animation": "banane"},
 			{"x": 0, "y":  877, "nx": 1   ,"ny":1, "n": 12,"sx":   20, "sy":   20, "r": true, "animation": "blob"},
 			{"x": 0, "y":  961, "nx": 1   ,"ny":1, "n": 11,"sx":   55, "sy":   36, "r": true, "animation": "bombinos"},
