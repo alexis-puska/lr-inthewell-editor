@@ -21,7 +21,7 @@ import lr_in_the_well.alexis_puska.domain.level.Teleporter;
 public class LevelService {
 
 	private int current;
-	//private int currentRayonType;
+	// private int currentRayonType;
 	private Map<Integer, Level> levels;
 
 	public LevelService(Map<Integer, Level> levels) {
@@ -165,7 +165,31 @@ public class LevelService {
 		levels.put(level.getId(), level);
 	}
 
-	public void addDecor() {
+	public void addDecor(int x, int y) {
+
+	}
+
+	public void addVortex(int x, int y) {
+
+	}
+
+	public void addPick(int x, int y) {
+
+	}
+
+	public void addEvent(int x, int y) {
+
+	}
+
+	public void addPlayerSpawn(int x, int y) {
+
+	}
+
+	public void addObjectPoint(int x, int y) {
+
+	}
+
+	public void addObjectEffect(int x, int y) {
 
 	}
 
@@ -223,14 +247,14 @@ public class LevelService {
 			if (e.isVertical()) {
 				int min = e.getY();
 				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
+				if (e.getX() == x && (min <= y && y < max)) {
 
 					platformToDelete.add(e);
 				}
 			} else {
 				int min = e.getX();
 				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
+				if (e.getY() == y && (min <= x && x < max)) {
 
 					platformToDelete.add(e);
 				}
@@ -238,19 +262,19 @@ public class LevelService {
 		}
 		level.getPlatform().removeAll(platformToDelete);
 
-		// TELEPORTER
+		// RAYON
 		List<Rayon> rayonToDelete = new ArrayList<>();
 		for (Rayon e : level.getRayon()) {
 			if (e.isVertical()) {
 				int min = e.getY();
 				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
+				if (e.getX() == x && (min <= y && y < max)) {
 					rayonToDelete.add(e);
 				}
 			} else {
 				int min = e.getX();
 				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
+				if (e.getY() == y && (min <= x && x < max)) {
 					rayonToDelete.add(e);
 				}
 			}
@@ -263,13 +287,13 @@ public class LevelService {
 			if (e.isVertical()) {
 				int min = e.getY();
 				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
+				if (e.getX() == x && (min <= y && y < max)) {
 					teleporterToDelete.add(e);
 				}
 			} else {
 				int min = e.getX();
 				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
+				if (e.getY() == y && (min <= x && x < max)) {
 					teleporterToDelete.add(e);
 				}
 			}
@@ -350,5 +374,83 @@ public class LevelService {
 
 	public void setCurrentLevel(int parseInt) {
 		current = parseInt;
+	}
+
+	public Identifiable getProperties(int x, int y) {
+		Level level = levels.get(current);
+
+		for (Decor e : level.getDecor()) {
+			if (e.getX() == x && e.getY() == y) {
+				return e;
+			}
+		}
+		for (Door e : level.getDoor()) {
+			if (e.getX() == x && e.getY() == y) {
+				return e;
+			}
+		}
+		for (Ennemie e : level.getEnnemies()) {
+			if (e.getX() == x && e.getY() == y) {
+				return e;
+			}
+		}
+		for (Lock e : level.getLock()) {
+			if (e.getX() == x && e.getY() == y) {
+				return e;
+			}
+		}
+		for (Pick e : level.getPick()) {
+			if (e.getX() == x && e.getY() == y) {
+				return e;
+			}
+		}
+		for (Platform e : level.getPlatform()) {
+			if (e.isVertical()) {
+				int min = e.getY();
+				int max = e.getY() + e.getLength();
+				if (e.getX() == x && (min <= y && y <= max)) {
+
+					return e;
+				}
+			} else {
+				int min = e.getX();
+				int max = e.getX() + e.getLength();
+				if (e.getY() == y && (min <= x && x <= max)) {
+
+					return e;
+				}
+			}
+		}
+		for (Rayon e : level.getRayon()) {
+			if (e.isVertical()) {
+				int min = e.getY();
+				int max = e.getY() + e.getLength();
+				if (e.getX() == x && (min <= y && y <= max)) {
+					return e;
+				}
+			} else {
+				int min = e.getX();
+				int max = e.getX() + e.getLength();
+				if (e.getY() == y && (min <= x && x <= max)) {
+					return e;
+				}
+			}
+		}
+		for (Teleporter e : level.getTeleporter()) {
+			if (e.isVertical()) {
+				int min = e.getY();
+				int max = e.getY() + e.getLength();
+				if (e.getX() == x && (min <= y && y <= max)) {
+					return e;
+				}
+			} else {
+				int min = e.getX();
+				int max = e.getX() + e.getLength();
+				if (e.getY() == y && (min <= x && x <= max)) {
+					return e;
+				}
+			}
+		}
+		return null;
 	}
 }

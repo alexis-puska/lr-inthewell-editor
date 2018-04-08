@@ -26,6 +26,15 @@ import org.apache.log4j.Logger;
 
 import lr_in_the_well.alexis_puska.constant.ActionEnum;
 import lr_in_the_well.alexis_puska.constant.Constante;
+import lr_in_the_well.alexis_puska.domain.level.Decor;
+import lr_in_the_well.alexis_puska.domain.level.Door;
+import lr_in_the_well.alexis_puska.domain.level.Ennemie;
+import lr_in_the_well.alexis_puska.domain.level.Identifiable;
+import lr_in_the_well.alexis_puska.domain.level.Lock;
+import lr_in_the_well.alexis_puska.domain.level.Pick;
+import lr_in_the_well.alexis_puska.domain.level.Platform;
+import lr_in_the_well.alexis_puska.domain.level.Rayon;
+import lr_in_the_well.alexis_puska.domain.level.Teleporter;
 import lr_in_the_well.alexis_puska.service.FileService;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
@@ -178,17 +187,17 @@ public class App extends JFrame {
 		platformDrawPanel.setVisible(true);
 		platformPanel.setBorder(platformBorder);
 		platformPanel.add(platformDrawPanel);
-		
+
 		backgroundDrawPanel.setSize(300, Constante.SCREEN_SIZE_Y);
 		backgroundDrawPanel.setVisible(true);
 		backgroundPanel.setBorder(backgroundBorder);
 		backgroundPanel.add(backgroundDrawPanel);
-		
+
 		eastLayout.setColumns(2);
 		eastPanel.setLayout(eastLayout);
 		eastPanel.add(platformPanel);
 		eastPanel.add(backgroundPanel);
-		
+
 		this.getContentPane().add(eastPanel, BorderLayout.EAST);
 	}
 
@@ -663,12 +672,27 @@ public class App extends JFrame {
 			break;
 		case SELECT:
 		case DELETE:
+			break;
+		case ADD_DECOR:
+			this.addDecor(caseX, caseY);
+			break;
 		case ADD_VORTEX:
+			this.addVortex(caseX, caseY);
+			break;
 		case ADD_PICK:
+			this.addPick(caseX, caseY);
+			break;
 		case ADD_EVENT:
+			this.addEvent(caseX, caseY);
+			break;
 		case ADD_PLAYER_SPAWN:
+			this.addPlayerSpawn(caseX, caseY);
+			break;
 		case ADD_OBJECT_POINT:
+			this.addObjectPoint(caseX, caseY);
+			break;
 		case ADD_OBJECT_EFFECT:
+			this.addObjectEffect(caseX, caseY);
 			break;
 		case ADD_CERISE:
 			this.addEnnemie(caseX, caseY, 0);
@@ -737,6 +761,7 @@ public class App extends JFrame {
 			break;
 		case SELECT:
 		case DELETE:
+		case ADD_DECOR:
 		case ADD_VORTEX:
 		case ADD_PICK:
 		case ADD_EVENT:
@@ -777,6 +802,7 @@ public class App extends JFrame {
 		case DRAW_VERTICAL_PLATFORM:
 		case DRAW_HORIZONTAL_PLATFORM:
 		case ADD_VORTEX:
+		case ADD_DECOR:
 		case ADD_TELEPORTER:
 		case ADD_RAYON:
 		case ADD_PICK:
@@ -805,11 +831,6 @@ public class App extends JFrame {
 		}
 	}
 
-	private void selectElement(int x, int y) {
-		// TODO Auto-generated method stub
-
-	}
-
 	private void addRayon(int x, int y, int x2, int y2) {
 		levelService.addRayon(x, y, x2, y2);
 		drawPanel.repaint();
@@ -835,8 +856,98 @@ public class App extends JFrame {
 		drawPanel.repaint();
 	}
 
+	private void addDecor(int x, int y) {
+		levelService.addDecor(x, y);
+		drawPanel.repaint();
+	}
+
+	private void addVortex(int x, int y) {
+		levelService.addVortex(x, y);
+		drawPanel.repaint();
+	}
+
+	private void addPick(int x, int y) {
+		levelService.addPick(x, y);
+		drawPanel.repaint();
+	}
+
+	private void addEvent(int x, int y) {
+		levelService.addEvent(x, y);
+		drawPanel.repaint();
+	}
+
+	private void addPlayerSpawn(int x, int y) {
+		levelService.addPlayerSpawn(x, y);
+		drawPanel.repaint();
+	}
+
+	private void addObjectPoint(int x, int y) {
+		levelService.addObjectPoint(x, y);
+		drawPanel.repaint();
+	}
+
+	private void addObjectEffect(int x, int y) {
+		levelService.addObjectEffect(x, y);
+		drawPanel.repaint();
+	}
+
 	private void deleteElement(int x, int y) {
 		levelService.deleteElement(x, y);
 		drawPanel.repaint();
+	}
+
+	private void selectElement(int x, int y) {
+		Identifiable obj = levelService.getProperties(x, y);
+		if (obj != null) {
+			if (obj.getClass().equals(Ennemie.class)) {
+				treatEnnemieProperties((Ennemie) obj);
+			} else if (obj.getClass().equals(Decor.class)) {
+				treatDecorProperties((Decor) obj);
+			} else if (obj.getClass().equals(Door.class)) {
+				treatDoorProperties((Door) obj);
+			} else if (obj.getClass().equals(Lock.class)) {
+				treatLockProperties((Lock) obj);
+			} else if (obj.getClass().equals(Pick.class)) {
+				treatPickProperties((Pick) obj);
+			} else if (obj.getClass().equals(Platform.class)) {
+				treatPlatformProperties((Platform) obj);
+			} else if (obj.getClass().equals(Rayon.class)) {
+				treatRayonProperties((Rayon) obj);
+			} else if (obj.getClass().equals(Teleporter.class)) {
+				treatTeleporterProperties((Teleporter) obj);
+			}
+		}
+	}
+
+	private void treatEnnemieProperties(Ennemie ennemie) {
+		LOG.info("build ennemie parameters panel ! : " + ennemie.getId());
+	}
+
+	private void treatDecorProperties(Decor decor) {
+		LOG.info("build decor parameters panel ! : " + decor.getId());
+	}
+
+	private void treatDoorProperties(Door door) {
+		LOG.info("build door parameters panel ! : " + door.getId());
+	}
+
+	private void treatLockProperties(Lock lock) {
+		LOG.info("build lock parameters panel ! : " + lock.getId());
+	}
+
+	private void treatPickProperties(Pick pick) {
+		LOG.info("build pick parameters panel ! : " + pick.getId());
+	}
+
+	private void treatPlatformProperties(Platform platform) {
+		LOG.info("build platform parameters panel ! : " + platform.getId());
+	}
+
+	private void treatRayonProperties(Rayon rayon) {
+		LOG.info("build rayon parameters panel ! : " + rayon.getId());
+	}
+
+	private void treatTeleporterProperties(Teleporter teleporter) {
+		LOG.info("build teleporter parameters panel ! : " + teleporter.getId());
 	}
 }
