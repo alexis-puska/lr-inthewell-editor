@@ -13,6 +13,7 @@ import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
+import lr_in_the_well.alexis_puska.domain.level.Teleporter;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
 
@@ -44,6 +45,7 @@ public class DrawPanel extends Canvas {
 		Graphics2D g2 = (Graphics2D) bs.getDrawGraphics();
 		if (levelService.getCurrentLevel() != null) {
 			drawBackground(g2);
+			drawTeleporter(g2);
 			drawPlatform(g2);
 			drawRayon(g2);
 			drawEnnemies(g2);
@@ -163,20 +165,23 @@ public class DrawPanel extends Canvas {
 	 * @param g2
 	 */
 	private void drawTeleporter(Graphics2D g2) {
-		for (Rayon rayon : levelService.getCurrentLevel().getRayon()) {
-			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType()*2);
-			if (rayon.isVertical()) {
-				for (int i = rayon.getY(); i < rayon.getY() + rayon.getLength(); i++) {
-					g2.drawImage(bf, rayon.getX() * Constante.GRID_SIZE, i * Constante.GRID_SIZE, null);
+		for (Teleporter teleporter : levelService.getCurrentLevel().getTeleporter()) {
+			BufferedImage bf = spriteService.getSprite("teleporter", 0);
+			if (teleporter.isVertical()) {
+				for (int i = teleporter.getY(); i < teleporter.getY() + teleporter.getLength(); i++) {
+					g2.drawImage(bf.getSubimage(0, 0, Constante.GRID_SIZE, Constante.GRID_SIZE),
+							teleporter.getX() * Constante.GRID_SIZE, i * Constante.GRID_SIZE, null);
 				}
 			} else {
-				for (int i = 0; i < rayon.getLength(); i++) {
+				for (int i = 0; i < teleporter.getLength(); i++) {
 					AffineTransform backup = g2.getTransform();
 					AffineTransform trans = new AffineTransform();
-					trans.rotate((Math.PI / 2), (rayon.getX()+i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE);
+					trans.rotate((Math.PI / 2), (teleporter.getX()+i) * Constante.GRID_SIZE, teleporter.getY() * Constante.GRID_SIZE);
 					trans.translate(0, -Constante.GRID_SIZE);
 					g2.transform(trans);
-					g2.drawImage(bf, (rayon.getX()+i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE, null);
+					g2.drawImage(bf.getSubimage(0, 0, Constante.GRID_SIZE, Constante.GRID_SIZE),
+							(teleporter.getX() + i) * Constante.GRID_SIZE, teleporter.getY() * Constante.GRID_SIZE,
+							null);
 					g2.setTransform(backup); // restore previous transform
 				}
 			}

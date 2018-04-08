@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -28,7 +29,9 @@ import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.service.FileService;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
+import lr_in_the_well.alexis_puska.view.BackgroundDrawPanel;
 import lr_in_the_well.alexis_puska.view.DrawPanel;
+import lr_in_the_well.alexis_puska.view.PlatformDrawPanel;
 
 public class App extends JFrame {
 
@@ -49,6 +52,16 @@ public class App extends JFrame {
 	private JPanel westPanel;
 	private GridLayout westLayout;
 
+	// EastPanel
+	private JPanel eastPanel;
+	private GridLayout eastLayout;
+	private JPanel platformPanel;
+	private Border platformBorder;
+	private PlatformDrawPanel platformDrawPanel;
+	private JPanel backgroundPanel;
+	private Border backgroundBorder;
+	private BackgroundDrawPanel backgroundDrawPanel;
+
 	// draw
 	private JPanel panelDraw;
 	private DrawPanel drawPanel;
@@ -57,6 +70,7 @@ public class App extends JFrame {
 	private JPanel panelNavigation;
 	private Border borderNavigation;
 	private GridLayout layoutNavigation;
+	private JLabel labelNextLevel;
 	private JButton nextLevel;
 	private JButton previousLevel;
 	private JButton addLevel;
@@ -131,6 +145,7 @@ public class App extends JFrame {
 		initComponent();
 		initListeners();
 		buildWestPanel();
+		buildEastPanel();
 		buildDrawElement();
 		buildNavigationPanelButton();
 		buildElementPanelButton();
@@ -140,7 +155,7 @@ public class App extends JFrame {
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-		this.setSize(1200, 900);
+		this.setSize(1400, 900);
 	}
 
 	private void buildDrawElement() {
@@ -156,6 +171,25 @@ public class App extends JFrame {
 		westLayout.setRows(2);
 		westPanel.setLayout(westLayout);
 		this.getContentPane().add(westPanel, BorderLayout.WEST);
+	}
+
+	private void buildEastPanel() {
+		platformDrawPanel.setSize(300, Constante.SCREEN_SIZE_Y);
+		platformDrawPanel.setVisible(true);
+		platformPanel.setBorder(platformBorder);
+		platformPanel.add(platformDrawPanel);
+		
+		backgroundDrawPanel.setSize(300, Constante.SCREEN_SIZE_Y);
+		backgroundDrawPanel.setVisible(true);
+		backgroundPanel.setBorder(backgroundBorder);
+		backgroundPanel.add(backgroundDrawPanel);
+		
+		eastLayout.setColumns(2);
+		eastPanel.setLayout(eastLayout);
+		eastPanel.add(platformPanel);
+		eastPanel.add(backgroundPanel);
+		
+		this.getContentPane().add(eastPanel, BorderLayout.EAST);
 	}
 
 	private void buildEnnemiePanelButton() {
@@ -186,6 +220,7 @@ public class App extends JFrame {
 		panelNavigation.setLayout(layoutNavigation);
 		currentLevelIndex.setText(Integer.toString(levelService.getCurrentLevelIndex()));
 		panelNavigation.add(previousLevel);
+		panelNavigation.add(labelNextLevel);
 		panelNavigation.add(currentLevelIndex);
 		panelNavigation.add(nextLevel);
 		panelNavigation.add(addLevel);
@@ -240,6 +275,16 @@ public class App extends JFrame {
 		westPanel = new JPanel();
 		westLayout = new GridLayout();
 
+		// EastPanel
+		eastPanel = new JPanel();
+		eastLayout = new GridLayout();
+		platformPanel = new JPanel();
+		platformBorder = BorderFactory.createTitledBorder("Platform");
+		platformDrawPanel = new PlatformDrawPanel(spriteService);
+		backgroundPanel = new JPanel();
+		backgroundBorder = BorderFactory.createTitledBorder("Background");
+		backgroundDrawPanel = new BackgroundDrawPanel(spriteService);
+
 		// draw
 		panelDraw = new JPanel();
 		drawPanel = new DrawPanel(spriteService, levelService);
@@ -250,12 +295,18 @@ public class App extends JFrame {
 		layoutNavigation = new GridLayout();
 		layoutNavigation.setColumns(Constante.NB_COLUMN_NAVIGATION);
 		layoutNavigation.setRows(Constante.NB_ROW_NAVIGATION);
+
 		nextLevel = new JButton("Next");
+
 		previousLevel = new JButton("Previous");
 		addLevel = new JButton("Add");
 		delLevel = new JButton("Delete");
 		chooseFile = new JButton("Choose file");
 		currentLevelIndex = new JTextField();
+		labelNextLevel = new JLabel("Image and Text", JLabel.CENTER);
+		labelNextLevel.setLabelFor(currentLevelIndex);
+		labelNextLevel.setVerticalTextPosition(JLabel.CENTER);
+		labelNextLevel.setHorizontalTextPosition(JLabel.LEFT);
 
 		// ennemies
 		panelEnnemies = new JPanel();
@@ -315,34 +366,29 @@ public class App extends JFrame {
 		 *
 		 * DRAW
 		 * 
-		 ***********************/		
+		 ***********************/
 		drawPanel.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				click(e.getX(), e.getY());
-				LOG.info("clic on position : " + e.getX() + " " + e.getY());
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
 				pressed(e.getX(), e.getY());
-				LOG.info("mouse pressed : " + e.getX() + " " + e.getY());
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				release(e.getX(), e.getY());
-				LOG.info("mouse release : " + e.getX() + " " + e.getY());
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				LOG.info("mouse entered : " + e.getX() + " " + e.getY());
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				LOG.info("mouse exited : " + e.getX() + " " + e.getY());
 			}
 		});
 
@@ -355,10 +401,10 @@ public class App extends JFrame {
 			public void caretUpdate(javax.swing.event.CaretEvent e) {
 				JTextField text = (JTextField) e.getSource();
 				if (text.getText() != null && !text.getText().isEmpty()) {
+					LOG.info("ChangeLevel : " + text.getText());
 					levelService.setCurrentLevel(Integer.parseInt(text.getText()));
 					drawPanel.repaint();
 				}
-				LOG.info("ChangeLevel : " + text.getText());
 			}
 		});
 		currentLevelIndex.addKeyListener(new KeyListener() {
@@ -519,7 +565,7 @@ public class App extends JFrame {
 				action = ActionEnum.ADD_BLOB;
 			}
 		});
-		
+
 		/**********************
 		 *
 		 * ELEMENT
@@ -540,7 +586,6 @@ public class App extends JFrame {
 		verticalPlatformButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				LOG.info("draw VPF");
 				action = ActionEnum.DRAW_VERTICAL_PLATFORM;
 			}
 		});
@@ -603,7 +648,6 @@ public class App extends JFrame {
 	private void release(int x, int y) {
 		int caseX = x / Constante.GRID_SIZE;
 		int caseY = y / Constante.GRID_SIZE;
-		LOG.info("x : " + caseX + " y : " + caseY);
 		switch (action) {
 		case DRAW_VERTICAL_PLATFORM:
 			addVerticalPlatform(xFirst, yFirst, caseY);
@@ -683,7 +727,6 @@ public class App extends JFrame {
 	private void pressed(int x, int y) {
 		int caseX = x / Constante.GRID_SIZE;
 		int caseY = y / Constante.GRID_SIZE;
-		LOG.info("x : " + caseX + " y : " + caseY);
 		switch (action) {
 		case DRAW_VERTICAL_PLATFORM:
 		case DRAW_HORIZONTAL_PLATFORM:
@@ -724,8 +767,6 @@ public class App extends JFrame {
 	private void click(int x, int y) {
 		int caseX = x / Constante.GRID_SIZE;
 		int caseY = y / Constante.GRID_SIZE;
-		LOG.info("x : " + caseX + " y : " + caseY);
-
 		switch (action) {
 		case SELECT:
 			selectElement(caseX, caseY);
@@ -769,12 +810,14 @@ public class App extends JFrame {
 
 	}
 
-	private void addRayon(int xFirst2, int yFirst2, int caseX, int caseY) {
-
+	private void addRayon(int x, int y, int x2, int y2) {
+		levelService.addRayon(x, y, x2, y2);
+		drawPanel.repaint();
 	}
 
-	private void addTeleporter(int xFirst2, int yFirst2, int caseX, int caseY) {
-
+	private void addTeleporter(int x, int y, int x2, int y2) {
+		levelService.addTeleporter(x, y, x2, y2);
+		drawPanel.repaint();
 	}
 
 	private void addHorizontalPlatform(int x, int y, int x2) {

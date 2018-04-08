@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
@@ -14,14 +12,16 @@ import lr_in_the_well.alexis_puska.domain.level.Level;
 import lr_in_the_well.alexis_puska.domain.level.Lock;
 import lr_in_the_well.alexis_puska.domain.level.Pick;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
+import lr_in_the_well.alexis_puska.domain.level.Rayon;
 import lr_in_the_well.alexis_puska.domain.level.StartEffectObjets;
 import lr_in_the_well.alexis_puska.domain.level.StartPlayer;
 import lr_in_the_well.alexis_puska.domain.level.StartPointObjets;
+import lr_in_the_well.alexis_puska.domain.level.Teleporter;
 
 public class LevelService {
 
-	private final static Logger LOG = Logger.getLogger(LevelService.class);
 	private int current;
+	//private int currentRayonType;
 	private Map<Integer, Level> levels;
 
 	public LevelService(Map<Integer, Level> levels) {
@@ -69,6 +69,92 @@ public class LevelService {
 			p.setY(y);
 		}
 		level.getPlatform().add(p);
+		levels.put(level.getId(), level);
+	}
+
+	public void addTeleporter(int x, int y, int x2, int y2) {
+		Level level = levels.get(current);
+		Teleporter t = new Teleporter();
+		t.setId(getIdFromIdentifiable(level.getPlatform()));
+		int lx = x2 - x;
+		int ly = y2 - y;
+		boolean vertical = false;
+		if (lx < 0) {
+			lx *= -1;
+		}
+		if (ly < 0) {
+			ly *= -1;
+		}
+		if (lx > ly) {
+			vertical = false;
+		} else {
+			vertical = true;
+		}
+		if (vertical) {
+			t.setVertical(true);
+			ly++;
+			if (y2 > y) {
+				t.setY(y);
+			} else {
+				t.setY(y2);
+			}
+			t.setLength(ly);
+			t.setX(x);
+		} else {
+			t.setVertical(false);
+			lx++;
+			if (x2 > x) {
+				t.setX(x);
+			} else {
+				t.setX(x2);
+			}
+			t.setLength(lx);
+			t.setY(y);
+		}
+		level.getTeleporter().add(t);
+		levels.put(level.getId(), level);
+	}
+
+	public void addRayon(int x, int y, int x2, int y2) {
+		Level level = levels.get(current);
+		Rayon r = new Rayon();
+		r.setId(getIdFromIdentifiable(level.getRayon()));
+		int lx = x2 - x;
+		int ly = y2 - y;
+		boolean vertical = false;
+		if (lx < 0) {
+			lx *= -1;
+		}
+		if (ly < 0) {
+			ly *= -1;
+		}
+		if (lx > ly) {
+			vertical = false;
+		} else {
+			vertical = true;
+		}
+		if (vertical) {
+			r.setVertical(true);
+			ly++;
+			if (y2 > y) {
+				r.setY(y);
+			} else {
+				r.setY(y2);
+			}
+			r.setLength(ly);
+			r.setX(x);
+		} else {
+			r.setVertical(false);
+			lx++;
+			if (x2 > x) {
+				r.setX(x);
+			} else {
+				r.setX(x2);
+			}
+			r.setLength(lx);
+			r.setY(y);
+		}
+		level.getRayon().add(r);
 		levels.put(level.getId(), level);
 	}
 
@@ -138,19 +224,57 @@ public class LevelService {
 				int min = e.getY();
 				int max = e.getY() + e.getLength();
 				if (e.getX() == x && (min <= y && y <= max)) {
-					LOG.info("del");
+
 					platformToDelete.add(e);
 				}
 			} else {
 				int min = e.getX();
 				int max = e.getX() + e.getLength();
 				if (e.getY() == y && (min <= x && x <= max)) {
-					LOG.info("del");
+
 					platformToDelete.add(e);
 				}
 			}
 		}
 		level.getPlatform().removeAll(platformToDelete);
+
+		// TELEPORTER
+		List<Rayon> rayonToDelete = new ArrayList<>();
+		for (Rayon e : level.getRayon()) {
+			if (e.isVertical()) {
+				int min = e.getY();
+				int max = e.getY() + e.getLength();
+				if (e.getX() == x && (min <= y && y <= max)) {
+					rayonToDelete.add(e);
+				}
+			} else {
+				int min = e.getX();
+				int max = e.getX() + e.getLength();
+				if (e.getY() == y && (min <= x && x <= max)) {
+					rayonToDelete.add(e);
+				}
+			}
+		}
+		level.getRayon().removeAll(rayonToDelete);
+
+		// TELEPORTER
+		List<Teleporter> teleporterToDelete = new ArrayList<>();
+		for (Teleporter e : level.getTeleporter()) {
+			if (e.isVertical()) {
+				int min = e.getY();
+				int max = e.getY() + e.getLength();
+				if (e.getX() == x && (min <= y && y <= max)) {
+					teleporterToDelete.add(e);
+				}
+			} else {
+				int min = e.getX();
+				int max = e.getX() + e.getLength();
+				if (e.getY() == y && (min <= x && x <= max)) {
+					teleporterToDelete.add(e);
+				}
+			}
+		}
+		level.getTeleporter().removeAll(teleporterToDelete);
 
 		// EFFECT OBJET
 		List<StartEffectObjets> startEffectObjectToDelete = new ArrayList<>();
@@ -178,7 +302,6 @@ public class LevelService {
 			}
 		}
 		level.getStartPointObjets().removeAll(startPointObjetsToDelete);
-
 		// update level
 		levels.put(level.getId(), level);
 	}
@@ -191,18 +314,17 @@ public class LevelService {
 				max = pl.getId();
 			}
 		}
-		if (max - 1 != list.size()) {
-			Boolean[] id = new Boolean[max + 1];
-			for (Identifiable pl : list) {
-				id[pl.getId()] = true;
+		Boolean[] id = new Boolean[max + 1];
+		for (Identifiable pl : list) {
+			id[pl.getId()] = true;
+		}
+		for (int i = 0; i < max; i++) {
+			if (id[i] == null) {
+				freeId = i;
+				break;
 			}
-			for (int i = 0; i < max; i++) {
-				if (id[i] == null) {
-					freeId = i;
-					break;
-				}
-			}
-		} else {
+		}
+		if (freeId == -1) {
 			freeId = list.size();
 		}
 		return freeId;
@@ -229,5 +351,4 @@ public class LevelService {
 	public void setCurrentLevel(int parseInt) {
 		current = parseInt;
 	}
-
 }
