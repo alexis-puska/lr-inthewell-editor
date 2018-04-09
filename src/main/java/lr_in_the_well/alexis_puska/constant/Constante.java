@@ -8,7 +8,7 @@ public class Constante {
     public static final int NB_ROW_NAVIGATION = 1;
     public static final int NB_COLUMN_ENNEMIE = 2;
     public static final int NB_ROW_ENNEMIE = 10;
-    public static final int ROW_ELEMENT_PANEL = 6;
+    public static final int ROW_ELEMENT_PANEL = 7;
     public static final int COL_ELEMENT_PANEL = 2;
     public static final int NB_COLUMN_PARAMETER = 5;
     public static final int NB_ROW_PARAMETER = 1;

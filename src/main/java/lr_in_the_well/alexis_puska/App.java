@@ -16,9 +16,12 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.Border;
-import javax.swing.event.CaretListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
@@ -83,12 +86,18 @@ public class App extends JFrame {
 	private JPanel panelNavigation;
 	private Border borderNavigation;
 	private GridLayout layoutNavigation;
-	private JLabel labelNextLevel;
-	private JButton nextLevel;
-	private JButton previousLevel;
+	private JLabel currentTypeLevel;
+	private SpinnerNumberModel currentTypeLevelIndexModel;
+	private JSpinner currentTypeLevelIndex;
+	private JLabel addDeleteLevel;
 	private JButton addLevel;
 	private JButton delLevel;
-	private JTextField currentLevelIndex;
+	private JLabel currentLevelLabel;
+	private SpinnerNumberModel currentLevelIndexModel;
+	private JSpinner currentLevelIndex;
+	private JLabel fileLabel;
+	private JTextField filePathField;
+	private JButton saveFile;
 	private JButton chooseFile;
 	private JFileChooser fileChooser;
 	private FileNameExtensionFilter fileChooserFilter;
@@ -173,6 +182,11 @@ public class App extends JFrame {
 		this.setSize(1400, 900);
 	}
 
+	/*************************************************************************************
+	 * 
+	 * --- BUILD FUNCTION ---
+	 * 
+	 *************************************************************************************/
 	private void buildDrawElement() {
 		drawPanel.setSize(Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
 		drawPanel.setVisible(true);
@@ -195,17 +209,14 @@ public class App extends JFrame {
 		platformDrawPanel.setVisible(true);
 		platformPanel.setBorder(platformBorder);
 		platformPanel.add(platformDrawPanel);
-
 		backgroundDrawPanel.setSize(300, Constante.SCREEN_SIZE_Y);
 		backgroundDrawPanel.setVisible(true);
 		backgroundPanel.setBorder(backgroundBorder);
 		backgroundPanel.add(backgroundDrawPanel);
-
 		eastLayout.setColumns(2);
 		eastPanel.setLayout(eastLayout);
 		eastPanel.add(platformPanel);
 		eastPanel.add(backgroundPanel);
-
 		this.getContentPane().add(eastPanel, BorderLayout.EAST);
 	}
 
@@ -235,11 +246,11 @@ public class App extends JFrame {
 	private void buildNavigationPanelButton() {
 		panelNavigation.setBorder(borderNavigation);
 		panelNavigation.setLayout(layoutNavigation);
-		currentLevelIndex.setText(Integer.toString(levelService.getCurrentLevelIndex()));
-		panelNavigation.add(previousLevel);
-		panelNavigation.add(labelNextLevel);
+		currentLevelIndexModel.setValue(Integer.valueOf(levelService.getCurrentLevelIndex()));
+		currentLevelIndexModel.setStepSize(1);
+		currentLevelIndexModel.setMinimum(0);
+		currentLevelIndex.setModel(currentLevelIndexModel);
 		panelNavigation.add(currentLevelIndex);
-		panelNavigation.add(nextLevel);
 		panelNavigation.add(addLevel);
 		panelNavigation.add(delLevel);
 		panelNavigation.add(chooseFile);
@@ -274,16 +285,11 @@ public class App extends JFrame {
 		this.getContentPane().add(panelParameters, BorderLayout.SOUTH);
 	}
 
-	private void nextLevel() {
-		currentLevelIndex.setText(Integer.toString(levelService.incCurrentLevelIndex()));
-		drawPanel.repaint();
-	}
-
-	private void previousLevel() {
-		currentLevelIndex.setText(Integer.toString(levelService.decCurrentLevelIndex()));
-		drawPanel.repaint();
-	}
-
+	/*************************************************************************************
+	 *
+	 * --- INIT COMPONENT ---
+	 * 
+	 *************************************************************************************/
 	private void initComponent() {
 
 		fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -316,17 +322,11 @@ public class App extends JFrame {
 		layoutNavigation.setColumns(Constante.NB_COLUMN_NAVIGATION);
 		layoutNavigation.setRows(Constante.NB_ROW_NAVIGATION);
 
-		nextLevel = new JButton("Next");
-
-		previousLevel = new JButton("Previous");
 		addLevel = new JButton("Add");
 		delLevel = new JButton("Delete");
 		chooseFile = new JButton("Choose file");
-		currentLevelIndex = new JTextField();
-		labelNextLevel = new JLabel("Image and Text", JLabel.CENTER);
-		labelNextLevel.setLabelFor(currentLevelIndex);
-		labelNextLevel.setVerticalTextPosition(JLabel.CENTER);
-		labelNextLevel.setHorizontalTextPosition(JLabel.LEFT);
+		currentLevelIndexModel = new SpinnerNumberModel();
+		currentLevelIndex = new JSpinner();
 
 		// ennemies
 		panelEnnemies = new JPanel();
@@ -384,11 +384,11 @@ public class App extends JFrame {
 
 	private void initListeners() {
 
-		/**********************
+		/*************************************************************************************
 		 *
-		 * DRAW
+		 * --- DRAW ---
 		 * 
-		 ***********************/
+		 *************************************************************************************/
 		drawPanel.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -414,17 +414,18 @@ public class App extends JFrame {
 			}
 		});
 
-		/**********************
+		/*************************************************************************************
 		 *
-		 * NAVIGATION
+		 * --- NAVIGATION ---
 		 * 
-		 ***********************/
-		currentLevelIndex.addCaretListener(new CaretListener() {
-			public void caretUpdate(javax.swing.event.CaretEvent e) {
-				JTextField text = (JTextField) e.getSource();
-				if (text.getText() != null && !text.getText().isEmpty()) {
-					LOG.info("ChangeLevel : " + text.getText());
-					levelService.setCurrentLevel(Integer.parseInt(text.getText()));
+		 *************************************************************************************/
+		currentLevelIndex.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				JSpinner text = (JSpinner) e.getSource();
+				if (text.getValue() != null) {
+					LOG.info("ChangeLevel : " + (Integer) text.getValue());
+					levelService.setCurrentLevel((Integer) text.getValue());
 					drawPanel.repaint();
 				}
 			}
@@ -435,6 +436,12 @@ public class App extends JFrame {
 				char vChar = e.getKeyChar();
 				if (!(Character.isDigit(vChar) || (vChar == KeyEvent.VK_BACK_SPACE) || (vChar == KeyEvent.VK_DELETE))) {
 					e.consume();
+					JSpinner text = (JSpinner) e.getSource();
+					if (text.getValue() != null) {
+						LOG.info("ChangeLevel : " + (Integer) text.getValue());
+						levelService.setCurrentLevel((Integer) text.getValue());
+						drawPanel.repaint();
+					}
 				}
 			}
 
@@ -446,28 +453,16 @@ public class App extends JFrame {
 			public void keyReleased(KeyEvent e) {
 			}
 		});
-		nextLevel.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				nextLevel();
-			}
-		});
-		previousLevel.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				previousLevel();
-			}
-		});
 		addLevel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				nextLevel();
+				// nextLevel();
 			}
 		});
 		delLevel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				nextLevel();
+				// nextLevel();
 			}
 		});
 		chooseFile.addActionListener(new ActionListener() {
@@ -480,11 +475,11 @@ public class App extends JFrame {
 			}
 		});
 
-		/**********************
+		/*************************************************************************************
 		 *
-		 * ENNEMIES
+		 * --- ENNEMIE ---
 		 * 
-		 ***********************/
+		 *************************************************************************************/
 		ceriseButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -588,11 +583,11 @@ public class App extends JFrame {
 			}
 		});
 
-		/**********************
+		/*************************************************************************************
 		 *
-		 * ELEMENT
+		 * --- ELEMENT ---
 		 * 
-		 ***********************/
+		 *************************************************************************************/
 		selectButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -678,6 +673,12 @@ public class App extends JFrame {
 			}
 		});
 	}
+
+	/*************************************************************************************
+	 * 
+	 * --- DRAW EVENT ---
+	 * 
+	 *************************************************************************************/
 
 	private void release(int x, int y) {
 		int caseX = x / Constante.GRID_SIZE;
@@ -865,6 +866,12 @@ public class App extends JFrame {
 			break;
 		}
 	}
+
+	/*************************************************************************************
+	 * 
+	 * --- TREAT FUNCTION ---
+	 * 
+	 *************************************************************************************/
 
 	private void addRayon(int x, int y, int x2, int y2) {
 		levelService.addRayon(x, y, x2, y2);
