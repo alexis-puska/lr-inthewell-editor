@@ -7,6 +7,7 @@ import java.util.Map;
 import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
+import lr_in_the_well.alexis_puska.domain.level.Event;
 import lr_in_the_well.alexis_puska.domain.level.Identifiable;
 import lr_in_the_well.alexis_puska.domain.level.Level;
 import lr_in_the_well.alexis_puska.domain.level.Lock;
@@ -17,6 +18,7 @@ import lr_in_the_well.alexis_puska.domain.level.StartEffectObjets;
 import lr_in_the_well.alexis_puska.domain.level.StartPlayer;
 import lr_in_the_well.alexis_puska.domain.level.StartPointObjets;
 import lr_in_the_well.alexis_puska.domain.level.Teleporter;
+import lr_in_the_well.alexis_puska.domain.level.Vortex;
 
 public class LevelService {
 
@@ -194,13 +196,13 @@ public class LevelService {
 	public void addPick(int x, int y) {
 
 	}
-	
+
 	public void addLock(int x, int y) {
-	
+
 	}
 
 	public void addDoor(int x, int y) {
-		
+
 	}
 
 	public void addEvent(int x, int y) {
@@ -483,5 +485,34 @@ public class LevelService {
 		return null;
 	}
 
+	public void updateRayon(Rayon rayon) {
+	}
+
+	public void updateVortex(Vortex vortex) {
+	}
+
+	public void updateTeleporter(Teleporter teleporter) {
+	}
 	
+	public void updatePick(Pick pick) {
+	}
+	
+	public void updateDoor(Door door) {
+	}
+	
+	public void updateLock(Lock lock) {
+	}
+	
+	public void updateDecor(Decor decor) {
+	}
+	
+	public void updateEvent(Event event) {
+	}
+
+	public void updateEnnemie(Ennemie ennemie) {
+	}
+	
+	public void updatePlatform(Platform platform) {
+	}
+
 }

@@ -1,27 +1,27 @@
-package lr_in_the_well.alexis_puska.view;
+package lr_in_the_well.alexis_puska.view.properties;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-import lr_in_the_well.alexis_puska.domain.level.Rayon;
+import lr_in_the_well.alexis_puska.domain.level.Event;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
+import lr_in_the_well.alexis_puska.view.IdentifiablePanel;
 
-public class RayonPanel extends IdentifiablePanel {
+public class EventPanel extends IdentifiablePanel {
 
 	private static final long serialVersionUID = -4090876979915495722L;
-	private Rayon rayon;
+	private Event event;
 
 	private JLabel typeLabel;
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public RayonPanel(JPanel parent, LevelService levelService, String name, Rayon rayon) {
+	public EventPanel(JPanel parent, LevelService levelService, String name, Event event) {
 		super(parent, levelService, name);
-		this.rayon = rayon;
-
+		this.event = event;
 		typeLabel = new JLabel("test", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
@@ -35,6 +35,10 @@ public class RayonPanel extends IdentifiablePanel {
 				6, 6, // initX, initY
 				6, 6); // xPad, yPad
 		this.parent.updateUI();
+	}
+
+	public void updateRayon() {
+		levelService.updateEvent(event);
 	}
 
 }
