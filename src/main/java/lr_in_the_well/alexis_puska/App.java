@@ -44,6 +44,7 @@ import lr_in_the_well.alexis_puska.service.SpriteService;
 import lr_in_the_well.alexis_puska.view.BackgroundDrawPanel;
 import lr_in_the_well.alexis_puska.view.DrawPanel;
 import lr_in_the_well.alexis_puska.view.PlatformDrawPanel;
+import lr_in_the_well.alexis_puska.view.RayonPanel;
 
 public class App extends JFrame {
 
@@ -60,11 +61,15 @@ public class App extends JFrame {
 	private int yFirst;
 	private ActionEnum action;
 
-	// West Panel
+	/****************
+	 * WEST PANEL
+	 ***************/
 	private JPanel westPanel;
 	private GridLayout westLayout;
 
-	// EastPanel
+	/****************
+	 * EAST PANEL
+	 ***************/
 	private JPanel eastPanel;
 	private GridLayout eastLayout;
 	private JPanel platformPanel;
@@ -74,35 +79,52 @@ public class App extends JFrame {
 	private Border backgroundBorder;
 	private BackgroundDrawPanel backgroundDrawPanel;
 
-	// draw
+	/****************
+	 * DRAW
+	 ***************/
 	private JPanel panelDraw;
 	private BorderLayout drawLayout;
 	private DrawPanel drawPanel;
 
-	// Properties pane
+	/****************
+	 * properties
+	 ***************/
 	private JPanel identifiablePropertiesPanel;
 
-	// navigations
+	/****************
+	 * NAVIGATION
+	 ***************/
 	private JPanel panelNavigation;
 	private Border borderNavigation;
 	private GridLayout layoutNavigation;
+	// currentLevelType
+	private JPanel currentTypePanel;
+	private GridLayout currentTypeLayout;
+	private Border currentTypeBorder;
 	private JLabel currentTypeLevel;
 	private SpinnerNumberModel currentTypeLevelIndexModel;
 	private JSpinner currentTypeLevelIndex;
-	private JLabel addDeleteLevel;
+	// currentLevelIndex
+	private JPanel currentLevelPanel;
+	private GridLayout currentLevelLayout;
+	private Border currentLevelBorder;
 	private JButton addLevel;
 	private JButton delLevel;
-	private JLabel currentLevelLabel;
 	private SpinnerNumberModel currentLevelIndexModel;
 	private JSpinner currentLevelIndex;
-	private JLabel fileLabel;
+	// file
+	private JPanel filePanel;
+	private GridLayout fileLayout;
+	private Border fileBorder;
 	private JTextField filePathField;
 	private JButton saveFile;
 	private JButton chooseFile;
 	private JFileChooser fileChooser;
 	private FileNameExtensionFilter fileChooserFilter;
 
-	// ennemies component
+	/****************
+	 * ENNEMIES
+	 ***************/
 	private JPanel panelEnnemies;
 	private Border borderEnnemies;
 	private GridLayout layoutEnnemies;
@@ -124,7 +146,9 @@ public class App extends JFrame {
 	private JButton poireButton;
 	private JButton blobButton;
 
-	// elements component
+	/****************
+	 * ELEMENTS
+	 ***************/
 	private JPanel panelElement;
 	private Border borderElement;
 	private GridLayout layoutElement;
@@ -143,11 +167,27 @@ public class App extends JFrame {
 	private JButton pointButton;
 	private JButton effectButton;
 
-	// properties
+	/********************
+	 * LEVEL PROPERTIES
+	 *******************/
 	private JPanel panelParameters;
 	private GridLayout layoutParameters;
 	private Border borderParameters;
-	private JTextField backgroundId;
+	private JPanel verticalPlatformIndexPanel;
+	private GridLayout verticalPlatformLayout;
+	private Border verticalPlatformIndexBorder;
+	private SpinnerNumberModel verticalPlatformIndexModel;
+	private JSpinner verticalPlatformIndexSpinner;
+	private JPanel backgroundIndexPanel;
+	private GridLayout backgroundLayout;
+	private Border backgroundIndexBorder;
+	private SpinnerNumberModel backgroundIndexModel;
+	private JSpinner backgroundIndexSpinner;
+	private JPanel horizontalPlatformIndexPanel;
+	private GridLayout horizontalPlatformLayout;
+	private Border horizontalPlatformIndexBorder;
+	private SpinnerNumberModel horizontalPlatformIndexModel;
+	private JSpinner horizontalPlatformIndexSpinner;
 
 	public static void main(String[] args) {
 		App app = new App();
@@ -190,11 +230,9 @@ public class App extends JFrame {
 	private void buildDrawElement() {
 		drawPanel.setSize(Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
 		drawPanel.setVisible(true);
-
 		panelDraw.setBackground(Color.LIGHT_GRAY);
 		panelDraw.setLayout(drawLayout);
 		panelDraw.add(drawPanel, BorderLayout.CENTER);
-
 		this.getContentPane().add(panelDraw, BorderLayout.CENTER);
 	}
 
@@ -244,16 +282,29 @@ public class App extends JFrame {
 	}
 
 	private void buildNavigationPanelButton() {
-		panelNavigation.setBorder(borderNavigation);
-		panelNavigation.setLayout(layoutNavigation);
-		currentLevelIndexModel.setValue(Integer.valueOf(levelService.getCurrentLevelIndex()));
-		currentLevelIndexModel.setStepSize(1);
 		currentLevelIndexModel.setMinimum(0);
 		currentLevelIndex.setModel(currentLevelIndexModel);
-		panelNavigation.add(currentLevelIndex);
-		panelNavigation.add(addLevel);
-		panelNavigation.add(delLevel);
-		panelNavigation.add(chooseFile);
+		currentLevelPanel.setLayout(currentLevelLayout);
+		currentLevelPanel.setBorder(currentLevelBorder);
+		currentLevelPanel.add(currentLevelIndex);
+		currentLevelPanel.add(addLevel);
+		currentLevelPanel.add(delLevel);
+		currentTypeLevelIndexModel.setMinimum(0);
+		currentTypeLevelIndex.setModel(currentTypeLevelIndexModel);
+		currentTypePanel.setLayout(currentTypeLayout);
+		currentTypePanel.setBorder(currentTypeBorder);
+		currentTypePanel.add(currentTypeLevel);
+		currentTypePanel.add(currentTypeLevelIndex);
+		filePanel.setLayout(fileLayout);
+		filePanel.setBorder(fileBorder);
+		filePanel.add(filePathField);
+		filePanel.add(chooseFile);
+		filePanel.add(saveFile);
+		panelNavigation.setBorder(borderNavigation);
+		panelNavigation.setLayout(layoutNavigation);
+		panelNavigation.add(filePanel);
+		panelNavigation.add(currentTypePanel);
+		panelNavigation.add(currentLevelPanel);
 		this.getContentPane().add(panelNavigation, BorderLayout.NORTH);
 	}
 
@@ -278,10 +329,29 @@ public class App extends JFrame {
 	}
 
 	private void buildParameterPanelButton() {
+		verticalPlatformIndexModel.setMinimum(0);
+		verticalPlatformIndexModel.setMaximum(62);
+		verticalPlatformIndexSpinner.setModel(verticalPlatformIndexModel);
+		verticalPlatformIndexPanel.setBorder(verticalPlatformIndexBorder);
+		verticalPlatformIndexPanel.setLayout(verticalPlatformLayout);
+		verticalPlatformIndexPanel.add(verticalPlatformIndexSpinner);
+		horizontalPlatformIndexModel.setMinimum(0);
+		horizontalPlatformIndexModel.setMaximum(62);
+		horizontalPlatformIndexSpinner.setModel(horizontalPlatformIndexModel);
+		horizontalPlatformIndexPanel.setBorder(horizontalPlatformIndexBorder);
+		horizontalPlatformIndexPanel.setLayout(horizontalPlatformLayout);
+		horizontalPlatformIndexPanel.add(horizontalPlatformIndexSpinner);
+		backgroundIndexModel.setMinimum(0);
+		backgroundIndexModel.setMaximum(62);
+		backgroundIndexSpinner.setModel(backgroundIndexModel);
+		backgroundIndexPanel.setBorder(backgroundIndexBorder);
+		backgroundIndexPanel.setLayout(backgroundLayout);
+		backgroundIndexPanel.add(backgroundIndexSpinner);
 		panelParameters.setLayout(layoutParameters);
 		panelParameters.setBorder(borderParameters);
-		panelParameters.add(backgroundId);
-
+		panelParameters.add(verticalPlatformIndexPanel);
+		panelParameters.add(horizontalPlatformIndexPanel);
+		panelParameters.add(backgroundIndexPanel);
 		this.getContentPane().add(panelParameters, BorderLayout.SOUTH);
 	}
 
@@ -291,10 +361,6 @@ public class App extends JFrame {
 	 * 
 	 *************************************************************************************/
 	private void initComponent() {
-
-		fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-		fileChooserFilter = new FileNameExtensionFilter("Hammerfest JSON level file", "json");
-		fileChooser.setFileFilter(fileChooserFilter);
 
 		// westPanel
 		westPanel = new JPanel();
@@ -322,11 +388,32 @@ public class App extends JFrame {
 		layoutNavigation.setColumns(Constante.NB_COLUMN_NAVIGATION);
 		layoutNavigation.setRows(Constante.NB_ROW_NAVIGATION);
 
+		currentLevelPanel = new JPanel();
+		currentLevelLayout = new GridLayout();
+		currentLevelBorder = BorderFactory.createTitledBorder("CurrentLevel");
 		addLevel = new JButton("Add");
 		delLevel = new JButton("Delete");
 		chooseFile = new JButton("Choose file");
 		currentLevelIndexModel = new SpinnerNumberModel();
 		currentLevelIndex = new JSpinner();
+
+		currentTypePanel = new JPanel();
+		currentTypeLayout = new GridLayout();
+		currentTypeBorder = BorderFactory.createTitledBorder("Type : ");
+		currentTypeLevel = new JLabel("Current Level Type : ");
+		currentTypeLevelIndexModel = new SpinnerNumberModel();
+		currentTypeLevelIndex = new JSpinner();
+
+		// file
+		filePanel = new JPanel();
+		fileLayout = new GridLayout();
+		fileBorder = BorderFactory.createTitledBorder("File");
+		filePathField = new JTextField();
+		saveFile = new JButton("Save");
+		chooseFile = new JButton("Load");
+		fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+		fileChooserFilter = new FileNameExtensionFilter("Hammerfest JSON level file", "json");
+		fileChooser.setFileFilter(fileChooserFilter);
 
 		// ennemies
 		panelEnnemies = new JPanel();
@@ -379,7 +466,23 @@ public class App extends JFrame {
 		layoutParameters.setColumns(Constante.NB_COLUMN_PARAMETER);
 		layoutParameters.setRows(Constante.NB_ROW_PARAMETER);
 		borderParameters = BorderFactory.createTitledBorder("Properties");
-		backgroundId = new JTextField();
+
+		verticalPlatformIndexPanel = new JPanel();
+		verticalPlatformLayout = new GridLayout();
+		verticalPlatformIndexBorder = BorderFactory.createTitledBorder("vertical platform index");
+		verticalPlatformIndexModel = new SpinnerNumberModel();
+		verticalPlatformIndexSpinner = new JSpinner();
+		backgroundIndexPanel = new JPanel();
+		backgroundLayout = new GridLayout();
+		backgroundIndexBorder = BorderFactory.createTitledBorder("background index");
+		backgroundIndexModel = new SpinnerNumberModel();
+		backgroundIndexSpinner = new JSpinner();
+		horizontalPlatformIndexPanel = new JPanel();
+		horizontalPlatformLayout = new GridLayout();
+		horizontalPlatformIndexBorder = BorderFactory.createTitledBorder("horizontal platform index");
+		horizontalPlatformIndexModel = new SpinnerNumberModel();
+		horizontalPlatformIndexSpinner = new JSpinner();
+
 	}
 
 	private void initListeners() {
@@ -971,8 +1074,10 @@ public class App extends JFrame {
 			} else if (obj.getClass().equals(Teleporter.class)) {
 				treatTeleporterProperties((Teleporter) obj);
 			}
+		}else {
+			panelDraw.updateUI();
 		}
-		panelDraw.updateUI();
+		
 	}
 
 	private void treatEnnemieProperties(Ennemie ennemie) {
@@ -1016,9 +1121,7 @@ public class App extends JFrame {
 	}
 
 	private void buildPropertiesPane(String name) {
-		identifiablePropertiesPanel = new JPanel();
-		Border ennemiesBorder = BorderFactory.createTitledBorder(name);
-		identifiablePropertiesPanel.setBorder(ennemiesBorder);
+		identifiablePropertiesPanel = new RayonPanel(panelDraw, levelService, name, null);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 }
