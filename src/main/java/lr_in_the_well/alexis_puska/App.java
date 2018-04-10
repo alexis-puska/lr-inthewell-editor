@@ -1093,55 +1093,45 @@ public class App extends JFrame {
 	private void treatVortexProperties(Vortex vortex) {
 		identifiablePropertiesPanel = new VortexPanel(panelDraw, levelService, "Vortex properties", vortex);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build vortex parameters panel ! : " + vortex.getId());
 	}
 
 	private void treatEnnemieProperties(Ennemie ennemie) {
 		identifiablePropertiesPanel = new EnnemiePanel(panelDraw, levelService, "Ennemies properties", ennemie);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build ennemie parameters panel ! : " + ennemie.getId());
 	}
 
 	private void treatDecorProperties(Decor decor) {
 		identifiablePropertiesPanel = new DecorPanel(panelDraw, levelService, "Decor properties", decor);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build decor parameters panel ! : " + decor.getId());
 	}
 
 	private void treatDoorProperties(Door door) {
 		identifiablePropertiesPanel = new DoorPanel(panelDraw, levelService, "Door properties", door);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build door parameters panel ! : " + door.getId());
 	}
 
 	private void treatLockProperties(Lock lock) {
 		identifiablePropertiesPanel = new LockPanel(panelDraw, levelService, "Lock properties", lock);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build lock parameters panel ! : " + lock.getId());
 	}
 
 	private void treatPickProperties(Pick pick) {
 		identifiablePropertiesPanel = new PickPanel(panelDraw, levelService, "Pick properties", pick);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build pick parameters panel ! : " + pick.getId());
 	}
 
 	private void treatPlatformProperties(Platform platform) {
 		identifiablePropertiesPanel = new PlatformPanel(panelDraw, levelService, "Platform properties", platform);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build platform parameters panel ! : " + platform.getId());
 	}
 
 	private void treatRayonProperties(Rayon rayon) {
-		identifiablePropertiesPanel = new RayonPanel(panelDraw, levelService, "Rayon properties", null);
+		identifiablePropertiesPanel = new RayonPanel(panelDraw, levelService, "Rayon properties", rayon);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build rayon parameters panel ! : " + rayon.getId());
 	}
 
 	private void treatTeleporterProperties(Teleporter teleporter) {
 		identifiablePropertiesPanel = new TeleporterPanel(panelDraw, levelService, "Teleporter properties", teleporter);
 		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-		LOG.info("build teleporter parameters panel ! : " + teleporter.getId());
 	}
-
 }

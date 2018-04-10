@@ -4,6 +4,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
 import lr_in_the_well.alexis_puska.service.LevelService;
@@ -22,23 +24,33 @@ public class RayonPanel extends IdentifiablePanel {
 	public RayonPanel(JPanel parent, LevelService levelService, String name, Rayon rayon) {
 		super(parent, levelService, name);
 		this.rayon = rayon;
-		typeLabel = new JLabel("test", JLabel.TRAILING);
+		typeLabel = new JLabel("type", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
 		typeModel.setMinimum(0);
 		typeModel.setMaximum(7);
 		typeSpinner.setModel(typeModel);
 		typeLabel.setLabelFor(typeSpinner);
+		idField.setText(Integer.toString(rayon.getId()));
 		this.add(typeLabel);
 		this.add(typeSpinner);
-		SpringUtilities.makeCompactGrid(this, 1, 2, // rows, cols
-				6, 6, // initX, initY
-				6, 6); // xPad, yPad
+		SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
+		addListeners();
 		this.parent.updateUI();
 	}
 
-	public void updateRayon() {
-		levelService.updateRayon(rayon);
+	public void addListeners() {
+		typeSpinner.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				JSpinner text = (JSpinner) e.getSource();
+				if (text.getValue() != null) {
+					rayon.setType((Integer) text.getValue());
+					levelService.updateRayon(rayon);
+					parent.repaint();
+				}
+			}
+		});
 	}
 
 }

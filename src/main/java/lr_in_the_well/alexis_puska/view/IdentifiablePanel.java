@@ -1,7 +1,9 @@
 package lr_in_the_well.alexis_puska.view;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 
@@ -15,6 +17,10 @@ public class IdentifiablePanel extends JPanel {
 	protected LevelService levelService;
 	private Border border;
 	private SpringLayout layout;
+	
+	protected JLabel idLabel;
+	protected JTextField idField;
+	
 
 	public IdentifiablePanel(JPanel parent, LevelService levelService, String name) {
 		this.parent = parent;
@@ -23,6 +29,12 @@ public class IdentifiablePanel extends JPanel {
 		this.layout = new SpringLayout();
 		this.setBorder(border);
 		this.setLayout(layout);
+		idField = new JTextField();
+		idField.setEditable(false);
+		idLabel = new JLabel("id");
+		idLabel.setLabelFor(idField);
+		this.add(idLabel);
+		this.add(idField);
 	}
 
 }

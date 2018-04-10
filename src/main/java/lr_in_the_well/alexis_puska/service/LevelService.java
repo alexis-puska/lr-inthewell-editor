@@ -486,6 +486,7 @@ public class LevelService {
 	}
 
 	public void updateRayon(Rayon rayon) {
+		
 	}
 
 	public void updateVortex(Vortex vortex) {
@@ -511,8 +512,4 @@ public class LevelService {
 
 	public void updateEnnemie(Ennemie ennemie) {
 	}
-	
-	public void updatePlatform(Platform platform) {
-	}
-
 }
