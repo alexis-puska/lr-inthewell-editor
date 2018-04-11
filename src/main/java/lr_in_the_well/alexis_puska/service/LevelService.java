@@ -231,6 +231,11 @@ public class LevelService {
 			} else {
 				p.setY(d);
 			}
+			
+			if(l>20) {
+				l = 20;
+			}
+			
 			p.setLength(l);
 			p.setX(x);
 		} else {

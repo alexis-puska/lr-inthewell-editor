@@ -231,7 +231,7 @@ public class App extends JFrame {
 		this.levelService = new LevelService();
 		LevelFile levelFile = new LevelFile();
 		levelFile.setType(new ArrayList<>());
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i <= Constante.MAX_TYPE_ID; i++) {
 			lr_in_the_well.alexis_puska.domain.level.Type type = new lr_in_the_well.alexis_puska.domain.level.Type();
 			type.setId(i);
 			type.setLevel(new ArrayList<>());
@@ -257,7 +257,7 @@ public class App extends JFrame {
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-		this.setSize(1400, 900);
+		this.setSize(Constante.APP_SIZE_X, Constante.APP_SIZE_Y);
 	}
 
 	/*************************************************************************************
@@ -281,11 +281,11 @@ public class App extends JFrame {
 	}
 
 	private void buildEastPanel() {
-		platformDrawPanel.setSize(300, Constante.SCREEN_SIZE_Y);
+		platformDrawPanel.setSize(Constante.PANEL_PLATFORM_BACKGROUD_WIDTH, Constante.SCREEN_SIZE_Y);
 		platformDrawPanel.setVisible(true);
 		platformPanel.setBorder(platformBorder);
 		platformPanel.add(platformDrawPanel);
-		backgroundDrawPanel.setSize(300, Constante.SCREEN_SIZE_Y);
+		backgroundDrawPanel.setSize(Constante.PANEL_PLATFORM_BACKGROUD_WIDTH, Constante.SCREEN_SIZE_Y);
 		backgroundDrawPanel.setVisible(true);
 		backgroundPanel.setBorder(backgroundBorder);
 		backgroundPanel.add(backgroundDrawPanel);
@@ -320,15 +320,15 @@ public class App extends JFrame {
 	}
 
 	private void buildNavigationPanelButton() {
-		currentLevelIndexModel.setMinimum(0);
+		currentLevelIndexModel.setMinimum(Constante.MIN_LEVEL_ID);
 		currentLevelIndex.setModel(currentLevelIndexModel);
 		currentLevelPanel.setLayout(currentLevelLayout);
 		currentLevelPanel.setBorder(currentLevelBorder);
 		currentLevelPanel.add(currentLevelIndex);
 		currentLevelPanel.add(addLevel);
 		currentLevelPanel.add(delLevel);
-		currentTypeLevelIndexModel.setMinimum(0);
-		currentTypeLevelIndexModel.setMaximum(4);
+		currentTypeLevelIndexModel.setMinimum(Constante.MIN_TYPE_ID);
+		currentTypeLevelIndexModel.setMaximum(Constante.MAX_TYPE_ID);
 		currentTypeLevelIndex.setModel(currentTypeLevelIndexModel);
 		currentTypePanel.setLayout(currentTypeLayout);
 		currentTypePanel.setBorder(currentTypeBorder);
@@ -367,20 +367,20 @@ public class App extends JFrame {
 	}
 
 	private void buildParameterPanelButton() {
-		verticalPlatformIndexModel.setMinimum(0);
-		verticalPlatformIndexModel.setMaximum(62);
+		verticalPlatformIndexModel.setMinimum(Constante.MIN_PLATFORM_ID);
+		verticalPlatformIndexModel.setMaximum(Constante.MAX_PLATFORM_ID);
 		verticalPlatformIndexSpinner.setModel(verticalPlatformIndexModel);
 		verticalPlatformIndexPanel.setBorder(verticalPlatformIndexBorder);
 		verticalPlatformIndexPanel.setLayout(verticalPlatformLayout);
 		verticalPlatformIndexPanel.add(verticalPlatformIndexSpinner);
-		horizontalPlatformIndexModel.setMinimum(0);
-		horizontalPlatformIndexModel.setMaximum(62);
+		horizontalPlatformIndexModel.setMinimum(Constante.MIN_PLATFORM_ID);
+		horizontalPlatformIndexModel.setMaximum(Constante.MAX_PLATFORM_ID);
 		horizontalPlatformIndexSpinner.setModel(horizontalPlatformIndexModel);
 		horizontalPlatformIndexPanel.setBorder(horizontalPlatformIndexBorder);
 		horizontalPlatformIndexPanel.setLayout(horizontalPlatformLayout);
 		horizontalPlatformIndexPanel.add(horizontalPlatformIndexSpinner);
-		backgroundIndexModel.setMinimum(0);
-		backgroundIndexModel.setMaximum(62);
+		backgroundIndexModel.setMinimum(Constante.MIN_BACKGROUND_ID);
+		backgroundIndexModel.setMaximum(Constante.MAX_BACKGROUND_ID);
 		backgroundIndexSpinner.setModel(backgroundIndexModel);
 		backgroundIndexPanel.setBorder(backgroundIndexBorder);
 		backgroundIndexPanel.setLayout(backgroundLayout);
@@ -822,7 +822,7 @@ public class App extends JFrame {
 			public void keyReleased(KeyEvent e) {
 			}
 		});
-		
+
 		nextLevelIndexTextField.addCaretListener(new CaretListener() {
 			public void caretUpdate(javax.swing.event.CaretEvent e) {
 				JTextField text = (JTextField) e.getSource();
@@ -841,6 +841,7 @@ public class App extends JFrame {
 					e.consume();
 				}
 			}
+
 			@Override
 			public void keyPressed(KeyEvent e) {
 			}
@@ -1412,11 +1413,11 @@ public class App extends JFrame {
 	public void repaint() {
 		this.drawPanel.repaint();
 	}
-	
+
 	public void loadPropertiesLevel() {
-		verticalPlatformIndexSpinner.setValue((Integer)levelService.getVerticalPlatformId());
-		horizontalPlatformIndexSpinner.setValue((Integer)levelService.getHorizontalPlatformId());
-		backgroundIndexSpinner.setValue((Integer)levelService.getBackgroundId());
+		verticalPlatformIndexSpinner.setValue((Integer) levelService.getVerticalPlatformId());
+		horizontalPlatformIndexSpinner.setValue((Integer) levelService.getHorizontalPlatformId());
+		backgroundIndexSpinner.setValue((Integer) levelService.getBackgroundId());
 		nextLevelIndexTextField.setText(Integer.toString(levelService.getgetNextLevelId()));
 		showPlatformLevelCheckBox.setSelected(levelService.isShowPlatform());
 	}
