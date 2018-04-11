@@ -8,6 +8,7 @@ import javax.swing.SpinnerNumberModel;
 import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
+import lr_in_the_well.alexis_puska.view.DrawPanel;
 import lr_in_the_well.alexis_puska.view.IdentifiablePanel;
 
 public class DecorPanel extends IdentifiablePanel {
@@ -19,8 +20,8 @@ public class DecorPanel extends IdentifiablePanel {
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public DecorPanel(JPanel parent, LevelService levelService, String name, Decor decor) {
-		super(parent, levelService, name);
+	public DecorPanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Decor decor) {
+		super(parent, drawPanel, levelService, name);
 		this.decor = decor;
 		typeLabel = new JLabel("test", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
@@ -31,12 +32,10 @@ public class DecorPanel extends IdentifiablePanel {
 		typeLabel.setLabelFor(typeSpinner);
 		this.add(typeLabel);
 		this.add(typeSpinner);
-		SpringUtilities.makeCompactGrid(this, 1, 2, // rows, cols
-				6, 6, // initX, initY
-				6, 6); // xPad, yPad
+		SpringUtilities.makeCompactGrid(this, 1, 2, 2, 2, 2, 2);
 		this.parent.updateUI();
 	}
-	
+
 	public void updateDecor() {
 		levelService.updateDecor(decor);
 	}

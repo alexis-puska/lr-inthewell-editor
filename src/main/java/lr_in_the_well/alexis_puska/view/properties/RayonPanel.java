@@ -10,6 +10,7 @@ import javax.swing.event.ChangeListener;
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
+import lr_in_the_well.alexis_puska.view.DrawPanel;
 import lr_in_the_well.alexis_puska.view.IdentifiablePanel;
 
 public class RayonPanel extends IdentifiablePanel {
@@ -21,8 +22,8 @@ public class RayonPanel extends IdentifiablePanel {
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public RayonPanel(JPanel parent, LevelService levelService, String name, Rayon rayon) {
-		super(parent, levelService, name);
+	public RayonPanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Rayon rayon) {
+		super(parent, drawPanel, levelService, name);
 		this.rayon = rayon;
 		typeLabel = new JLabel("type", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
@@ -32,9 +33,10 @@ public class RayonPanel extends IdentifiablePanel {
 		typeSpinner.setModel(typeModel);
 		typeLabel.setLabelFor(typeSpinner);
 		idField.setText(Integer.toString(rayon.getId()));
+		typeSpinner.setValue(Integer.valueOf(rayon.getType()));
 		this.add(typeLabel);
 		this.add(typeSpinner);
-		SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
+		SpringUtilities.makeCompactGrid(this, 2, 2, 2, 2, 2, 2);
 		addListeners();
 		this.parent.updateUI();
 	}
@@ -47,10 +49,10 @@ public class RayonPanel extends IdentifiablePanel {
 				if (text.getValue() != null) {
 					rayon.setType((Integer) text.getValue());
 					levelService.updateRayon(rayon);
+					drawPanel.repaint();
 					parent.repaint();
 				}
 			}
 		});
 	}
-
 }

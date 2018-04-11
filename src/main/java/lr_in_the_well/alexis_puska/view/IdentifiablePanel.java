@@ -14,16 +14,17 @@ public class IdentifiablePanel extends JPanel {
 	private static final long serialVersionUID = 5594850105813021006L;
 
 	protected JPanel parent;
+	protected DrawPanel drawPanel;
 	protected LevelService levelService;
 	private Border border;
 	private SpringLayout layout;
-	
+
 	protected JLabel idLabel;
 	protected JTextField idField;
-	
 
-	public IdentifiablePanel(JPanel parent, LevelService levelService, String name) {
+	public IdentifiablePanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name) {
 		this.parent = parent;
+		this.drawPanel = drawPanel;
 		this.levelService = levelService;
 		border = BorderFactory.createTitledBorder(name);
 		this.layout = new SpringLayout();

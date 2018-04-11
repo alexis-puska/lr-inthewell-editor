@@ -91,7 +91,7 @@ public class App extends JFrame {
 	/****************
 	 * DRAW
 	 ***************/
-	private JPanel panelDraw;
+	private JPanel centerPanel;
 	private BorderLayout drawLayout;
 	private DrawPanel drawPanel;
 
@@ -239,10 +239,10 @@ public class App extends JFrame {
 	private void buildDrawElement() {
 		drawPanel.setSize(Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
 		drawPanel.setVisible(true);
-		panelDraw.setBackground(Color.LIGHT_GRAY);
-		panelDraw.setLayout(drawLayout);
-		panelDraw.add(drawPanel, BorderLayout.CENTER);
-		this.getContentPane().add(panelDraw, BorderLayout.CENTER);
+		centerPanel.setBackground(Color.LIGHT_GRAY);
+		centerPanel.setLayout(drawLayout);
+		centerPanel.add(drawPanel, BorderLayout.CENTER);
+		this.getContentPane().add(centerPanel, BorderLayout.CENTER);
 	}
 
 	private void buildWestPanel() {
@@ -386,7 +386,7 @@ public class App extends JFrame {
 		backgroundDrawPanel = new BackgroundDrawPanel(spriteService);
 
 		// draw
-		panelDraw = new JPanel();
+		centerPanel = new JPanel();
 		drawLayout = new BorderLayout();
 		drawPanel = new DrawPanel(spriteService, levelService);
 
@@ -1063,7 +1063,7 @@ public class App extends JFrame {
 	private void selectElement(int x, int y) {
 		Identifiable obj = levelService.getProperties(x, y);
 		if (identifiablePropertiesPanel != null) {
-			panelDraw.remove(identifiablePropertiesPanel);
+			centerPanel.remove(identifiablePropertiesPanel);
 		}
 		if (obj != null) {
 			if (obj.getClass().equals(Ennemie.class)) {
@@ -1086,52 +1086,55 @@ public class App extends JFrame {
 				treatVortexProperties((Vortex) obj);
 			}
 		} else {
-			panelDraw.updateUI();
+			centerPanel.updateUI();
 		}
 	}
 
 	private void treatVortexProperties(Vortex vortex) {
-		identifiablePropertiesPanel = new VortexPanel(panelDraw, levelService, "Vortex properties", vortex);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new VortexPanel(centerPanel, drawPanel, levelService, "Vortex properties", vortex);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 
 	private void treatEnnemieProperties(Ennemie ennemie) {
-		identifiablePropertiesPanel = new EnnemiePanel(panelDraw, levelService, "Ennemies properties", ennemie);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new EnnemiePanel(centerPanel, drawPanel, levelService, "Ennemies properties",
+				ennemie);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 
 	private void treatDecorProperties(Decor decor) {
-		identifiablePropertiesPanel = new DecorPanel(panelDraw, levelService, "Decor properties", decor);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new DecorPanel(centerPanel, drawPanel, levelService, "Decor properties", decor);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 
 	private void treatDoorProperties(Door door) {
-		identifiablePropertiesPanel = new DoorPanel(panelDraw, levelService, "Door properties", door);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new DoorPanel(centerPanel, drawPanel, levelService, "Door properties", door);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 
 	private void treatLockProperties(Lock lock) {
-		identifiablePropertiesPanel = new LockPanel(panelDraw, levelService, "Lock properties", lock);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new LockPanel(centerPanel, drawPanel, levelService, "Lock properties", lock);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 
 	private void treatPickProperties(Pick pick) {
-		identifiablePropertiesPanel = new PickPanel(panelDraw, levelService, "Pick properties", pick);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new PickPanel(centerPanel, drawPanel, levelService, "Pick properties", pick);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 
 	private void treatPlatformProperties(Platform platform) {
-		identifiablePropertiesPanel = new PlatformPanel(panelDraw, levelService, "Platform properties", platform);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new PlatformPanel(centerPanel, drawPanel, levelService, "Platform properties",
+				platform);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 
 	private void treatRayonProperties(Rayon rayon) {
-		identifiablePropertiesPanel = new RayonPanel(panelDraw, levelService, "Rayon properties", rayon);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new RayonPanel(centerPanel, drawPanel, levelService, "Rayon properties", rayon);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 
 	private void treatTeleporterProperties(Teleporter teleporter) {
-		identifiablePropertiesPanel = new TeleporterPanel(panelDraw, levelService, "Teleporter properties", teleporter);
-		panelDraw.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+		identifiablePropertiesPanel = new TeleporterPanel(centerPanel, drawPanel, levelService, "Teleporter properties",
+				teleporter);
+		centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
 	}
 }

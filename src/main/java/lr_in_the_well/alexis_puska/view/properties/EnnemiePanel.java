@@ -8,6 +8,7 @@ import javax.swing.SpinnerNumberModel;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
+import lr_in_the_well.alexis_puska.view.DrawPanel;
 import lr_in_the_well.alexis_puska.view.IdentifiablePanel;
 
 public class EnnemiePanel extends IdentifiablePanel {
@@ -19,8 +20,8 @@ public class EnnemiePanel extends IdentifiablePanel {
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public EnnemiePanel(JPanel parent, LevelService levelService, String name, Ennemie ennemie) {
-		super(parent, levelService, name);
+	public EnnemiePanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Ennemie ennemie) {
+		super(parent, drawPanel, levelService, name);
 		this.ennemie = ennemie;
 		typeLabel = new JLabel("test", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();

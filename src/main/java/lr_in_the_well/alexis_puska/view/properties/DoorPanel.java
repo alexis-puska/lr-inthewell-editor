@@ -8,6 +8,7 @@ import javax.swing.SpinnerNumberModel;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
+import lr_in_the_well.alexis_puska.view.DrawPanel;
 import lr_in_the_well.alexis_puska.view.IdentifiablePanel;
 
 public class DoorPanel extends IdentifiablePanel {
@@ -19,8 +20,8 @@ public class DoorPanel extends IdentifiablePanel {
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public DoorPanel(JPanel parent, LevelService levelService, String name, Door door) {
-		super(parent, levelService, name);
+	public DoorPanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Door door) {
+		super(parent, drawPanel, levelService, name);
 		this.door = door;
 		typeLabel = new JLabel("test", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
@@ -36,7 +37,7 @@ public class DoorPanel extends IdentifiablePanel {
 				6, 6); // xPad, yPad
 		this.parent.updateUI();
 	}
-	
+
 	public void updateDoor() {
 		levelService.updateDoor(door);
 	}

@@ -486,7 +486,8 @@ public class LevelService {
 	}
 
 	public void updateRayon(Rayon rayon) {
-		
+		levels.get(current).getRayon().remove(rayon);
+		levels.get(current).getRayon().add(rayon);
 	}
 
 	public void updateVortex(Vortex vortex) {
