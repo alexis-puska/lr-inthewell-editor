@@ -12,9 +12,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LevelFile implements Serializable {
-
+public class Type implements Serializable {
 	private static final long serialVersionUID = -5410889236338101940L;
-
-	private List<Type> type;
+	private int id;
+	private List<Level> level;
 }

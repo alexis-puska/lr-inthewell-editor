@@ -3,9 +3,6 @@ package lr_in_the_well.alexis_puska.service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 
@@ -14,7 +11,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import lr_in_the_well.alexis_puska.domain.level.Level;
 import lr_in_the_well.alexis_puska.domain.level.LevelFile;
 import lr_in_the_well.alexis_puska.domain.sprite.SpriteFileContent;
 
@@ -28,12 +24,10 @@ public class FileService {
 		this.objectMapper = new ObjectMapper();
 	}
 
-	public Map<Integer, Level> readJsonFile(InputStream in) {
+	public LevelFile readJsonFile(InputStream in) {
 		LevelFile levelFile = null;
-		Map<Integer, Level> levels = new HashMap<>();
 		try {
 			levelFile = objectMapper.readValue(in, LevelFile.class);
-			LOG.info("Number of level inside file : " + levelFile.getLevel().size());
 		} catch (JsonParseException e) {
 			LOG.error("JsonParseException : " + e.getMessage());
 		} catch (JsonMappingException e) {
@@ -41,18 +35,13 @@ public class FileService {
 		} catch (IOException e) {
 			LOG.error("IOException : " + e.getMessage());
 		}
-		for (Level level : levelFile.getLevel()) {
-			levels.put(level.getId(), level);
-		}
-		return levels;
+		return levelFile;
 	}
 
-	public void writeJson(List<Level> list, File file) {
+	public void writeJson(LevelFile levelFile, File file) {
 		try {
 			LOG.info("START Write level json file : " + file.getAbsolutePath());
-			LevelFile levelFile = new LevelFile();
-			levelFile.setLevel(list);
-			objectMapper.writeValue(file, levelFile);
+			objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, levelFile);
 		} catch (JsonProcessingException e) {
 			LOG.error("JsonProcessingException : " + e.getMessage());
 		} catch (IOException e) {
