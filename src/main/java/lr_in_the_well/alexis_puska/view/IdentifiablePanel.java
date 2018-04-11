@@ -32,7 +32,7 @@ public class IdentifiablePanel extends JPanel {
 		this.setLayout(layout);
 		idField = new JTextField();
 		idField.setEditable(false);
-		idLabel = new JLabel("id");
+		idLabel = new JLabel("id : ");
 		idLabel.setLabelFor(idField);
 		this.add(idLabel);
 		this.add(idField);

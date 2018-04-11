@@ -4,6 +4,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
 import lr_in_the_well.alexis_puska.service.LevelService;
@@ -23,23 +25,34 @@ public class EnnemiePanel extends IdentifiablePanel {
 	public EnnemiePanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Ennemie ennemie) {
 		super(parent, drawPanel, levelService, name);
 		this.ennemie = ennemie;
-		typeLabel = new JLabel("test", JLabel.TRAILING);
+		typeLabel = new JLabel("type", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
 		typeModel.setMinimum(0);
-		typeModel.setMaximum(7);
+		typeModel.setMaximum(16);
 		typeSpinner.setModel(typeModel);
 		typeLabel.setLabelFor(typeSpinner);
+		idField.setText(Integer.toString(ennemie.getId()));
+		typeSpinner.setValue(Integer.valueOf(ennemie.getType()));
 		this.add(typeLabel);
 		this.add(typeSpinner);
-		SpringUtilities.makeCompactGrid(this, 1, 2, // rows, cols
-				6, 6, // initX, initY
-				6, 6); // xPad, yPad
+		SpringUtilities.makeCompactGrid(this, 2, 2, 2, 2, 2, 2);
+		addListeners();
 		this.parent.updateUI();
 	}
-	
-	public void updateEnnemie() {
-		levelService.updateEnnemie(ennemie);
-	}
 
+	public void addListeners() {
+		typeSpinner.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				JSpinner text = (JSpinner) e.getSource();
+				if (text.getValue() != null) {
+					ennemie.setType((Integer) text.getValue());
+					levelService.updateEnnemie(ennemie);
+					drawPanel.repaint();
+					parent.repaint();
+				}
+			}
+		});
+	}
 }

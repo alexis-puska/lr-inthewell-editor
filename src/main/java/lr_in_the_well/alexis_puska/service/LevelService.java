@@ -22,495 +22,520 @@ import lr_in_the_well.alexis_puska.domain.level.Vortex;
 
 public class LevelService {
 
-	private int current;
-	// private int currentRayonType;
-	private Map<Integer, Level> levels;
+    private int current;
+    // private int currentRayonType;
+    private Map<Integer, Level> levels;
 
-	public LevelService(Map<Integer, Level> levels) {
-		this.current = 0;
-		this.levels = levels;
-	}
+    public LevelService(Map<Integer, Level> levels) {
+        this.current = 0;
+        this.levels = levels;
+    }
 
-	public Level getCurrentLevel() {
-		return levels.get(current);
-	}
+    public List<Level> getLevels() {
+        return new ArrayList<Level>(levels.values());
+    }
 
-	public void addPlatform(int x, int y, int d, boolean vertical) {
-		Level level = levels.get(current);
-		Platform p = new Platform();
-		p.setId(getIdFromIdentifiable(level.getPlatform()));
-		if (vertical) {
-			p.setVertical(true);
-			p.setVisible(true);
-			if (d > 24) {
-				d = 24;
-			}
-			int l = d - y;
-			if (l < 0) {
-				l *= -1;
-			}
-			l++;
-			if (d > y) {
-				p.setY(y);
-			} else {
-				p.setY(d);
-			}
-			p.setLength(l);
-			p.setX(x);
-		} else {
-			p.setVertical(false);
-			p.setVisible(true);
-			if (d > 19) {
-				d = 19;
-			}
-			int l = d - x;
-			if (l < 0) {
-				l *= -1;
-			}
-			l++;
-			if (d > x) {
-				p.setX(x);
-			} else {
-				p.setX(d);
-			}
-			p.setLength(l);
-			p.setY(y);
-		}
-		level.getPlatform().add(p);
-		levels.put(level.getId(), level);
-	}
+    public Level getCurrentLevel() {
+        return levels.get(current);
+    }
 
-	public void addTeleporter(int x, int y, int x2, int y2) {
-		Level level = levels.get(current);
-		Teleporter t = new Teleporter();
-		t.setId(getIdFromIdentifiable(level.getPlatform()));
-		if (x2 > 19) {
-			x2 = 19;
-		}
-		if (y2 > 24) {
-			y2 = 24;
-		}
-		int lx = x2 - x;
-		int ly = y2 - y;
-		boolean vertical = false;
-		if (lx < 0) {
-			lx *= -1;
-		}
-		if (ly < 0) {
-			ly *= -1;
-		}
-		if (lx > ly) {
-			vertical = false;
-		} else {
-			vertical = true;
-		}
-		if (vertical) {
-			t.setVertical(true);
-			ly++;
-			if (y2 > y) {
-				t.setY(y);
-			} else {
-				t.setY(y2);
-			}
-			t.setLength(ly);
-			t.setX(x);
-		} else {
-			t.setVertical(false);
-			lx++;
-			if (x2 > x) {
-				t.setX(x);
-			} else {
-				t.setX(x2);
-			}
-			t.setLength(lx);
-			t.setY(y);
-		}
-		level.getTeleporter().add(t);
-		levels.put(level.getId(), level);
-	}
+    public void addPlatform(int x, int y, int d, boolean vertical) {
+        Level level = levels.get(current);
+        Platform p = new Platform();
+        p.setId(getIdFromIdentifiable(level.getPlatform()));
+        if (vertical) {
+            p.setVertical(true);
+            p.setVisible(true);
+            if (d > 24) {
+                d = 24;
+            }
+            int l = d - y;
+            if (l < 0) {
+                l *= -1;
+            }
+            l++;
+            if (d > y) {
+                p.setY(y);
+            } else {
+                p.setY(d);
+            }
+            p.setLength(l);
+            p.setX(x);
+        } else {
+            p.setVertical(false);
+            p.setVisible(true);
+            if (d > 19) {
+                d = 19;
+            }
+            int l = d - x;
+            if (l < 0) {
+                l *= -1;
+            }
+            l++;
+            if (d > x) {
+                p.setX(x);
+            } else {
+                p.setX(d);
+            }
+            p.setLength(l);
+            p.setY(y);
+        }
+        level.getPlatform().add(p);
+        levels.put(level.getId(), level);
+    }
 
-	public void addRayon(int x, int y, int x2, int y2) {
-		Level level = levels.get(current);
-		Rayon r = new Rayon();
-		r.setId(getIdFromIdentifiable(level.getRayon()));
-		if (x2 > 19) {
-			x2 = 19;
-		}
-		if (y2 > 24) {
-			y2 = 24;
-		}
-		int lx = x2 - x;
-		int ly = y2 - y;
-		boolean vertical = false;
-		if (lx < 0) {
-			lx *= -1;
-		}
-		if (ly < 0) {
-			ly *= -1;
-		}
-		if (lx > ly) {
-			vertical = false;
-		} else {
-			vertical = true;
-		}
-		if (vertical) {
-			r.setVertical(true);
-			ly++;
-			if (y2 > y) {
-				r.setY(y);
-			} else {
-				r.setY(y2);
-			}
-			r.setLength(ly);
-			r.setX(x);
-		} else {
-			r.setVertical(false);
-			lx++;
-			if (x2 > x) {
-				r.setX(x);
-			} else {
-				r.setX(x2);
-			}
-			r.setLength(lx);
-			r.setY(y);
-		}
-		level.getRayon().add(r);
-		levels.put(level.getId(), level);
-	}
+    public void addTeleporter(int x, int y, int x2, int y2) {
+        Level level = levels.get(current);
+        Teleporter t = new Teleporter();
+        t.setId(getIdFromIdentifiable(level.getPlatform()));
+        if (x2 > 19) {
+            x2 = 19;
+        }
+        if (y2 > 24) {
+            y2 = 24;
+        }
+        int lx = x2 - x;
+        int ly = y2 - y;
+        boolean vertical = false;
+        if (lx < 0) {
+            lx *= -1;
+        }
+        if (ly < 0) {
+            ly *= -1;
+        }
+        if (lx > ly) {
+            vertical = false;
+        } else {
+            vertical = true;
+        }
+        if (vertical) {
+            t.setVertical(true);
+            ly++;
+            if (y2 > y) {
+                t.setY(y);
+            } else {
+                t.setY(y2);
+            }
+            t.setLength(ly);
+            t.setX(x);
+        } else {
+            t.setVertical(false);
+            lx++;
+            if (x2 > x) {
+                t.setX(x);
+            } else {
+                t.setX(x2);
+            }
+            t.setLength(lx);
+            t.setY(y);
+        }
+        level.getTeleporter().add(t);
+        levels.put(level.getId(), level);
+    }
 
-	public void addEnnemie(int x, int y, int type) {
-		Level level = levels.get(current);
-		int nbEnnemies = level.getEnnemies().size();
-		level.getEnnemies().add(new Ennemie(nbEnnemies, x, y, type));
-		levels.put(level.getId(), level);
-	}
+    public void addRayon(int x, int y, int x2, int y2) {
+        Level level = levels.get(current);
+        Rayon r = new Rayon();
+        r.setId(getIdFromIdentifiable(level.getRayon()));
+        if (x2 > 19) {
+            x2 = 19;
+        }
+        if (y2 > 24) {
+            y2 = 24;
+        }
+        int lx = x2 - x;
+        int ly = y2 - y;
+        boolean vertical = false;
+        if (lx < 0) {
+            lx *= -1;
+        }
+        if (ly < 0) {
+            ly *= -1;
+        }
+        if (lx > ly) {
+            vertical = false;
+        } else {
+            vertical = true;
+        }
+        if (vertical) {
+            r.setVertical(true);
+            ly++;
+            if (y2 > y) {
+                r.setY(y);
+            } else {
+                r.setY(y2);
+            }
+            r.setLength(ly);
+            r.setX(x);
+        } else {
+            r.setVertical(false);
+            lx++;
+            if (x2 > x) {
+                r.setX(x);
+            } else {
+                r.setX(x2);
+            }
+            r.setLength(lx);
+            r.setY(y);
+        }
+        level.getRayon().add(r);
+        levels.put(level.getId(), level);
+    }
 
-	public void addDecor(int x, int y) {
+    public void addEnnemie(int x, int y, int type) {
+        Level level = levels.get(current);
+        int nbEnnemies = level.getEnnemies().size();
+        level.getEnnemies().add(new Ennemie(nbEnnemies, x, y, type));
+        levels.put(level.getId(), level);
+    }
 
-	}
+    public void addDecor(int x, int y) {
 
-	public void addVortex(int x, int y) {
+    }
 
-	}
+    public void addVortex(int x, int y) {
 
-	public void addPick(int x, int y) {
+    }
 
-	}
+    public void addPick(int x, int y) {
 
-	public void addLock(int x, int y) {
+    }
 
-	}
+    public void addLock(int x, int y) {
 
-	public void addDoor(int x, int y) {
+    }
 
-	}
+    public void addDoor(int x, int y) {
 
-	public void addEvent(int x, int y) {
+    }
 
-	}
+    public void addEvent(int x, int y) {
 
-	public void addPlayerSpawn(int x, int y) {
-		Level level = levels.get(current);
-		level.getStartPlayers().add(new StartPlayer(x, y));
-	}
+    }
 
-	public void addObjectPoint(int x, int y) {
-		Level level = levels.get(current);
-		level.getStartPointObjets().add(new StartPointObjets(x, y));
-	}
+    public void addPlayerSpawn(int x, int y) {
+        Level level = levels.get(current);
+        level.getStartPlayers().add(new StartPlayer(x, y));
+    }
 
-	public void addObjectEffect(int x, int y) {
-		Level level = levels.get(current);
-		level.getStartEffectObjets().add(new StartEffectObjets(x, y));
-	}
+    public void addObjectPoint(int x, int y) {
+        Level level = levels.get(current);
+        level.getStartPointObjets().add(new StartPointObjets(x, y));
+    }
 
-	public void deleteElement(int x, int y) {
-		Level level = levels.get(current);
+    public void addObjectEffect(int x, int y) {
+        Level level = levels.get(current);
+        level.getStartEffectObjets().add(new StartEffectObjets(x, y));
+    }
 
-		// DECORS
-		List<Decor> decorToDelete = new ArrayList<>();
-		for (Decor e : level.getDecor()) {
-			if (e.getX() == x && e.getY() == y) {
-				decorToDelete.add(e);
-			}
-		}
-		level.getDecor().removeAll(decorToDelete);
+    public void deleteElement(int x, int y) {
+        Level level = levels.get(current);
 
-		// DOORS
-		List<Door> doorToDelete = new ArrayList<>();
-		for (Door e : level.getDoor()) {
-			if (e.getX() == x && e.getY() == y) {
-				doorToDelete.add(e);
-			}
-		}
-		level.getDoor().removeAll(doorToDelete);
+        // DECORS
+        List<Decor> decorToDelete = new ArrayList<>();
+        for (Decor e : level.getDecor()) {
+            if (e.getX() == x && e.getY() == y) {
+                decorToDelete.add(e);
+            }
+        }
+        level.getDecor().removeAll(decorToDelete);
 
-		// ENNEMIES
-		List<Ennemie> ennemieToDelete = new ArrayList<>();
-		for (Ennemie e : level.getEnnemies()) {
-			if (e.getX() == x && e.getY() == y) {
-				ennemieToDelete.add(e);
-			}
-		}
-		level.getEnnemies().removeAll(ennemieToDelete);
+        // DOORS
+        List<Door> doorToDelete = new ArrayList<>();
+        for (Door e : level.getDoor()) {
+            if (e.getX() == x && e.getY() == y) {
+                doorToDelete.add(e);
+            }
+        }
+        level.getDoor().removeAll(doorToDelete);
 
-		// LOCK
-		List<Lock> lockToDelete = new ArrayList<>();
-		for (Lock e : level.getLock()) {
-			if (e.getX() == x && e.getY() == y) {
-				lockToDelete.add(e);
-			}
-		}
-		level.getLock().removeAll(lockToDelete);
+        // ENNEMIES
+        List<Ennemie> ennemieToDelete = new ArrayList<>();
+        for (Ennemie e : level.getEnnemies()) {
+            if (e.getX() == x && e.getY() == y) {
+                ennemieToDelete.add(e);
+            }
+        }
+        level.getEnnemies().removeAll(ennemieToDelete);
 
-		// PICK
-		List<Pick> pickToDelete = new ArrayList<>();
-		for (Pick e : level.getPick()) {
-			if (e.getX() == x && e.getY() == y) {
-				pickToDelete.add(e);
-			}
-		}
-		level.getPick().removeAll(pickToDelete);
+        // LOCK
+        List<Lock> lockToDelete = new ArrayList<>();
+        for (Lock e : level.getLock()) {
+            if (e.getX() == x && e.getY() == y) {
+                lockToDelete.add(e);
+            }
+        }
+        level.getLock().removeAll(lockToDelete);
 
-		// PLATEFORM
-		List<Platform> platformToDelete = new ArrayList<>();
-		for (Platform e : level.getPlatform()) {
-			if (e.isVertical()) {
-				int min = e.getY();
-				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y < max)) {
+        // PICK
+        List<Pick> pickToDelete = new ArrayList<>();
+        for (Pick e : level.getPick()) {
+            if (e.getX() == x && e.getY() == y) {
+                pickToDelete.add(e);
+            }
+        }
+        level.getPick().removeAll(pickToDelete);
 
-					platformToDelete.add(e);
-				}
-			} else {
-				int min = e.getX();
-				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x < max)) {
+        // PLATEFORM
+        List<Platform> platformToDelete = new ArrayList<>();
+        for (Platform e : level.getPlatform()) {
+            if (e.isVertical()) {
+                int min = e.getY();
+                int max = e.getY() + e.getLength();
+                if (e.getX() == x && (min <= y && y < max)) {
 
-					platformToDelete.add(e);
-				}
-			}
-		}
-		level.getPlatform().removeAll(platformToDelete);
+                    platformToDelete.add(e);
+                }
+            } else {
+                int min = e.getX();
+                int max = e.getX() + e.getLength();
+                if (e.getY() == y && (min <= x && x < max)) {
 
-		// RAYON
-		List<Rayon> rayonToDelete = new ArrayList<>();
-		for (Rayon e : level.getRayon()) {
-			if (e.isVertical()) {
-				int min = e.getY();
-				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y < max)) {
-					rayonToDelete.add(e);
-				}
-			} else {
-				int min = e.getX();
-				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x < max)) {
-					rayonToDelete.add(e);
-				}
-			}
-		}
-		level.getRayon().removeAll(rayonToDelete);
+                    platformToDelete.add(e);
+                }
+            }
+        }
+        level.getPlatform().removeAll(platformToDelete);
 
-		// TELEPORTER
-		List<Teleporter> teleporterToDelete = new ArrayList<>();
-		for (Teleporter e : level.getTeleporter()) {
-			if (e.isVertical()) {
-				int min = e.getY();
-				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y < max)) {
-					teleporterToDelete.add(e);
-				}
-			} else {
-				int min = e.getX();
-				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x < max)) {
-					teleporterToDelete.add(e);
-				}
-			}
-		}
-		level.getTeleporter().removeAll(teleporterToDelete);
+        // RAYON
+        List<Rayon> rayonToDelete = new ArrayList<>();
+        for (Rayon e : level.getRayon()) {
+            if (e.isVertical()) {
+                int min = e.getY();
+                int max = e.getY() + e.getLength();
+                if (e.getX() == x && (min <= y && y < max)) {
+                    rayonToDelete.add(e);
+                }
+            } else {
+                int min = e.getX();
+                int max = e.getX() + e.getLength();
+                if (e.getY() == y && (min <= x && x < max)) {
+                    rayonToDelete.add(e);
+                }
+            }
+        }
+        level.getRayon().removeAll(rayonToDelete);
 
-		// EFFECT OBJET
-		List<StartEffectObjets> startEffectObjectToDelete = new ArrayList<>();
-		for (StartEffectObjets e : level.getStartEffectObjets()) {
-			if (e.getX() == x && e.getY() == y) {
-				startEffectObjectToDelete.add(e);
-			}
-		}
-		level.getStartEffectObjets().removeAll(startEffectObjectToDelete);
+        // TELEPORTER
+        List<Teleporter> teleporterToDelete = new ArrayList<>();
+        for (Teleporter e : level.getTeleporter()) {
+            if (e.isVertical()) {
+                int min = e.getY();
+                int max = e.getY() + e.getLength();
+                if (e.getX() == x && (min <= y && y < max)) {
+                    teleporterToDelete.add(e);
+                }
+            } else {
+                int min = e.getX();
+                int max = e.getX() + e.getLength();
+                if (e.getY() == y && (min <= x && x < max)) {
+                    teleporterToDelete.add(e);
+                }
+            }
+        }
+        level.getTeleporter().removeAll(teleporterToDelete);
 
-		// STARTPLAYER
-		List<StartPlayer> startPlayerToDelete = new ArrayList<>();
-		for (StartPlayer e : level.getStartPlayers()) {
-			if (e.getX() == x && e.getY() == y) {
-				startPlayerToDelete.add(e);
-			}
-		}
-		level.getStartPlayers().removeAll(startPlayerToDelete);
+        // EFFECT OBJET
+        List<StartEffectObjets> startEffectObjectToDelete = new ArrayList<>();
+        for (StartEffectObjets e : level.getStartEffectObjets()) {
+            if (e.getX() == x && e.getY() == y) {
+                startEffectObjectToDelete.add(e);
+            }
+        }
+        level.getStartEffectObjets().removeAll(startEffectObjectToDelete);
 
-		// START POINT
-		List<StartPointObjets> startPointObjetsToDelete = new ArrayList<>();
-		for (StartPointObjets e : level.getStartPointObjets()) {
-			if (e.getX() == x && e.getY() == y) {
-				startPointObjetsToDelete.add(e);
-			}
-		}
-		level.getStartPointObjets().removeAll(startPointObjetsToDelete);
-		// update level
-		levels.put(level.getId(), level);
-	}
+        // STARTPLAYER
+        List<StartPlayer> startPlayerToDelete = new ArrayList<>();
+        for (StartPlayer e : level.getStartPlayers()) {
+            if (e.getX() == x && e.getY() == y) {
+                startPlayerToDelete.add(e);
+            }
+        }
+        level.getStartPlayers().removeAll(startPlayerToDelete);
 
-	public int getIdFromIdentifiable(List<? extends Identifiable> list) {
-		int max = 0;
-		int freeId = -1;
-		for (Identifiable pl : list) {
-			if (pl.getId() > max) {
-				max = pl.getId();
-			}
-		}
-		Boolean[] id = new Boolean[max + 1];
-		for (Identifiable pl : list) {
-			id[pl.getId()] = true;
-		}
-		for (int i = 0; i < max; i++) {
-			if (id[i] == null) {
-				freeId = i;
-				break;
-			}
-		}
-		if (freeId == -1) {
-			freeId = list.size();
-		}
-		return freeId;
-	}
+        // START POINT
+        List<StartPointObjets> startPointObjetsToDelete = new ArrayList<>();
+        for (StartPointObjets e : level.getStartPointObjets()) {
+            if (e.getX() == x && e.getY() == y) {
+                startPointObjetsToDelete.add(e);
+            }
+        }
+        level.getStartPointObjets().removeAll(startPointObjetsToDelete);
+        // update level
+        levels.put(level.getId(), level);
+    }
 
-	public int getNbLevel() {
-		return levels.size();
-	}
+    public int getIdFromIdentifiable(List<? extends Identifiable> list) {
+        int max = 0;
+        int freeId = -1;
+        for (Identifiable pl : list) {
+            if (pl.getId() > max) {
+                max = pl.getId();
+            }
+        }
+        Boolean[] id = new Boolean[max + 1];
+        for (Identifiable pl : list) {
+            id[pl.getId()] = true;
+        }
+        for (int i = 0; i < max; i++) {
+            if (id[i] == null) {
+                freeId = i;
+                break;
+            }
+        }
+        if (freeId == -1) {
+            freeId = list.size();
+        }
+        return freeId;
+    }
 
-	public int getCurrentLevelIndex() {
-		return current;
-	}
+    public int getNbLevel() {
+        return levels.size();
+    }
 
-	public int incCurrentLevelIndex() {
-		current++;
-		return current;
-	}
+    public int getCurrentLevelIndex() {
+        return current;
+    }
 
-	public int decCurrentLevelIndex() {
-		current--;
-		return current;
-	}
+    public int incCurrentLevelIndex() {
+        current++;
+        return current;
+    }
 
-	public void setCurrentLevel(int parseInt) {
-		current = parseInt;
-	}
+    public int decCurrentLevelIndex() {
+        current--;
+        return current;
+    }
 
-	public Identifiable getProperties(int x, int y) {
-		Level level = levels.get(current);
+    public void setCurrentLevel(int parseInt) {
+        current = parseInt;
+    }
 
-		for (Decor e : level.getDecor()) {
-			if (e.getX() == x && e.getY() == y) {
-				return e;
-			}
-		}
-		for (Door e : level.getDoor()) {
-			if (e.getX() == x && e.getY() == y) {
-				return e;
-			}
-		}
-		for (Ennemie e : level.getEnnemies()) {
-			if (e.getX() == x && e.getY() == y) {
-				return e;
-			}
-		}
-		for (Lock e : level.getLock()) {
-			if (e.getX() == x && e.getY() == y) {
-				return e;
-			}
-		}
-		for (Pick e : level.getPick()) {
-			if (e.getX() == x && e.getY() == y) {
-				return e;
-			}
-		}
-		for (Platform e : level.getPlatform()) {
-			if (e.isVertical()) {
-				int min = e.getY();
-				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
+    public Identifiable getProperties(int x, int y) {
+        Level level = levels.get(current);
 
-					return e;
-				}
-			} else {
-				int min = e.getX();
-				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
+        for (Decor e : level.getDecor()) {
+            if (e.getX() == x && e.getY() == y) {
+                return e;
+            }
+        }
+        for (Door e : level.getDoor()) {
+            if (e.getX() == x && e.getY() == y) {
+                return e;
+            }
+        }
+        for (Ennemie e : level.getEnnemies()) {
+            if (e.getX() == x && e.getY() == y) {
+                return e;
+            }
+        }
+        for (Lock e : level.getLock()) {
+            if (e.getX() == x && e.getY() == y) {
+                return e;
+            }
+        }
+        for (Pick e : level.getPick()) {
+            if (e.getX() == x && e.getY() == y) {
+                return e;
+            }
+        }
+        for (Platform e : level.getPlatform()) {
+            if (e.isVertical()) {
+                int min = e.getY();
+                int max = e.getY() + e.getLength();
+                if (e.getX() == x && (min <= y && y <= max)) {
 
-					return e;
-				}
-			}
-		}
-		for (Rayon e : level.getRayon()) {
-			if (e.isVertical()) {
-				int min = e.getY();
-				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
-					return e;
-				}
-			} else {
-				int min = e.getX();
-				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
-					return e;
-				}
-			}
-		}
-		for (Teleporter e : level.getTeleporter()) {
-			if (e.isVertical()) {
-				int min = e.getY();
-				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
-					return e;
-				}
-			} else {
-				int min = e.getX();
-				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
-					return e;
-				}
-			}
-		}
-		return null;
-	}
+                    return e;
+                }
+            } else {
+                int min = e.getX();
+                int max = e.getX() + e.getLength();
+                if (e.getY() == y && (min <= x && x <= max)) {
 
-	public void updateRayon(Rayon rayon) {
-		levels.get(current).getRayon().remove(rayon);
-		levels.get(current).getRayon().add(rayon);
-	}
+                    return e;
+                }
+            }
+        }
+        for (Rayon e : level.getRayon()) {
+            if (e.isVertical()) {
+                int min = e.getY();
+                int max = e.getY() + e.getLength();
+                if (e.getX() == x && (min <= y && y <= max)) {
+                    return e;
+                }
+            } else {
+                int min = e.getX();
+                int max = e.getX() + e.getLength();
+                if (e.getY() == y && (min <= x && x <= max)) {
+                    return e;
+                }
+            }
+        }
+        for (Teleporter e : level.getTeleporter()) {
+            if (e.isVertical()) {
+                int min = e.getY();
+                int max = e.getY() + e.getLength();
+                if (e.getX() == x && (min <= y && y <= max)) {
+                    return e;
+                }
+            } else {
+                int min = e.getX();
+                int max = e.getX() + e.getLength();
+                if (e.getY() == y && (min <= x && x <= max)) {
+                    return e;
+                }
+            }
+        }
+        return null;
+    }
 
-	public void updateVortex(Vortex vortex) {
-	}
+    public void updateRayon(Rayon rayon) {
+        levels.get(current).getRayon().remove(rayon);
+        levels.get(current).getRayon().add(rayon);
+    }
 
-	public void updateTeleporter(Teleporter teleporter) {
-	}
-	
-	public void updatePick(Pick pick) {
-	}
-	
-	public void updateDoor(Door door) {
-	}
-	
-	public void updateLock(Lock lock) {
-	}
-	
-	public void updateDecor(Decor decor) {
-	}
-	
-	public void updateEvent(Event event) {
-	}
+    public void updateVortex(Vortex vortex) {
+        levels.get(current).getVortex().remove(vortex);
+        levels.get(current).getVortex().add(vortex);
+    }
 
-	public void updateEnnemie(Ennemie ennemie) {
-	}
+    public void updateTeleporter(Teleporter teleporter) {
+        levels.get(current).getTeleporter().remove(teleporter);
+        levels.get(current).getTeleporter().add(teleporter);
+    }
+
+    public void updatePick(Pick pick) {
+        levels.get(current).getPick().remove(pick);
+        levels.get(current).getPick().add(pick);
+    }
+
+    public void updateDoor(Door door) {
+        levels.get(current).getDoor().remove(door);
+        levels.get(current).getDoor().add(door);
+    }
+
+    public void updateLock(Lock lock) {
+        levels.get(current).getLock().remove(lock);
+        levels.get(current).getLock().add(lock);
+    }
+
+    public void updateDecor(Decor decor) {
+        levels.get(current).getDecor().remove(decor);
+        levels.get(current).getDecor().add(decor);
+    }
+
+    public void updateEvent(Event event) {
+        levels.get(current).getEvent().remove(event);
+        levels.get(current).getEvent().add(event);
+    }
+
+    public void updateEnnemie(Ennemie ennemie) {
+        levels.get(current).getEnnemies().remove(ennemie);
+        levels.get(current).getEnnemies().add(ennemie);
+    }
+
+    public void loadLevels(Map<Integer, Level> readJsonFile) {
+        this.current = 0;
+        this.levels = readJsonFile;
+    }
 }
