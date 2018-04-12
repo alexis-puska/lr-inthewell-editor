@@ -589,14 +589,14 @@ public class LevelService {
 			if (e.isVertical()) {
 				int min = e.getY();
 				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
+				if (e.getX() == x && (min <= y && y < max)) {
 
 					return e;
 				}
 			} else {
 				int min = e.getX();
 				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
+				if (e.getY() == y && (min <= x && x < max)) {
 
 					return e;
 				}
@@ -606,13 +606,13 @@ public class LevelService {
 			if (e.isVertical()) {
 				int min = e.getY();
 				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
+				if (e.getX() == x && (min <= y && y < max)) {
 					return e;
 				}
 			} else {
 				int min = e.getX();
 				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
+				if (e.getY() == y && (min <= x && x < max)) {
 					return e;
 				}
 			}
@@ -621,13 +621,13 @@ public class LevelService {
 			if (e.isVertical()) {
 				int min = e.getY();
 				int max = e.getY() + e.getLength();
-				if (e.getX() == x && (min <= y && y <= max)) {
+				if (e.getX() == x && (min <= y && y < max)) {
 					return e;
 				}
 			} else {
 				int min = e.getX();
 				int max = e.getX() + e.getLength();
-				if (e.getY() == y && (min <= x && x <= max)) {
+				if (e.getY() == y && (min <= x && x < max)) {
 					return e;
 				}
 			}
