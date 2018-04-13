@@ -195,9 +195,39 @@ public class DrawPanel extends Canvas {
 		}
 	}
 
+	
+	//TODO REFACTORING C++ / JAVA POUR ORDRE DES SPRITES DE PORTES
 	private void drawDoors(Graphics2D g2) {
 		for (Door door : levelService.getCurrentLevel().getDoor()) {
-			BufferedImage bf = spriteService.getSprite("doors", door.getType());
+			int index = 0;
+			switch (door.getType()) {
+			case 0:
+				index = 0;
+				break;
+			case 1:
+				index = 1;
+				break;
+			case 2:
+				index = 2;
+				break;
+			case 3:
+				index = 3;
+				break;
+			case 4:
+				index = 5;
+				break;
+			case 5:
+				index = 6;
+				break;
+			case 6:
+				index = 7;
+				break;
+			case 7:
+				index = 8;
+				break;
+			}
+			
+			BufferedImage bf = spriteService.getSprite("doors", index);
 			g2.drawImage(bf, null, door.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
 					((door.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
 		}
