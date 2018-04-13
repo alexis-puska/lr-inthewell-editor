@@ -32,5 +32,6 @@ public enum ActionEnum {
 	ADD_PRUNE,
 	ADD_SCIE,
 	ADD_POIRE,
-	ADD_BLOB;
+	ADD_BLOB, 
+	ADD_ITEM;
 }

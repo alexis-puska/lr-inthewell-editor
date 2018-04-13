@@ -32,6 +32,7 @@ public class Level extends Identifiable {
 	private List<StartPlayer> startPlayers;
 	private List<StartEffectObjets> startEffectObjets;
 	private List<StartPointObjets> startPointObjets;
+	private List<Item> items;
 
 	public Level(int id, boolean showPlatform, int background, int verticalPlateform, int horizontalPlateform) {
 		super(id);
@@ -53,6 +54,7 @@ public class Level extends Identifiable {
 		this.startPlayers = new ArrayList<>();
 		this.startEffectObjets = new ArrayList<>();
 		this.startPointObjets = new ArrayList<>();
+		this.items = new ArrayList<>();
 	}
 	
 	public Level(int id) {
@@ -75,6 +77,7 @@ public class Level extends Identifiable {
 		this.startPlayers = new ArrayList<>();
 		this.startEffectObjets = new ArrayList<>();
 		this.startPointObjets = new ArrayList<>();
+		this.items = new ArrayList<>();
 	}
 
 }

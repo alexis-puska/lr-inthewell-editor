@@ -61,11 +61,17 @@ public class SpriteService {
 				case "sprite_rayon_teleporter":
 					temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_rayon_teleporter.png"));
 					break;
+				case "sprite_animation":
+					temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_animation.png"));
+					break;
 				case "sprite_light":
 					temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_light.png"));
 					break;
 				case "sprite_level":
 					temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_level.png"));
+					break;
+				case "sprite_objets":
+					temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_objets.png"));
 					break;
 				case "sprite_ennemies":
 					temp = ImageIO.read(this.getClass().getResourceAsStream("/sprite/sprite_ennemies.png"));

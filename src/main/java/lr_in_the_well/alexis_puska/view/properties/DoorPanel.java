@@ -41,7 +41,7 @@ public class DoorPanel extends IdentifiablePanel {
     public DoorPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Door door) {
         super(message, parent, drawPanel, levelService, name);
         this.door = door;
-        typeLabel = new JLabel("Type :", JLabel.TRAILING);
+        typeLabel = new JLabel(message.getString("properties.door.type"), JLabel.TRAILING);
         typeModel = new SpinnerNumberModel();
         typeSpinner = new JSpinner();
         typeModel.setMinimum(0);
@@ -49,19 +49,19 @@ public class DoorPanel extends IdentifiablePanel {
         typeSpinner.setModel(typeModel);
         typeLabel.setLabelFor(typeSpinner);
 
-        toLevelLabel = new JLabel("To Level :", JLabel.TRAILING);
+        toLevelLabel = new JLabel(message.getString("properties.door.toLevel"), JLabel.TRAILING);
         toLevelModel = new SpinnerNumberModel();
         toLevelSpinner = new JSpinner();
         toLevelSpinner.setModel(toLevelModel);
         toLevelLabel.setLabelFor(toLevelSpinner);
 
-        requieredKeyLabel = new JLabel("Requiered Key :", JLabel.TRAILING);
+        requieredKeyLabel = new JLabel(message.getString("properties.door.requieredKey"), JLabel.TRAILING);
         requieredKeyModel = new SpinnerNumberModel();
         requieredKeySpinner = new JSpinner();
         requieredKeySpinner.setModel(requieredKeyModel);
         requieredKeyLabel.setLabelFor(requieredKeySpinner);
 
-        lockedLabel = new JLabel("Locked :", JLabel.TRAILING);
+        lockedLabel = new JLabel(message.getString("properties.door.locked"), JLabel.TRAILING);
         lockedCheckBox = new JCheckBox();
         lockedLabel.setLabelFor(lockedCheckBox);
         this.add(typeLabel);

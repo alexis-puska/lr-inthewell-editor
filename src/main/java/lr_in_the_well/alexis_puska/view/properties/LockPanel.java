@@ -18,21 +18,26 @@ public class LockPanel extends IdentifiablePanel {
     private static final long serialVersionUID = -4090876979915495722L;
     private Lock lock;
 
-    private JLabel typeLabel;
-    private SpinnerNumberModel typeModel;
-    private JSpinner typeSpinner;
+    
+    
+    private JLabel requieredKeyLabel;
+    private SpinnerNumberModel requieredKeyModel;
+    private JSpinner requieredKeySpinner;
 
     public LockPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Lock lock) {
         super(message, parent, drawPanel, levelService, name);
         this.lock = lock;
-        typeLabel = new JLabel("test", JLabel.TRAILING);
-        typeModel = new SpinnerNumberModel();
-        typeSpinner = new JSpinner();
-        typeSpinner.setModel(typeModel);
-        typeLabel.setLabelFor(typeSpinner);
+        requieredKeyLabel = new JLabel(message.getString("properties.lock.requiredKey"), JLabel.TRAILING);
+        requieredKeyModel = new SpinnerNumberModel();
+        requieredKeySpinner = new JSpinner();
+        requieredKeySpinner.setModel(requieredKeyModel);
+        requieredKeyLabel.setLabelFor(requieredKeySpinner);
 
-        this.add(typeLabel);
-        this.add(typeSpinner);
+        requieredKeyLabel.setToolTipText(message.getString("properties.lock.requiredKey.description"));
+        requieredKeyLabel.setToolTipText(message.getString("properties.lock.requiredKey.description"));
+        
+        this.add(requieredKeyLabel);
+        this.add(requieredKeySpinner);
 
         SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
         this.parent.updateUI();

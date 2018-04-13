@@ -44,6 +44,7 @@ import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
 import lr_in_the_well.alexis_puska.domain.level.Event;
 import lr_in_the_well.alexis_puska.domain.level.Identifiable;
+import lr_in_the_well.alexis_puska.domain.level.Item;
 import lr_in_the_well.alexis_puska.domain.level.LevelFile;
 import lr_in_the_well.alexis_puska.domain.level.Lock;
 import lr_in_the_well.alexis_puska.domain.level.Pick;
@@ -61,6 +62,7 @@ import lr_in_the_well.alexis_puska.view.properties.DecorPanel;
 import lr_in_the_well.alexis_puska.view.properties.DoorPanel;
 import lr_in_the_well.alexis_puska.view.properties.EnnemiePanel;
 import lr_in_the_well.alexis_puska.view.properties.EventPanel;
+import lr_in_the_well.alexis_puska.view.properties.ItemPanel;
 import lr_in_the_well.alexis_puska.view.properties.LockPanel;
 import lr_in_the_well.alexis_puska.view.properties.PickPanel;
 import lr_in_the_well.alexis_puska.view.properties.PlatformPanel;
@@ -195,6 +197,7 @@ public class App extends JFrame {
     private JButton pointButton;
     private JButton effectButton;
     private JButton decorButton;
+    private JButton itemButton;
 
     /********************
      * LEVEL PROPERTIES
@@ -383,6 +386,7 @@ public class App extends JFrame {
         panelElement.add(pointButton);
         panelElement.add(effectButton);
         panelElement.add(decorButton);
+        panelElement.add(itemButton);
         westPanel.add(panelElement);
     }
 
@@ -530,6 +534,7 @@ public class App extends JFrame {
         pointButton = new JButton(message.getString("element.button.point"));
         effectButton = new JButton(message.getString("element.button.effect"));
         decorButton = new JButton(message.getString("element.button.decor"));
+        itemButton = new JButton(message.getString("element.button.item"));
 
         // properties
         panelParameters = new JPanel();
@@ -1086,6 +1091,12 @@ public class App extends JFrame {
                 action = ActionEnum.ADD_DECOR;
             }
         });
+        itemButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                action = ActionEnum.ADD_ITEM;
+            }
+        });
     }
 
     /*************************************************************************************
@@ -1113,6 +1124,9 @@ public class App extends JFrame {
         case SELECT:
         case DELETE:
             break;
+        case ADD_ITEM:
+        		this.addItem(caseX, caseY);
+        		break;
         case ADD_DECOR:
             this.addDecor(caseX, caseY);
             break;
@@ -1208,6 +1222,7 @@ public class App extends JFrame {
         case SELECT:
         case DELETE:
         case ADD_DECOR:
+        case ADD_ITEM:
         case ADD_VORTEX:
         case ADD_PICK:
         case ADD_DOOR:
@@ -1250,6 +1265,7 @@ public class App extends JFrame {
         case DRAW_VERTICAL_PLATFORM:
         case DRAW_HORIZONTAL_PLATFORM:
         case ADD_VORTEX:
+        case ADD_ITEM:
         case ADD_DECOR:
         case ADD_TELEPORTER:
         case ADD_RAYON:
@@ -1356,6 +1372,11 @@ public class App extends JFrame {
         levelService.addObjectEffect(x, y);
         repaint();
     }
+    
+    private void addItem(int x, int y) {
+        levelService.addItem(x, y);
+        repaint();
+    }
 
     private void deleteElement(int x, int y) {
         levelService.deleteElement(x, y);
@@ -1368,7 +1389,9 @@ public class App extends JFrame {
             centerPanel.remove(identifiablePropertiesPanel);
         }
         if (obj != null) {
-            if (obj.getClass().equals(Decor.class)) {
+        	if (obj.getClass().equals(Item.class)) {
+        			treatItemProperties((Item) obj);
+            } else if (obj.getClass().equals(Decor.class)) {
                 treatDecorProperties((Decor) obj);
             } else if (obj.getClass().equals(Door.class)) {
                 treatDoorProperties((Door) obj);
@@ -1394,6 +1417,12 @@ public class App extends JFrame {
         }
     }
 
+    private void treatItemProperties(Item item) {
+        identifiablePropertiesPanel = new ItemPanel(message, centerPanel, drawPanel, levelService,
+                message.getString("properties.item.border"), item);
+        centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+    }
+    
     private void treatEventProperties(Event event) {
         identifiablePropertiesPanel = new EventPanel(message, centerPanel, drawPanel, levelService,
                 message.getString("properties.event.border"), event);

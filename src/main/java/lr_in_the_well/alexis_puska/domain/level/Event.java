@@ -43,4 +43,10 @@ public class Event extends Identifiable implements Serializable {
 		this.movePlateformY = movePlateformY;
 	}
 
+	public Event(int id, int x, int y) {
+		super(id);
+		this.x = x;
+		this.y = y;
+	}
+
 }

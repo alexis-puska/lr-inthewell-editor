@@ -18,23 +18,21 @@ import lr_in_the_well.alexis_puska.view.IdentifiablePanel;
 public class TeleporterPanel extends IdentifiablePanel {
 
     private static final long serialVersionUID = -4090876979915495722L;
-    private static final String DESTINATION = "Destination : ";
     
     private Teleporter teleporter;
 
     private JLabel destinationLabel;
-
     private JTextField destinationTextField;
 
     public TeleporterPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name,
             Teleporter teleporter) {
         super(message, parent, drawPanel, levelService, name);
         this.teleporter = teleporter;
-        destinationLabel = new JLabel(DESTINATION, JLabel.TRAILING);
+        destinationLabel = new JLabel(message.getString("properties.teleporter.destination"), JLabel.TRAILING);
         destinationTextField = new JTextField();
         destinationLabel.setLabelFor(destinationTextField);
-        destinationTextField.setToolTipText("ID du téléporter de destination");
-        destinationLabel.setToolTipText("ID du téléporter de destination");
+        destinationTextField.setToolTipText(message.getString("properties.teleporter.destination.description"));
+        destinationLabel.setToolTipText(message.getString("properties.teleporter.destination.description"));
         this.add(destinationLabel);
         this.add(destinationTextField);
         idField.setText(Integer.toString(teleporter.getId()));

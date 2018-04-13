@@ -27,7 +27,7 @@ public class EnnemiePanel extends IdentifiablePanel {
 	public EnnemiePanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Ennemie ennemie) {
 		super(message, parent, drawPanel, levelService, name);
 		this.ennemie = ennemie;
-		typeLabel = new JLabel("type", JLabel.TRAILING);
+		typeLabel = new JLabel(message.getString("properties.ennemie.type"), JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
 		typeModel.setMinimum(0);

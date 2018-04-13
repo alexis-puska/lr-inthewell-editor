@@ -22,7 +22,8 @@ public class EventPanel extends IdentifiablePanel {
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public EventPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Event event) {
+	public EventPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService,
+			String name, Event event) {
 		super(message, parent, drawPanel, levelService, name);
 		this.event = event;
 		typeLabel = new JLabel("test", JLabel.TRAILING);

@@ -18,10 +18,8 @@ public class Vortex extends Identifiable implements Serializable {
 	private double zoomY;
 	private boolean enable;
 	private int destination;
-	private int animationType;
 
-	public Vortex(int id, int x, int y, double zoomX, double zoomY, boolean enable, int destination,
-			int animationType) {
+	public Vortex(int id, int x, int y, double zoomX, double zoomY, boolean enable, int destination) {
 		super(id);
 		this.x = x;
 		this.y = y;
@@ -29,7 +27,6 @@ public class Vortex extends Identifiable implements Serializable {
 		this.zoomY = zoomY;
 		this.enable = enable;
 		this.destination = destination;
-		this.animationType = animationType;
 	}
 
 }

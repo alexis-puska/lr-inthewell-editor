@@ -14,12 +14,15 @@ import java.util.List;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
+import lr_in_the_well.alexis_puska.domain.level.Event;
+import lr_in_the_well.alexis_puska.domain.level.Item;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
 import lr_in_the_well.alexis_puska.domain.level.StartEffectObjets;
 import lr_in_the_well.alexis_puska.domain.level.StartPlayer;
 import lr_in_the_well.alexis_puska.domain.level.StartPointObjets;
 import lr_in_the_well.alexis_puska.domain.level.Teleporter;
+import lr_in_the_well.alexis_puska.domain.level.Vortex;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
 
@@ -54,10 +57,13 @@ public class DrawPanel extends Canvas {
 			drawTeleporter(g2);
 			drawPlatform(g2);
 			drawRayon(g2);
+			drawVortex(g2);
 			drawEnnemies(g2);
 			drawStartPlayer(g2);
 			drawEffectObject(g2);
 			drawPontObject(g2);
+			drawItem(g2);
+			drawEvent(g2);
 			drawGrid(g2);
 		} else {
 			Font font = new Font("Serif", Font.PLAIN, 20);
@@ -86,7 +92,7 @@ public class DrawPanel extends Canvas {
 			g2.setStroke(savedStrock);
 		}
 	}
-	
+
 	private void drawEffectObject(Graphics2D g2) {
 		List<StartEffectObjets> sp = levelService.getCurrentLevel().getStartEffectObjets();
 		if (sp != null && !sp.isEmpty()) {
@@ -102,7 +108,7 @@ public class DrawPanel extends Canvas {
 			g2.setStroke(savedStrock);
 		}
 	}
-	
+
 	private void drawPontObject(Graphics2D g2) {
 		List<StartPointObjets> sp = levelService.getCurrentLevel().getStartPointObjets();
 		if (sp != null && !sp.isEmpty()) {
@@ -164,6 +170,35 @@ public class DrawPanel extends Canvas {
 			}
 			x += bf.getWidth();
 			y = 0;
+		}
+	}
+
+	private void drawItem(Graphics2D g2) {
+		for (Item item : levelService.getCurrentLevel().getItems()) {
+			BufferedImage bf = spriteService.getSprite("objects", item.getItemId());
+			g2.drawImage(bf, null, item.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
+					((item.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+		}
+	}
+
+	private void drawEvent(Graphics2D g2) {
+		Stroke savedStrock = g2.getStroke();
+		g2.setColor(Color.PINK);
+		Font font = new Font("Arial", Font.PLAIN, 20);
+		g2.setFont(font);
+		g2.setStroke(new BasicStroke(2));
+		for (Event event : levelService.getCurrentLevel().getEvent()) {
+			g2.drawString("Ev", event.getX() * Constante.GRID_SIZE,
+					(event.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+		}
+		g2.setStroke(savedStrock);
+	}
+
+	private void drawVortex(Graphics2D g2) {
+		for (Vortex vortex : levelService.getCurrentLevel().getVortex()) {
+			BufferedImage bf = spriteService.getSprite("vortex", 0);
+			g2.drawImage(bf, null, vortex.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
+					((vortex.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
 		}
 	}
 

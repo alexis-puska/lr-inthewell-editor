@@ -1,3 +1,4 @@
+
 package lr_in_the_well.alexis_puska.view.properties;
 
 import java.awt.event.ItemEvent;
@@ -16,36 +17,36 @@ import lr_in_the_well.alexis_puska.view.IdentifiablePanel;
 
 public class PickPanel extends IdentifiablePanel {
 
-    private static final long serialVersionUID = -4090876979915495722L;
-    private static final String ACTIF = "Actif : ";
-    private Pick pick;
+	private static final long serialVersionUID = -4090876979915495722L;
+	private Pick pick;
 
-    private JLabel actifLabel;
-    private JCheckBox actifCheckBox;
+	private JLabel actifLabel;
+	private JCheckBox actifCheckBox;
 
-    public PickPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Pick pick) {
-        super(message, parent, drawPanel, levelService, name);
-        this.pick = pick;
-        idField.setText(Integer.toString(pick.getId()));
+	public PickPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name,
+			Pick pick) {
+		super(message, parent, drawPanel, levelService, name);
+		this.pick = pick;
+		idField.setText(Integer.toString(pick.getId()));
 
-        actifLabel = new JLabel(ACTIF, JLabel.TRAILING);
-        actifCheckBox = new JCheckBox();
-        actifCheckBox.setToolTipText("Vortex affiché dès l'entrée du niveau");
-        actifLabel.setLabelFor(actifCheckBox);
-        this.add(actifLabel);
-        this.add(actifCheckBox);
+		actifLabel = new JLabel(message.getString("properties.pick.actif"), JLabel.TRAILING);
+		actifCheckBox = new JCheckBox();
+		actifCheckBox.setToolTipText(message.getString("properties.pick.actif.description"));
+		actifLabel.setLabelFor(actifCheckBox);
+		this.add(actifLabel);
+		this.add(actifCheckBox);
 
-        SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
-        addListeners();
-        this.parent.updateUI();
-    }
+		SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
+		addListeners();
+		this.parent.updateUI();
+	}
 
-    public void addListeners() {
-        actifCheckBox.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent e) {
-                pick.setVisible(actifCheckBox.isSelected());
-                levelService.updatePick(pick);
-            }
-        });
-    }
+	public void addListeners() {
+		actifCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				pick.setVisible(actifCheckBox.isSelected());
+				levelService.updatePick(pick);
+			}
+		});
+	}
 }

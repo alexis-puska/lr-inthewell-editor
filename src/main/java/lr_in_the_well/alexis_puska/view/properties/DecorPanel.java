@@ -80,5 +80,4 @@ public class DecorPanel extends IdentifiablePanel {
     public void updateDecor() {
         levelService.updateDecor(decor);
     }
-
 }
