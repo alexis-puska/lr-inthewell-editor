@@ -2,6 +2,7 @@ package lr_in_the_well.alexis_puska.view.properties;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ResourceBundle;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,13 +26,15 @@ public class TeleporterPanel extends IdentifiablePanel {
 
     private JTextField destinationTextField;
 
-    public TeleporterPanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name,
+    public TeleporterPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name,
             Teleporter teleporter) {
-        super(parent, drawPanel, levelService, name);
+        super(message, parent, drawPanel, levelService, name);
         this.teleporter = teleporter;
         destinationLabel = new JLabel(DESTINATION, JLabel.TRAILING);
         destinationTextField = new JTextField();
         destinationLabel.setLabelFor(destinationTextField);
+        destinationTextField.setToolTipText("ID du téléporter de destination");
+        destinationLabel.setToolTipText("ID du téléporter de destination");
         this.add(destinationLabel);
         this.add(destinationTextField);
         idField.setText(Integer.toString(teleporter.getId()));

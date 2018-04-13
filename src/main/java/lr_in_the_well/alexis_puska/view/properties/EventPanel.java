@@ -1,5 +1,7 @@
 package lr_in_the_well.alexis_puska.view.properties;
 
+import java.util.ResourceBundle;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -20,8 +22,8 @@ public class EventPanel extends IdentifiablePanel {
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public EventPanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Event event) {
-		super(parent, drawPanel, levelService, name);
+	public EventPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Event event) {
+		super(message, parent, drawPanel, levelService, name);
 		this.event = event;
 		typeLabel = new JLabel("test", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();

@@ -11,7 +11,7 @@ public class Constante {
     public static final int NB_ROW_NAVIGATION = 1;
     public static final int NB_COLUMN_ENNEMIE = 2;
     public static final int NB_ROW_ENNEMIE = 10;
-    public static final int ROW_ELEMENT_PANEL = 7;
+    public static final int ROW_ELEMENT_PANEL = 8;
     public static final int COL_ELEMENT_PANEL = 2;
     public static final int NB_COLUMN_PARAMETER = 5;
     public static final int NB_ROW_PARAMETER = 1;
@@ -28,6 +28,4 @@ public class Constante {
 	public static final int MIN_TYPE_ID = 0;
 	public static final int MAX_TYPE_ID = 4;
 	public static final int MIN_LEVEL_ID = 0;
-	
-	
 }

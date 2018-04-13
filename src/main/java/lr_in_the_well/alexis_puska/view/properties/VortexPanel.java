@@ -4,6 +4,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ResourceBundle;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -29,14 +30,15 @@ public class VortexPanel extends IdentifiablePanel {
     private JLabel actifLabel;
     private JCheckBox actifCheckBox;
 
-    public VortexPanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Vortex vortex) {
-        super(parent, drawPanel, levelService, name);
+    public VortexPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Vortex vortex) {
+        super(message, parent, drawPanel, levelService, name);
         this.vortex = vortex;
         destinationLabel = new JLabel(DESTINATION, JLabel.TRAILING);
         destinationTextField = new JTextField();
         destinationLabel.setLabelFor(destinationTextField);
         actifLabel = new JLabel(ACTIF, JLabel.TRAILING);
         actifCheckBox = new JCheckBox();
+        actifCheckBox.setToolTipText("Vortex affiché dès l'entrée du niveau");
         actifLabel.setLabelFor(actifCheckBox);
         this.add(actifLabel);
         this.add(actifCheckBox);
@@ -44,7 +46,7 @@ public class VortexPanel extends IdentifiablePanel {
         this.add(destinationTextField);
         idField.setText(Integer.toString(vortex.getId()));
         destinationTextField.setText(Integer.toString(vortex.getDestination()));
-        SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
+        SpringUtilities.makeCompactGrid(this, 3, 2, 6, 6, 6, 6);
         addListeners();
         this.parent.updateUI();
     }

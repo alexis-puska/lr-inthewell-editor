@@ -1,5 +1,7 @@
 package lr_in_the_well.alexis_puska.view.properties;
 
+import java.util.ResourceBundle;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -22,8 +24,8 @@ public class EnnemiePanel extends IdentifiablePanel {
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public EnnemiePanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Ennemie ennemie) {
-		super(parent, drawPanel, levelService, name);
+	public EnnemiePanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Ennemie ennemie) {
+		super(message, parent, drawPanel, levelService, name);
 		this.ennemie = ennemie;
 		typeLabel = new JLabel("type", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();

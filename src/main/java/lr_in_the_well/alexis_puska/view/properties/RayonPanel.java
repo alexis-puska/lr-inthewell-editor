@@ -1,5 +1,7 @@
 package lr_in_the_well.alexis_puska.view.properties;
 
+import java.util.ResourceBundle;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -22,8 +24,8 @@ public class RayonPanel extends IdentifiablePanel {
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
 
-	public RayonPanel(JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Rayon rayon) {
-		super(parent, drawPanel, levelService, name);
+	public RayonPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Rayon rayon) {
+		super(message, parent, drawPanel, levelService, name);
 		this.rayon = rayon;
 		typeLabel = new JLabel("type", JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
