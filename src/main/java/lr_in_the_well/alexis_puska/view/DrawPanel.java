@@ -13,9 +13,12 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
+import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
 import lr_in_the_well.alexis_puska.domain.level.Event;
 import lr_in_the_well.alexis_puska.domain.level.Item;
+import lr_in_the_well.alexis_puska.domain.level.Lock;
+import lr_in_the_well.alexis_puska.domain.level.Pick;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
 import lr_in_the_well.alexis_puska.domain.level.StartEffectObjets;
@@ -65,6 +68,9 @@ public class DrawPanel extends Canvas {
 			drawItem(g2);
 			drawEvent(g2);
 			drawGrid(g2);
+			drawLock(g2);
+			drawDoors(g2);
+			drawPick(g2);
 		} else {
 			Font font = new Font("Serif", Font.PLAIN, 20);
 			g2.setFont(font);
@@ -178,6 +184,44 @@ public class DrawPanel extends Canvas {
 			BufferedImage bf = spriteService.getSprite("objects", item.getItemId());
 			g2.drawImage(bf, null, item.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
 					((item.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+		}
+	}
+
+	private void drawLock(Graphics2D g2) {
+		for (Lock lock : levelService.getCurrentLevel().getLock()) {
+			BufferedImage bf = spriteService.getSprite("serrure", 1);
+			g2.drawImage(bf, null, lock.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
+					((lock.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+		}
+	}
+
+	private void drawDoors(Graphics2D g2) {
+		for (Door door : levelService.getCurrentLevel().getDoor()) {
+			BufferedImage bf = spriteService.getSprite("doors", door.getType());
+			g2.drawImage(bf, null, door.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
+					((door.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+		}
+	}
+
+	private void drawPick(Graphics2D g2) {
+		for (Pick pick : levelService.getCurrentLevel().getPick()) {
+			BufferedImage bf = spriteService.getSprite("pick", 1);
+			AffineTransform backup = g2.getTransform();
+			AffineTransform trans = new AffineTransform();
+			if (pick.getDirection() == 1) {
+				trans.rotate((Math.PI / 2), pick.getX() * Constante.GRID_SIZE, pick.getY() * Constante.GRID_SIZE);
+				trans.translate(0,-Constante.GRID_SIZE);
+			} else if (pick.getDirection() == 2) {
+				trans.rotate((Math.PI), pick.getX() * Constante.GRID_SIZE, pick.getY() * Constante.GRID_SIZE);
+				trans.translate(-Constante.GRID_SIZE, -Constante.GRID_SIZE);
+			} else if (pick.getDirection() == 3) {
+				trans.rotate(3*(Math.PI / 2), pick.getX() * Constante.GRID_SIZE, pick.getY() * Constante.GRID_SIZE);
+				trans.translate(-Constante.GRID_SIZE,0);
+			}
+			g2.transform(trans);
+			g2.drawImage(bf, pick.getX() * Constante.GRID_SIZE, pick.getY() * Constante.GRID_SIZE,
+					null);
+			g2.setTransform(backup); // restore previous transform
 		}
 	}
 

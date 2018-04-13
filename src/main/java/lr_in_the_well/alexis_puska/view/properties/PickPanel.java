@@ -8,6 +8,10 @@ import java.util.ResourceBundle;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import lr_in_the_well.alexis_puska.domain.level.Pick;
 import lr_in_the_well.alexis_puska.service.LevelService;
@@ -23,20 +27,39 @@ public class PickPanel extends IdentifiablePanel {
 	private JLabel actifLabel;
 	private JCheckBox actifCheckBox;
 
+	private JLabel directionLabel;
+	private SpinnerNumberModel directionModel;
+	private JSpinner directionSpinner;
+
 	public PickPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name,
 			Pick pick) {
 		super(message, parent, drawPanel, levelService, name);
 		this.pick = pick;
-		idField.setText(Integer.toString(pick.getId()));
 
 		actifLabel = new JLabel(message.getString("properties.pick.actif"), JLabel.TRAILING);
 		actifCheckBox = new JCheckBox();
 		actifCheckBox.setToolTipText(message.getString("properties.pick.actif.description"));
 		actifLabel.setLabelFor(actifCheckBox);
+
+		directionLabel = new JLabel(message.getString("properties.pick.direction"), JLabel.TRAILING);
+		directionModel = new SpinnerNumberModel();
+		directionSpinner = new JSpinner();
+		directionModel.setMinimum(0);
+		directionModel.setMaximum(3);
+		directionSpinner.setModel(directionModel);
+		directionLabel.setLabelFor(directionSpinner);
+
+		idField.setText(Integer.toString(pick.getId()));
+		actifCheckBox.setSelected(pick.isVisible());
+		directionSpinner.setValue((Integer) pick.getDirection());
+
 		this.add(actifLabel);
 		this.add(actifCheckBox);
 
-		SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
+		this.add(directionLabel);
+		this.add(directionSpinner);
+
+		SpringUtilities.makeCompactGrid(this, 3, 2, 6, 6, 6, 6);
 		addListeners();
 		this.parent.updateUI();
 	}
@@ -46,6 +69,18 @@ public class PickPanel extends IdentifiablePanel {
 			public void itemStateChanged(ItemEvent e) {
 				pick.setVisible(actifCheckBox.isSelected());
 				levelService.updatePick(pick);
+			}
+		});
+		directionSpinner.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				JSpinner text = (JSpinner) e.getSource();
+				if (text.getValue() != null) {
+					pick.setDirection((Integer) text.getValue());
+					levelService.updatePick(pick);
+					drawPanel.repaint();
+					parent.repaint();
+				}
 			}
 		});
 	}

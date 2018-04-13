@@ -404,7 +404,7 @@ public class LevelService {
 
 	public void addDoor(int x, int y) {
 		if (currentLevel != null) {
-			currentLevel.getDoor().add(new Door(getIdFromIdentifiable(currentLevel.getDoor()), x, y, 0, true, 0, 0));
+			currentLevel.getDoor().add(new Door(getIdFromIdentifiable(currentLevel.getDoor()), x, y, 0, true, 0, 0, 0));
 			saveCurrentLevel();
 		}
 	}
