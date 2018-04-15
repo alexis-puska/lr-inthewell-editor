@@ -10,14 +10,23 @@
       "horizontalPlateform" : 0,
       "decor" : [ {
         "id" : 0,
-        "x" : 210,
-        "y" : 500,
+        "x" : 0,
+        "y" : 0,
         "display" : true,
         "back" : false,
-        "indexAnim" : 0
+        "indexAnim" : 5
       } ],
       "event" : [ ],
-      "door" : [ ],
+      "door" : [ {
+        "id" : 0,
+        "x" : 19,
+        "y" : 19,
+        "type" : 4,
+        "locked" : true,
+        "toLevel" : 0,
+        "requieredKey" : 0,
+        "lockId" : 0
+      } ],
       "lock" : [ ],
       "pick" : [ ],
       "platform" : [ {
@@ -270,11 +279,11 @@
       "horizontalPlateform" : 0,
       "decor" : [ {
         "id" : 0,
-        "x" : 210,
-        "y" : 145,
+        "x" : 0,
+        "y" : 0,
         "display" : true,
         "back" : false,
-        "indexAnim" : 1
+        "indexAnim" : 6
       } ],
       "event" : [ ],
       "door" : [ ],
@@ -2534,13 +2543,13 @@
         "y" : 23,
         "type" : 0
       }, {
-        "id" : 3,
-        "x" : 7,
-        "y" : 22,
-        "type" : 0
-      }, {
         "id" : 4,
         "x" : 12,
+        "y" : 11,
+        "type" : 0
+      }, {
+        "id" : 0,
+        "x" : 7,
         "y" : 11,
         "type" : 0
       } ],
@@ -2737,6 +2746,11 @@
         "x" : 8,
         "y" : 8,
         "type" : 3
+      }, {
+        "id" : 3,
+        "x" : 18,
+        "y" : 8,
+        "type" : 3
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
@@ -2750,7 +2764,21 @@
       "verticalPlateform" : 0,
       "horizontalPlateform" : 0,
       "decor" : [ ],
-      "event" : [ ],
+      "event" : [ {
+        "id" : 0,
+        "triggered" : false,
+        "x" : 16,
+        "y" : 17,
+        "type" : 0,
+        "objectId" : 0,
+        "vortexId" : 0,
+        "animation" : null,
+        "doorId" : 0,
+        "platformToMRemove" : 0,
+        "plateformToMove" : 0,
+        "movePlateformX" : 0,
+        "movePlateformY" : 0
+      } ],
       "door" : [ ],
       "lock" : [ ],
       "pick" : [ ],
@@ -2909,7 +2937,15 @@
       } ],
       "rayon" : [ ],
       "teleporter" : [ ],
-      "vortex" : [ ],
+      "vortex" : [ {
+        "id" : 0,
+        "x" : 4,
+        "y" : 20,
+        "zoomX" : 1.0,
+        "zoomY" : 1.0,
+        "enable" : false,
+        "destination" : 0
+      } ],
       "ennemies" : [ {
         "id" : 0,
         "x" : 4,
@@ -2931,14 +2967,14 @@
         "y" : 21,
         "type" : 0
       }, {
-        "id" : 4,
-        "x" : 16,
-        "y" : 21,
-        "type" : 0
-      }, {
         "id" : 5,
         "x" : 11,
         "y" : 9,
+        "type" : 0
+      }, {
+        "id" : 4,
+        "x" : 7,
+        "y" : 21,
         "type" : 0
       } ],
       "startPlayers" : [ ],
@@ -3289,11 +3325,6 @@
       "teleporter" : [ ],
       "vortex" : [ ],
       "ennemies" : [ {
-        "id" : 0,
-        "x" : 18,
-        "y" : 14,
-        "type" : 3
-      }, {
         "id" : 1,
         "x" : 9,
         "y" : 13,
@@ -3306,6 +3337,11 @@
       }, {
         "id" : 3,
         "x" : 4,
+        "y" : 16,
+        "type" : 3
+      }, {
+        "id" : 0,
+        "x" : 18,
         "y" : 16,
         "type" : 3
       } ],
@@ -4439,7 +4475,15 @@
         "vertical" : false
       } ],
       "teleporter" : [ ],
-      "vortex" : [ ],
+      "vortex" : [ {
+        "id" : 0,
+        "x" : 4,
+        "y" : 15,
+        "zoomX" : 1.0,
+        "zoomY" : 1.0,
+        "enable" : false,
+        "destination" : 0
+      } ],
       "ennemies" : [ {
         "id" : 0,
         "x" : 13,
@@ -4817,14 +4861,6 @@
         "length" : 2,
         "surfaceId" : 0
       }, {
-        "id" : 9,
-        "x" : 11,
-        "y" : 13,
-        "vertical" : false,
-        "visible" : false,
-        "length" : 2,
-        "surfaceId" : 0
-      }, {
         "id" : 10,
         "x" : 15,
         "y" : 13,
@@ -4857,14 +4893,6 @@
         "length" : 2,
         "surfaceId" : 0
       }, {
-        "id" : 14,
-        "x" : 15,
-        "y" : 16,
-        "vertical" : false,
-        "visible" : false,
-        "length" : 2,
-        "surfaceId" : 0
-      }, {
         "id" : 15,
         "x" : 3,
         "y" : 19,
@@ -4880,31 +4908,27 @@
         "visible" : false,
         "length" : 5,
         "surfaceId" : 0
+      }, {
+        "id" : 9,
+        "x" : 11,
+        "y" : 13,
+        "vertical" : false,
+        "visible" : true,
+        "length" : 2,
+        "surfaceId" : 0
+      }, {
+        "id" : 14,
+        "x" : 15,
+        "y" : 16,
+        "vertical" : false,
+        "visible" : true,
+        "length" : 2,
+        "surfaceId" : 0
       } ],
       "rayon" : [ ],
       "teleporter" : [ ],
       "vortex" : [ ],
-      "ennemies" : [ {
-        "id" : 0,
-        "x" : 11,
-        "y" : 13,
-        "type" : 0
-      }, {
-        "id" : 1,
-        "x" : 15,
-        "y" : 16,
-        "type" : 2
-      }, {
-        "id" : 2,
-        "x" : 14,
-        "y" : 21,
-        "type" : 2
-      }, {
-        "id" : 3,
-        "x" : 14,
-        "y" : 21,
-        "type" : 2
-      } ],
+      "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
       "startPointObjets" : [ ],
@@ -5258,7 +5282,15 @@
         "vertical" : true,
         "toId" : 0
       } ],
-      "vortex" : [ ],
+      "vortex" : [ {
+        "id" : 0,
+        "x" : 3,
+        "y" : 4,
+        "zoomX" : 1.0,
+        "zoomY" : 1.0,
+        "enable" : false,
+        "destination" : 0
+      } ],
       "ennemies" : [ {
         "id" : 0,
         "x" : 7,
@@ -5422,8 +5454,8 @@
         "type" : 2
       }, {
         "id" : 3,
-        "x" : 17,
-        "y" : 12,
+        "x" : 13,
+        "y" : 15,
         "type" : 2
       } ],
       "startPlayers" : [ ],
@@ -5921,14 +5953,14 @@
         "y" : 11,
         "type" : 2
       }, {
-        "id" : 2,
-        "x" : 10,
-        "y" : 18,
-        "type" : 2
-      }, {
         "id" : 3,
         "x" : 12,
         "y" : 7,
+        "type" : 2
+      }, {
+        "id" : 4,
+        "x" : 10,
+        "y" : 19,
         "type" : 2
       } ],
       "startPlayers" : [ ],
@@ -6776,7 +6808,12 @@
       "decor" : [ ],
       "event" : [ ],
       "door" : [ ],
-      "lock" : [ ],
+      "lock" : [ {
+        "id" : 0,
+        "x" : 10,
+        "y" : 19,
+        "requieredKeyId" : 0
+      } ],
       "pick" : [ {
         "id" : 0,
         "x" : 11,
@@ -7037,7 +7074,15 @@
         "vertical" : false,
         "toId" : 2
       } ],
-      "vortex" : [ ],
+      "vortex" : [ {
+        "id" : 0,
+        "x" : 17,
+        "y" : 21,
+        "zoomX" : 0.30000000000000004,
+        "zoomY" : 1.0,
+        "enable" : false,
+        "destination" : 0
+      } ],
       "ennemies" : [ {
         "id" : 0,
         "x" : 19,
@@ -8166,15 +8211,15 @@
         "y" : 14,
         "type" : 3
       }, {
-        "id" : 4,
-        "x" : 18,
-        "y" : 17,
-        "type" : 3
-      }, {
         "id" : 5,
         "x" : 4,
         "y" : 2,
         "type" : 4
+      }, {
+        "id" : 4,
+        "x" : 12,
+        "y" : 8,
+        "type" : 3
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
@@ -8545,7 +8590,21 @@
         "length" : 5,
         "surfaceId" : 0
       } ],
-      "rayon" : [ ],
+      "rayon" : [ {
+        "id" : 0,
+        "x" : 5,
+        "y" : 3,
+        "length" : 2,
+        "type" : 4,
+        "vertical" : false
+      }, {
+        "id" : 1,
+        "x" : 9,
+        "y" : 4,
+        "length" : 1,
+        "type" : 0,
+        "vertical" : false
+      } ],
       "teleporter" : [ ],
       "vortex" : [ ],
       "ennemies" : [ {
@@ -9038,14 +9097,6 @@
         "length" : 2,
         "surfaceId" : 0
       }, {
-        "id" : 22,
-        "x" : 15,
-        "y" : 15,
-        "vertical" : false,
-        "visible" : false,
-        "length" : 2,
-        "surfaceId" : 0
-      }, {
         "id" : 23,
         "x" : 9,
         "y" : 17,
@@ -9134,22 +9185,6 @@
         "length" : 6,
         "surfaceId" : 0
       }, {
-        "id" : 34,
-        "x" : 17,
-        "y" : 8,
-        "vertical" : true,
-        "visible" : false,
-        "length" : 6,
-        "surfaceId" : 0
-      }, {
-        "id" : 35,
-        "x" : 8,
-        "y" : 15,
-        "vertical" : true,
-        "visible" : false,
-        "length" : 2,
-        "surfaceId" : 0
-      }, {
         "id" : 36,
         "x" : 16,
         "y" : 16,
@@ -9165,25 +9200,49 @@
         "visible" : false,
         "length" : 2,
         "surfaceId" : 0
+      }, {
+        "id" : 22,
+        "x" : 15,
+        "y" : 15,
+        "vertical" : false,
+        "visible" : true,
+        "length" : 2,
+        "surfaceId" : 0
+      }, {
+        "id" : 34,
+        "x" : 17,
+        "y" : 8,
+        "vertical" : true,
+        "visible" : true,
+        "length" : 6,
+        "surfaceId" : 0
+      }, {
+        "id" : 35,
+        "x" : 8,
+        "y" : 15,
+        "vertical" : true,
+        "visible" : true,
+        "length" : 2,
+        "surfaceId" : 0
       } ],
       "rayon" : [ ],
       "teleporter" : [ ],
       "vortex" : [ ],
       "ennemies" : [ {
         "id" : 0,
-        "x" : 8,
-        "y" : 15,
-        "type" : 5
+        "x" : 14,
+        "y" : 18,
+        "type" : 2
       }, {
         "id" : 1,
-        "x" : 15,
-        "y" : 15,
-        "type" : 5
+        "x" : 7,
+        "y" : 21,
+        "type" : 4
       }, {
         "id" : 2,
-        "x" : 17,
-        "y" : 12,
-        "type" : 5
+        "x" : 10,
+        "y" : 8,
+        "type" : 4
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
@@ -9388,7 +9447,15 @@
       } ],
       "rayon" : [ ],
       "teleporter" : [ ],
-      "vortex" : [ ],
+      "vortex" : [ {
+        "id" : 1,
+        "x" : 10,
+        "y" : 7,
+        "zoomX" : 1.0,
+        "zoomY" : 1.0,
+        "enable" : false,
+        "destination" : 0
+      } ],
       "ennemies" : [ {
         "id" : 0,
         "x" : 8,
@@ -9954,7 +10021,25 @@
       "event" : [ ],
       "door" : [ ],
       "lock" : [ ],
-      "pick" : [ ],
+      "pick" : [ {
+        "id" : 0,
+        "x" : 9,
+        "y" : 17,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 1,
+        "x" : 10,
+        "y" : 17,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 2,
+        "x" : 11,
+        "y" : 17,
+        "visible" : true,
+        "direction" : 0
+      } ],
       "platform" : [ {
         "id" : 0,
         "x" : 10,
@@ -10232,7 +10317,15 @@
       } ],
       "rayon" : [ ],
       "teleporter" : [ ],
-      "vortex" : [ ],
+      "vortex" : [ {
+        "id" : 0,
+        "x" : 4,
+        "y" : 5,
+        "zoomX" : 1.0,
+        "zoomY" : 1.0,
+        "enable" : false,
+        "destination" : 0
+      } ],
       "ennemies" : [ {
         "id" : 0,
         "x" : 9,
@@ -12621,7 +12714,15 @@
       } ],
       "rayon" : [ ],
       "teleporter" : [ ],
-      "vortex" : [ ],
+      "vortex" : [ {
+        "id" : 0,
+        "x" : 9,
+        "y" : 8,
+        "zoomX" : 1.0,
+        "zoomY" : 1.0,
+        "enable" : false,
+        "destination" : 0
+      } ],
       "ennemies" : [ {
         "id" : 0,
         "x" : 16,
@@ -12892,13 +12993,13 @@
       "teleporter" : [ ],
       "vortex" : [ ],
       "ennemies" : [ {
-        "id" : 0,
-        "x" : 1,
+        "id" : 1,
+        "x" : 11,
         "y" : 21,
         "type" : 7
       }, {
-        "id" : 1,
-        "x" : 11,
+        "id" : 0,
+        "x" : 4,
         "y" : 21,
         "type" : 7
       } ],
@@ -12989,14 +13090,6 @@
         "vertical" : false,
         "visible" : false,
         "length" : 3,
-        "surfaceId" : 0
-      }, {
-        "id" : 9,
-        "x" : 14,
-        "y" : 11,
-        "vertical" : false,
-        "visible" : false,
-        "length" : 5,
         "surfaceId" : 0
       }, {
         "id" : 10,
@@ -13109,6 +13202,14 @@
         "vertical" : false,
         "visible" : false,
         "length" : 5,
+        "surfaceId" : 0
+      }, {
+        "id" : 9,
+        "x" : 14,
+        "y" : 11,
+        "vertical" : false,
+        "visible" : true,
+        "length" : 6,
         "surfaceId" : 0
       } ],
       "rayon" : [ {
