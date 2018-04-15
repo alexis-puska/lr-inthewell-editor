@@ -1,7 +1,7 @@
 package lr_in_the_well.alexis_puska.constant;
 
 public class Constante {
-	public static final int APP_SIZE_X = 1400;
+	public static final int APP_SIZE_X = 1411;
     public static final int APP_SIZE_Y = 900;
 	public static final int PANEL_PLATFORM_BACKGROUD_WIDTH = 300;
 	public static final int SCREEN_SIZE_X = 400;

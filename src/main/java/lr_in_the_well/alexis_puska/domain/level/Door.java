@@ -30,5 +30,4 @@ public class Door extends Identifiable implements Serializable {
 		this.requieredKey = requieredKey;
 		this.lockId = lockId;
 	}
-
 }

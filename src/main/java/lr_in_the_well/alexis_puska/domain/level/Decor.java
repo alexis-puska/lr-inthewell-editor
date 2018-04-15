@@ -16,16 +16,14 @@ public class Decor extends Identifiable implements Serializable {
 	private int y;
 	private boolean display;
 	private boolean back;
-	private String anim;
 	private int indexAnim;
 
-	public Decor(int id, int x, int y, boolean display, boolean back, String anim, int indexAnim) {
+	public Decor(int id, int x, int y, boolean display, boolean back, int indexAnim) {
 		super(id);
 		this.x = x;
 		this.y = y;
 		this.display = display;
 		this.back = back;
-		this.anim = anim;
 		this.indexAnim = indexAnim;
 	}
 

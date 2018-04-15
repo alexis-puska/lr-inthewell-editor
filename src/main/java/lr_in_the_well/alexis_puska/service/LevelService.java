@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
@@ -98,7 +99,9 @@ public class LevelService {
 	}
 
 	public void createLevel() {
-		this.currentLevel = new Level(this.currentLevelIndex);
+		if (this.currentLevel == null) {
+			this.currentLevel = new Level(this.currentLevelIndex);
+		}
 	}
 
 	// Type
@@ -132,6 +135,9 @@ public class LevelService {
 		levelMap = new HashMap<>();
 		currentLevel = levelMap.get(currentLevelIndex);
 		for (Level level : currentType.getLevel()) {
+			if (level.getItems() == null) {
+				level.setItems(new ArrayList<>());
+			}
 			levelMap.put(level.getId(), level);
 		}
 		loadCurrentLevel();
@@ -375,7 +381,7 @@ public class LevelService {
 	public void addDecor(int x, int y) {
 		if (currentLevel != null) {
 			currentLevel.getDecor()
-					.add(new Decor(getIdFromIdentifiable(currentLevel.getDecor()), x, y, false, false, "decors", 0));
+					.add(new Decor(getIdFromIdentifiable(currentLevel.getDecor()), x, y, false, false, 0));
 			saveCurrentLevel();
 		}
 	}
@@ -445,11 +451,13 @@ public class LevelService {
 	}
 
 	public void deleteElement(int x, int y) {
+		int caseX = x / Constante.GRID_SIZE;
+		int caseY = y / Constante.GRID_SIZE;
 		// DECORS
 		if (currentLevel != null) {
 			List<Decor> decorToDelete = new ArrayList<>();
 			for (Decor e : currentLevel.getDecor()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() >= ((x+10) - 5) && e.getX() <= ((x+10) + 5) && e.getY() >= (y - 5) && e.getY() <= (y + 5)) {
 					decorToDelete.add(e);
 				}
 			}
@@ -458,7 +466,7 @@ public class LevelService {
 			// DOORS
 			List<Door> doorToDelete = new ArrayList<>();
 			for (Door e : currentLevel.getDoor()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					doorToDelete.add(e);
 				}
 			}
@@ -467,7 +475,7 @@ public class LevelService {
 			// ENNEMIES
 			List<Ennemie> ennemieToDelete = new ArrayList<>();
 			for (Ennemie e : currentLevel.getEnnemies()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					ennemieToDelete.add(e);
 				}
 			}
@@ -476,7 +484,7 @@ public class LevelService {
 			// LOCK
 			List<Lock> lockToDelete = new ArrayList<>();
 			for (Lock e : currentLevel.getLock()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					lockToDelete.add(e);
 				}
 			}
@@ -485,7 +493,7 @@ public class LevelService {
 			// PICK
 			List<Pick> pickToDelete = new ArrayList<>();
 			for (Pick e : currentLevel.getPick()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					pickToDelete.add(e);
 				}
 			}
@@ -494,7 +502,7 @@ public class LevelService {
 			// VORTEX
 			List<Vortex> vortexToDelete = new ArrayList<>();
 			for (Vortex e : currentLevel.getVortex()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					vortexToDelete.add(e);
 				}
 			}
@@ -506,14 +514,14 @@ public class LevelService {
 				if (e.isVertical()) {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
-					if (e.getX() == x && (min <= y && y < max)) {
+					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
 
 						platformToDelete.add(e);
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
-					if (e.getY() == y && (min <= x && x < max)) {
+					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
 
 						platformToDelete.add(e);
 					}
@@ -527,13 +535,13 @@ public class LevelService {
 				if (e.isVertical()) {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
-					if (e.getX() == x && (min <= y && y < max)) {
+					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
 						rayonToDelete.add(e);
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
-					if (e.getY() == y && (min <= x && x < max)) {
+					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
 						rayonToDelete.add(e);
 					}
 				}
@@ -546,13 +554,13 @@ public class LevelService {
 				if (e.isVertical()) {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
-					if (e.getX() == x && (min <= y && y < max)) {
+					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
 						teleporterToDelete.add(e);
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
-					if (e.getY() == y && (min <= x && x < max)) {
+					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
 						teleporterToDelete.add(e);
 					}
 				}
@@ -562,7 +570,7 @@ public class LevelService {
 			// EFFECT OBJET
 			List<StartEffectObjets> startEffectObjectToDelete = new ArrayList<>();
 			for (StartEffectObjets e : currentLevel.getStartEffectObjets()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					startEffectObjectToDelete.add(e);
 				}
 			}
@@ -571,7 +579,7 @@ public class LevelService {
 			// STARTPLAYER
 			List<StartPlayer> startPlayerToDelete = new ArrayList<>();
 			for (StartPlayer e : currentLevel.getStartPlayers()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					startPlayerToDelete.add(e);
 				}
 			}
@@ -580,7 +588,7 @@ public class LevelService {
 			// START POINT
 			List<StartPointObjets> startPointObjetsToDelete = new ArrayList<>();
 			for (StartPointObjets e : currentLevel.getStartPointObjets()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					startPointObjetsToDelete.add(e);
 				}
 			}
@@ -590,11 +598,21 @@ public class LevelService {
 			// ITEMS
 			List<Item> itemsToDelete = new ArrayList<>();
 			for (Item e : currentLevel.getItems()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					itemsToDelete.add(e);
 				}
 			}
 			currentLevel.getItems().removeAll(itemsToDelete);
+			saveCurrentLevel();
+
+			// EVENT
+			List<Event> eventsToDelete = new ArrayList<>();
+			for (Event e : currentLevel.getEvent()) {
+				if (e.getX() == caseX && e.getY() == caseY) {
+					eventsToDelete.add(e);
+				}
+			}
+			currentLevel.getEvent().removeAll(eventsToDelete);
 			saveCurrentLevel();
 		}
 	}
@@ -624,34 +642,36 @@ public class LevelService {
 	}
 
 	public Identifiable getProperties(int x, int y) {
+		int caseX = x / Constante.GRID_SIZE;
+		int caseY = y / Constante.GRID_SIZE;
 		if (currentLevel != null) {
 			for (Decor e : currentLevel.getDecor()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() >= ((x+10) - 5) && e.getX() <= ((x+10) + 5) && e.getY() >= (y - 5) && e.getY() <= (y + 5)) {
 					return e;
 				}
 			}
 			for (Door e : currentLevel.getDoor()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					return e;
 				}
 			}
 			for (Ennemie e : currentLevel.getEnnemies()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					return e;
 				}
 			}
 			for (Event e : currentLevel.getEvent()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					return e;
 				}
 			}
 			for (Lock e : currentLevel.getLock()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					return e;
 				}
 			}
 			for (Pick e : currentLevel.getPick()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					return e;
 				}
 			}
@@ -659,14 +679,14 @@ public class LevelService {
 				if (e.isVertical()) {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
-					if (e.getX() == x && (min <= y && y < max)) {
+					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
 
 						return e;
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
-					if (e.getY() == y && (min <= x && x < max)) {
+					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
 
 						return e;
 					}
@@ -676,13 +696,13 @@ public class LevelService {
 				if (e.isVertical()) {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
-					if (e.getX() == x && (min <= y && y < max)) {
+					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
 						return e;
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
-					if (e.getY() == y && (min <= x && x < max)) {
+					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
 						return e;
 					}
 				}
@@ -691,24 +711,24 @@ public class LevelService {
 				if (e.isVertical()) {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
-					if (e.getX() == x && (min <= y && y < max)) {
+					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
 						return e;
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
-					if (e.getY() == y && (min <= x && x < max)) {
+					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
 						return e;
 					}
 				}
 			}
 			for (Vortex e : currentLevel.getVortex()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					return e;
 				}
 			}
 			for (Item e : currentLevel.getItems()) {
-				if (e.getX() == x && e.getY() == y) {
+				if (e.getX() == caseX && e.getY() == caseY) {
 					return e;
 				}
 			}

@@ -20,10 +20,12 @@ public class SpriteService {
 
 	private final FileService fileService;
 	private Map<String, BufferedImage[]> sprites;
+	private Map<Integer, BufferedImage[]> spritesDecor;
 
 	public SpriteService(FileService fileService) {
 		this.fileService = fileService;
 		sprites = new HashMap<>();
+		spritesDecor = new HashMap<>();
 		LOG.info("Load Sprites : START");
 		initSprite();
 		LOG.info("Load Sprites : DONE");
@@ -42,7 +44,21 @@ public class SpriteService {
 		BufferedImage[] spritesAnimation = sprites.get(animation);
 		return spritesAnimation[index];
 	}
-	
+
+	/**
+	 * return a specific sprite
+	 * 
+	 * @param animation
+	 *            name of animation
+	 * @param index
+	 *            index of animation
+	 * @return Buffered Image
+	 */
+	public BufferedImage getDecor(int index) {
+		BufferedImage[] spritesAnimation = spritesDecor.get(index);
+		return spritesAnimation[0];
+	}
+
 	public int getSpriteAnimationSize(String animation) {
 		return sprites.get(animation).length;
 	}
@@ -92,11 +108,15 @@ public class SpriteService {
 							n++;
 						}
 					}
-					if (sprites.containsKey(area.getAnimation())) {
-						BufferedImage merge[] = mergeBufferedImage(sprites.get(area.getAnimation()), sprite);
-						sprites.put(area.getAnimation(), merge);
-					} else {
-						sprites.put(area.getAnimation(), sprite);
+					if (area.getGrp().equals("")) {
+						if (sprites.containsKey(area.getAnimation())) {
+							BufferedImage merge[] = mergeBufferedImage(sprites.get(area.getAnimation()), sprite);
+							sprites.put(area.getAnimation(), merge);
+						} else {
+							sprites.put(area.getAnimation(), sprite);
+						}
+					} else if (area.getGrp().equals("decor")) {
+						spritesDecor.put(spritesDecor.size(), sprite);
 					}
 				}
 			}

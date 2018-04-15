@@ -23,5 +23,6 @@ public class Sprite implements Serializable {
     private int sy;
     private int sx;
     private String animation;
+    private String grp;
     private String r;
 }

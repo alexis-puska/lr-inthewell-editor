@@ -1,7 +1,10 @@
 package lr_in_the_well.alexis_puska.view.properties;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ResourceBundle;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -23,6 +26,8 @@ public class RayonPanel extends IdentifiablePanel {
 	private JLabel typeLabel;
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
+	private JLabel verticalLabel;
+	private JCheckBox verticalCheckBox;
 
 	public RayonPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Rayon rayon) {
 		super(message, parent, drawPanel, levelService, name);
@@ -34,11 +39,19 @@ public class RayonPanel extends IdentifiablePanel {
 		typeModel.setMaximum(7);
 		typeSpinner.setModel(typeModel);
 		typeLabel.setLabelFor(typeSpinner);
+		verticalLabel = new JLabel(message.getString("properties.rayon.vertical"), JLabel.TRAILING);
+		verticalCheckBox = new JCheckBox();
+		verticalLabel.setLabelFor(verticalCheckBox);
+		
 		idField.setText(Integer.toString(rayon.getId()));
 		typeSpinner.setValue(Integer.valueOf(rayon.getType()));
+		verticalCheckBox.setSelected(rayon.isVertical());
+		
 		this.add(typeLabel);
 		this.add(typeSpinner);
-		SpringUtilities.makeCompactGrid(this, 2, 2, 2, 2, 2, 2);
+		this.add(verticalLabel);
+		this.add(verticalCheckBox);
+		SpringUtilities.makeCompactGrid(this, 3, 2, 2, 2, 2, 2);
 		addListeners();
 		this.parent.updateUI();
 	}
@@ -54,6 +67,14 @@ public class RayonPanel extends IdentifiablePanel {
 					drawPanel.repaint();
 					parent.repaint();
 				}
+			}
+		});
+		verticalCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				rayon.setVertical(verticalCheckBox.isSelected());
+				levelService.updateRayon(rayon);
+				drawPanel.repaint();
+				parent.repaint();
 			}
 		});
 	}

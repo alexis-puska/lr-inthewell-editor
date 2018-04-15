@@ -1,8 +1,10 @@
 package lr_in_the_well.alexis_puska.view;
 
+import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
+import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
 import lr_in_the_well.alexis_puska.domain.level.Event;
@@ -32,6 +35,7 @@ import lr_in_the_well.alexis_puska.service.SpriteService;
 public class DrawPanel extends Canvas {
 
 	private static final long serialVersionUID = -617780220828076518L;
+	private static final int OFFSET = 10;
 
 	private LevelService levelService;
 	private SpriteService spriteService;
@@ -57,6 +61,7 @@ public class DrawPanel extends Canvas {
 		Graphics2D g2 = (Graphics2D) bs.getDrawGraphics();
 		if (levelService.getCurrentLevel() != null) {
 			drawBackground(g2);
+			drawDecor(g2, true);
 			drawTeleporter(g2);
 			drawPlatform(g2);
 			drawRayon(g2);
@@ -71,6 +76,7 @@ public class DrawPanel extends Canvas {
 			drawLock(g2);
 			drawDoors(g2);
 			drawPick(g2);
+			drawDecor(g2, false);
 		} else {
 			Font font = new Font("Serif", Font.PLAIN, 20);
 			g2.setFont(font);
@@ -92,7 +98,7 @@ public class DrawPanel extends Canvas {
 			g2.setFont(font);
 			g2.setStroke(new BasicStroke(2));
 			for (StartPlayer s : sp) {
-				g2.drawString("S", s.getX() * Constante.GRID_SIZE + 2,
+				g2.drawString("S", (s.getX() * Constante.GRID_SIZE + 2) + OFFSET,
 						(s.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
 			}
 			g2.setStroke(savedStrock);
@@ -108,7 +114,7 @@ public class DrawPanel extends Canvas {
 			g2.setFont(font);
 			g2.setStroke(new BasicStroke(2));
 			for (StartEffectObjets s : sp) {
-				g2.drawString("E", s.getX() * Constante.GRID_SIZE + 2,
+				g2.drawString("E", (s.getX() * Constante.GRID_SIZE + 2) + OFFSET,
 						(s.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
 			}
 			g2.setStroke(savedStrock);
@@ -124,7 +130,7 @@ public class DrawPanel extends Canvas {
 			g2.setFont(font);
 			g2.setStroke(new BasicStroke(2));
 			for (StartPointObjets s : sp) {
-				g2.drawString("P", s.getX() * Constante.GRID_SIZE + 2,
+				g2.drawString("P", (s.getX() * Constante.GRID_SIZE + 2) + OFFSET,
 						(s.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
 			}
 			g2.setStroke(savedStrock);
@@ -142,22 +148,20 @@ public class DrawPanel extends Canvas {
 		g2.setColor(Color.RED);
 		x = 0;
 		while (x < Constante.SCREEN_SIZE_X) {
-			g2.drawLine(x, 0, x, Constante.SCREEN_SIZE_Y);
+			g2.drawLine(OFFSET + x, 0, x + OFFSET, Constante.SCREEN_SIZE_Y);
 			x += Constante.GRID_SIZE;
 		}
 		y = 0;
 		while (y < Constante.SCREEN_SIZE_Y) {
 			y += Constante.GRID_SIZE;
-			g2.drawLine(0, y, Constante.SCREEN_SIZE_X, y);
+			g2.drawLine(OFFSET, y, OFFSET + Constante.SCREEN_SIZE_X, y);
 		}
-		Stroke savedStrock = g2.getStroke();
-		g2.setStroke(new BasicStroke(3));
-		g2.drawLine(0, 0, Constante.SCREEN_SIZE_X, 0);
+		g2.drawLine(0, 0, Constante.SCREEN_SIZE_X + 20, 0);
 		g2.drawLine(0, 0, 0, Constante.SCREEN_SIZE_Y);
-		g2.drawLine(Constante.SCREEN_SIZE_X, 0, Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
-		g2.drawLine(0, Constante.SCREEN_SIZE_Y, Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
-
-		g2.setStroke(savedStrock);
+		g2.drawLine(OFFSET, 0, OFFSET, Constante.SCREEN_SIZE_Y);
+		g2.drawLine(20 + Constante.SCREEN_SIZE_X, 0, 20 + Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
+		g2.drawLine(OFFSET + Constante.SCREEN_SIZE_X, 0, OFFSET + Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
+		g2.drawLine(0, Constante.SCREEN_SIZE_Y, 20 + Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
 	}
 
 	/**
@@ -182,7 +186,7 @@ public class DrawPanel extends Canvas {
 	private void drawItem(Graphics2D g2) {
 		for (Item item : levelService.getCurrentLevel().getItems()) {
 			BufferedImage bf = spriteService.getSprite("objects", item.getItemId());
-			g2.drawImage(bf, null, item.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
+			g2.drawImage(bf, null, item.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10 + OFFSET,
 					((item.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
 		}
 	}
@@ -190,45 +194,38 @@ public class DrawPanel extends Canvas {
 	private void drawLock(Graphics2D g2) {
 		for (Lock lock : levelService.getCurrentLevel().getLock()) {
 			BufferedImage bf = spriteService.getSprite("serrure", 1);
-			g2.drawImage(bf, null, lock.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
+			g2.drawImage(bf, null, lock.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10 + OFFSET,
 					((lock.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
 		}
 	}
 
-	
-	//TODO REFACTORING C++ / JAVA POUR ORDRE DES SPRITES DE PORTES
+	private void drawDecor(Graphics2D g2, boolean onBackground) {
+		for (Decor decor : levelService.getCurrentLevel().getDecor()) {
+			if (decor.isBack() != onBackground) {
+				BufferedImage bf = spriteService.getDecor(decor.getIndexAnim());
+				g2.drawImage(bf, null, decor.getX(), decor.getY());
+				g2.setColor(Color.BLUE);
+				g2.fillRect(decor.getX() - 5, decor.getY() - 5, 10, 10);
+			} else {
+				float alpha = 0.5f;
+				Composite saved = g2.getComposite();
+				AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
+				g2.setComposite(ac);
+				BufferedImage bf = spriteService.getDecor(decor.getIndexAnim());
+				g2.drawImage(bf, null, decor.getX(), decor.getY());
+				g2.setColor(Color.BLUE);
+				g2.fillRect(decor.getX() - 5, decor.getY() - 5, 10, 10);
+
+				g2.setComposite(saved);
+			}
+		}
+	}
+
 	private void drawDoors(Graphics2D g2) {
 		for (Door door : levelService.getCurrentLevel().getDoor()) {
-			int index = 0;
-			switch (door.getType()) {
-			case 0:
-				index = 0;
-				break;
-			case 1:
-				index = 1;
-				break;
-			case 2:
-				index = 2;
-				break;
-			case 3:
-				index = 3;
-				break;
-			case 4:
-				index = 5;
-				break;
-			case 5:
-				index = 6;
-				break;
-			case 6:
-				index = 7;
-				break;
-			case 7:
-				index = 8;
-				break;
-			}
-			
+			int index = door.getType() * 2;
 			BufferedImage bf = spriteService.getSprite("doors", index);
-			g2.drawImage(bf, null, door.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
+			g2.drawImage(bf, null, door.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10 + OFFSET,
 					((door.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
 		}
 	}
@@ -239,18 +236,20 @@ public class DrawPanel extends Canvas {
 			AffineTransform backup = g2.getTransform();
 			AffineTransform trans = new AffineTransform();
 			if (pick.getDirection() == 1) {
-				trans.rotate((Math.PI / 2), pick.getX() * Constante.GRID_SIZE, pick.getY() * Constante.GRID_SIZE);
-				trans.translate(0,-Constante.GRID_SIZE);
+				trans.rotate((Math.PI / 2), (pick.getX() * Constante.GRID_SIZE) + OFFSET,
+						pick.getY() * Constante.GRID_SIZE);
+				trans.translate(0, -Constante.GRID_SIZE);
 			} else if (pick.getDirection() == 2) {
-				trans.rotate((Math.PI), pick.getX() * Constante.GRID_SIZE, pick.getY() * Constante.GRID_SIZE);
+				trans.rotate((Math.PI), (pick.getX() * Constante.GRID_SIZE) + OFFSET,
+						pick.getY() * Constante.GRID_SIZE);
 				trans.translate(-Constante.GRID_SIZE, -Constante.GRID_SIZE);
 			} else if (pick.getDirection() == 3) {
-				trans.rotate(3*(Math.PI / 2), pick.getX() * Constante.GRID_SIZE, pick.getY() * Constante.GRID_SIZE);
-				trans.translate(-Constante.GRID_SIZE,0);
+				trans.rotate(3 * (Math.PI / 2), (pick.getX() * Constante.GRID_SIZE) + OFFSET,
+						pick.getY() * Constante.GRID_SIZE);
+				trans.translate(-Constante.GRID_SIZE, 0);
 			}
 			g2.transform(trans);
-			g2.drawImage(bf, pick.getX() * Constante.GRID_SIZE, pick.getY() * Constante.GRID_SIZE,
-					null);
+			g2.drawImage(bf, (pick.getX() * Constante.GRID_SIZE) + OFFSET, pick.getY() * Constante.GRID_SIZE, null);
 			g2.setTransform(backup); // restore previous transform
 		}
 	}
@@ -262,7 +261,7 @@ public class DrawPanel extends Canvas {
 		g2.setFont(font);
 		g2.setStroke(new BasicStroke(2));
 		for (Event event : levelService.getCurrentLevel().getEvent()) {
-			g2.drawString("Ev", event.getX() * Constante.GRID_SIZE,
+			g2.drawString("Ev", (event.getX() * Constante.GRID_SIZE) + OFFSET,
 					(event.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
 		}
 		g2.setStroke(savedStrock);
@@ -271,8 +270,9 @@ public class DrawPanel extends Canvas {
 	private void drawVortex(Graphics2D g2) {
 		for (Vortex vortex : levelService.getCurrentLevel().getVortex()) {
 			BufferedImage bf = spriteService.getSprite("vortex", 0);
-			g2.drawImage(bf, null, vortex.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10,
-					((vortex.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+			g2.drawImage(bf, (vortex.getX() * Constante.GRID_SIZE - ((int) (bf.getWidth() * vortex.getZoomX()) / 2) + 10) + OFFSET,
+					((vortex.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight(),
+					(int) (bf.getWidth() * vortex.getZoomX()), (int) (bf.getHeight() * vortex.getZoomY()), null);
 		}
 	}
 
@@ -293,16 +293,16 @@ public class DrawPanel extends Canvas {
 				trans.rotate((Math.PI / 2), platform.getX() * Constante.GRID_SIZE,
 						platform.getY() * Constante.GRID_SIZE); // the points to rotate around (the center in my
 				// example, your left side for your problem)
-				trans.translate(-Constante.GRID_SIZE, -Constante.GRID_SIZE);
+				trans.translate(-Constante.GRID_SIZE, -Constante.GRID_SIZE - OFFSET);
 				g2.transform(trans);
 				g2.drawImage(bfv.getSubimage(0, 0, platform.getLength() * Constante.GRID_SIZE, Constante.GRID_SIZE),
-						platform.getX() * Constante.GRID_SIZE + Constante.GRID_SIZE,
+						(platform.getX() * Constante.GRID_SIZE + Constante.GRID_SIZE),
 						platform.getY() * Constante.GRID_SIZE, null);
 
 				g2.setTransform(backup); // restore previous transform
 			} else {
 				g2.drawImage(bf.getSubimage(0, 0, platform.getLength() * Constante.GRID_SIZE, Constante.GRID_SIZE),
-						platform.getX() * Constante.GRID_SIZE, platform.getY() * Constante.GRID_SIZE, null);
+						(platform.getX() * Constante.GRID_SIZE) + OFFSET, platform.getY() * Constante.GRID_SIZE, null);
 			}
 		}
 	}
@@ -317,7 +317,7 @@ public class DrawPanel extends Canvas {
 			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType() * 2);
 			if (rayon.isVertical()) {
 				for (int i = rayon.getY(); i < rayon.getY() + rayon.getLength(); i++) {
-					g2.drawImage(bf, rayon.getX() * Constante.GRID_SIZE, i * Constante.GRID_SIZE, null);
+					g2.drawImage(bf, (rayon.getX() * Constante.GRID_SIZE) + OFFSET, i * Constante.GRID_SIZE, null);
 				}
 			} else {
 				for (int i = 0; i < rayon.getLength(); i++) {
@@ -325,9 +325,9 @@ public class DrawPanel extends Canvas {
 					AffineTransform trans = new AffineTransform();
 					trans.rotate((Math.PI / 2), (rayon.getX() + i) * Constante.GRID_SIZE,
 							rayon.getY() * Constante.GRID_SIZE);
-					trans.translate(0, -Constante.GRID_SIZE);
+					trans.translate(0, -Constante.GRID_SIZE - OFFSET);
 					g2.transform(trans);
-					g2.drawImage(bf, (rayon.getX() + i) * Constante.GRID_SIZE, rayon.getY() * Constante.GRID_SIZE,
+					g2.drawImage(bf, ((rayon.getX() + i) * Constante.GRID_SIZE), rayon.getY() * Constante.GRID_SIZE,
 							null);
 					g2.setTransform(backup); // restore previous transform
 				}
@@ -346,7 +346,7 @@ public class DrawPanel extends Canvas {
 			if (teleporter.isVertical()) {
 				for (int i = teleporter.getY(); i < teleporter.getY() + teleporter.getLength(); i++) {
 					g2.drawImage(bf.getSubimage(0, 0, Constante.GRID_SIZE, Constante.GRID_SIZE),
-							teleporter.getX() * Constante.GRID_SIZE, i * Constante.GRID_SIZE, null);
+							(teleporter.getX() * Constante.GRID_SIZE) + OFFSET, i * Constante.GRID_SIZE, null);
 				}
 			} else {
 				for (int i = 0; i < teleporter.getLength(); i++) {
@@ -354,10 +354,10 @@ public class DrawPanel extends Canvas {
 					AffineTransform trans = new AffineTransform();
 					trans.rotate((Math.PI / 2), (teleporter.getX() + i) * Constante.GRID_SIZE,
 							teleporter.getY() * Constante.GRID_SIZE);
-					trans.translate(0, -Constante.GRID_SIZE);
+					trans.translate(0, -Constante.GRID_SIZE - OFFSET);
 					g2.transform(trans);
 					g2.drawImage(bf.getSubimage(0, 0, Constante.GRID_SIZE, Constante.GRID_SIZE),
-							(teleporter.getX() + i) * Constante.GRID_SIZE, teleporter.getY() * Constante.GRID_SIZE,
+							((teleporter.getX() + i) * Constante.GRID_SIZE), teleporter.getY() * Constante.GRID_SIZE,
 							null);
 					g2.setTransform(backup); // restore previous transform
 				}
@@ -426,7 +426,7 @@ public class DrawPanel extends Canvas {
 				bf = spriteService.getSprite("scie", 0);
 				break;
 			}
-			int x = (ennemie.getX() * Constante.GRID_SIZE) + (Constante.GRID_SIZE / 2) - (bf.getWidth() / 2);
+			int x = ((ennemie.getX() * Constante.GRID_SIZE) + (Constante.GRID_SIZE / 2) - (bf.getWidth() / 2)) + OFFSET;
 			int y = ((ennemie.getY() + 1) * Constante.GRID_SIZE) - bf.getHeight();
 			g2.drawImage(bf, x, y, null);
 		}

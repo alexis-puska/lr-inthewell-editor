@@ -50,7 +50,7 @@ public class DoorPanel extends IdentifiablePanel {
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
 		typeModel.setMinimum(0);
-		typeModel.setMaximum(7);
+		typeModel.setMaximum(5);
 		typeSpinner.setModel(typeModel);
 		typeLabel.setLabelFor(typeSpinner);
 

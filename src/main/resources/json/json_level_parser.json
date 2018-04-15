@@ -14,7 +14,6 @@
         "y" : 500,
         "display" : true,
         "back" : false,
-        "anim" : "level0",
         "indexAnim" : 0
       } ],
       "event" : [ ],
@@ -260,7 +259,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 1,
       "next" : 2,
@@ -274,8 +274,7 @@
         "y" : 145,
         "display" : true,
         "back" : false,
-        "anim" : "level1",
-        "indexAnim" : 0
+        "indexAnim" : 1
       } ],
       "event" : [ ],
       "door" : [ ],
@@ -328,7 +327,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 2,
       "next" : 3,
@@ -401,7 +401,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 3,
       "next" : 4,
@@ -498,7 +499,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 4,
       "next" : 5,
@@ -603,7 +605,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 5,
       "next" : 6,
@@ -761,7 +764,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 6,
       "next" : 7,
@@ -770,21 +774,7 @@
       "verticalPlateform" : 8,
       "horizontalPlateform" : 8,
       "decor" : [ ],
-      "event" : [ {
-        "id" : 1,
-        "triggered" : false,
-        "x" : 10,
-        "y" : 6,
-        "type" : 0,
-        "objectId" : -1,
-        "vortexId" : 1,
-        "animation" : "",
-        "doorId" : -1,
-        "platformToMRemove" : -1,
-        "plateformToMove" : -1,
-        "movePlateformX" : -1,
-        "movePlateformY" : -1
-      } ],
+      "event" : [ ],
       "door" : [ ],
       "lock" : [ ],
       "pick" : [ ],
@@ -966,16 +956,7 @@
         "vertical" : true
       } ],
       "teleporter" : [ ],
-      "vortex" : [ {
-        "id" : 0,
-        "x" : 0,
-        "y" : 0,
-        "zoomX" : 0.0,
-        "zoomY" : 0.0,
-        "enable" : false,
-        "destination" : 0,
-        "animationType" : 3
-      } ],
+      "vortex" : [ ],
       "ennemies" : [ {
         "id" : 0,
         "x" : 9,
@@ -989,7 +970,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 7,
       "next" : 8,
@@ -1091,7 +1073,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 8,
       "next" : 9,
@@ -1358,7 +1341,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 9,
       "next" : 10,
@@ -1497,7 +1481,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 10,
       "next" : 11,
@@ -1609,7 +1594,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 11,
       "next" : 12,
@@ -1799,7 +1785,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 12,
       "next" : 13,
@@ -1808,21 +1795,7 @@
       "verticalPlateform" : 0,
       "horizontalPlateform" : 0,
       "decor" : [ ],
-      "event" : [ {
-        "id" : 1,
-        "triggered" : false,
-        "x" : 0,
-        "y" : 0,
-        "type" : 2,
-        "objectId" : -1,
-        "vortexId" : -1,
-        "animation" : "",
-        "doorId" : -1,
-        "platformToMRemove" : 21,
-        "plateformToMove" : -1,
-        "movePlateformX" : -1,
-        "movePlateformY" : -1
-      } ],
+      "event" : [ ],
       "door" : [ ],
       "lock" : [ ],
       "pick" : [ ],
@@ -2109,7 +2082,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 13,
       "next" : 14,
@@ -2276,11 +2250,6 @@
         "y" : 19,
         "type" : 1
       }, {
-        "id" : 1,
-        "x" : 3,
-        "y" : 3,
-        "type" : 13
-      }, {
         "id" : 2,
         "x" : 17,
         "y" : 4,
@@ -2290,10 +2259,16 @@
         "x" : 13,
         "y" : 11,
         "type" : 2
+      }, {
+        "id" : 1,
+        "x" : 2,
+        "y" : 3,
+        "type" : 0
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 14,
       "next" : 15,
@@ -2571,7 +2546,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 15,
       "next" : 16,
@@ -2764,7 +2740,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 16,
       "next" : 17,
@@ -2966,7 +2943,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 17,
       "next" : 18,
@@ -3172,7 +3150,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 18,
       "next" : 19,
@@ -3332,7 +3311,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 19,
       "next" : 20,
@@ -3545,7 +3525,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 20,
       "next" : 21,
@@ -3760,7 +3741,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 21,
       "next" : 22,
@@ -3944,7 +3926,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 22,
       "next" : 23,
@@ -4136,7 +4119,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 23,
       "next" : 24,
@@ -4489,7 +4473,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 24,
       "next" : 25,
@@ -4745,7 +4730,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 25,
       "next" : 26,
@@ -4921,7 +4907,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 26,
       "next" : 27,
@@ -5290,7 +5277,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 27,
       "next" : 28,
@@ -5440,7 +5428,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 28,
       "next" : 29,
@@ -5944,7 +5933,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 29,
       "next" : 30,
@@ -6224,7 +6214,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 30,
       "next" : 31,
@@ -6387,7 +6378,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 31,
       "next" : 32,
@@ -6606,7 +6598,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 32,
       "next" : 33,
@@ -6771,7 +6764,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 33,
       "next" : 34,
@@ -7067,7 +7061,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 34,
       "next" : 35,
@@ -7332,7 +7327,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 35,
       "next" : 36,
@@ -7555,7 +7551,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 36,
       "next" : 37,
@@ -7807,7 +7804,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 37,
       "next" : 38,
@@ -7969,7 +7967,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 38,
       "next" : 39,
@@ -8179,7 +8178,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 39,
       "next" : 40,
@@ -8571,7 +8571,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 40,
       "next" : 41,
@@ -8846,7 +8847,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 41,
       "next" : 42,
@@ -9185,7 +9187,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 42,
       "next" : 43,
@@ -9404,7 +9407,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 43,
       "next" : 44,
@@ -9701,7 +9705,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 44,
       "next" : 45,
@@ -9827,14 +9832,6 @@
         "length" : 5,
         "surfaceId" : 0
       }, {
-        "id" : 14,
-        "x" : 0,
-        "y" : 8,
-        "vertical" : true,
-        "visible" : false,
-        "length" : 14,
-        "surfaceId" : 0
-      }, {
         "id" : 15,
         "x" : 2,
         "y" : 21,
@@ -9890,6 +9887,14 @@
         "visible" : false,
         "length" : 1,
         "surfaceId" : 0
+      }, {
+        "id" : 14,
+        "x" : 0,
+        "y" : 18,
+        "vertical" : false,
+        "visible" : true,
+        "length" : 15,
+        "surfaceId" : 0
       } ],
       "rayon" : [ ],
       "teleporter" : [ {
@@ -9936,7 +9941,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 45,
       "next" : 46,
@@ -10105,7 +10111,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 46,
       "next" : 47,
@@ -10249,7 +10256,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 47,
       "next" : 48,
@@ -10504,7 +10512,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 48,
       "next" : 49,
@@ -10793,7 +10802,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 49,
       "next" : 50,
@@ -11041,7 +11051,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 50,
       "next" : 51,
@@ -11053,7 +11064,19 @@
       "event" : [ ],
       "door" : [ ],
       "lock" : [ ],
-      "pick" : [ ],
+      "pick" : [ {
+        "id" : 0,
+        "x" : 8,
+        "y" : 21,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 1,
+        "x" : 9,
+        "y" : 21,
+        "visible" : true,
+        "direction" : 0
+      } ],
       "platform" : [ {
         "id" : 0,
         "x" : 17,
@@ -11174,6 +11197,22 @@
         "visible" : false,
         "length" : 4,
         "surfaceId" : 0
+      }, {
+        "id" : 15,
+        "x" : 3,
+        "y" : 11,
+        "vertical" : false,
+        "visible" : true,
+        "length" : 2,
+        "surfaceId" : 0
+      }, {
+        "id" : 16,
+        "x" : 12,
+        "y" : 11,
+        "vertical" : false,
+        "visible" : true,
+        "length" : 2,
+        "surfaceId" : 0
       } ],
       "rayon" : [ ],
       "teleporter" : [ ],
@@ -11191,7 +11230,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 51,
       "next" : 52,
@@ -11396,7 +11436,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 52,
       "next" : 53,
@@ -11408,7 +11449,79 @@
       "event" : [ ],
       "door" : [ ],
       "lock" : [ ],
-      "pick" : [ ],
+      "pick" : [ {
+        "id" : 0,
+        "x" : 3,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 1,
+        "x" : 4,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 2,
+        "x" : 5,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 3,
+        "x" : 6,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 4,
+        "x" : 7,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 5,
+        "x" : 8,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 6,
+        "x" : 11,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 7,
+        "x" : 12,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 8,
+        "x" : 13,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 9,
+        "x" : 14,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 10,
+        "x" : 15,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      }, {
+        "id" : 11,
+        "x" : 16,
+        "y" : 10,
+        "visible" : true,
+        "direction" : 0
+      } ],
       "platform" : [ {
         "id" : 0,
         "x" : 8,
@@ -11710,7 +11823,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 53,
       "next" : 54,
@@ -11958,7 +12072,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 54,
       "next" : 55,
@@ -11968,7 +12083,16 @@
       "horizontalPlateform" : 16,
       "decor" : [ ],
       "event" : [ ],
-      "door" : [ ],
+      "door" : [ {
+        "id" : 0,
+        "x" : 9,
+        "y" : 21,
+        "type" : 5,
+        "locked" : true,
+        "toLevel" : 0,
+        "requieredKey" : 0,
+        "lockId" : 0
+      } ],
       "lock" : [ ],
       "pick" : [ ],
       "platform" : [ {
@@ -12320,7 +12444,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 55,
       "next" : 56,
@@ -12525,7 +12650,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 56,
       "next" : 57,
@@ -12778,7 +12904,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 57,
       "next" : 58,
@@ -13026,7 +13153,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 58,
       "next" : 59,
@@ -13272,7 +13400,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 59,
       "next" : 60,
@@ -13516,7 +13645,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 60,
       "next" : 61,
@@ -13892,7 +14022,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 61,
       "next" : 62,
@@ -14123,7 +14254,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 62,
       "next" : 63,
@@ -14133,8 +14265,22 @@
       "horizontalPlateform" : 10,
       "decor" : [ ],
       "event" : [ ],
-      "door" : [ ],
-      "lock" : [ ],
+      "door" : [ {
+        "id" : 0,
+        "x" : 16,
+        "y" : 3,
+        "type" : 3,
+        "locked" : true,
+        "toLevel" : 0,
+        "requieredKey" : 0,
+        "lockId" : 0
+      } ],
+      "lock" : [ {
+        "id" : 0,
+        "x" : 3,
+        "y" : 3,
+        "requieredKeyId" : 0
+      } ],
       "pick" : [ ],
       "platform" : [ {
         "id" : 0,
@@ -14339,7 +14485,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 63,
       "next" : 64,
@@ -14560,7 +14707,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 64,
       "next" : 65,
@@ -14830,14 +14978,6 @@
         "length" : 2,
         "surfaceId" : 0
       }, {
-        "id" : 32,
-        "x" : 2,
-        "y" : 22,
-        "vertical" : false,
-        "visible" : false,
-        "length" : 1,
-        "surfaceId" : 0
-      }, {
         "id" : 33,
         "x" : 17,
         "y" : 22,
@@ -14852,6 +14992,14 @@
         "vertical" : false,
         "visible" : false,
         "length" : 14,
+        "surfaceId" : 0
+      }, {
+        "id" : 32,
+        "x" : 2,
+        "y" : 22,
+        "vertical" : false,
+        "visible" : true,
+        "length" : 1,
         "surfaceId" : 0
       } ],
       "rayon" : [ ],
@@ -14888,19 +15036,20 @@
         "y" : 22,
         "type" : 1
       }, {
-        "id" : 6,
-        "x" : 2,
+        "id" : 7,
+        "x" : 8,
         "y" : 22,
         "type" : 1
       }, {
-        "id" : 7,
-        "x" : 8,
+        "id" : 6,
+        "x" : 15,
         "y" : 22,
         "type" : 1
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 65,
       "next" : 66,
@@ -15137,7 +15286,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 66,
       "next" : 67,
@@ -15288,7 +15438,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 67,
       "next" : 68,
@@ -15536,7 +15687,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 68,
       "next" : 69,
@@ -15744,7 +15896,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 69,
       "next" : 70,
@@ -15994,7 +16147,8 @@
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 70,
       "next" : 71,
@@ -16356,11 +16510,6 @@
       "teleporter" : [ ],
       "vortex" : [ ],
       "ennemies" : [ {
-        "id" : 0,
-        "x" : 4,
-        "y" : 14,
-        "type" : 10
-      }, {
         "id" : 1,
         "x" : 12,
         "y" : 17,
@@ -16372,13 +16521,19 @@
         "type" : 10
       }, {
         "id" : 3,
-        "x" : 6,
+        "x" : 7,
         "y" : 11,
+        "type" : 10
+      }, {
+        "id" : 4,
+        "x" : 5,
+        "y" : 14,
         "type" : 10
       } ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 71,
       "next" : 72,
@@ -16398,7 +16553,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 72,
       "next" : 73,
@@ -16418,7 +16574,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 73,
       "next" : 74,
@@ -16438,7 +16595,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 74,
       "next" : 75,
@@ -16458,7 +16616,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 75,
       "next" : 76,
@@ -16478,7 +16637,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 76,
       "next" : 77,
@@ -16498,7 +16658,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 77,
       "next" : 78,
@@ -16518,7 +16679,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 78,
       "next" : 79,
@@ -16538,7 +16700,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 79,
       "next" : 80,
@@ -16558,7 +16721,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 80,
       "next" : 81,
@@ -16578,7 +16742,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 81,
       "next" : 82,
@@ -16598,7 +16763,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 82,
       "next" : 83,
@@ -16618,7 +16784,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 83,
       "next" : 84,
@@ -16638,7 +16805,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 84,
       "next" : 85,
@@ -16658,7 +16826,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 85,
       "next" : 86,
@@ -16678,7 +16847,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 86,
       "next" : 87,
@@ -16698,7 +16868,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 87,
       "next" : 88,
@@ -16718,7 +16889,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 88,
       "next" : 89,
@@ -16738,7 +16910,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 89,
       "next" : 90,
@@ -16758,7 +16931,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 90,
       "next" : 91,
@@ -16778,7 +16952,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 91,
       "next" : 92,
@@ -16798,7 +16973,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 92,
       "next" : 93,
@@ -16818,7 +16994,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 93,
       "next" : 94,
@@ -16838,7 +17015,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 94,
       "next" : 95,
@@ -16858,7 +17036,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 95,
       "next" : 96,
@@ -16878,7 +17057,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 96,
       "next" : 97,
@@ -16898,7 +17078,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 97,
       "next" : 98,
@@ -16918,7 +17099,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 98,
       "next" : 99,
@@ -16938,7 +17120,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 99,
       "next" : 100,
@@ -16958,7 +17141,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 100,
       "next" : 101,
@@ -16978,7 +17162,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 101,
       "next" : 102,
@@ -16998,7 +17183,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 102,
       "next" : 103,
@@ -17018,7 +17204,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     }, {
       "id" : 103,
       "next" : 104,
@@ -17038,7 +17225,8 @@
       "ennemies" : [ ],
       "startPlayers" : [ ],
       "startEffectObjets" : [ ],
-      "startPointObjets" : [ ]
+      "startPointObjets" : [ ],
+      "items" : [ ]
     } ]
   }, {
     "id" : 1,
