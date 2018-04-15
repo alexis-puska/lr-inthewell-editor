@@ -48,5 +48,48 @@ public class Event extends Identifiable implements Serializable {
 		this.x = x;
 		this.y = y;
 	}
+	
+	/*
+	 * Dans le code du jeu il y a les triggers 
+	 * $t_timer
+	 * $t_pos
+	 * $attach
+	 * $do
+	 * $end
+	 * $birth
+	 * $death
+	 * $exp
+	 * $enter
+	 * $night
+	 * $mirror
+	 * $multi
+	 * $ninja
+	 * Et pour les actions ils y a 
+	 * $e_score
+	 * $e_spec
+$e_ext
+$e_bad
+$e_kill
+$e_tuto
+$e_msg
+$e_killMsg
+$e_pointer
+$e_killPt
+$e_mc
+$e_pmc
+$e_music
+$e_add
+$e_rem
+$e_itemLine
+$e_goto
+$e_hide
+$e_hideBorders
+$e_ctrigger
+$e_portal
+$e_setVar
+$e_openPortal
+$e_darkness
+$e_fakelid
+	 */
 
 }

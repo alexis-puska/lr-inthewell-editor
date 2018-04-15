@@ -182,20 +182,23 @@ public class LevelService {
 	}
 
 	public String getLevelName(String lang) {
-		if (this.currentLevel.getName() != null) {
-			for (LevelName ln : this.currentLevel.getName()) {
-				if (ln.getLang().equals(lang)) {
-					return ln.getValue();
+
+		if (this.currentLevel != null) {
+			if (this.currentLevel.getName() != null) {
+				for (LevelName ln : this.currentLevel.getName()) {
+					if (ln.getLang().equals(lang)) {
+						return ln.getValue();
+					}
 				}
+			} else {
+				this.currentLevel.setName(new ArrayList<>());
+				this.currentLevel.getName()
+						.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "es", ""));
+				this.currentLevel.getName()
+						.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "fr", ""));
+				this.currentLevel.getName()
+						.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "en", ""));
 			}
-		} else {
-			this.currentLevel.setName(new ArrayList<>());
-			this.currentLevel.getName()
-					.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "es", ""));
-			this.currentLevel.getName()
-					.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "fr", ""));
-			this.currentLevel.getName()
-					.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "en", ""));
 		}
 		return "";
 	}
@@ -213,7 +216,7 @@ public class LevelService {
 			tmp.setValue(name);
 			this.currentLevel.getName().add(tmp);
 		} else {
-			tmp = new LevelName(getIdFromIdentifiable(this.currentLevel.getName()),lang, name);
+			tmp = new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), lang, name);
 			this.currentLevel.getName().add(tmp);
 		}
 		this.saveCurrentLevel();
