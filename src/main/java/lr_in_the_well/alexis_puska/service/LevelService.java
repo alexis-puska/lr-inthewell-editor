@@ -14,6 +14,7 @@ import lr_in_the_well.alexis_puska.domain.level.Identifiable;
 import lr_in_the_well.alexis_puska.domain.level.Item;
 import lr_in_the_well.alexis_puska.domain.level.Level;
 import lr_in_the_well.alexis_puska.domain.level.LevelFile;
+import lr_in_the_well.alexis_puska.domain.level.LevelName;
 import lr_in_the_well.alexis_puska.domain.level.Lock;
 import lr_in_the_well.alexis_puska.domain.level.Pick;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
@@ -178,6 +179,44 @@ public class LevelService {
 			this.currentLevel.setBackground(id);
 			this.saveCurrentLevel();
 		}
+	}
+
+	public String getLevelName(String lang) {
+		if (this.currentLevel.getName() != null) {
+			for (LevelName ln : this.currentLevel.getName()) {
+				if (ln.getLang().equals(lang)) {
+					return ln.getValue();
+				}
+			}
+		} else {
+			this.currentLevel.setName(new ArrayList<>());
+			this.currentLevel.getName()
+					.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "es", ""));
+			this.currentLevel.getName()
+					.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "fr", ""));
+			this.currentLevel.getName()
+					.add(new LevelName(getIdFromIdentifiable(this.currentLevel.getName()), "en", ""));
+		}
+		return "";
+	}
+
+	public void setLevelName(String lang, String name) {
+		LevelName tmp = null;
+		for (LevelName ln : this.currentLevel.getName()) {
+			if (ln.getLang().equals(lang)) {
+				tmp = ln;
+				break;
+			}
+		}
+		if (tmp != null) {
+			this.currentLevel.getName().remove(tmp);
+			tmp.setValue(name);
+			this.currentLevel.getName().add(tmp);
+		} else {
+			tmp = new LevelName(getIdFromIdentifiable(this.currentLevel.getName()),lang, name);
+			this.currentLevel.getName().add(tmp);
+		}
+		this.saveCurrentLevel();
 	}
 
 	public int getBackgroundId() {
@@ -457,7 +496,8 @@ public class LevelService {
 		if (currentLevel != null) {
 			List<Decor> decorToDelete = new ArrayList<>();
 			for (Decor e : currentLevel.getDecor()) {
-				if (e.getX() >= ((x+10) - 5) && e.getX() <= ((x+10) + 5) && e.getY() >= (y - 5) && e.getY() <= (y + 5)) {
+				if (e.getX() >= ((x + 10) - 5) && e.getX() <= ((x + 10) + 5) && e.getY() >= (y - 5)
+						&& e.getY() <= (y + 5)) {
 					decorToDelete.add(e);
 				}
 			}
@@ -646,7 +686,8 @@ public class LevelService {
 		int caseY = y / Constante.GRID_SIZE;
 		if (currentLevel != null) {
 			for (Decor e : currentLevel.getDecor()) {
-				if (e.getX() >= ((x+10) - 5) && e.getX() <= ((x+10) + 5) && e.getY() >= (y - 5) && e.getY() <= (y + 5)) {
+				if (e.getX() >= ((x + 10) - 5) && e.getX() <= ((x + 10) + 5) && e.getY() >= (y - 5)
+						&& e.getY() <= (y + 5)) {
 					return e;
 				}
 			}

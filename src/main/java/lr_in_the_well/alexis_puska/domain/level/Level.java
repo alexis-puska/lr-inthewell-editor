@@ -19,6 +19,7 @@ public class Level extends Identifiable {
 	private int background;
 	private int verticalPlateform;
 	private int horizontalPlateform;
+	private List<LevelName> name;
 	private List<Decor> decor;
 	private List<Event> event;
 	private List<Door> door;
@@ -56,7 +57,7 @@ public class Level extends Identifiable {
 		this.startPointObjets = new ArrayList<>();
 		this.items = new ArrayList<>();
 	}
-	
+
 	public Level(int id) {
 		super(id);
 		this.showPlatform = true;

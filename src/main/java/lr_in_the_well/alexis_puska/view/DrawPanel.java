@@ -144,6 +144,11 @@ public class DrawPanel extends Canvas {
 	 *            graphics2D
 	 */
 	private void drawGrid(Graphics2D g2) {
+
+		float alpha = 0.7f;
+		Composite saved = g2.getComposite();
+		AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
+		g2.setComposite(ac);
 		int x, y;
 		g2.setColor(Color.RED);
 		x = 0;
@@ -162,6 +167,7 @@ public class DrawPanel extends Canvas {
 		g2.drawLine(20 + Constante.SCREEN_SIZE_X, 0, 20 + Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
 		g2.drawLine(OFFSET + Constante.SCREEN_SIZE_X, 0, OFFSET + Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
 		g2.drawLine(0, Constante.SCREEN_SIZE_Y, 20 + Constante.SCREEN_SIZE_X, Constante.SCREEN_SIZE_Y);
+		g2.setComposite(saved);
 	}
 
 	/**
@@ -270,7 +276,9 @@ public class DrawPanel extends Canvas {
 	private void drawVortex(Graphics2D g2) {
 		for (Vortex vortex : levelService.getCurrentLevel().getVortex()) {
 			BufferedImage bf = spriteService.getSprite("vortex", 0);
-			g2.drawImage(bf, (vortex.getX() * Constante.GRID_SIZE - ((int) (bf.getWidth() * vortex.getZoomX()) / 2) + 10) + OFFSET,
+			g2.drawImage(bf,
+					(vortex.getX() * Constante.GRID_SIZE - ((int) (bf.getWidth() * vortex.getZoomX()) / 2) + 10)
+							+ OFFSET,
 					((vortex.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight(),
 					(int) (bf.getWidth() * vortex.getZoomX()), (int) (bf.getHeight() * vortex.getZoomY()), null);
 		}

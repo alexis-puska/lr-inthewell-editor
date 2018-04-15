@@ -32,6 +32,8 @@ import javax.swing.border.Border;
 import javax.swing.event.CaretListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
@@ -221,16 +223,26 @@ public class App extends JFrame {
 	private Border horizontalPlatformIndexBorder;
 	private SpinnerNumberModel horizontalPlatformIndexModel;
 	private JSpinner horizontalPlatformIndexSpinner;
-
 	private JPanel nextLevelIndexPanel;
 	private GridLayout nextLevelIndexLayout;
 	private Border nextLevelIndexBorder;
 	private JTextField nextLevelIndexTextField;
-
 	private JPanel showPlatformLevelPanel;
 	private GridLayout showPlatformLevelLayout;
 	private Border showPlatformLevelBorder;
 	private JCheckBox showPlatformLevelCheckBox;
+	private JPanel frenchLevelNameIndexPanel;
+	private GridLayout frenchLevelNameIndexLayout;
+	private Border frenchLevelNameIndexBorder;
+	private JTextField frenchLevelNameIndexTextField;
+	private JPanel englishLevelNameIndexPanel;
+	private GridLayout englishLevelNameIndexLayout;
+	private Border englishLevelNameIndexBorder;
+	private JTextField englishLevelNameIndexTextField;
+	private JPanel spanishLevelNameIndexPanel;
+	private GridLayout spanishLevelNameIndexLayout;
+	private Border spanishLevelNameIndexBorder;
+	private JTextField spanishLevelNameIndexTextField;
 
 	public static void main(String[] args) {
 		String lang = "fr";
@@ -416,6 +428,15 @@ public class App extends JFrame {
 		showPlatformLevelPanel.setBorder(showPlatformLevelBorder);
 		showPlatformLevelPanel.setLayout(showPlatformLevelLayout);
 		showPlatformLevelPanel.add(showPlatformLevelCheckBox);
+		frenchLevelNameIndexPanel.setBorder(frenchLevelNameIndexBorder);
+		frenchLevelNameIndexPanel.setLayout(frenchLevelNameIndexLayout);
+		frenchLevelNameIndexPanel.add(frenchLevelNameIndexTextField);
+		englishLevelNameIndexPanel.setBorder(englishLevelNameIndexBorder);
+		englishLevelNameIndexPanel.setLayout(englishLevelNameIndexLayout);
+		englishLevelNameIndexPanel.add(englishLevelNameIndexTextField);
+		spanishLevelNameIndexPanel.setBorder(spanishLevelNameIndexBorder);
+		spanishLevelNameIndexPanel.setLayout(spanishLevelNameIndexLayout);
+		spanishLevelNameIndexPanel.add(spanishLevelNameIndexTextField);
 		panelParameters.setLayout(layoutParameters);
 		panelParameters.setBorder(borderParameters);
 		panelParameters.add(verticalPlatformIndexPanel);
@@ -423,6 +444,9 @@ public class App extends JFrame {
 		panelParameters.add(backgroundIndexPanel);
 		panelParameters.add(nextLevelIndexPanel);
 		panelParameters.add(showPlatformLevelPanel);
+		panelParameters.add(frenchLevelNameIndexPanel);
+		panelParameters.add(englishLevelNameIndexPanel);
+		panelParameters.add(spanishLevelNameIndexPanel);
 		this.getContentPane().add(panelParameters, BorderLayout.SOUTH);
 	}
 
@@ -569,6 +593,21 @@ public class App extends JFrame {
 		showPlatformLevelLayout = new GridLayout();
 		showPlatformLevelBorder = BorderFactory.createTitledBorder(message.getString("properties.border.showPlatform"));
 		showPlatformLevelCheckBox = new JCheckBox();
+		frenchLevelNameIndexPanel = new JPanel();
+		frenchLevelNameIndexLayout = new GridLayout();
+		frenchLevelNameIndexBorder = BorderFactory
+				.createTitledBorder(message.getString("properties.border.frenchName"));
+		frenchLevelNameIndexTextField = new JTextField();
+		englishLevelNameIndexPanel = new JPanel();
+		englishLevelNameIndexLayout = new GridLayout();
+		englishLevelNameIndexBorder = BorderFactory
+				.createTitledBorder(message.getString("properties.border.englishName"));
+		englishLevelNameIndexTextField = new JTextField();
+		spanishLevelNameIndexPanel = new JPanel();
+		spanishLevelNameIndexLayout = new GridLayout();
+		spanishLevelNameIndexBorder = BorderFactory
+				.createTitledBorder(message.getString("properties.border.spanishName"));
+		spanishLevelNameIndexTextField = new JTextField();
 
 	}
 
@@ -889,6 +928,70 @@ public class App extends JFrame {
 			}
 		});
 
+		englishLevelNameIndexTextField.getDocument().addDocumentListener(new DocumentListener() {
+			private void updateData() {
+				levelService.setLevelName("en", englishLevelNameIndexTextField.getText());
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+		});
+		frenchLevelNameIndexTextField.getDocument().addDocumentListener(new DocumentListener() {
+			private void updateData() {
+				levelService.setLevelName("fr", frenchLevelNameIndexTextField.getText());
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+		});
+		spanishLevelNameIndexTextField.getDocument().addDocumentListener(new DocumentListener() {
+			private void updateData() {
+				levelService.setLevelName("es", spanishLevelNameIndexTextField.getText());
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				updateData();
+			}
+
+		});
+
 		/*************************************************************************************
 		 *
 		 * --- ENNEMIE ---
@@ -1107,7 +1210,7 @@ public class App extends JFrame {
 	 *************************************************************************************/
 
 	private void release(int x, int y) {
-		int caseX = (x- OFFSET) / Constante.GRID_SIZE ;
+		int caseX = (x - OFFSET) / Constante.GRID_SIZE;
 		int caseY = y / Constante.GRID_SIZE;
 		switch (action) {
 		case DRAW_VERTICAL_PLATFORM:
@@ -1210,7 +1313,7 @@ public class App extends JFrame {
 	}
 
 	private void pressed(int x, int y) {
-		int caseX = (x-OFFSET )/ Constante.GRID_SIZE;
+		int caseX = (x - OFFSET) / Constante.GRID_SIZE;
 		int caseY = y / Constante.GRID_SIZE;
 		switch (action) {
 		case DRAW_VERTICAL_PLATFORM:
@@ -1493,5 +1596,8 @@ public class App extends JFrame {
 		backgroundIndexSpinner.setValue((Integer) levelService.getBackgroundId());
 		nextLevelIndexTextField.setText(Integer.toString(levelService.getgetNextLevelId()));
 		showPlatformLevelCheckBox.setSelected(levelService.isShowPlatform());
+		spanishLevelNameIndexTextField.setText(levelService.getLevelName("es"));
+		englishLevelNameIndexTextField.setText(levelService.getLevelName("en"));
+		frenchLevelNameIndexTextField.setText(levelService.getLevelName("fr"));
 	}
 }
