@@ -1,10 +1,12 @@
 package lr_in_the_well.alexis_puska.domain.level;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lr_in_the_well.alexis_puska.domain.level.event.EnableElement;
 
 @Getter
 @Setter
@@ -13,36 +15,50 @@ public class Event extends Identifiable implements Serializable {
 
 	private static final long serialVersionUID = 1088138268216464188L;
 
+	
+	/***************************************
+	 * TRIGGER
+	 ***************************************/
+	
+	//nombre de fois déclanchable
+	private boolean onlyOnce; 
 	private boolean triggered;
+	
+	//declanchement par proximité
+	private boolean near;
 	private int x;
 	private int y;
-	private int type;
-	private int objectId;
-	private int vortexId;
-	private String animation;
-	private int doorId;
-	private int platformToMRemove;
-	private int plateformToMove;
-	private int movePlateformX;
-	private int movePlateformY;
-
-	public Event(int id, boolean triggered, int x, int y, int type, int objectId, int vortexId, String animation,
-			int doorId, int platformToMRemove, int plateformToMove, int movePlateformX, int movePlateformY) {
-		super(id);
-		this.triggered = triggered;
-		this.x = x;
-		this.y = y;
-		this.type = type;
-		this.objectId = objectId;
-		this.vortexId = vortexId;
-		this.animation = animation;
-		this.doorId = doorId;
-		this.platformToMRemove = platformToMRemove;
-		this.plateformToMove = plateformToMove;
-		this.movePlateformX = movePlateformX;
-		this.movePlateformY = movePlateformY;
-	}
-
+	private int d;
+	
+	//declanchement par decompte
+	private boolean time;
+	private int timeout;
+	
+	//condition declanchement
+	private boolean noMoreEnnemie; // plus d'ennemie dans le niveau
+	private boolean onBirth; //spawn joueur
+	private boolean onDeath; //mort du joueur
+	private boolean onLevelEnter;
+	
+	//option;
+	private boolean mirror;
+	private boolean nightmare;
+	private boolean timeAttackeOption;
+	private boolean multiOption;
+	private boolean ninja; 
+	
+	
+	/***************************************
+     * ACTION
+     ***************************************/
+	private List<EnableElement> enableElement;
+	private String song;
+	private String sound;
+	private int darknessValue;
+	private int iceValue;
+	
+	
+	
 	public Event(int id, int x, int y) {
 		super(id);
 		this.x = x;
