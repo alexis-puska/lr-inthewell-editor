@@ -1548,8 +1548,8 @@ public class App extends JFrame {
         identifiablePropertiesPanel = new EventPanel(message, centerPanel, drawPanel, levelService,
                 message.getString("properties.event.border"), event);
         frame.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
+        frame.setSize(Constante.EVENT_FRAME_SIZE_X, Constante.EVENT_FRAME_SIZE_Y);
+        frame.setLocationRelativeTo(this);
         frame.setVisible(true);
     }
 
