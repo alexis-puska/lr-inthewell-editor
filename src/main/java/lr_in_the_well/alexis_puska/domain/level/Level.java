@@ -30,9 +30,9 @@ public class Level extends Identifiable {
 	private List<Teleporter> teleporter;
 	private List<Vortex> vortex;
 	private List<Ennemie> ennemies;
-	private List<StartPlayer> startPlayers;
-	private List<StartEffectObjets> startEffectObjets;
-	private List<StartPointObjets> startPointObjets;
+	private StartPlayer startPlayers;
+	private StartEffectObjets startEffectObjets;
+	private StartPointObjets startPointObjets;
 	private List<Item> items;
 
 	public Level(int id, boolean showPlatform, int background, int verticalPlateform, int horizontalPlateform) {
@@ -52,9 +52,9 @@ public class Level extends Identifiable {
 		this.teleporter = new ArrayList<>();
 		this.vortex = new ArrayList<>();
 		this.ennemies = new ArrayList<>();
-		this.startPlayers = new ArrayList<>();
-		this.startEffectObjets = new ArrayList<>();
-		this.startPointObjets = new ArrayList<>();
+		this.startPlayers = null;
+		this.startEffectObjets = null;
+		this.startPointObjets = null;
 		this.items = new ArrayList<>();
 	}
 
@@ -75,9 +75,9 @@ public class Level extends Identifiable {
 		this.teleporter = new ArrayList<>();
 		this.vortex = new ArrayList<>();
 		this.ennemies = new ArrayList<>();
-		this.startPlayers = new ArrayList<>();
-		this.startEffectObjets = new ArrayList<>();
-		this.startPointObjets = new ArrayList<>();
+		this.startPlayers = null;
+		this.startEffectObjets = null;
+		this.startPointObjets = null;
 		this.items = new ArrayList<>();
 	}
 
