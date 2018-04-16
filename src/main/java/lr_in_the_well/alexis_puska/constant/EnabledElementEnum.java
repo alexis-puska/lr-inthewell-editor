@@ -1,7 +1,8 @@
 package lr_in_the_well.alexis_puska.constant;
 
-public enum EnabledElementEnum {
+import java.io.Serializable;
 
+public enum EnabledElementEnum implements Serializable{
     DECOR,
     DOOR,
     ENNEMIE,

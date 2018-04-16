@@ -57,12 +57,12 @@ public class Event extends Identifiable implements Serializable {
 	private int darknessValue;
 	private int iceValue;
 	
-	
-	
 	public Event(int id, int x, int y) {
 		super(id);
 		this.x = x;
 		this.y = y;
+		this.darknessValue = -1;
+		this.iceValue = -1;
 	}
 	
 	/*
@@ -83,29 +83,29 @@ public class Event extends Identifiable implements Serializable {
 	 * Et pour les actions ils y a 
 	 * $e_score
 	 * $e_spec
-$e_ext
-$e_bad
-$e_kill
-$e_tuto
-$e_msg
-$e_killMsg
-$e_pointer
-$e_killPt
-$e_mc
-$e_pmc
-$e_music
-$e_add
-$e_rem
-$e_itemLine
-$e_goto
-$e_hide
-$e_hideBorders
-$e_ctrigger
-$e_portal
-$e_setVar
-$e_openPortal
-$e_darkness
-$e_fakelid
+	 * $e_ext
+	 * $e_bad
+	 * $e_kill
+	 * $e_tuto
+	 * $e_msg
+	 * $e_killMsg
+	 * $e_pointer
+	 * $e_killPt
+	 * $e_mc
+	 * $e_pmc
+	 * $e_music
+	 * $e_add
+	 * $e_rem
+	 * $e_itemLine
+	 * $e_goto
+	 * $e_hide
+	 * $e_hideBorders
+	 * $e_ctrigger
+	 * $e_portal
+	 * $e_setVar
+	 * $e_openPortal
+	 * $e_darkness
+	 * $e_fakelid
 	 */
 
 }
