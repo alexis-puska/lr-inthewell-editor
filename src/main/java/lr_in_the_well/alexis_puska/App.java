@@ -44,7 +44,6 @@ import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
-import lr_in_the_well.alexis_puska.domain.level.Event;
 import lr_in_the_well.alexis_puska.domain.level.Identifiable;
 import lr_in_the_well.alexis_puska.domain.level.Item;
 import lr_in_the_well.alexis_puska.domain.level.LevelFile;
@@ -54,6 +53,7 @@ import lr_in_the_well.alexis_puska.domain.level.Platform;
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
 import lr_in_the_well.alexis_puska.domain.level.Teleporter;
 import lr_in_the_well.alexis_puska.domain.level.Vortex;
+import lr_in_the_well.alexis_puska.domain.level.event.Event;
 import lr_in_the_well.alexis_puska.service.FileService;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
@@ -1328,7 +1328,7 @@ public class App extends JFrame {
         if (y > 480) {
             y = 480;
         }
-        
+
         int caseX = (x - OFFSET) / Constante.GRID_SIZE;
         int caseY = y / Constante.GRID_SIZE;
         switch (action) {
@@ -1543,9 +1543,14 @@ public class App extends JFrame {
     }
 
     private void treatEventProperties(Event event) {
+        JFrame frame = new JFrame("Search Window");
+        frame.getContentPane().setLayout(new BorderLayout());
         identifiablePropertiesPanel = new EventPanel(message, centerPanel, drawPanel, levelService,
                 message.getString("properties.event.border"), event);
-        centerPanel.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+        frame.add(identifiablePropertiesPanel, BorderLayout.SOUTH);
+        frame.setSize(500, 500);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     private void treatVortexProperties(Vortex vortex) {

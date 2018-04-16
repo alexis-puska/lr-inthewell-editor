@@ -1,4 +1,4 @@
-package lr_in_the_well.alexis_puska.domain.level;
+package lr_in_the_well.alexis_puska.domain.level.event;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lr_in_the_well.alexis_puska.domain.level.event.EnableElement;
+import lr_in_the_well.alexis_puska.domain.level.Identifiable;
 
 @Getter
 @Setter

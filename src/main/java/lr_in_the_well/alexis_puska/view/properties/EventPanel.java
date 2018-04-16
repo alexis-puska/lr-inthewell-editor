@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-import lr_in_the_well.alexis_puska.domain.level.Event;
+import lr_in_the_well.alexis_puska.domain.level.event.Event;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
 import lr_in_the_well.alexis_puska.view.DrawPanel;
@@ -35,7 +35,7 @@ public class EventPanel extends IdentifiablePanel {
 		typeLabel.setLabelFor(typeSpinner);
 		this.add(typeLabel);
 		this.add(typeSpinner);
-		SpringUtilities.makeCompactGrid(this, 1, 2, // rows, cols
+		SpringUtilities.makeCompactGrid(this, 2, 2, // rows, cols
 				6, 6, // initX, initY
 				6, 6); // xPad, yPad
 		this.parent.updateUI();
