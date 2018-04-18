@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -23,6 +24,7 @@ import lr_in_the_well.alexis_puska.domain.level.event.Event;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
 import lr_in_the_well.alexis_puska.view.DrawPanel;
+import lr_in_the_well.alexis_puska.view.properties.renderer.EnableElementRenderer;
 
 public class EventPanel extends JPanel {
 
@@ -221,7 +223,8 @@ public class EventPanel extends JPanel {
         dTextField = new JSpinner();
 
         countDownPanel = new JPanel();
-        countDownBorder = BorderFactory.createTitledBorder(message.getString("properties.event.trigger.countdown.border"));
+        countDownBorder = BorderFactory
+                .createTitledBorder(message.getString("properties.event.trigger.countdown.border"));
         countDouwnLayout = new SpringLayout();
         countDownLabel = new JLabel(message.getString("properties.event.trigger.countdown.label"));
         countDownCheckBox = new JCheckBox();
@@ -229,7 +232,8 @@ public class EventPanel extends JPanel {
         countDownValueTextField = new JSpinner();
 
         conditionPanel = new JPanel();
-        conditionBorder = BorderFactory.createTitledBorder(message.getString("properties.event.trigger.condition.border"));
+        conditionBorder = BorderFactory
+                .createTitledBorder(message.getString("properties.event.trigger.condition.border"));
         conditionLayout = new SpringLayout();
         onBirthLabel = new JLabel(message.getString("properties.event.trigger.condition.onBirth"));
         onBirthCheckBox = new JCheckBox();
@@ -262,16 +266,29 @@ public class EventPanel extends JPanel {
 
         // common
         commonActionPanel = new JPanel();
-        commonActionBorder = BorderFactory.createTitledBorder(message.getString("properties.event.action.common.border"));
+        commonActionBorder = BorderFactory
+                .createTitledBorder(message.getString("properties.event.action.common.border"));
         commonActionLayout = new SpringLayout();
+
         songLabel = new JLabel(message.getString("properties.event.action.common.music"));
         songComboBox = new JComboBox<>(Constante.MUSIQUE_LIST);
+        songLabel.setToolTipText(message.getString("properties.event.action.common.music.tooltip"));
+        songComboBox.setToolTipText(message.getString("properties.event.action.common.music.tooltip"));
+
         soundLabel = new JLabel(message.getString("properties.event.action.common.sound"));
         soundComboBox = new JComboBox<>(Constante.SOUND_LIST);
+        soundLabel.setToolTipText(message.getString("properties.event.action.common.sound.tooltip"));
+        soundComboBox.setToolTipText(message.getString("properties.event.action.common.sound.tooltip"));
+
         darknessLabel = new JLabel(message.getString("properties.event.action.common.darkness"));
         darknessTextField = new JTextField();
+        darknessLabel.setToolTipText(message.getString("properties.event.action.common.darkness.tooltip"));
+        darknessTextField.setToolTipText(message.getString("properties.event.action.common.darkness.tooltip"));
+
         iceLabel = new JLabel(message.getString("properties.event.action.common.ice"));
         iceTextField = new JTextField();
+        iceLabel.setToolTipText(message.getString("properties.event.action.common.ice.tooltip"));
+        iceTextField.setToolTipText(message.getString("properties.event.action.common.ice.tooltip"));
 
         // CENTER
         centerActionPanel = new JPanel();
@@ -279,9 +296,20 @@ public class EventPanel extends JPanel {
 
         // EnableElement
         EnableElementPanel = new JPanel();
-        EnableElementBorder = BorderFactory.createTitledBorder(message.getString("properties.event.action.enableElement.border"));
+        EnableElementBorder = BorderFactory
+                .createTitledBorder(message.getString("properties.event.action.enableElement.border"));
         EnableElementLayout = new BorderLayout();
         enableElementList = new JList<>();
+        enableElementList.setCellRenderer(new EnableElementRenderer());
+        DefaultListModel<EnableElement> listModel = new DefaultListModel<>();
+        listModel.addElement(new EnableElement());
+        listModel.addElement(new EnableElement());
+        listModel.addElement(new EnableElement());
+        EnableElement e = new EnableElement();
+        e.setNewState(true);
+        
+        listModel.addElement(e);
+        enableElementList.setModel(listModel);
         enableElementButtonPanel = new JPanel();
         enableElementButtonLayout = new GridLayout();
 
