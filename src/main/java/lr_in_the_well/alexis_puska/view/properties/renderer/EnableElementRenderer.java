@@ -3,6 +3,7 @@ package lr_in_the_well.alexis_puska.view.properties.renderer;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
@@ -22,6 +23,7 @@ public class EnableElementRenderer extends JLabel implements ListCellRenderer<En
             int index, boolean isSelected, boolean cellHasFocus) {
         
         if(enableElement.getElementType() == null){
+            setIcon(new ImageIcon(getClass().getResource("/icon/warn.png")));
             setText("NOT CONFIGURED");
         }else{
             setText(enableElement.getElementType().name() + " " + enableElement.getId() + " " + enableElement.isNewState());
