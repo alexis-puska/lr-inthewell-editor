@@ -629,7 +629,7 @@ public class EventPanel extends JPanel {
 
 		onNearestCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				// TODO
+				event.setTime(onNearestCheckBox.isSelected());
 			}
 		});
 		xSpinner.addChangeListener(new ChangeListener() {
@@ -664,7 +664,7 @@ public class EventPanel extends JPanel {
 		//
 		countDownCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				// TODO
+				event.setTime(countDownCheckBox.isSelected());
 			}
 		});
 		countDownValueSpinner.addChangeListener(new ChangeListener() {
