@@ -1,7 +1,11 @@
 package lr_in_the_well.alexis_puska.view.properties;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ResourceBundle;
 
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import lr_in_the_well.alexis_puska.domain.level.Platform;
@@ -13,12 +17,36 @@ import lr_in_the_well.alexis_puska.view.IdentifiablePanel;
 public class PlatformPanel extends IdentifiablePanel {
 
 	private static final long serialVersionUID = -4090876979915495722L;
+	private DrawPanel drawPanel;
+	private Platform platform;
+	private JLabel displayLabel;
+	private JCheckBox displayCheckBox;
 
-	public PlatformPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name,
-			Platform platform) {
+	public PlatformPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService,
+			String name, Platform platform) {
 		super(message, parent, drawPanel, levelService, name);
+		this.platform = platform;
+		this.drawPanel = drawPanel;
+		displayLabel = new JLabel(message.getString("properties.plateform.display"), JLabel.TRAILING);
+		displayCheckBox = new JCheckBox();
+		displayLabel.setLabelFor(displayCheckBox);
 		idField.setText(Integer.toString(platform.getId()));
-		SpringUtilities.makeCompactGrid(this, 1, 2, 2, 2, 2, 2);
+		displayCheckBox.setSelected(platform.isVisible());
+		this.add(displayLabel);
+		this.add(displayCheckBox);
+		SpringUtilities.makeCompactGrid(this, 2, 2, 2, 2, 2, 2);
+		addListeners();
 		this.parent.updateUI();
+		
+	}
+
+	private void addListeners() {
+		displayCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				platform.setVisible(displayCheckBox.isSelected());
+				levelService.updatePlatform(platform);
+				drawPanel.repaint();
+			}
+		});
 	}
 }

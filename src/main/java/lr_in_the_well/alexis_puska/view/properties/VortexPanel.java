@@ -129,6 +129,8 @@ public class VortexPanel extends IdentifiablePanel {
 			public void itemStateChanged(ItemEvent e) {
 				vortex.setEnable(actifCheckBox.isSelected());
 				levelService.updateVortex(vortex);
+				parent.repaint();
+				drawPanel.repaint();
 			}
 		});
 		
