@@ -69,6 +69,7 @@ public class PickPanel extends IdentifiablePanel {
 			public void itemStateChanged(ItemEvent e) {
 				pick.setVisible(actifCheckBox.isSelected());
 				levelService.updatePick(pick);
+				drawPanel.repaint();
 			}
 		});
 		directionSpinner.addChangeListener(new ChangeListener() {
