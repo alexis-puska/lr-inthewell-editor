@@ -680,39 +680,40 @@ public class LevelService {
 		return freeId;
 	}
 
-	public Identifiable getProperties(int x, int y) {
+	public List<Identifiable> getProperties(int x, int y) {
+		List<Identifiable> identified = new ArrayList<>();
 		int caseX = x / Constante.GRID_SIZE;
 		int caseY = y / Constante.GRID_SIZE;
 		if (currentLevel != null) {
 			for (Decor e : currentLevel.getDecor()) {
 				if (e.getX() >= ((x + 10) - 5) && e.getX() <= ((x + 10) + 5) && e.getY() >= (y - 5)
 						&& e.getY() <= (y + 5)) {
-					return e;
+					identified.add(e);
 				}
 			}
 			for (Door e : currentLevel.getDoor()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
-					return e;
+					identified.add(e);
 				}
 			}
 			for (Ennemie e : currentLevel.getEnnemies()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
-					return e;
+					identified.add(e);
 				}
 			}
 			for (Event e : currentLevel.getEvent()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
-					return e;
+					identified.add(e);
 				}
 			}
 			for (Lock e : currentLevel.getLock()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
-					return e;
+					identified.add(e);
 				}
 			}
 			for (Pick e : currentLevel.getPick()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
-					return e;
+					identified.add(e);
 				}
 			}
 			for (Platform e : currentLevel.getPlatform()) {
@@ -720,15 +721,13 @@ public class LevelService {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
 					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
-
-						return e;
+						identified.add(e);
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
 					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
-
-						return e;
+						identified.add(e);
 					}
 				}
 			}
@@ -737,13 +736,13 @@ public class LevelService {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
 					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
-						return e;
+						identified.add(e);
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
 					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
-						return e;
+						identified.add(e);
 					}
 				}
 			}
@@ -752,28 +751,28 @@ public class LevelService {
 					int min = e.getY();
 					int max = e.getY() + e.getLength();
 					if (e.getX() == caseX && (min <= caseY && caseY < max)) {
-						return e;
+						identified.add(e);
 					}
 				} else {
 					int min = e.getX();
 					int max = e.getX() + e.getLength();
 					if (e.getY() == caseY && (min <= caseX && caseX < max)) {
-						return e;
+						identified.add(e);
 					}
 				}
 			}
 			for (Vortex e : currentLevel.getVortex()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
-					return e;
+					identified.add(e);
 				}
 			}
 			for (Item e : currentLevel.getItems()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
-					return e;
+					identified.add(e);
 				}
 			}
 		}
-		return null;
+		return identified;
 	}
 
 	public void updateRayon(Rayon rayon) {
