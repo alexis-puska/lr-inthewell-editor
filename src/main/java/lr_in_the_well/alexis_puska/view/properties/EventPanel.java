@@ -24,6 +24,7 @@ import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
+import lr_in_the_well.alexis_puska.constant.EnabledElementEnum;
 import lr_in_the_well.alexis_puska.domain.level.event.EnableElement;
 import lr_in_the_well.alexis_puska.domain.level.event.Event;
 import lr_in_the_well.alexis_puska.domain.level.event.Message;
@@ -41,7 +42,7 @@ public class EventPanel extends JPanel {
     private ResourceBundle message;
     private DrawPanel drawPanel;
     private LevelService levelService;
-    
+
     private int lastEnableElementSelectedIndex;
     private int lastMessageSelectedIndex;
 
@@ -135,9 +136,9 @@ public class EventPanel extends JPanel {
     private GridLayout centerActionLayout;
 
     // EnableElement
-    private JPanel EnableElementPanel;
-    private Border EnableElementBorder;
-    private BorderLayout EnableElementLayout;
+    private JPanel enableElementPanel;
+    private Border enableElementBorder;
+    private BorderLayout enableElementLayout;
     private JList<EnableElement> enableElementList;
     private JScrollPane enableElementListScollPane;
     private EnableElementRenderer enableElementRenderer;
@@ -308,10 +309,10 @@ public class EventPanel extends JPanel {
         centerActionLayout = new GridLayout();
 
         // EnableElement
-        EnableElementPanel = new JPanel();
-        EnableElementBorder = BorderFactory
+        enableElementPanel = new JPanel();
+        enableElementBorder = BorderFactory
                 .createTitledBorder(message.getString("properties.event.action.enableElement.border"));
-        EnableElementLayout = new BorderLayout();
+        enableElementLayout = new BorderLayout();
         enableElementList = new JList<>();
         enableElementListScollPane = new JScrollPane();
         enableElementListModel = new DefaultListModel<>();
@@ -418,8 +419,8 @@ public class EventPanel extends JPanel {
         SpringUtilities.makeCompactGrid(commonActionPanel, 4, 2, 6, 6, 6, 6);
 
         // EnableElement
-        EnableElementPanel.setBorder(EnableElementBorder);
-        EnableElementPanel.setLayout(EnableElementLayout);
+        enableElementPanel.setBorder(enableElementBorder);
+        enableElementPanel.setLayout(enableElementLayout);
         enableElementButtonLayout.setColumns(2);
         enableElementButtonLayout.setRows(1);
         enableElementButtonPanel.setLayout(enableElementButtonLayout);
@@ -428,8 +429,8 @@ public class EventPanel extends JPanel {
         enableElementList.setModel(enableElementListModel);
         enableElementList.setCellRenderer(enableElementRenderer);
         enableElementListScollPane.setViewportView(enableElementList);
-        EnableElementPanel.add(enableElementListScollPane, BorderLayout.CENTER);
-        EnableElementPanel.add(enableElementButtonPanel, BorderLayout.SOUTH);
+        enableElementPanel.add(enableElementListScollPane, BorderLayout.CENTER);
+        enableElementPanel.add(enableElementButtonPanel, BorderLayout.SOUTH);
 
         // Message
         messagePanel.setBorder(messageBorder);
@@ -448,7 +449,7 @@ public class EventPanel extends JPanel {
         centerActionLayout.setColumns(1);
         centerActionLayout.setRows(2);
         centerActionPanel.setLayout(centerActionLayout);
-        centerActionPanel.add(EnableElementPanel);
+        centerActionPanel.add(enableElementPanel);
         centerActionPanel.add(messagePanel);
 
         actionPanel.setBorder(actionBorder);
@@ -459,9 +460,9 @@ public class EventPanel extends JPanel {
 
     }
 
-    public void buildEnableElementEditPanel() {
+    public void buildEnableElementEditPanel(EnableElement enableElement) {
         if (enableElementEditPanel != null) {
-            EnableElementPanel.remove(enableElementEditPanel);
+            enableElementPanel.remove(enableElementEditPanel);
         }
         enableElementEditPanel = new JPanel();
         enableElementEditBorder = BorderFactory
@@ -469,25 +470,29 @@ public class EventPanel extends JPanel {
         enableElementEditLayout = new SpringLayout();
         enableElementIdLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.id"));
         enableElementIdTextField = new JTextField();
+        enableElementIdLabel.setLabelFor(enableElementIdTextField);
         enableElementTypeLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.type"));
-        enableElementTypeComboBox = new JComboBox<>();
+        enableElementTypeComboBox = new JComboBox<>(EnabledElementEnum.getValues());
+        enableElementTypeLabel.setLabelFor(enableElementTypeComboBox);
         enableElementStatusLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.status"));
         enableElementStatusCheckBox = new JCheckBox();
+        enableElementStatusLabel.setLabelFor(enableElementStatusCheckBox);
         enableElementEditPanel.setLayout(enableElementEditLayout);
         enableElementEditPanel.setBorder(enableElementEditBorder);
         enableElementEditPanel.add(enableElementIdLabel);
         enableElementEditPanel.add(enableElementIdTextField);
         enableElementEditPanel.add(enableElementTypeLabel);
-        enableElementEditPanel.add(enableElementTypeLabel);
+        enableElementEditPanel.add(enableElementTypeComboBox);
         enableElementEditPanel.add(enableElementStatusLabel);
         enableElementEditPanel.add(enableElementStatusCheckBox);
         SpringUtilities.makeCompactGrid(enableElementEditPanel, 3, 2, 6, 6, 6, 6);
         initListenersEnableElement();
-        EnableElementPanel.revalidate();
-        EnableElementPanel.repaint();
+        enableElementPanel.add(enableElementEditPanel, BorderLayout.NORTH);
+        enableElementPanel.revalidate();
+        enableElementPanel.repaint();
     }
 
-    public void buildMessageEditPanel() {
+    public void buildMessageEditPanel(Message messageToEdit) {
         if (messageEditPanel != null) {
             messagePanel.remove(messageEditPanel);
         }
@@ -497,12 +502,16 @@ public class EventPanel extends JPanel {
         messageEditLayout = new SpringLayout();
         timeoutLabel = new JLabel();
         timeoutTextField = new JTextField(message.getString("properties.event.action.message.edit.timeout"));
+        timeoutLabel.setLabelFor(timeoutTextField);
         espagnolLabel = new JLabel();
         espagnolextField = new JTextField(message.getString("properties.event.action.message.edit.es"));
+        espagnolLabel.setLabelFor(espagnolextField);
         englishLabel = new JLabel();
         englishTextField = new JTextField(message.getString("properties.event.action.message.edit.en"));
+        englishLabel.setLabelFor(englishTextField);
         frenchLabel = new JLabel();
         frenchTextField = new JTextField(message.getString("properties.event.action.message.edit.fr"));
+        frenchLabel.setLabelFor(frenchTextField);
         messageEditPanel.setLayout(messageEditLayout);
         messageEditPanel.setBorder(messageEditBorder);
         messageEditPanel.add(timeoutLabel);
@@ -515,6 +524,7 @@ public class EventPanel extends JPanel {
         messageEditPanel.add(espagnolextField);
         SpringUtilities.makeCompactGrid(messageEditPanel, 4, 2, 6, 6, 6, 6);
         initListenersMessage();
+        messagePanel.add(messageEditPanel, BorderLayout.NORTH);
         messagePanel.revalidate();
         messagePanel.repaint();
     }
@@ -599,11 +609,16 @@ public class EventPanel extends JPanel {
         //
         enableElementList.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                if (enableElementList.getSelectedIndex() != -1 && lastEnableElementSelectedIndex == enableElementList.getSelectedIndex()) {
+                if (enableElementList.getSelectedIndex() != -1
+                        && lastEnableElementSelectedIndex == enableElementList.getSelectedIndex()) {
+                    if (enableElementEditPanel != null) {
+                        enableElementPanel.remove(enableElementEditPanel);
+                        enableElementPanel.updateUI();
+                    }
                     enableElementList.clearSelection();
                     lastEnableElementSelectedIndex = -1;
                 } else {
-                    
+                    buildEnableElementEditPanel(enableElementList.getSelectedValue());
                     lastEnableElementSelectedIndex = enableElementList.getSelectedIndex();
                 }
             }
@@ -618,15 +633,24 @@ public class EventPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 enableElementListModel.remove(enableElementList.getSelectedIndex());
+                if (enableElementEditPanel != null) {
+                    enableElementPanel.remove(enableElementEditPanel);
+                    enableElementPanel.updateUI();
+                }
             }
         });
         messageList.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                if (messageList.getSelectedIndex() != -1 && lastMessageSelectedIndex == messageList.getSelectedIndex()) {
+                if (messageList.getSelectedIndex() != -1
+                        && lastMessageSelectedIndex == messageList.getSelectedIndex()) {
+                    if (messageEditPanel != null) {
+                        messagePanel.remove(messageEditPanel);
+                        messagePanel.updateUI();
+                    }
                     messageList.clearSelection();
                     lastMessageSelectedIndex = -1;
                 } else {
-                    
+                    buildMessageEditPanel(messageList.getSelectedValue());
                     lastMessageSelectedIndex = messageList.getSelectedIndex();
                 }
             }
@@ -641,6 +665,10 @@ public class EventPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 messageListModel.remove(messageList.getSelectedIndex());
+                if (messageEditPanel != null) {
+                    messagePanel.remove(messageEditPanel);
+                    messagePanel.updateUI();
+                }
             }
         });
     }

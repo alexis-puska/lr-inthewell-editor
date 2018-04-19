@@ -1,6 +1,8 @@
 package lr_in_the_well.alexis_puska.constant;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public enum EnabledElementEnum implements Serializable{
     DECOR,
@@ -15,4 +17,12 @@ public enum EnabledElementEnum implements Serializable{
     TELEPORTER,
     TYPE,
     VORTEX;
+    
+    public static String[] getValues(){
+        List<String> val = new ArrayList<>();
+        for(EnabledElementEnum e : values()){
+            val.add(e.name());
+        }
+        return val.toArray(new String[0]);
+    }
 }
