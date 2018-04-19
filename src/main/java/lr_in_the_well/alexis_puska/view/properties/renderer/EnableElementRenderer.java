@@ -13,7 +13,7 @@ import lr_in_the_well.alexis_puska.domain.level.event.EnableElement;
 public class EnableElementRenderer extends JLabel implements ListCellRenderer<EnableElement> {
 
     private static final long serialVersionUID = -7756260545095706601L;
-    
+
     public EnableElementRenderer() {
         setOpaque(true);
     }
@@ -21,28 +21,25 @@ public class EnableElementRenderer extends JLabel implements ListCellRenderer<En
     @Override
     public Component getListCellRendererComponent(JList<? extends EnableElement> list, EnableElement enableElement,
             int index, boolean isSelected, boolean cellHasFocus) {
-        
-        if(enableElement.getElementType() == null){
+        if (enableElement.getElementType() == null) {
             setIcon(new ImageIcon(getClass().getResource("/icon/warn.png")));
             setText("NOT CONFIGURED");
-        }else{
-            setText(enableElement.getElementType().name() + " " + enableElement.getId() + " " + enableElement.isNewState());
+        } else {
+            setIcon(new ImageIcon(getClass().getResource("/icon/ok.png")));
+            setText(enableElement.getElementType().name() + " " + enableElement.getId() + " "
+                    + enableElement.isNewState());
         }
-        
         if (isSelected) {
             setBackground(list.getSelectionBackground());
             setForeground(list.getSelectionForeground());
         } else {
-        //    setBackground(list.getBackground());
             setForeground(list.getForeground());
             if (enableElement.isNewState()) {
-                setBackground(Color.green);
+                setBackground(new Color(210, 255, 210));
             } else {
-                setBackground(Color.red);
+                setBackground(new Color(255, 210, 210));
             }
         }
-        
         return this;
     }
-
 }

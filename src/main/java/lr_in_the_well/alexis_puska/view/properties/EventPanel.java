@@ -3,6 +3,10 @@ package lr_in_the_well.alexis_puska.view.properties;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
@@ -13,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -21,10 +26,12 @@ import javax.swing.border.Border;
 import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.domain.level.event.EnableElement;
 import lr_in_the_well.alexis_puska.domain.level.event.Event;
+import lr_in_the_well.alexis_puska.domain.level.event.Message;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
 import lr_in_the_well.alexis_puska.view.DrawPanel;
 import lr_in_the_well.alexis_puska.view.properties.renderer.EnableElementRenderer;
+import lr_in_the_well.alexis_puska.view.properties.renderer.MessageRenderer;
 
 public class EventPanel extends JPanel {
 
@@ -34,11 +41,13 @@ public class EventPanel extends JPanel {
     private ResourceBundle message;
     private DrawPanel drawPanel;
     private LevelService levelService;
+    
+    private int lastEnableElementSelectedIndex;
+    private int lastMessageSelectedIndex;
 
     /*********************************
      * MAIN PANEL
      *********************************/
-    private JPanel parent;
 
     private BorderLayout mainLayout;
     protected JLabel idLabel;
@@ -105,84 +114,88 @@ public class EventPanel extends JPanel {
      * ACTION : center panel
      *********************************/
 
-    JPanel actionPanel;
-    Border actionBorder;
-    BorderLayout actionLayout;
+    private JPanel actionPanel;
+    private Border actionBorder;
+    private BorderLayout actionLayout;
 
     // common
-    JPanel commonActionPanel;
-    Border commonActionBorder;
-    SpringLayout commonActionLayout;
-    JLabel songLabel;
-    JComboBox<String> songComboBox;
-    JLabel soundLabel;
-    JComboBox<String> soundComboBox;
-    JLabel darknessLabel;
-    JTextField darknessTextField;
-    JLabel iceLabel;
-    JTextField iceTextField;
+    private JPanel commonActionPanel;
+    private Border commonActionBorder;
+    private SpringLayout commonActionLayout;
+    private JLabel songLabel;
+    private JComboBox<String> songComboBox;
+    private JLabel soundLabel;
+    private JComboBox<String> soundComboBox;
+    private JLabel darknessLabel;
+    private JTextField darknessTextField;
+    private JLabel iceLabel;
+    private JTextField iceTextField;
 
-    JPanel centerActionPanel;
-    GridLayout centerActionLayout;
+    private JPanel centerActionPanel;
+    private GridLayout centerActionLayout;
 
     // EnableElement
-    JPanel EnableElementPanel;
-    Border EnableElementBorder;
-    BorderLayout EnableElementLayout;
-    JList<EnableElement> enableElementList;
-    JPanel enableElementButtonPanel;
-    GridLayout enableElementButtonLayout;
-    JButton addEnableElement;
-    JButton delEnableElement;
+    private JPanel EnableElementPanel;
+    private Border EnableElementBorder;
+    private BorderLayout EnableElementLayout;
+    private JList<EnableElement> enableElementList;
+    private JScrollPane enableElementListScollPane;
+    private EnableElementRenderer enableElementRenderer;
+    private DefaultListModel<EnableElement> enableElementListModel;
+    private JPanel enableElementButtonPanel;
+    private GridLayout enableElementButtonLayout;
+    private JButton addEnableElement;
+    private JButton delEnableElement;
     // editElement
-    JPanel enableElementEditPanel;
-    Border enableElementEditBorder;
-    SpringLayout enableElementEditLayout;
-    JLabel enableElementIdLabel;
-    JTextField enableElementIdTextField;
-    JLabel enableElementTypeLabel;
-    JComboBox<String> enableElementTypeComboBox;
-    JLabel enableElementStatusLabel;
-    JCheckBox enableElementStatusCheckBox;
+    private JPanel enableElementEditPanel;
+    private Border enableElementEditBorder;
+    private SpringLayout enableElementEditLayout;
+    private JLabel enableElementIdLabel;
+    private JTextField enableElementIdTextField;
+    private JLabel enableElementTypeLabel;
+    private JComboBox<String> enableElementTypeComboBox;
+    private JLabel enableElementStatusLabel;
+    private JCheckBox enableElementStatusCheckBox;
 
     // Message
-    JPanel messagePanel;
-    Border messageBorder;
-    BorderLayout messageLayout;
-    JList<EnableElement> messageList;
-    JPanel messageButtonPanel;
-    GridLayout messageButtonLayout;
-    JButton addmessage;
-    JButton delmessage;
+    private JPanel messagePanel;
+    private Border messageBorder;
+    private BorderLayout messageLayout;
+    private JList<Message> messageList;
+    private JScrollPane messageListScollPane;
+    private MessageRenderer messageRenderer;
+    private DefaultListModel<Message> messageListModel;
+    private JPanel messageButtonPanel;
+    private GridLayout messageButtonLayout;
+    private JButton addmessage;
+    private JButton delmessage;
     // edit message
-    JPanel messageEditPanel;
-    Border messageEditBorder;
-    SpringLayout messageEditLayout;
-    JLabel timeoutLabel;
-    JTextField timeoutTextField;
-    JLabel espagnolLabel;
-    JTextField espagnolextField;
-    JLabel englishLabel;
-    JTextField englishTextField;
-    JLabel frenchLabel;
-    JTextField frenchTextField;
+    private JPanel messageEditPanel;
+    private Border messageEditBorder;
+    private SpringLayout messageEditLayout;
+    private JLabel timeoutLabel;
+    private JTextField timeoutTextField;
+    private JLabel espagnolLabel;
+    private JTextField espagnolextField;
+    private JLabel englishLabel;
+    private JTextField englishTextField;
+    private JLabel frenchLabel;
+    private JTextField frenchTextField;
 
-    /*
-     * private List<EnableElement> enableElement; private String song; private
-     * String sound; private int darknessValue; private int iceValue;
-     */
-
-    public EventPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService,
-            String name, Event event) {
+    public EventPanel(ResourceBundle message, DrawPanel drawPanel, LevelService levelService, String name,
+            Event event) {
         this.message = message;
-        this.parent = parent;
+        this.drawPanel = drawPanel;
         this.event = event;
         this.levelService = levelService;
-        this.drawPanel = drawPanel;
+        this.lastEnableElementSelectedIndex = -1;
+        this.lastMessageSelectedIndex = -1;
 
         initComponent();
         buildTriggerPanel();
         buildActionPanel();
+        initValue();
+        initListeners();
     }
 
     public void updateRayon() {
@@ -300,16 +313,9 @@ public class EventPanel extends JPanel {
                 .createTitledBorder(message.getString("properties.event.action.enableElement.border"));
         EnableElementLayout = new BorderLayout();
         enableElementList = new JList<>();
-        enableElementList.setCellRenderer(new EnableElementRenderer());
-        DefaultListModel<EnableElement> listModel = new DefaultListModel<>();
-        listModel.addElement(new EnableElement());
-        listModel.addElement(new EnableElement());
-        listModel.addElement(new EnableElement());
-        EnableElement e = new EnableElement();
-        e.setNewState(true);
-        
-        listModel.addElement(e);
-        enableElementList.setModel(listModel);
+        enableElementListScollPane = new JScrollPane();
+        enableElementListModel = new DefaultListModel<>();
+        enableElementRenderer = new EnableElementRenderer();
         enableElementButtonPanel = new JPanel();
         enableElementButtonLayout = new GridLayout();
 
@@ -321,6 +327,9 @@ public class EventPanel extends JPanel {
         messageBorder = BorderFactory.createTitledBorder(message.getString("properties.event.action.message.border"));
         messageLayout = new BorderLayout();
         messageList = new JList<>();
+        messageListScollPane = new JScrollPane();
+        messageRenderer = new MessageRenderer();
+        messageListModel = new DefaultListModel<>();
         messageButtonPanel = new JPanel();
         messageButtonLayout = new GridLayout();
         addmessage = new JButton(message.getString("properties.event.action.message.add"));
@@ -416,7 +425,10 @@ public class EventPanel extends JPanel {
         enableElementButtonPanel.setLayout(enableElementButtonLayout);
         enableElementButtonPanel.add(addEnableElement);
         enableElementButtonPanel.add(delEnableElement);
-        EnableElementPanel.add(enableElementList, BorderLayout.CENTER);
+        enableElementList.setModel(enableElementListModel);
+        enableElementList.setCellRenderer(enableElementRenderer);
+        enableElementListScollPane.setViewportView(enableElementList);
+        EnableElementPanel.add(enableElementListScollPane, BorderLayout.CENTER);
         EnableElementPanel.add(enableElementButtonPanel, BorderLayout.SOUTH);
 
         // Message
@@ -427,7 +439,10 @@ public class EventPanel extends JPanel {
         messageButtonPanel.setLayout(messageButtonLayout);
         messageButtonPanel.add(addmessage);
         messageButtonPanel.add(delmessage);
-        messagePanel.add(messageList, BorderLayout.CENTER);
+        messageList.setModel(messageListModel);
+        messageList.setCellRenderer(messageRenderer);
+        messageListScollPane.setViewportView(messageList);
+        messagePanel.add(messageListScollPane, BorderLayout.CENTER);
         messagePanel.add(messageButtonPanel, BorderLayout.SOUTH);
 
         centerActionLayout.setColumns(1);
@@ -445,29 +460,201 @@ public class EventPanel extends JPanel {
     }
 
     public void buildEnableElementEditPanel() {
+        if (enableElementEditPanel != null) {
+            EnableElementPanel.remove(enableElementEditPanel);
+        }
         enableElementEditPanel = new JPanel();
-        enableElementEditBorder = BorderFactory.createTitledBorder("Edit element");
+        enableElementEditBorder = BorderFactory
+                .createTitledBorder(message.getString("properties.event.action.enableElement.edit.border"));
         enableElementEditLayout = new SpringLayout();
-        enableElementIdLabel = new JLabel();
+        enableElementIdLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.id"));
         enableElementIdTextField = new JTextField();
-        enableElementTypeLabel = new JLabel();
+        enableElementTypeLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.type"));
         enableElementTypeComboBox = new JComboBox<>();
-        enableElementStatusLabel = new JLabel();
+        enableElementStatusLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.status"));
         enableElementStatusCheckBox = new JCheckBox();
+        enableElementEditPanel.setLayout(enableElementEditLayout);
+        enableElementEditPanel.setBorder(enableElementEditBorder);
+        enableElementEditPanel.add(enableElementIdLabel);
+        enableElementEditPanel.add(enableElementIdTextField);
+        enableElementEditPanel.add(enableElementTypeLabel);
+        enableElementEditPanel.add(enableElementTypeLabel);
+        enableElementEditPanel.add(enableElementStatusLabel);
+        enableElementEditPanel.add(enableElementStatusCheckBox);
+        SpringUtilities.makeCompactGrid(enableElementEditPanel, 3, 2, 6, 6, 6, 6);
+        initListenersEnableElement();
+        EnableElementPanel.revalidate();
+        EnableElementPanel.repaint();
     }
 
     public void buildMessageEditPanel() {
+        if (messageEditPanel != null) {
+            messagePanel.remove(messageEditPanel);
+        }
         messageEditPanel = new JPanel();
-        messageEditBorder = BorderFactory.createTitledBorder("Edit message");
+        messageEditBorder = BorderFactory
+                .createTitledBorder(message.getString("properties.event.action.message.edit.border"));
         messageEditLayout = new SpringLayout();
         timeoutLabel = new JLabel();
-        timeoutTextField = new JTextField();
+        timeoutTextField = new JTextField(message.getString("properties.event.action.message.edit.timeout"));
         espagnolLabel = new JLabel();
-        espagnolextField = new JTextField();
+        espagnolextField = new JTextField(message.getString("properties.event.action.message.edit.es"));
         englishLabel = new JLabel();
-        englishTextField = new JTextField();
+        englishTextField = new JTextField(message.getString("properties.event.action.message.edit.en"));
         frenchLabel = new JLabel();
-        frenchTextField = new JTextField();
+        frenchTextField = new JTextField(message.getString("properties.event.action.message.edit.fr"));
+        messageEditPanel.setLayout(messageEditLayout);
+        messageEditPanel.setBorder(messageEditBorder);
+        messageEditPanel.add(timeoutLabel);
+        messageEditPanel.add(timeoutTextField);
+        messageEditPanel.add(frenchLabel);
+        messageEditPanel.add(frenchTextField);
+        messageEditPanel.add(englishLabel);
+        messageEditPanel.add(englishTextField);
+        messageEditPanel.add(espagnolLabel);
+        messageEditPanel.add(espagnolextField);
+        SpringUtilities.makeCompactGrid(messageEditPanel, 4, 2, 6, 6, 6, 6);
+        initListenersMessage();
+        messagePanel.revalidate();
+        messagePanel.repaint();
     }
 
+    private void initValue() {
+        /*********************************
+         * TRIGGER : left panel
+         *********************************/
+        onlyOnceCheckBox.setSelected(event.isOnlyOnce());
+
+        onNearestCheckBox.setSelected(event.isNear());
+        xTextField.setValue((Integer) event.getX());
+        yTextField.setValue((Integer) event.getY());
+        dTextField.setValue((Integer) event.getD());
+        //
+        countDownCheckBox.setSelected(event.isTime());
+        countDownValueTextField.setValue((Integer) event.getTimeout());
+
+        onBirthCheckBox.setSelected(event.isOnBirth());
+        onDeathCheckBox.setSelected(event.isOnDeath());
+        onLevelEnterCheckBox.setSelected(event.isOnLevelEnter());
+
+        mirrorCheckBox.setSelected(event.isMirror());
+        nightmareCheckBox.setSelected(event.isNightmare());
+        timeAttackCheckBox.setSelected(event.isTimeAttackeOption());
+        multiCheckBox.setSelected(event.isMultiOption());
+        ninjaCheckBox.setSelected(event.isNinja());
+
+        /*********************************
+         * ACTION : center panel
+         *********************************/
+
+        songComboBox.setSelectedItem(event.getSong());
+        soundComboBox.setSelectedItem(event.getSound());
+        darknessTextField.setText(Integer.toString(event.getDarknessValue()));
+        iceTextField.setText(Integer.toString(event.getIceValue()));
+        if (event.getEnableElement() != null) {
+            for (EnableElement e : event.getEnableElement()) {
+                enableElementListModel.addElement(e);
+            }
+        }
+        if (event.getMessage() != null) {
+            for (Message e : event.getMessage()) {
+                messageListModel.addElement(e);
+            }
+        }
+    }
+
+    private void initListeners() {
+
+        /*********************************
+         * TRIGGER : left panel
+         *********************************/
+        // onlyOnceCheckBox;
+        //
+        // onNearestCheckBox;
+        // xTextField;
+        // yTextField;
+        // dTextField;
+        //
+        // countDownCheckBox;
+        // countDownValueTextField;
+        //
+        // onBirthCheckBox;
+        // onDeathCheckBox;
+        // onLevelEnterCheckBox;
+        //
+        // mirrorCheckBox;
+        // nightmareCheckBox;
+        // timeAttackCheckBox;
+        // multiCheckBox;
+        // ninjaCheckBox;
+
+        /*********************************
+         * ACTION : center panel
+         *********************************/
+
+        // songComboBox;
+        // soundComboBox;
+        // darknessTextField;
+        // iceTextField;
+        //
+        enableElementList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                if (enableElementList.getSelectedIndex() != -1 && lastEnableElementSelectedIndex == enableElementList.getSelectedIndex()) {
+                    enableElementList.clearSelection();
+                    lastEnableElementSelectedIndex = -1;
+                } else {
+                    
+                    lastEnableElementSelectedIndex = enableElementList.getSelectedIndex();
+                }
+            }
+        });
+        addEnableElement.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enableElementListModel.addElement(new EnableElement());
+            }
+        });
+        delEnableElement.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enableElementListModel.remove(enableElementList.getSelectedIndex());
+            }
+        });
+        messageList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                if (messageList.getSelectedIndex() != -1 && lastMessageSelectedIndex == messageList.getSelectedIndex()) {
+                    messageList.clearSelection();
+                    lastMessageSelectedIndex = -1;
+                } else {
+                    
+                    lastMessageSelectedIndex = messageList.getSelectedIndex();
+                }
+            }
+        });
+        addmessage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                messageListModel.addElement(new Message());
+            }
+        });
+        delmessage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                messageListModel.remove(messageList.getSelectedIndex());
+            }
+        });
+    }
+
+    private void initListenersEnableElement() {
+        // enableElementIdTextField;
+        // enableElementTypeComboBox;
+        // enableElementStatusCheckBox;
+    }
+
+    private void initListenersMessage() {
+        // timeoutTextField;
+        // espagnolextField;
+        // englishTextField;
+        // frenchTextField;
+    }
 }

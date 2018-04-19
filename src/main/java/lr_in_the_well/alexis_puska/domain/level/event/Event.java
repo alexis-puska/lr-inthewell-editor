@@ -52,6 +52,7 @@ public class Event extends Identifiable implements Serializable {
      * ACTION
      ***************************************/
 	private List<EnableElement> enableElement;
+	private List<Message> message;
 	private String song;
 	private String sound;
 	private int darknessValue;
