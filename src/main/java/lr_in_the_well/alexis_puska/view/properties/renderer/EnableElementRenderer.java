@@ -21,23 +21,29 @@ public class EnableElementRenderer extends JLabel implements ListCellRenderer<En
     @Override
     public Component getListCellRendererComponent(JList<? extends EnableElement> list, EnableElement enableElement,
             int index, boolean isSelected, boolean cellHasFocus) {
-        if (enableElement.getElementType() == null || enableElement.getId() < 0) {
-            setIcon(new ImageIcon(getClass().getResource("/icon/warn.png")));
-            setText("NOT CONFIGURED");
-        } else {
-            setIcon(new ImageIcon(getClass().getResource("/icon/ok.png")));
-            setText(enableElement.getElementType().name() + " " + enableElement.getId() + " "
-                    + enableElement.isNewState());
-        }
         if (isSelected) {
             setBackground(list.getSelectionBackground());
             setForeground(list.getSelectionForeground());
+            
+            if (enableElement.getElementType() == null || enableElement.getId() < 0) {
+                setIcon(new ImageIcon(getClass().getResource("/icon/warn.png")));
+                setText("NOT CONFIGURED");
+            } else {
+                setIcon(new ImageIcon(getClass().getResource("/icon/ok.png")));
+                setText(enableElement.getElementType().name() + " " + enableElement.getId() + " "
+                        + enableElement.isNewState());
+            }
         } else {
             setForeground(list.getForeground());
-            if (enableElement.isNewState()) {
-                setBackground(new Color(210, 255, 210));
-            } else {
+            if (enableElement.getElementType() == null || enableElement.getId() < 0) {
+                setIcon(new ImageIcon(getClass().getResource("/icon/warn.png")));
+                setText("NOT CONFIGURED");
                 setBackground(new Color(255, 210, 210));
+            } else {
+                setIcon(new ImageIcon(getClass().getResource("/icon/ok.png")));
+                setText(enableElement.getElementType().name() + " " + enableElement.getId() + " "
+                        + enableElement.isNewState());
+                setBackground(new Color(210, 255, 210));
             }
         }
         return this;
