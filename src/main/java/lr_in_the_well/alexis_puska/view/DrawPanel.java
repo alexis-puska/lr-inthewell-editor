@@ -236,6 +236,9 @@ public class DrawPanel extends Canvas {
 			BufferedImage bf = spriteService.getSprite("doors", index);
 			g2.drawImage(bf, null, door.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10 + OFFSET,
 					((door.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+			if (!door.isLocked()) {
+				drawDisabledFlag(g2, door.getX(), door.getY());
+			}
 		}
 	}
 

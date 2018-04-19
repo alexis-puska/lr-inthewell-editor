@@ -302,9 +302,9 @@ public class App extends JFrame {
 		buildParameterPanelButton();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
+		this.setSize(Constante.APP_SIZE_X, Constante.APP_SIZE_Y);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-		this.setSize(Constante.APP_SIZE_X, Constante.APP_SIZE_Y);
 	}
 
 	/*************************************************************************************
@@ -313,9 +313,9 @@ public class App extends JFrame {
 	 * 
 	 *************************************************************************************/
 	private void buildIdentifiablePanelEdition(List<Identifiable> objs) {
-		selectionIdentifiableLabel = new JLabel("combo :");
+		selectionIdentifiableLabel = new JLabel(message.getString("selectionIdentifiable.border"));
 		selectionIdentifiableComboBox = new JComboBox<>();
-		selectionIdentifiableBorder = BorderFactory.createTitledBorder("Combo :");
+		selectionIdentifiableBorder = BorderFactory.createTitledBorder(message.getString("selectionIdentifiable.combo"));
 		selectionIdentifiableLayout = new SpringLayout();
 		selectionIdentifiablePanel = new JPanel();
 		selectionIdentifiablePanel.setBorder(selectionIdentifiableBorder);
