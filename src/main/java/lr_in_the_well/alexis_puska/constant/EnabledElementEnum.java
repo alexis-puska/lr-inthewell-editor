@@ -20,6 +20,7 @@ public enum EnabledElementEnum implements Serializable{
     
     public static String[] getValues(){
         List<String> val = new ArrayList<>();
+        val.add(null);
         for(EnabledElementEnum e : values()){
             val.add(e.name());
         }

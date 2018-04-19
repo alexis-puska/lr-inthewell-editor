@@ -21,7 +21,7 @@ public class EnableElementRenderer extends JLabel implements ListCellRenderer<En
     @Override
     public Component getListCellRendererComponent(JList<? extends EnableElement> list, EnableElement enableElement,
             int index, boolean isSelected, boolean cellHasFocus) {
-        if (enableElement.getElementType() == null) {
+        if (enableElement.getElementType() == null || enableElement.getId() < 0) {
             setIcon(new ImageIcon(getClass().getResource("/icon/warn.png")));
             setText("NOT CONFIGURED");
         } else {

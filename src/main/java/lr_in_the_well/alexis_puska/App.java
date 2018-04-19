@@ -922,7 +922,6 @@ public class App extends JFrame {
 
         showPlatformLevelCheckBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
-                System.out.println("Checked? " + showPlatformLevelCheckBox.isSelected());
                 levelService.setShowPlatform(showPlatformLevelCheckBox.isSelected());
             }
         });
@@ -1544,7 +1543,7 @@ public class App extends JFrame {
     private void treatEventProperties(Event event) {
         JFrame frame = new JFrame(message.getString("properties.event.title") + event.getId());
         frame.getContentPane().setLayout(new BorderLayout());
-        identifiablePropertiesPanel = new EventPanel(message, drawPanel, levelService,
+        identifiablePropertiesPanel = new EventPanel(message, frame, drawPanel, levelService,
                 message.getString("properties.event.title"), event);
         frame.add(identifiablePropertiesPanel);
         frame.setLocationRelativeTo(null);

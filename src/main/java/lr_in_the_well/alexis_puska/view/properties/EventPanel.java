@@ -5,8 +5,16 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
@@ -14,6 +22,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -22,6 +31,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.border.Border;
+import javax.swing.event.CaretListener;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.constant.EnabledElementEnum;
@@ -40,6 +50,7 @@ public class EventPanel extends JPanel {
     private Event event;
 
     private ResourceBundle message;
+    private JFrame parent;
     private DrawPanel drawPanel;
     private LevelService levelService;
 
@@ -183,9 +194,10 @@ public class EventPanel extends JPanel {
     private JLabel frenchLabel;
     private JTextField frenchTextField;
 
-    public EventPanel(ResourceBundle message, DrawPanel drawPanel, LevelService levelService, String name,
-            Event event) {
+    public EventPanel(ResourceBundle message, JFrame parent, DrawPanel drawPanel, LevelService levelService,
+            String name, Event event) {
         this.message = message;
+        this.parent = parent;
         this.drawPanel = drawPanel;
         this.event = event;
         this.levelService = levelService;
@@ -195,6 +207,7 @@ public class EventPanel extends JPanel {
         initComponent();
         buildTriggerPanel();
         buildActionPanel();
+
         initValue();
         initListeners();
     }
@@ -488,6 +501,11 @@ public class EventPanel extends JPanel {
         SpringUtilities.makeCompactGrid(enableElementEditPanel, 3, 2, 6, 6, 6, 6);
         initListenersEnableElement();
         enableElementPanel.add(enableElementEditPanel, BorderLayout.NORTH);
+        if (enableElement.getElementType() != null) {
+            enableElementTypeComboBox.setSelectedItem(enableElement.getElementType().name());
+        }
+        enableElementIdTextField.setText(Integer.toString(enableElement.getId()));
+        enableElementStatusCheckBox.setSelected(enableElement.isNewState());
         enableElementPanel.revalidate();
         enableElementPanel.repaint();
     }
@@ -524,6 +542,7 @@ public class EventPanel extends JPanel {
         messageEditPanel.add(espagnolextField);
         SpringUtilities.makeCompactGrid(messageEditPanel, 4, 2, 6, 6, 6, 6);
         initListenersMessage();
+
         messagePanel.add(messageEditPanel, BorderLayout.NORTH);
         messagePanel.revalidate();
         messagePanel.repaint();
@@ -573,37 +592,105 @@ public class EventPanel extends JPanel {
         }
     }
 
+    
+    /***********************************************************
+     * 
+     * --- FRAME LISTENER ---
+     * 
+     ***********************************************************/
     private void initListeners() {
+
+        /********************************
+         * WINDOWS CLOSE
+         ********************************/
+        parent.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                save();
+            }
+        });
 
         /*********************************
          * TRIGGER : left panel
          *********************************/
-        // onlyOnceCheckBox;
-        //
-        // onNearestCheckBox;
+        onlyOnceCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+
+        onNearestCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
         // xTextField;
         // yTextField;
         // dTextField;
         //
-        // countDownCheckBox;
+        countDownCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
         // countDownValueTextField;
         //
-        // onBirthCheckBox;
-        // onDeathCheckBox;
-        // onLevelEnterCheckBox;
-        //
-        // mirrorCheckBox;
-        // nightmareCheckBox;
-        // timeAttackCheckBox;
-        // multiCheckBox;
-        // ninjaCheckBox;
+        onBirthCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+        onDeathCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+        onLevelEnterCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+
+        mirrorCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+        nightmareCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+        timeAttackCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+        multiCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+        ninjaCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
 
         /*********************************
          * ACTION : center panel
          *********************************/
 
-        // songComboBox;
-        // soundComboBox;
+        songComboBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
+        soundComboBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                // TODO
+            }
+        });
         // darknessTextField;
         // iceTextField;
         //
@@ -673,16 +760,95 @@ public class EventPanel extends JPanel {
         });
     }
 
+    /***********************************************************
+     * 
+     * --- ENABLE ELEMENT EDIT LISTENER ---
+     * 
+     ***********************************************************/
     private void initListenersEnableElement() {
-        // enableElementIdTextField;
-        // enableElementTypeComboBox;
-        // enableElementStatusCheckBox;
+        enableElementIdTextField.addCaretListener(new CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent e) {
+                JTextField text = (JTextField) e.getSource();
+                if (text.getText() != null && !text.getText().isEmpty()) {
+                    int idx = enableElementList.getSelectedIndex();
+                    EnableElement el = enableElementListModel.get(idx);
+                    el.setId(Integer.parseInt(text.getText()));
+                    enableElementListModel.remove(idx);
+                    enableElementListModel.insertElementAt(el, idx);
+                    enableElementList.setSelectedIndex(idx);
+                }
+            }
+        });
+        enableElementIdTextField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char vChar = e.getKeyChar();
+                if (!(Character.isDigit(vChar) || (vChar == KeyEvent.VK_BACK_SPACE) || (vChar == KeyEvent.VK_DELETE))) {
+                    e.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        enableElementTypeComboBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    String item = (String) e.getItem();
+                    int idx = enableElementList.getSelectedIndex();
+                    EnableElement el = enableElementListModel.get(idx);
+                    el.setElementType(EnabledElementEnum.valueOf(item));
+                    enableElementListModel.remove(idx);
+                    enableElementListModel.insertElementAt(el, idx);
+                    enableElementList.setSelectedIndex(idx);
+                }
+            }
+        });
+        enableElementStatusCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                int idx = enableElementList.getSelectedIndex();
+                EnableElement el = enableElementListModel.get(idx);
+                el.setNewState(enableElementStatusCheckBox.isSelected());
+                enableElementListModel.remove(idx);
+                enableElementListModel.insertElementAt(el, idx);
+                enableElementList.setSelectedIndex(idx);
+            }
+        });
     }
 
+    /***********************************************************
+     * 
+     * --- MESSAGE EDIT LISTENER ---
+     * 
+     ***********************************************************/
     private void initListenersMessage() {
         // timeoutTextField;
         // espagnolextField;
         // englishTextField;
         // frenchTextField;
+    }
+
+    /***********************************************************
+     * 
+     * --- SAVE ---
+     * 
+     ***********************************************************/
+    private void save() {
+        List<EnableElement> l = new ArrayList<>();
+        for (int i = 0; i < enableElementListModel.getSize(); i++) {
+            l.add(enableElementListModel.getElementAt(i));
+        }
+        this.event.setEnableElement(l);
+        List<Message> l2 = new ArrayList<>();
+        for (int i = 0; i < messageListModel.getSize(); i++) {
+            l2.add(messageListModel.getElementAt(i));
+        }
+        this.event.setMessage(l2);
+        levelService.updateEvent(event);
     }
 }
