@@ -211,7 +211,7 @@ public class DrawPanel extends Canvas {
                 g2.setColor(Color.BLUE);
                 g2.fillRect(decor.getX() - 5, decor.getY() - 5, 10, 10);
             } else {
-                float alpha = 0.5f;
+                float alpha = 0.2f;
                 Composite saved = g2.getComposite();
                 AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
                 g2.setComposite(ac);

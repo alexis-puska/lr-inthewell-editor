@@ -111,6 +111,10 @@ public class EventPanel extends JPanel {
 	private JCheckBox onDeathCheckBox;
 	private JLabel onLevelEnterLabel;
 	private JCheckBox onLevelEnterCheckBox;
+	private JLabel noMoreEnnemieLabel;
+	private JCheckBox noMoreEnnemieCheckBox;
+	private JLabel explosionLabel;
+	private JCheckBox explosionCheckBox;
 
 	private JPanel optionPanel;
 	private Border optionBorder;
@@ -272,6 +276,10 @@ public class EventPanel extends JPanel {
 		onDeathCheckBox = new JCheckBox();
 		onLevelEnterLabel = new JLabel(message.getString("properties.event.trigger.condition.onLevelEnter"));
 		onLevelEnterCheckBox = new JCheckBox();
+		noMoreEnnemieLabel = new JLabel(message.getString("properties.event.trigger.condition.noMoreEnnemie"));
+		noMoreEnnemieCheckBox = new JCheckBox();
+		explosionLabel = new JLabel(message.getString("properties.event.trigger.condition.explosion"));
+		explosionCheckBox = new JCheckBox();
 
 		optionPanel = new JPanel();
 		optionBorder = BorderFactory.createTitledBorder(message.getString("properties.event.trigger.option.border"));
@@ -391,7 +399,11 @@ public class EventPanel extends JPanel {
 		conditionPanel.add(onDeathCheckBox);
 		conditionPanel.add(onLevelEnterLabel);
 		conditionPanel.add(onLevelEnterCheckBox);
-		SpringUtilities.makeCompactGrid(conditionPanel, 3, 2, 6, 6, 6, 6);
+		conditionPanel.add(noMoreEnnemieLabel);
+		conditionPanel.add(noMoreEnnemieCheckBox);
+		conditionPanel.add(explosionLabel);
+		conditionPanel.add(explosionCheckBox);
+		SpringUtilities.makeCompactGrid(conditionPanel, 5, 2, 6, 6, 6, 6);
 
 		optionPanel.setBorder(optionBorder);
 		optionPanel.setLayout(optionLayout);
@@ -478,83 +490,88 @@ public class EventPanel extends JPanel {
 	}
 
 	public void buildEnableElementEditPanel(EnableElement enableElement) {
-		if (enableElementEditPanel != null) {
-			enableElementPanel.remove(enableElementEditPanel);
+		if (enableElement != null) {
+			if (enableElementEditPanel != null) {
+				enableElementPanel.remove(enableElementEditPanel);
+			}
+			enableElementEditPanel = new JPanel();
+			enableElementEditBorder = BorderFactory
+					.createTitledBorder(message.getString("properties.event.action.enableElement.edit.border"));
+			enableElementEditLayout = new SpringLayout();
+			enableElementIdLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.id"));
+			enableElementIdTextField = new JTextField();
+			enableElementIdLabel.setLabelFor(enableElementIdTextField);
+			enableElementTypeLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.type"));
+			enableElementTypeComboBox = new JComboBox<>(EnabledElementEnum.getValues());
+			enableElementTypeLabel.setLabelFor(enableElementTypeComboBox);
+			enableElementStatusLabel = new JLabel(
+					message.getString("properties.event.action.enableElement.edit.status"));
+			enableElementStatusCheckBox = new JCheckBox();
+			enableElementStatusLabel.setLabelFor(enableElementStatusCheckBox);
+			enableElementEditPanel.setLayout(enableElementEditLayout);
+			enableElementEditPanel.setBorder(enableElementEditBorder);
+			enableElementEditPanel.add(enableElementIdLabel);
+			enableElementEditPanel.add(enableElementIdTextField);
+			enableElementEditPanel.add(enableElementTypeLabel);
+			enableElementEditPanel.add(enableElementTypeComboBox);
+			enableElementEditPanel.add(enableElementStatusLabel);
+			enableElementEditPanel.add(enableElementStatusCheckBox);
+			SpringUtilities.makeCompactGrid(enableElementEditPanel, 3, 2, 6, 6, 6, 6);
+			initListenersEnableElement();
+			enableElementPanel.add(enableElementEditPanel, BorderLayout.NORTH);
+			if (enableElement.getElementType() != null) {
+				enableElementTypeComboBox.setSelectedItem(enableElement.getElementType().name());
+			}
+			enableElementIdTextField.setText(Integer.toString(enableElement.getId()));
+			enableElementStatusCheckBox.setSelected(enableElement.isNewState());
+			enableElementPanel.revalidate();
+			enableElementPanel.repaint();
 		}
-		enableElementEditPanel = new JPanel();
-		enableElementEditBorder = BorderFactory
-				.createTitledBorder(message.getString("properties.event.action.enableElement.edit.border"));
-		enableElementEditLayout = new SpringLayout();
-		enableElementIdLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.id"));
-		enableElementIdTextField = new JTextField();
-		enableElementIdLabel.setLabelFor(enableElementIdTextField);
-		enableElementTypeLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.type"));
-		enableElementTypeComboBox = new JComboBox<>(EnabledElementEnum.getValues());
-		enableElementTypeLabel.setLabelFor(enableElementTypeComboBox);
-		enableElementStatusLabel = new JLabel(message.getString("properties.event.action.enableElement.edit.status"));
-		enableElementStatusCheckBox = new JCheckBox();
-		enableElementStatusLabel.setLabelFor(enableElementStatusCheckBox);
-		enableElementEditPanel.setLayout(enableElementEditLayout);
-		enableElementEditPanel.setBorder(enableElementEditBorder);
-		enableElementEditPanel.add(enableElementIdLabel);
-		enableElementEditPanel.add(enableElementIdTextField);
-		enableElementEditPanel.add(enableElementTypeLabel);
-		enableElementEditPanel.add(enableElementTypeComboBox);
-		enableElementEditPanel.add(enableElementStatusLabel);
-		enableElementEditPanel.add(enableElementStatusCheckBox);
-		SpringUtilities.makeCompactGrid(enableElementEditPanel, 3, 2, 6, 6, 6, 6);
-		initListenersEnableElement();
-		enableElementPanel.add(enableElementEditPanel, BorderLayout.NORTH);
-		if (enableElement.getElementType() != null) {
-			enableElementTypeComboBox.setSelectedItem(enableElement.getElementType().name());
-		}
-		enableElementIdTextField.setText(Integer.toString(enableElement.getId()));
-		enableElementStatusCheckBox.setSelected(enableElement.isNewState());
-		enableElementPanel.revalidate();
-		enableElementPanel.repaint();
 	}
 
 	public void buildMessageEditPanel(Message messageToEdit) {
-		if (messageEditPanel != null) {
-			messagePanel.remove(messageEditPanel);
+		if (messageToEdit != null) {
+			if (messageEditPanel != null) {
+				messagePanel.remove(messageEditPanel);
+			}
+			messageEditPanel = new JPanel();
+			messageEditBorder = BorderFactory
+					.createTitledBorder(message.getString("properties.event.action.message.edit.border"));
+			messageEditLayout = new SpringLayout();
+			timeoutLabel = new JLabel(message.getString("properties.event.action.message.edit.timeout"));
+			timeoutTextField = new JTextField();
+			timeoutLabel.setLabelFor(timeoutTextField);
+			espagnolLabel = new JLabel(message.getString("properties.event.action.message.edit.es"));
+			espagnolextField = new JTextField();
+			espagnolLabel.setLabelFor(espagnolextField);
+			englishLabel = new JLabel(message.getString("properties.event.action.message.edit.en"));
+			englishTextField = new JTextField();
+			englishLabel.setLabelFor(englishTextField);
+			frenchLabel = new JLabel(message.getString("properties.event.action.message.edit.fr"));
+			frenchTextField = new JTextField();
+			frenchLabel.setLabelFor(frenchTextField);
+			messageEditPanel.setLayout(messageEditLayout);
+			messageEditPanel.setBorder(messageEditBorder);
+			messageEditPanel.add(timeoutLabel);
+			messageEditPanel.add(timeoutTextField);
+			messageEditPanel.add(frenchLabel);
+			messageEditPanel.add(frenchTextField);
+			messageEditPanel.add(englishLabel);
+			messageEditPanel.add(englishTextField);
+			messageEditPanel.add(espagnolLabel);
+			messageEditPanel.add(espagnolextField);
+
+			timeoutTextField.setText(Integer.toString(messageToEdit.getTimeout()));
+			espagnolextField.setText(messageToEdit.getEs());
+			englishTextField.setText(messageToEdit.getEn());
+			frenchTextField.setText(messageToEdit.getFr());
+
+			SpringUtilities.makeCompactGrid(messageEditPanel, 4, 2, 6, 6, 6, 6);
+			initListenersMessage();
+			messagePanel.add(messageEditPanel, BorderLayout.NORTH);
+			messagePanel.revalidate();
+			messagePanel.repaint();
 		}
-		messageEditPanel = new JPanel();
-		messageEditBorder = BorderFactory
-				.createTitledBorder(message.getString("properties.event.action.message.edit.border"));
-		messageEditLayout = new SpringLayout();
-		timeoutLabel = new JLabel(message.getString("properties.event.action.message.edit.timeout"));
-		timeoutTextField = new JTextField();
-		timeoutLabel.setLabelFor(timeoutTextField);
-		espagnolLabel = new JLabel(message.getString("properties.event.action.message.edit.es"));
-		espagnolextField = new JTextField();
-		espagnolLabel.setLabelFor(espagnolextField);
-		englishLabel = new JLabel(message.getString("properties.event.action.message.edit.en"));
-		englishTextField = new JTextField();
-		englishLabel.setLabelFor(englishTextField);
-		frenchLabel = new JLabel(message.getString("properties.event.action.message.edit.fr"));
-		frenchTextField = new JTextField();
-		frenchLabel.setLabelFor(frenchTextField);
-		messageEditPanel.setLayout(messageEditLayout);
-		messageEditPanel.setBorder(messageEditBorder);
-		messageEditPanel.add(timeoutLabel);
-		messageEditPanel.add(timeoutTextField);
-		messageEditPanel.add(frenchLabel);
-		messageEditPanel.add(frenchTextField);
-		messageEditPanel.add(englishLabel);
-		messageEditPanel.add(englishTextField);
-		messageEditPanel.add(espagnolLabel);
-		messageEditPanel.add(espagnolextField);
-
-		timeoutTextField.setText(Integer.toString(messageToEdit.getTimeout()));
-		espagnolextField.setText(messageToEdit.getEs());
-		englishTextField.setText(messageToEdit.getEn());
-		frenchTextField.setText(messageToEdit.getFr());
-
-		SpringUtilities.makeCompactGrid(messageEditPanel, 4, 2, 6, 6, 6, 6);
-		initListenersMessage();
-		messagePanel.add(messageEditPanel, BorderLayout.NORTH);
-		messagePanel.revalidate();
-		messagePanel.repaint();
 	}
 
 	private void initValue() {
@@ -574,6 +591,8 @@ public class EventPanel extends JPanel {
 		onBirthCheckBox.setSelected(event.isOnBirth());
 		onDeathCheckBox.setSelected(event.isOnDeath());
 		onLevelEnterCheckBox.setSelected(event.isOnLevelEnter());
+		noMoreEnnemieCheckBox.setSelected(event.isNoMoreEnnemie());
+		explosionCheckBox.setSelected(event.isExplosion());
 
 		mirrorCheckBox.setSelected(event.isMirror());
 		nightmareCheckBox.setSelected(event.isNightmare());
@@ -692,7 +711,16 @@ public class EventPanel extends JPanel {
 				event.setOnLevelEnter(onLevelEnterCheckBox.isSelected());
 			}
 		});
-
+		noMoreEnnemieCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				event.setNoMoreEnnemie(onLevelEnterCheckBox.isSelected());
+			}
+		});
+		explosionCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				event.setExplosion(onLevelEnterCheckBox.isSelected());
+			}
+		});
 		mirrorCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				event.setMirror(mirrorCheckBox.isSelected());
@@ -739,7 +767,10 @@ public class EventPanel extends JPanel {
 			public void caretUpdate(javax.swing.event.CaretEvent e) {
 				JTextField text = (JTextField) e.getSource();
 				if (text.getText() != null && !text.getText().isEmpty()) {
-					event.setDarknessValue(Integer.parseInt(darknessTextField.getText()));
+					try {
+						event.setDarknessValue(Integer.parseInt(darknessTextField.getText()));
+					} catch (NumberFormatException ex) {
+					}
 				}
 			}
 		});
@@ -764,7 +795,10 @@ public class EventPanel extends JPanel {
 			public void caretUpdate(javax.swing.event.CaretEvent e) {
 				JTextField text = (JTextField) e.getSource();
 				if (text.getText() != null && !text.getText().isEmpty()) {
-					event.setIceValue(Integer.parseInt(iceTextField.getText()));
+					try {
+						event.setIceValue(Integer.parseInt(iceTextField.getText()));
+					} catch (NumberFormatException ex) {
+					}
 				}
 			}
 		});
@@ -873,12 +907,15 @@ public class EventPanel extends JPanel {
 			public void caretUpdate(javax.swing.event.CaretEvent e) {
 				JTextField text = (JTextField) e.getSource();
 				if (text.getText() != null && !text.getText().isEmpty()) {
-					int idx = enableElementList.getSelectedIndex();
-					EnableElement el = enableElementListModel.get(idx);
-					el.setId(Integer.parseInt(text.getText()));
-					enableElementListModel.remove(idx);
-					enableElementListModel.insertElementAt(el, idx);
-					enableElementList.setSelectedIndex(idx);
+					try {
+						int idx = enableElementList.getSelectedIndex();
+						EnableElement el = enableElementListModel.get(idx);
+						el.setId(Integer.parseInt(text.getText()));
+						enableElementListModel.remove(idx);
+						enableElementListModel.insertElementAt(el, idx);
+						enableElementList.setSelectedIndex(idx);
+					} catch (NumberFormatException ex) {
+					}
 				}
 			}
 		});

@@ -35,6 +35,7 @@ public class Event extends Identifiable implements Serializable {
 	private int timeout;
 	
 	//condition declanchement
+	private boolean explosion;
 	private boolean noMoreEnnemie; // plus d'ennemie dans le niveau
 	private boolean onBirth; //spawn joueur
 	private boolean onDeath; //mort du joueur
