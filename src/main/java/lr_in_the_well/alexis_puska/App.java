@@ -1551,7 +1551,7 @@ public class App extends JFrame {
 
 		if (objs != null && !objs.isEmpty()) {
 			buildIdentifiablePanelEdition(objs);
-			switchIdentifiable(objs.get(0));
+			//switchIdentifiable(objs.get(0));
 		} else {
 			centerPanel.updateUI();
 		}
