@@ -635,6 +635,10 @@ public class EventPanel extends JPanel {
 			public void windowClosing(WindowEvent windowEvent) {
 				save();
 			}
+			@Override
+		    public void windowClosed(WindowEvent windowEvent) {
+				save();
+		    }
 		});
 
 		/*********************************

@@ -701,11 +701,6 @@ public class LevelService {
 					identified.add(e);
 				}
 			}
-			for (Event e : currentLevel.getEvent()) {
-				if (e.getX() == caseX && e.getY() == caseY) {
-					identified.add(e);
-				}
-			}
 			for (Lock e : currentLevel.getLock()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
 					identified.add(e);
@@ -767,6 +762,11 @@ public class LevelService {
 				}
 			}
 			for (Item e : currentLevel.getItems()) {
+				if (e.getX() == caseX && e.getY() == caseY) {
+					identified.add(e);
+				}
+			}
+			for (Event e : currentLevel.getEvent()) {
 				if (e.getX() == caseX && e.getY() == caseY) {
 					identified.add(e);
 				}

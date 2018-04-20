@@ -122,6 +122,7 @@ public class App extends JFrame {
 	private JPanel centerPanel;
 	private BorderLayout drawLayout;
 	private DrawPanel drawPanel;
+	private JFrame eventJFrame;
 
 	/****************
 	 * properties
@@ -315,7 +316,8 @@ public class App extends JFrame {
 	private void buildIdentifiablePanelEdition(List<Identifiable> objs) {
 		selectionIdentifiableLabel = new JLabel(message.getString("selectionIdentifiable.border"));
 		selectionIdentifiableComboBox = new JComboBox<>();
-		selectionIdentifiableBorder = BorderFactory.createTitledBorder(message.getString("selectionIdentifiable.combo"));
+		selectionIdentifiableBorder = BorderFactory
+				.createTitledBorder(message.getString("selectionIdentifiable.combo"));
 		selectionIdentifiableLayout = new SpringLayout();
 		selectionIdentifiablePanel = new JPanel();
 		selectionIdentifiablePanel.setBorder(selectionIdentifiableBorder);
@@ -330,9 +332,14 @@ public class App extends JFrame {
 		selectionIdentifiableComboBox.setRenderer(new IdentifiableComboBoxRenderer(message));
 		selectionIdentifiableComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				Identifiable identifiable = (Identifiable) selectionIdentifiableComboBox.getSelectedItem();
-				if (identifiable != null) {
-					switchIdentifiable(identifiable);
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					Identifiable identifiable = (Identifiable) selectionIdentifiableComboBox.getSelectedItem();
+					if (identifiable != null) {
+						if(eventJFrame != null && eventJFrame.isVisible()) {
+							eventJFrame.dispose();
+						}
+						switchIdentifiable(identifiable);
+					}
 				}
 			}
 		});
@@ -1548,10 +1555,13 @@ public class App extends JFrame {
 		if (editionIdentifiablePanel != null) {
 			centerPanel.remove(editionIdentifiablePanel);
 		}
+		if(eventJFrame != null && eventJFrame.isVisible()) {
+			eventJFrame.dispose();
+		}
 
 		if (objs != null && !objs.isEmpty()) {
 			buildIdentifiablePanelEdition(objs);
-			//switchIdentifiable(objs.get(0));
+			// switchIdentifiable(objs.get(0));
 		} else {
 			centerPanel.updateUI();
 		}
@@ -1590,14 +1600,15 @@ public class App extends JFrame {
 	}
 
 	private void treatEventProperties(Event event) {
-		JFrame frame = new JFrame(message.getString("properties.event.title") + event.getId());
-		frame.getContentPane().setLayout(new BorderLayout());
-		identifiablePropertiesPanel = new EventPanel(message, frame, drawPanel, levelService,
+		eventJFrame = new JFrame(message.getString("properties.event.title") + event.getId());
+		eventJFrame.getContentPane().setLayout(new BorderLayout());
+		identifiablePropertiesPanel = new EventPanel(message, eventJFrame, drawPanel, levelService,
 				message.getString("properties.event.title"), event);
-		frame.add(identifiablePropertiesPanel);
-		frame.setLocationRelativeTo(null);
-		frame.setSize(1200, 800);
-		frame.setVisible(true);
+		eventJFrame.add(identifiablePropertiesPanel);
+		eventJFrame.setLocationRelativeTo(null);
+		eventJFrame.setSize(1200, 800);
+		eventJFrame.setVisible(true);
+		centerPanel.updateUI();
 	}
 
 	private void treatVortexProperties(Vortex vortex) {
