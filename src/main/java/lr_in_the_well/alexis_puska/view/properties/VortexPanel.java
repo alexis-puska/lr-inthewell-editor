@@ -26,11 +26,12 @@ public class VortexPanel extends IdentifiablePanel {
 
 	private static final long serialVersionUID = -4090876979915495722L;
 	private Vortex vortex;
+	
 
 	private JLabel destinationLabel;
 	private JTextField destinationTextField;
-	private JLabel actifLabel;
-	private JCheckBox actifCheckBox;
+	private JLabel enableLabel;
+	private JCheckBox enableCheckBox;
 
 	private JLabel xLabel;
 	private SpinnerNumberModel xModel;
@@ -48,9 +49,9 @@ public class VortexPanel extends IdentifiablePanel {
 		destinationTextField = new JTextField();
 		destinationLabel.setLabelFor(destinationTextField);
 		
-		actifLabel = new JLabel(message.getString("properties.vortex.active"), JLabel.TRAILING);
-		actifCheckBox = new JCheckBox();
-		actifLabel.setLabelFor(actifCheckBox);
+		enableLabel = new JLabel(message.getString("properties.vortex.active"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableLabel.setLabelFor(enableCheckBox);
 		
 		xLabel = new JLabel(message.getString("properties.vortex.width"), JLabel.TRAILING);
 		xModel = new SpinnerNumberModel(0.0, -10.0, 10.0, 0.1);
@@ -67,19 +68,19 @@ public class VortexPanel extends IdentifiablePanel {
 
 		destinationLabel.setToolTipText(message.getString("properties.vortex.destination.description"));
 		destinationTextField.setToolTipText(message.getString("properties.vortex.destination.description"));
-		actifLabel.setToolTipText(message.getString("properties.vortex.active.description"));
-		actifCheckBox.setToolTipText(message.getString("properties.vortex.active.description"));
+		enableLabel.setToolTipText(message.getString("properties.vortex.active.description"));
+		enableCheckBox.setToolTipText(message.getString("properties.vortex.active.description"));
 		xLabel.setToolTipText(message.getString("properties.vortex.width.description"));
 		xSpinner.setToolTipText(message.getString("properties.vortex.width.description"));
 		yLabel.setToolTipText(message.getString("properties.vortex.height.description"));
 		ySpinner.setToolTipText(message.getString("properties.vortex.height.description"));
-		actifCheckBox.setSelected(vortex.isEnable());
+		enableCheckBox.setSelected(vortex.isEnable());
 		destinationTextField.setText(Integer.toString(vortex.getDestination()));
 		xSpinner.setValue((Double)vortex.getZoomX());
 		ySpinner.setValue((Double)vortex.getZoomY());
 
-		this.add(actifLabel);
-		this.add(actifCheckBox);
+		this.add(enableLabel);
+		this.add(enableCheckBox);
 		this.add(destinationLabel);
 		this.add(destinationTextField);
 		this.add(xLabel);
@@ -125,9 +126,9 @@ public class VortexPanel extends IdentifiablePanel {
 			}
 		});
 
-		actifCheckBox.addItemListener(new ItemListener() {
+		enableCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				vortex.setEnable(actifCheckBox.isSelected());
+				vortex.setEnable(enableCheckBox.isSelected());
 				levelService.updateVortex(vortex);
 				parent.repaint();
 				drawPanel.repaint();

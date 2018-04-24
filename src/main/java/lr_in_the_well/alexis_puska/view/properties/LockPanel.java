@@ -1,7 +1,10 @@
 package lr_in_the_well.alexis_puska.view.properties;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ResourceBundle;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -19,7 +22,8 @@ public class LockPanel extends IdentifiablePanel {
 
 	private static final long serialVersionUID = -4090876979915495722L;
 	private Lock lock;
-
+	private JLabel enableLabel;
+	private JCheckBox enableCheckBox;
 	private JLabel requieredKeyLabel;
 	private SpinnerNumberModel requieredKeyModel;
 	private JSpinner requieredKeySpinner;
@@ -28,22 +32,32 @@ public class LockPanel extends IdentifiablePanel {
 			Lock lock) {
 		super(message, parent, drawPanel, levelService, name);
 		this.lock = lock;
+		enableLabel = new JLabel(message.getString("properties.lock.enable"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableLabel.setLabelFor(enableCheckBox);
 		requieredKeyLabel = new JLabel(message.getString("properties.lock.requiredKey"), JLabel.TRAILING);
 		requieredKeyModel = new SpinnerNumberModel();
 		requieredKeySpinner = new JSpinner();
 		requieredKeySpinner.setModel(requieredKeyModel);
 		requieredKeyLabel.setLabelFor(requieredKeySpinner);
+		enableCheckBox.setSelected(lock.isEnable());
 
 		requieredKeyLabel.setToolTipText(message.getString("properties.lock.requiredKey.description"));
 		requieredKeyLabel.setToolTipText(message.getString("properties.lock.requiredKey.description"));
 		requieredKeyLabel.setToolTipText(message.getString("properties.lock.serrure.description"));
 		requieredKeyLabel.setToolTipText(message.getString("properties.lock.serrure.description"));
 
+		idField.setText(Integer.toString(lock.getId()));
+		requieredKeySpinner.setValue(Integer.valueOf(lock.getRequieredKeyId()));
+		enableCheckBox.setSelected(lock.isEnable());
+		
+		this.add(enableLabel);
+		this.add(enableCheckBox);
 		this.add(requieredKeyLabel);
 		this.add(requieredKeySpinner);
 
 		addListeners();
-		SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
+		SpringUtilities.makeCompactGrid(this, 3, 2, 6, 6, 6, 6);
 		this.parent.updateUI();
 	}
 
@@ -58,6 +72,13 @@ public class LockPanel extends IdentifiablePanel {
 					drawPanel.repaint();
 					parent.repaint();
 				}
+			}
+		});
+		enableCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				lock.setEnable(enableCheckBox.isSelected());
+				levelService.updateLock(lock);
+				drawPanel.repaint();
 			}
 		});
 	}

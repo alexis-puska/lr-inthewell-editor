@@ -23,6 +23,9 @@ public class RayonPanel extends IdentifiablePanel {
 	private static final long serialVersionUID = -4090876979915495722L;
 	private Rayon rayon;
 
+	private JLabel enableLabel;
+	private JCheckBox enableCheckBox;
+	
 	private JLabel typeLabel;
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
@@ -32,6 +35,9 @@ public class RayonPanel extends IdentifiablePanel {
 	public RayonPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name, Rayon rayon) {
 		super(message, parent, drawPanel, levelService, name);
 		this.rayon = rayon;
+		enableLabel = new JLabel(message.getString("properties.rayon.enable"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableLabel.setLabelFor(enableCheckBox);
 		typeLabel = new JLabel(message.getString("properties.rayon.type"), JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
@@ -46,12 +52,15 @@ public class RayonPanel extends IdentifiablePanel {
 		idField.setText(Integer.toString(rayon.getId()));
 		typeSpinner.setValue(Integer.valueOf(rayon.getType()));
 		verticalCheckBox.setSelected(rayon.isVertical());
+		enableCheckBox.setSelected(rayon.isEnable());
 		
+		this.add(enableLabel);
+		this.add(enableCheckBox);
 		this.add(typeLabel);
 		this.add(typeSpinner);
 		this.add(verticalLabel);
 		this.add(verticalCheckBox);
-		SpringUtilities.makeCompactGrid(this, 3, 2, 2, 2, 2, 2);
+		SpringUtilities.makeCompactGrid(this, 4, 2, 2, 2, 2, 2);
 		addListeners();
 		this.parent.updateUI();
 	}
@@ -75,6 +84,13 @@ public class RayonPanel extends IdentifiablePanel {
 				levelService.updateRayon(rayon);
 				drawPanel.repaint();
 				parent.repaint();
+			}
+		});
+		enableCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				rayon.setEnable(enableCheckBox.isSelected());
+				levelService.updateRayon(rayon);
+				drawPanel.repaint();
 			}
 		});
 	}

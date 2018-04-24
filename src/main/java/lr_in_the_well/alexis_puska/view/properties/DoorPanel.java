@@ -22,6 +22,9 @@ public class DoorPanel extends IdentifiablePanel {
 
 	private static final long serialVersionUID = -4090876979915495722L;
 	private Door door;
+	
+	private JLabel enableLabel;
+	private JCheckBox enableCheckBox;
 
 	private JLabel typeLabel;
 	private SpinnerNumberModel typeModel;
@@ -46,6 +49,11 @@ public class DoorPanel extends IdentifiablePanel {
 			Door door) {
 		super(message, parent, drawPanel, levelService, name);
 		this.door = door;
+		
+		enableLabel = new JLabel(message.getString("properties.door.enable"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableLabel.setLabelFor(enableCheckBox);
+		
 		typeLabel = new JLabel(message.getString("properties.door.type"), JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
@@ -82,7 +90,10 @@ public class DoorPanel extends IdentifiablePanel {
 		requieredKeySpinner.setValue(Integer.valueOf(door.getRequieredKey()));
 		serrureIdSpinner.setValue(Integer.valueOf(door.getLockId()));
 		lockedCheckBox.setSelected(door.isLocked());
+		enableCheckBox.setSelected(door.isEnable());
 
+		this.add(enableLabel);
+		this.add(enableCheckBox);
 		this.add(typeLabel);
 		this.add(typeSpinner);
 		this.add(toLevelLabel);
@@ -94,7 +105,7 @@ public class DoorPanel extends IdentifiablePanel {
 		this.add(lockedLabel);
 		this.add(lockedCheckBox);
 		addListeners();
-		SpringUtilities.makeCompactGrid(this, 6, 2, 6, 6, 6, 6);
+		SpringUtilities.makeCompactGrid(this, 7, 2, 6, 6, 6, 6);
 		this.parent.updateUI();
 	}
 
@@ -150,6 +161,13 @@ public class DoorPanel extends IdentifiablePanel {
 		lockedCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				door.setLocked(lockedCheckBox.isSelected());
+				levelService.updateDoor(door);
+				drawPanel.repaint();
+			}
+		});
+		enableCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				door.setEnable(enableCheckBox.isSelected());
 				levelService.updateDoor(door);
 				drawPanel.repaint();
 			}

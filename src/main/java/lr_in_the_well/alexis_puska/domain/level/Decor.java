@@ -14,17 +14,16 @@ public class Decor extends Identifiable implements Serializable {
 	private static final long serialVersionUID = -3148349064427411770L;
 	private int x;
 	private int y;
-	private boolean display;
+	private boolean enable;
 	private boolean back;
 	private int indexAnim;
 
-	public Decor(int id, int x, int y, boolean display, boolean back, int indexAnim) {
+	public Decor(int id, boolean enable, int x, int y, boolean back, int indexAnim) {
 		super(id);
 		this.x = x;
 		this.y = y;
-		this.display = display;
+		this.enable = enable;
 		this.back = back;
 		this.indexAnim = indexAnim;
 	}
-
 }

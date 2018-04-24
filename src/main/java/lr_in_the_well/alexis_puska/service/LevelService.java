@@ -266,7 +266,7 @@ public class LevelService {
 			p.setId(getIdFromIdentifiable(currentLevel.getPlatform()));
 			if (vertical) {
 				p.setVertical(true);
-				p.setVisible(true);
+				p.setDisplayed(true);
 				if (d > 24) {
 					d = 24;
 				}
@@ -289,7 +289,7 @@ public class LevelService {
 				p.setX(x);
 			} else {
 				p.setVertical(false);
-				p.setVisible(true);
+				p.setDisplayed(true);
 				if (d > 19) {
 					d = 19;
 				}
@@ -415,7 +415,8 @@ public class LevelService {
 
 	public void addEnnemie(int x, int y, int type) {
 		if (currentLevel != null) {
-			currentLevel.getEnnemies().add(new Ennemie(getIdFromIdentifiable(currentLevel.getEnnemies()), x, y, type));
+			currentLevel.getEnnemies()
+					.add(new Ennemie(getIdFromIdentifiable(currentLevel.getEnnemies()), true, x, y, type));
 			saveCurrentLevel();
 		}
 	}
@@ -423,7 +424,7 @@ public class LevelService {
 	public void addDecor(int x, int y) {
 		if (currentLevel != null) {
 			currentLevel.getDecor()
-					.add(new Decor(getIdFromIdentifiable(currentLevel.getDecor()), x, y, false, false, 0));
+					.add(new Decor(getIdFromIdentifiable(currentLevel.getDecor()), true, x, y, false, 0));
 			saveCurrentLevel();
 		}
 	}
@@ -431,28 +432,29 @@ public class LevelService {
 	public void addVortex(int x, int y) {
 		if (currentLevel != null) {
 			currentLevel.getVortex()
-					.add(new Vortex(getIdFromIdentifiable(currentLevel.getVortex()), x, y, 1.0, 1.0, false, 0));
+					.add(new Vortex(getIdFromIdentifiable(currentLevel.getVortex()), true, x, y, 1.0, 1.0, 0));
 			saveCurrentLevel();
 		}
 	}
 
 	public void addPick(int x, int y) {
 		if (currentLevel != null) {
-			currentLevel.getPick().add(new Pick(getIdFromIdentifiable(currentLevel.getPick()), x, y, true, 0));
+			currentLevel.getPick().add(new Pick(getIdFromIdentifiable(currentLevel.getPick()), true, x, y, 0));
 			saveCurrentLevel();
 		}
 	}
 
 	public void addLock(int x, int y) {
 		if (currentLevel != null) {
-			currentLevel.getLock().add(new Lock(getIdFromIdentifiable(currentLevel.getLock()), x, y, 0));
+			currentLevel.getLock().add(new Lock(getIdFromIdentifiable(currentLevel.getLock()), true, x, y, 0));
 			saveCurrentLevel();
 		}
 	}
 
 	public void addDoor(int x, int y) {
 		if (currentLevel != null) {
-			currentLevel.getDoor().add(new Door(getIdFromIdentifiable(currentLevel.getDoor()), x, y, 0, true, 0, 0, 0));
+			currentLevel.getDoor()
+					.add(new Door(getIdFromIdentifiable(currentLevel.getDoor()), true, x, y, 0, true, 0, 0, 0));
 			saveCurrentLevel();
 		}
 	}
@@ -493,7 +495,7 @@ public class LevelService {
 			if (y > 24) {
 				y = 24;
 			}
-			currentLevel.getItems().add(new Item(getIdFromIdentifiable(currentLevel.getItems()), x, y, 0));
+			currentLevel.getItems().add(new Item(getIdFromIdentifiable(currentLevel.getItems()), true, x, y, 0));
 			saveCurrentLevel();
 		}
 	}
@@ -840,5 +842,4 @@ public class LevelService {
 		currentLevel.getEnnemies().add(ennemie);
 		saveCurrentLevel();
 	}
-
 }

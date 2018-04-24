@@ -19,14 +19,13 @@ public class Vortex extends Identifiable implements Serializable {
 	private boolean enable;
 	private int destination;
 
-	public Vortex(int id, int x, int y, double zoomX, double zoomY, boolean enable, int destination) {
+	public Vortex(int id, boolean enable, int x, int y, double zoomX, double zoomY, int destination) {
 		super(id);
+		this.enable = enable;
 		this.x = x;
 		this.y = y;
 		this.zoomX = zoomX;
 		this.zoomY = zoomY;
-		this.enable = enable;
 		this.destination = destination;
 	}
-
 }

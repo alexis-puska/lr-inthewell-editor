@@ -1,9 +1,12 @@
 package lr_in_the_well.alexis_puska.view.properties;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ResourceBundle;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -21,6 +24,9 @@ public class TeleporterPanel extends IdentifiablePanel {
     
     private Teleporter teleporter;
 
+    private JLabel enableLabel;
+	private JCheckBox enableCheckBox;
+    
     private JLabel destinationLabel;
     private JTextField destinationTextField;
 
@@ -28,16 +34,22 @@ public class TeleporterPanel extends IdentifiablePanel {
             Teleporter teleporter) {
         super(message, parent, drawPanel, levelService, name);
         this.teleporter = teleporter;
+        enableLabel = new JLabel(message.getString("properties.teleporter.enable"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableLabel.setLabelFor(enableCheckBox);
         destinationLabel = new JLabel(message.getString("properties.teleporter.destination"), JLabel.TRAILING);
         destinationTextField = new JTextField();
         destinationLabel.setLabelFor(destinationTextField);
         destinationTextField.setToolTipText(message.getString("properties.teleporter.destination.description"));
         destinationLabel.setToolTipText(message.getString("properties.teleporter.destination.description"));
+        this.add(enableLabel);
+		this.add(enableCheckBox);
         this.add(destinationLabel);
         this.add(destinationTextField);
         idField.setText(Integer.toString(teleporter.getId()));
         destinationTextField.setText(Integer.toString(teleporter.getToId()));
-        SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
+        enableCheckBox.setSelected(teleporter.isEnable());
+        SpringUtilities.makeCompactGrid(this, 3, 2, 6, 6, 6, 6);
         addListeners();
         this.parent.updateUI();
     }
@@ -72,5 +84,12 @@ public class TeleporterPanel extends IdentifiablePanel {
             public void keyReleased(KeyEvent e) {
             }
         });
+        enableCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				teleporter.setEnable(enableCheckBox.isSelected());
+				levelService.updateTeleporter(teleporter);
+				drawPanel.repaint();
+			}
+		});
     }
 }

@@ -21,20 +21,28 @@ public class PlatformPanel extends IdentifiablePanel {
 	private Platform platform;
 	private JLabel displayLabel;
 	private JCheckBox displayCheckBox;
+	private JLabel enableLabel;
+	private JCheckBox enableCheckBox;
 
 	public PlatformPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService,
 			String name, Platform platform) {
 		super(message, parent, drawPanel, levelService, name);
 		this.platform = platform;
 		this.drawPanel = drawPanel;
+		enableLabel = new JLabel(message.getString("properties.platform.enable"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableLabel.setLabelFor(enableCheckBox);
 		displayLabel = new JLabel(message.getString("properties.plateform.display"), JLabel.TRAILING);
 		displayCheckBox = new JCheckBox();
 		displayLabel.setLabelFor(displayCheckBox);
 		idField.setText(Integer.toString(platform.getId()));
-		displayCheckBox.setSelected(platform.isVisible());
+		displayCheckBox.setSelected(platform.isDisplayed());
+		enableCheckBox.setSelected(platform.isEnable());
+		this.add(enableLabel);
+		this.add(enableCheckBox);
 		this.add(displayLabel);
 		this.add(displayCheckBox);
-		SpringUtilities.makeCompactGrid(this, 2, 2, 2, 2, 2, 2);
+		SpringUtilities.makeCompactGrid(this, 3, 2, 2, 2, 2, 2);
 		addListeners();
 		this.parent.updateUI();
 		
@@ -43,7 +51,14 @@ public class PlatformPanel extends IdentifiablePanel {
 	private void addListeners() {
 		displayCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				platform.setVisible(displayCheckBox.isSelected());
+				platform.setDisplayed(displayCheckBox.isSelected());
+				levelService.updatePlatform(platform);
+				drawPanel.repaint();
+			}
+		});
+		enableCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				platform.setEnable(enableCheckBox.isSelected());
 				levelService.updatePlatform(platform);
 				drawPanel.repaint();
 			}

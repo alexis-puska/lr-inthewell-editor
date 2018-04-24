@@ -1,7 +1,10 @@
 package lr_in_the_well.alexis_puska.view.properties;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ResourceBundle;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -20,6 +23,8 @@ public class ItemPanel extends IdentifiablePanel {
 	private static final long serialVersionUID = -4090876979915495722L;
 	private Item item;
 
+	private JLabel enableLabel;
+	private JCheckBox enableCheckBox;
 	private JLabel typeLabel;
 	private SpinnerNumberModel typeModel;
 	private JSpinner typeSpinner;
@@ -30,6 +35,9 @@ public class ItemPanel extends IdentifiablePanel {
 		this.item = item;
 		idField.setText(Integer.toString(item.getId()));
 
+		enableLabel = new JLabel(message.getString("properties.item.enable"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableLabel.setLabelFor(enableCheckBox);
 		typeLabel = new JLabel(message.getString("properties.item.type"), JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
@@ -38,10 +46,13 @@ public class ItemPanel extends IdentifiablePanel {
 		typeSpinner.setModel(typeModel);
 		typeLabel.setLabelFor(typeSpinner);
 		typeSpinner.setValue(Integer.valueOf(item.getItemId()));
+		enableCheckBox.setSelected(item.isEnable());
+		this.add(enableLabel);
+		this.add(enableCheckBox);
 		this.add(typeLabel);
 		this.add(typeSpinner);
 
-		SpringUtilities.makeCompactGrid(this, 2, 2, 6, 6, 6, 6);
+		SpringUtilities.makeCompactGrid(this, 3, 2, 6, 6, 6, 6);
 		addListeners();
 		this.parent.updateUI();
 	}
@@ -59,7 +70,13 @@ public class ItemPanel extends IdentifiablePanel {
 				}
 			}
 		});
-
+		enableCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				item.setEnable(enableCheckBox.isSelected());
+				levelService.updateItem(item);
+				drawPanel.repaint();
+			}
+		});
 	}
 
 }

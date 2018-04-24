@@ -12,14 +12,16 @@ import lombok.Setter;
 public class Rayon extends Identifiable implements Serializable {
 
 	private static final long serialVersionUID = -3148349064427411770L;
+	private boolean enable;
 	private int x;
 	private int y;
 	private int length;
 	private int type;
 	private boolean vertical;
 
-	public Rayon(int id, int x, int y, int length, int type, boolean vertical) {
+	public Rayon(int id, boolean enable, int x, int y, int length, int type, boolean vertical) {
 		super(id);
+		this.enable = enable;
 		this.x = x;
 		this.y = y;
 		this.length = length;

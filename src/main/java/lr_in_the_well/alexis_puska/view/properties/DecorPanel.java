@@ -25,8 +25,8 @@ public class DecorPanel extends IdentifiablePanel {
 
 	private JLabel xLabel;
 	private JLabel yLabel;
-	private JLabel backgroundIdLabel;
-	private JLabel displayedLabel;
+	private JLabel indexAnimLabel;
+	private JLabel enableLabel;
 	private JLabel backLabel;
 
 	private SpinnerNumberModel xModel;
@@ -35,8 +35,8 @@ public class DecorPanel extends IdentifiablePanel {
 
 	private JSpinner xSpinner;
 	private JSpinner ySpinner;
-	private JSpinner backgroundIdSpinner;
-	private JCheckBox displayCheckBox;
+	private JSpinner indexAnimSpinner;
+	private JCheckBox enableCheckBox;
 	private JCheckBox backCheckBox;
 
 	public DecorPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService,
@@ -59,17 +59,17 @@ public class DecorPanel extends IdentifiablePanel {
 		ySpinner.setModel(yModel);
 		yLabel.setLabelFor(ySpinner);
 
-		backgroundIdLabel = new JLabel(message.getString("properties.decor.decorId"), JLabel.TRAILING);
+		indexAnimLabel = new JLabel(message.getString("properties.decor.decorId"), JLabel.TRAILING);
 		backgroundIdModel = new SpinnerNumberModel();
-		backgroundIdSpinner = new JSpinner();
+		indexAnimSpinner = new JSpinner();
 		backgroundIdModel.setMinimum(0);
 		backgroundIdModel.setMaximum(9);
-		backgroundIdSpinner.setModel(backgroundIdModel);
-		backgroundIdLabel.setLabelFor(backgroundIdSpinner);
+		indexAnimSpinner.setModel(backgroundIdModel);
+		indexAnimLabel.setLabelFor(indexAnimSpinner);
 		
-		displayedLabel = new JLabel(message.getString("properties.decor.display"), JLabel.TRAILING);
-		displayCheckBox = new JCheckBox();
-		displayedLabel.setLabelFor(displayCheckBox);
+		enableLabel = new JLabel(message.getString("properties.decor.enable"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableLabel.setLabelFor(enableCheckBox);
 
 		backLabel = new JLabel(message.getString("properties.decor.back"), JLabel.TRAILING);
 		backCheckBox = new JCheckBox();
@@ -79,10 +79,10 @@ public class DecorPanel extends IdentifiablePanel {
 		this.add(xSpinner);
 		this.add(yLabel);
 		this.add(ySpinner);
-		this.add(backgroundIdLabel);
-		this.add(backgroundIdSpinner);
-		this.add(displayedLabel);
-		this.add(displayCheckBox);
+		this.add(indexAnimLabel);
+		this.add(indexAnimSpinner);
+		this.add(enableLabel);
+		this.add(enableCheckBox);
 		this.add(backLabel);
 		this.add(backCheckBox);
 
@@ -90,8 +90,8 @@ public class DecorPanel extends IdentifiablePanel {
 		idField.setText(Integer.toString(decor.getId()));
 		xSpinner.setValue(Integer.valueOf(decor.getX()));
 		ySpinner.setValue(Integer.valueOf(decor.getY()));
-		backgroundIdSpinner.setValue(Integer.valueOf(decor.getIndexAnim()));
-		displayCheckBox.setSelected(decor.isDisplay());
+		indexAnimSpinner.setValue(Integer.valueOf(decor.getIndexAnim()));
+		enableCheckBox.setSelected(decor.isEnable());
 		backCheckBox.setSelected(decor.isBack());
 
 		SpringUtilities.makeCompactGrid(this, 6, 2, 2, 2, 2, 2);
@@ -128,7 +128,7 @@ public class DecorPanel extends IdentifiablePanel {
 				}
 			}
 		});
-		backgroundIdSpinner.addChangeListener(new ChangeListener() {
+		indexAnimSpinner.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				JSpinner text = (JSpinner) e.getSource();
@@ -140,9 +140,9 @@ public class DecorPanel extends IdentifiablePanel {
 				}
 			}
 		});
-		displayCheckBox.addItemListener(new ItemListener() {
+		enableCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				decor.setDisplay(displayCheckBox.isSelected());
+				decor.setEnable(enableCheckBox.isSelected());
 				levelService.updateDecor(decor);
 				drawPanel.repaint();
 			}

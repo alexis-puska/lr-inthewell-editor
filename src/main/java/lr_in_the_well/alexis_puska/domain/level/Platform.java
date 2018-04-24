@@ -12,19 +12,23 @@ import lombok.Setter;
 public class Platform extends Identifiable implements Serializable {
 
 	private static final long serialVersionUID = -3148349064427411770L;
+
+	private boolean enable;
 	private int x;
 	private int y;
 	private boolean vertical;
-	private boolean visible;
+	private boolean displayed;
 	private int length;
 	private int surfaceId;
 
-	public Platform(int id, int x, int y, boolean vertical, boolean visible, int length, int surfaceId) {
+	public Platform(int id, boolean enable, int x, int y, boolean vertical, boolean displayed, int length,
+			int surfaceId) {
 		super(id);
+		this.enable = enable;
 		this.x = x;
 		this.y = y;
 		this.vertical = vertical;
-		this.visible = visible;
+		this.displayed = displayed;
 		this.length = length;
 		this.surfaceId = surfaceId;
 	}

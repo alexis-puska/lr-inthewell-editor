@@ -263,7 +263,7 @@ public class DrawPanel extends Canvas {
 			g2.transform(trans);
 			g2.drawImage(bf, (pick.getX() * Constante.GRID_SIZE) + OFFSET, pick.getY() * Constante.GRID_SIZE, null);
 			g2.setTransform(backup); // restore previous transform
-			if (!pick.isVisible()) {
+			if (!pick.isEnable()) {
 				drawDisabledFlag(g2, pick.getX(), pick.getY());
 			}
 		}
@@ -329,7 +329,7 @@ public class DrawPanel extends Canvas {
 						(platform.getX() * Constante.GRID_SIZE) + OFFSET, platform.getY() * Constante.GRID_SIZE, null);
 
 			}
-			if (!platform.isVisible()) {
+			if (!platform.isDisplayed()) {
 				drawDisabledFlag(g2, platform.getX(), platform.getY());
 			}
 		}

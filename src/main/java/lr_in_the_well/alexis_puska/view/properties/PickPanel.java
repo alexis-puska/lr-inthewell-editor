@@ -23,9 +23,9 @@ public class PickPanel extends IdentifiablePanel {
 
 	private static final long serialVersionUID = -4090876979915495722L;
 	private Pick pick;
-
-	private JLabel actifLabel;
-	private JCheckBox actifCheckBox;
+	
+	private JLabel enableLabel;
+	private JCheckBox enableCheckBox;
 
 	private JLabel directionLabel;
 	private SpinnerNumberModel directionModel;
@@ -36,10 +36,10 @@ public class PickPanel extends IdentifiablePanel {
 		super(message, parent, drawPanel, levelService, name);
 		this.pick = pick;
 
-		actifLabel = new JLabel(message.getString("properties.pick.actif"), JLabel.TRAILING);
-		actifCheckBox = new JCheckBox();
-		actifCheckBox.setToolTipText(message.getString("properties.pick.actif.description"));
-		actifLabel.setLabelFor(actifCheckBox);
+		enableLabel = new JLabel(message.getString("properties.pick.actif"), JLabel.TRAILING);
+		enableCheckBox = new JCheckBox();
+		enableCheckBox.setToolTipText(message.getString("properties.pick.actif.description"));
+		enableLabel.setLabelFor(enableCheckBox);
 
 		directionLabel = new JLabel(message.getString("properties.pick.direction"), JLabel.TRAILING);
 		directionModel = new SpinnerNumberModel();
@@ -50,11 +50,11 @@ public class PickPanel extends IdentifiablePanel {
 		directionLabel.setLabelFor(directionSpinner);
 
 		idField.setText(Integer.toString(pick.getId()));
-		actifCheckBox.setSelected(pick.isVisible());
+		enableCheckBox.setSelected(pick.isEnable());
 		directionSpinner.setValue((Integer) pick.getDirection());
 
-		this.add(actifLabel);
-		this.add(actifCheckBox);
+		this.add(enableLabel);
+		this.add(enableCheckBox);
 
 		this.add(directionLabel);
 		this.add(directionSpinner);
@@ -65,9 +65,9 @@ public class PickPanel extends IdentifiablePanel {
 	}
 
 	public void addListeners() {
-		actifCheckBox.addItemListener(new ItemListener() {
+		enableCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				pick.setVisible(actifCheckBox.isSelected());
+				pick.setEnable(enableCheckBox.isSelected());
 				levelService.updatePick(pick);
 				drawPanel.repaint();
 			}
