@@ -8,14 +8,12 @@ public enum EnabledElementEnum implements Serializable{
     DECOR,
     DOOR,
     ENNEMIE,
-    EVENT,
     ITEM,
     LOCK,
     PICK,
     PLATFORM,
     RAYON,
     TELEPORTER,
-    TYPE,
     VORTEX;
     
     public static String[] getValues(){
