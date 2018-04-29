@@ -28,6 +28,10 @@ import lr_in_the_well.alexis_puska.domain.level.event.Event;
 
 public class LevelService {
 
+	private int previousHorizontalPlatformIndex;
+	private int previousVerticalPlatformIndex;
+	private int previousBackgroundIndex;
+
 	private int currentTypeIndex;
 	private int currentLevelIndex;
 	private Type currentType;
@@ -39,6 +43,9 @@ public class LevelService {
 	public LevelService() {
 		this.currentTypeIndex = 0;
 		this.currentLevelIndex = 0;
+		this.previousHorizontalPlatformIndex = 0;
+		this.previousVerticalPlatformIndex = 0;
+		this.previousBackgroundIndex = 1;
 	}
 
 	public void putLevelFile(LevelFile levelFile) {
@@ -102,6 +109,9 @@ public class LevelService {
 	public void createLevel() {
 		if (this.currentLevel == null) {
 			this.currentLevel = new Level(this.currentLevelIndex);
+			this.currentLevel.setBackground(previousBackgroundIndex);
+			this.currentLevel.setVerticalPlateform(previousVerticalPlatformIndex);
+			this.currentLevel.setHorizontalPlateform(previousHorizontalPlatformIndex);
 		}
 	}
 
@@ -146,6 +156,7 @@ public class LevelService {
 
 	public void setHorizontalPlatformId(int id) {
 		if (currentLevel != null) {
+			previousHorizontalPlatformIndex = id;
 			this.currentLevel.setHorizontalPlateform(id);
 			this.saveCurrentLevel();
 		}
@@ -155,12 +166,13 @@ public class LevelService {
 		if (currentLevel != null) {
 			return currentLevel.getHorizontalPlateform();
 		} else {
-			return 0;
+			return previousHorizontalPlatformIndex;
 		}
 	}
 
 	public void setVerticalPlatformId(int id) {
 		if (currentLevel != null) {
+			this.previousVerticalPlatformIndex = id;
 			this.currentLevel.setVerticalPlateform(id);
 			this.saveCurrentLevel();
 		}
@@ -170,12 +182,13 @@ public class LevelService {
 		if (currentLevel != null) {
 			return currentLevel.getVerticalPlateform();
 		} else {
-			return 0;
+			return previousVerticalPlatformIndex;
 		}
 	}
 
 	public void setBackgroundId(int id) {
 		if (currentLevel != null) {
+			this.previousBackgroundIndex = id;
 			this.currentLevel.setBackground(id);
 			this.saveCurrentLevel();
 		}
@@ -226,7 +239,7 @@ public class LevelService {
 		if (currentLevel != null) {
 			return currentLevel.getBackground();
 		} else {
-			return 1;
+			return previousBackgroundIndex;
 		}
 	}
 
