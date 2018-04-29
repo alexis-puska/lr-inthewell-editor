@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
+import lr_in_the_well.alexis_puska.domain.StartDimension;
 import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
@@ -39,9 +40,8 @@ public class LevelService {
 	private Map<Integer, Type> typeMap;
 	private Map<Integer, Level> levelMap;
 	private LevelFile levelFile;
-
-	// print map
-	private List<Integer> dimensions;
+	
+	//printLevel
 	private List<Integer> treatedLevel;
 
 	public LevelService() {
@@ -860,15 +860,16 @@ public class LevelService {
 		saveCurrentLevel();
 	}
 
-	
 	/***************************************************************
 	 * 
 	 * --- print level id and represent the map of level ----
 	 * 
 	 ***************************************************************/
 	public String printTextMap() {
+		// print map
 		treatedLevel = new ArrayList<>();
-		dimensions = new ArrayList<>();
+
+		List<StartDimension> dimensions = new ArrayList<>();
 		String map = "";
 		Level level = levelMap.get(0);
 		if (level != null) {
@@ -885,12 +886,12 @@ public class LevelService {
 					map += "->";
 					if (level.getVortex() != null && !level.getVortex().isEmpty()) {
 						for (Vortex d : level.getVortex()) {
-							dimensions.add(d.getDestination());
+							dimensions.add(new StartDimension(1, level.getId(), d.getDestination()));
 						}
 					}
 					if (level.getDoor() != null && !level.getDoor().isEmpty()) {
 						for (Door d : level.getDoor()) {
-							dimensions.add(d.getToLevel());
+							dimensions.add(new StartDimension(0, level.getId(), d.getToLevel()));
 						}
 					}
 				} else {
@@ -899,44 +900,60 @@ public class LevelService {
 				}
 			}
 		}
-		for (int levelId : dimensions) {
+		for (StartDimension startDimension : dimensions) {
 			map += System.lineSeparator();
-			map += printDimension(levelId);
+			map += printDimension(startDimension);
 		}
 		return map;
 	}
 
-	private String printDimension(int levelId) {
-		String map = "";
-		Level level = levelMap.get(levelId);
-
-		while (level != null) {
+	private String printDimension(StartDimension startDimension) {
+		List<StartDimension> dim = new ArrayList<>();
+		String map = startDimension.getOriginLevel() + "->" + startDimension.getDestination();
+		Level level = levelMap.get(startDimension.getDestination());
+		
+		
+		if (level.getVortex() != null && !level.getVortex().isEmpty()) {
+			for (Vortex d : level.getVortex()) {
+				dim.add(new StartDimension(1, level.getId(), d.getDestination()));
+			}
+		}
+		if (level.getDoor() != null && !level.getDoor().isEmpty()) {
+			for (Door d : level.getDoor()) {
+				dim.add(new StartDimension(0, level.getId(), d.getToLevel()));
+			}
+		}
+		
+		
+		while (!treatedLevel.contains(level.getNext())) {
 			int id = level.getNext();
 			treatedLevel.add(id);
 			level = levelMap.get(level.getNext());
 			if (level != null) {
-				map += level.getId();
-				map += "->";
 				if (level.getVortex() != null && !level.getVortex().isEmpty()) {
 					for (Vortex d : level.getVortex()) {
-						dimensions.add(d.getDestination());
+						dim.add(new StartDimension(1, level.getId(), d.getDestination()));
 					}
 				}
 				if (level.getDoor() != null && !level.getDoor().isEmpty()) {
 					for (Door d : level.getDoor()) {
-						dimensions.add(d.getToLevel());
+						dim.add(new StartDimension(0, level.getId(), d.getToLevel()));
 					}
 				}
-				if (treatedLevel.contains(level.getNext())) {
-					map += level.getNext();
-					break;
-				}
+				map += "->";
+				map += level.getId();
 			} else {
-				map += "LEVEL NOT FOUND" + id;
-				break;
+				map += "->LEVEL NOT FOUND : " + id;
+				return map;
 			}
 		}
-
+		map += "->";
+		map += level.getNext();
+		for (StartDimension sta : dim) {
+			map += System.lineSeparator();
+			map += printDimension(sta);
+		}
+		
 		return map;
 	}
 }
