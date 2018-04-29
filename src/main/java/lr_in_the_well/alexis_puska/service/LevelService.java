@@ -40,6 +40,10 @@ public class LevelService {
 	private Map<Integer, Level> levelMap;
 	private LevelFile levelFile;
 
+	// print map
+	private List<Integer> dimensions;
+	private List<Integer> treatedLevel;
+
 	public LevelService() {
 		this.currentTypeIndex = 0;
 		this.currentLevelIndex = 0;
@@ -265,7 +269,7 @@ public class LevelService {
 		}
 	}
 
-	public int getgetNextLevelId() {
+	public int getNextLevelId() {
 		if (currentLevel != null) {
 			return currentLevel.getNext();
 		} else {
@@ -854,5 +858,85 @@ public class LevelService {
 		currentLevel.getEnnemies().remove(ennemie);
 		currentLevel.getEnnemies().add(ennemie);
 		saveCurrentLevel();
+	}
+
+	
+	/***************************************************************
+	 * 
+	 * --- print level id and represent the map of level ----
+	 * 
+	 ***************************************************************/
+	public String printTextMap() {
+		treatedLevel = new ArrayList<>();
+		dimensions = new ArrayList<>();
+		String map = "";
+		Level level = levelMap.get(0);
+		if (level != null) {
+			map += level.getId();
+			treatedLevel.add(level.getId());
+			map += "->";
+			// main weel
+			while (level != null) {
+				int id = level.getNext();
+				level = levelMap.get(level.getNext());
+				if (level != null) {
+					map += level.getId();
+					treatedLevel.add(level.getId());
+					map += "->";
+					if (level.getVortex() != null && !level.getVortex().isEmpty()) {
+						for (Vortex d : level.getVortex()) {
+							dimensions.add(d.getDestination());
+						}
+					}
+					if (level.getDoor() != null && !level.getDoor().isEmpty()) {
+						for (Door d : level.getDoor()) {
+							dimensions.add(d.getToLevel());
+						}
+					}
+				} else {
+					map += "LEVEL NOT FOUND" + id;
+					break;
+				}
+			}
+		}
+		for (int levelId : dimensions) {
+			map += System.lineSeparator();
+			map += printDimension(levelId);
+		}
+		return map;
+	}
+
+	private String printDimension(int levelId) {
+		String map = "";
+		Level level = levelMap.get(levelId);
+
+		while (level != null) {
+			int id = level.getNext();
+			treatedLevel.add(id);
+			level = levelMap.get(level.getNext());
+			if (level != null) {
+				map += level.getId();
+				map += "->";
+				if (level.getVortex() != null && !level.getVortex().isEmpty()) {
+					for (Vortex d : level.getVortex()) {
+						dimensions.add(d.getDestination());
+					}
+				}
+				if (level.getDoor() != null && !level.getDoor().isEmpty()) {
+					for (Door d : level.getDoor()) {
+						dimensions.add(d.getToLevel());
+					}
+				}
+				if (treatedLevel.contains(level.getNext())) {
+					map += level.getNext();
+					break;
+				}
+			} else {
+				map += "LEVEL NOT FOUND" + id;
+				break;
+			}
+		}
+
+		return map;
 	}
 }

@@ -32,7 +32,6 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.border.Border;
-import javax.swing.event.CaretListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
@@ -70,6 +69,7 @@ import lr_in_the_well.alexis_puska.view.properties.EnnemiePanel;
 import lr_in_the_well.alexis_puska.view.properties.EventPanel;
 import lr_in_the_well.alexis_puska.view.properties.ItemPanel;
 import lr_in_the_well.alexis_puska.view.properties.LockPanel;
+import lr_in_the_well.alexis_puska.view.properties.MapPanel;
 import lr_in_the_well.alexis_puska.view.properties.PickPanel;
 import lr_in_the_well.alexis_puska.view.properties.PlatformPanel;
 import lr_in_the_well.alexis_puska.view.properties.RayonPanel;
@@ -123,6 +123,7 @@ public class App extends JFrame {
 	private BorderLayout drawLayout;
 	private DrawPanel drawPanel;
 	private JFrame eventJFrame;
+	private JFrame mapViewJFrame;
 
 	/****************
 	 * properties
@@ -200,6 +201,7 @@ public class App extends JFrame {
 	private GridLayout layoutElement;
 	private JButton selectButton;
 	private JButton deleteButton;
+	private JButton viewMapButton;
 	private JButton verticalPlatformButton;
 	private JButton horizontalPlatformButton;
 	private JButton vortexButton;
@@ -239,7 +241,8 @@ public class App extends JFrame {
 	private JPanel nextLevelIndexPanel;
 	private GridLayout nextLevelIndexLayout;
 	private Border nextLevelIndexBorder;
-	private JTextField nextLevelIndexTextField;
+	private SpinnerNumberModel nextLevelIndexSpinnerModel;
+	private JSpinner nextLevelIndexSpinner;
 	private JPanel showPlatformLevelPanel;
 	private GridLayout showPlatformLevelLayout;
 	private Border showPlatformLevelBorder;
@@ -335,8 +338,11 @@ public class App extends JFrame {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					Identifiable identifiable = (Identifiable) selectionIdentifiableComboBox.getSelectedItem();
 					if (identifiable != null) {
-						if(eventJFrame != null && eventJFrame.isVisible()) {
+						if (eventJFrame != null && eventJFrame.isVisible()) {
 							eventJFrame.dispose();
+						}
+						if (mapViewJFrame != null && mapViewJFrame.isVisible()) {
+							mapViewJFrame.dispose();
 						}
 						switchIdentifiable(identifiable);
 					}
@@ -435,6 +441,7 @@ public class App extends JFrame {
 		panelElement.setLayout(layoutElement);
 		panelElement.add(selectButton);
 		panelElement.add(deleteButton);
+		panelElement.add(viewMapButton);
 		panelElement.add(verticalPlatformButton);
 		panelElement.add(horizontalPlatformButton);
 		panelElement.add(vortexButton);
@@ -473,7 +480,9 @@ public class App extends JFrame {
 		backgroundIndexPanel.add(backgroundIndexSpinner);
 		nextLevelIndexPanel.setBorder(nextLevelIndexBorder);
 		nextLevelIndexPanel.setLayout(nextLevelIndexLayout);
-		nextLevelIndexPanel.add(nextLevelIndexTextField);
+		nextLevelIndexSpinnerModel.setMinimum(-1);
+		nextLevelIndexSpinner.setModel(nextLevelIndexSpinnerModel);
+		nextLevelIndexPanel.add(nextLevelIndexSpinner);
 		showPlatformLevelPanel.setBorder(showPlatformLevelBorder);
 		showPlatformLevelPanel.setLayout(showPlatformLevelLayout);
 		showPlatformLevelPanel.add(showPlatformLevelCheckBox);
@@ -595,6 +604,7 @@ public class App extends JFrame {
 		layoutElement.setRows(Constante.ROW_ELEMENT_PANEL);
 		selectButton = new JButton(message.getString("element.button.select"));
 		deleteButton = new JButton(message.getString("element.button.delete"));
+		viewMapButton = new JButton(message.getString("element.button.viewMap"));
 		verticalPlatformButton = new JButton(message.getString("element.button.vpf"));
 		horizontalPlatformButton = new JButton(message.getString("element.button.hpf"));
 		vortexButton = new JButton(message.getString("element.button.vortex"));
@@ -637,7 +647,8 @@ public class App extends JFrame {
 		nextLevelIndexPanel = new JPanel();
 		nextLevelIndexLayout = new GridLayout();
 		nextLevelIndexBorder = BorderFactory.createTitledBorder(message.getString("properties.border.nextLevel"));
-		nextLevelIndexTextField = new JTextField();
+		nextLevelIndexSpinnerModel = new SpinnerNumberModel();
+		nextLevelIndexSpinner = new JSpinner();
 		showPlatformLevelPanel = new JPanel();
 		showPlatformLevelLayout = new GridLayout();
 		showPlatformLevelBorder = BorderFactory.createTitledBorder(message.getString("properties.border.showPlatform"));
@@ -941,17 +952,18 @@ public class App extends JFrame {
 			}
 		});
 
-		nextLevelIndexTextField.addCaretListener(new CaretListener() {
-			public void caretUpdate(javax.swing.event.CaretEvent e) {
-				JTextField text = (JTextField) e.getSource();
-				if (text.getText() != null && !text.getText().isEmpty()) {
-					levelService.setNextLevelId(Integer.parseInt(text.getText()));
+		nextLevelIndexSpinner.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				JSpinner text = (JSpinner) e.getSource();
+				if (text.getValue() != null) {
+					levelService.setNextLevelId((Integer) text.getValue());
 					drawPanel.repaint();
 				}
-				LOG.info("NextLevel change : " + text.getText());
+				LOG.info("NextLevel change : " + text.getValue());
 			}
 		});
-		nextLevelIndexTextField.addKeyListener(new KeyListener() {
+		nextLevelIndexSpinner.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char vChar = e.getKeyChar();
@@ -1162,6 +1174,12 @@ public class App extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				action = ActionEnum.DELETE;
+			}
+		});
+		viewMapButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				viewMap();
 			}
 		});
 		verticalPlatformButton.addActionListener(new ActionListener() {
@@ -1550,13 +1568,27 @@ public class App extends JFrame {
 		repaint();
 	}
 
+	protected void viewMap() {
+		mapViewJFrame = new JFrame(message.getString("properties.mapPanel.title"));
+		mapViewJFrame.getContentPane().setLayout(new BorderLayout());
+		JPanel panel = new MapPanel(message, levelService.printTextMap());
+		mapViewJFrame.add(panel);
+		mapViewJFrame.setLocationRelativeTo(null);
+		mapViewJFrame.setSize(1200, 800);
+		mapViewJFrame.setVisible(true);
+		centerPanel.updateUI();
+	}
+
 	private void selectElement(int x, int y) {
 		List<Identifiable> objs = levelService.getProperties(x, y);
 		if (editionIdentifiablePanel != null) {
 			centerPanel.remove(editionIdentifiablePanel);
 		}
-		if(eventJFrame != null && eventJFrame.isVisible()) {
+		if (eventJFrame != null && eventJFrame.isVisible()) {
 			eventJFrame.dispose();
+		}
+		if (mapViewJFrame != null && mapViewJFrame.isVisible()) {
+			mapViewJFrame.dispose();
 		}
 
 		if (objs != null && !objs.isEmpty()) {
@@ -1673,7 +1705,7 @@ public class App extends JFrame {
 		verticalPlatformIndexSpinner.setValue((Integer) levelService.getVerticalPlatformId());
 		horizontalPlatformIndexSpinner.setValue((Integer) levelService.getHorizontalPlatformId());
 		backgroundIndexSpinner.setValue((Integer) levelService.getBackgroundId());
-		nextLevelIndexTextField.setText(Integer.toString(levelService.getgetNextLevelId()));
+		nextLevelIndexSpinner.setValue((Integer) levelService.getNextLevelId());
 		showPlatformLevelCheckBox.setSelected(levelService.isShowPlatform());
 		spanishLevelNameIndexTextField.setText(levelService.getLevelName("es"));
 		englishLevelNameIndexTextField.setText(levelService.getLevelName("en"));
