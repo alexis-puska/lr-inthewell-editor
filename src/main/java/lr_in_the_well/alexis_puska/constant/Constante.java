@@ -27,7 +27,7 @@ public class Constante {
     public static final int MIN_PLATFORM_ID = 0;
     public static final int MAX_PLATFORM_ID = 61;
     public static final int MIN_TYPE_ID = 0;
-    public static final int MAX_TYPE_ID = 4;
+    public static final int MAX_TYPE_ID = 3;
     public static final int MIN_LEVEL_ID = 0;
     
     //EVENT
