@@ -19,10 +19,8 @@ public class Platform extends Identifiable implements Serializable {
 	private boolean vertical;
 	private boolean displayed;
 	private int length;
-	private int surfaceId;
 
-	public Platform(int id, boolean enable, int x, int y, boolean vertical, boolean displayed, int length,
-			int surfaceId) {
+	public Platform(int id, boolean enable, int x, int y, boolean vertical, boolean displayed, int length) {
 		super(id);
 		this.enable = enable;
 		this.x = x;
@@ -30,7 +28,6 @@ public class Platform extends Identifiable implements Serializable {
 		this.vertical = vertical;
 		this.displayed = displayed;
 		this.length = length;
-		this.surfaceId = surfaceId;
 	}
 
 }
