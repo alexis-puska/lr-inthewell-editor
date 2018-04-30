@@ -910,40 +910,28 @@ public class LevelService {
         int next = 0;
 
         for (StartDimension di : startDimension) {
-            boolean iter = false;
-            map = di.getOriginLevel()+ "";
+            int iter = 0;
+            map = di.getOriginLevel() + "-> " + di.getDestination();
             level = levelMap.get(di.getDestination());
-            next = di.getDestination();
+            next = level.getNext();
             if (level != null) {
-                iter = true;
                 dim = searchPath(dim, level);
             }
+
             while (true) {
-                if (level != null && !treatedLevels.contains(level.getNext())) {
-                    
-                    map += "->";
-                    map += level.getId();
-                    next = level.getNext();
-                    treatedLevels.add(next);
-                    level = levelMap.get(level.getNext());
-                    if (level == null) {
-                        map += "->LEVEL NOT FOUND : " + next;
-                        treatedDimensions.add(map);
-                        break;
+                if (level != null && !treatedLevels.contains(next)) {
+                    if (iter > 0) {
+                        map += "->" + next;
                     }
                 } else {
-                    if (iter) {
-                        map += "->" + next;
-                        level = levelMap.get(level.getNext());
-                        map += "->" + level.getId();
-                    }else{
-                        map += "->" + next;
-                    }
-                    
-                    
+                    map += "->" + next;
                     treatedDimensions.add(map);
                     break;
                 }
+                treatedLevels.add(level.getId());
+                level = levelMap.get(level.getNext());
+                next = level.getNext();
+                iter++;
             }
 
         }
