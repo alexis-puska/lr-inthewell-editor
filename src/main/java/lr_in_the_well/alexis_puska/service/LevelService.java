@@ -44,6 +44,7 @@ public class LevelService {
     // printLevel
     private List<Integer> treatedLevels;
     private List<String> treatedDimensions;
+    private List<Integer> treatPath;
 
     public LevelService() {
         this.currentTypeIndex = 0;
@@ -870,97 +871,76 @@ public class LevelService {
         // print map
         treatedLevels = new ArrayList<>();
         treatedDimensions = new ArrayList<>();
+        treatPath = new ArrayList<>();
         List<StartDimension> dimensions = new ArrayList<>();
-        String map = "";
+
         String tmp = "";
         Level level = levelMap.get(0);
-        int next = 0;
-         if (level != null) {
+        int next = level.getNext();
+        if (level != null) {
             while (true) {
                 if (level != null && next != -1 && levelMap.containsKey(next)) {
+                    dimensions = searchPath(dimensions, level);
                     tmp += level.getId();
                     treatedLevels.add(level.getId());
                     tmp += "->";
 
                     next = level.getNext();
-
-                    if (level.getVortex() != null && !level.getVortex().isEmpty()) {
-                        for (Vortex d : level.getVortex()) {
-                            dimensions.add(new StartDimension(1, level.getId(), d.getDestination()));
-                        }
-                    }
-                    if (level.getDoor() != null && !level.getDoor().isEmpty()) {
-                        for (Door d : level.getDoor()) {
-                            dimensions.add(new StartDimension(0, level.getId(), d.getToLevel()));
-                        }
-                    }
                     level = levelMap.get(next);
                 } else {
-                    tmp += next;
+                    tmp += next + "END";
                     treatedDimensions.add(tmp);
                     break;
                 }
             }
         }
         printDimension(dimensions);
+        String map = "";
         for (String s : treatedDimensions) {
-            map += System.lineSeparator();
             map += s;
+            map += System.lineSeparator();
         }
         return map;
     }
 
-    
-    
     private void printDimension(List<StartDimension> startDimension) {
         String map = "";
         List<StartDimension> dim = new ArrayList<>();
         Level level;
         int next = 0;
-        for (StartDimension di : startDimension) {
 
-            map = di.getOriginLevel() + "->" + di.getDestination();
+        for (StartDimension di : startDimension) {
+            boolean iter = false;
+            map = di.getOriginLevel()+ "";
             level = levelMap.get(di.getDestination());
+            next = di.getDestination();
             if (level != null) {
-                if (level.getVortex() != null && !level.getVortex().isEmpty()) {
-                    for (Vortex d : level.getVortex()) {
-                        dim.add(new StartDimension(1, level.getId(), d.getDestination()));
-                    }
-                }
-                if (level.getDoor() != null && !level.getDoor().isEmpty()) {
-                    for (Door d : level.getDoor()) {
-                        dim.add(new StartDimension(0, level.getId(), d.getToLevel()));
-                    }
-                }
-                map += "->";
-                map += level.getId();
+                iter = true;
+                dim = searchPath(dim, level);
             }
             while (true) {
-                
                 if (level != null && !treatedLevels.contains(level.getNext())) {
+                    
+                    map += "->";
+                    map += level.getId();
                     next = level.getNext();
                     treatedLevels.add(next);
                     level = levelMap.get(level.getNext());
-                    if (level != null) {
-                        if (level.getVortex() != null && !level.getVortex().isEmpty()) {
-                            for (Vortex d : level.getVortex()) {
-                                dim.add(new StartDimension(1, level.getId(), d.getDestination()));
-                            }
-                        }
-                        if (level.getDoor() != null && !level.getDoor().isEmpty()) {
-                            for (Door d : level.getDoor()) {
-                                dim.add(new StartDimension(0, level.getId(), d.getToLevel()));
-                            }
-                        }
-                        map += "->";
-                        map += level.getId();
-                    } else {
+                    if (level == null) {
                         map += "->LEVEL NOT FOUND : " + next;
                         treatedDimensions.add(map);
                         break;
                     }
                 } else {
-                    //map += next;
+                    if (iter) {
+                        map += "->" + next;
+                        level = levelMap.get(level.getNext());
+                        map += "->" + level.getId();
+                    }else{
+                        map += "->" + next;
+                    }
+                    
+                    
                     treatedDimensions.add(map);
                     break;
                 }
@@ -971,5 +951,23 @@ public class LevelService {
         if (!dim.isEmpty()) {
             printDimension(dim);
         }
+    }
+
+    private List<StartDimension> searchPath(List<StartDimension> dim, Level level) {
+        if (!treatPath.contains(level.getId())) {
+            if (level.getVortex() != null && !level.getVortex().isEmpty()) {
+                for (Vortex d : level.getVortex()) {
+                    dim.add(new StartDimension(1, level.getId(), d.getDestination()));
+                    treatPath.add(level.getId());
+                }
+            }
+            if (level.getDoor() != null && !level.getDoor().isEmpty()) {
+                for (Door d : level.getDoor()) {
+                    dim.add(new StartDimension(0, level.getId(), d.getToLevel()));
+                    treatPath.add(level.getId());
+                }
+            }
+        }
+        return dim;
     }
 }
