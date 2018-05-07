@@ -6,6 +6,8 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lr_in_the_well.alexis_puska.constant.MusicEnum;
+import lr_in_the_well.alexis_puska.constant.SoundEnum;
 import lr_in_the_well.alexis_puska.domain.level.Identifiable;
 
 @Getter
@@ -54,8 +56,8 @@ public class Event extends Identifiable implements Serializable {
      ***************************************/
 	private List<EnableElement> enableElement;
 	private List<Message> message;
-	private String song;
-	private String sound;
+	private MusicEnum song;
+	private SoundEnum sound;
 	private int darknessValue;
 	private int iceValue;
 	

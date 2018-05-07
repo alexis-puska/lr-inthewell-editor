@@ -5,6 +5,7 @@ import java.awt.event.ItemListener;
 import java.util.ResourceBundle;
 
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -12,6 +13,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import lr_in_the_well.alexis_puska.constant.GameKeyEnum;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
@@ -22,7 +24,7 @@ public class DoorPanel extends IdentifiablePanel {
 
 	private static final long serialVersionUID = -4090876979915495722L;
 	private Door door;
-	
+
 	private JLabel enableLabel;
 	private JCheckBox enableCheckBox;
 
@@ -35,8 +37,7 @@ public class DoorPanel extends IdentifiablePanel {
 	private JSpinner toLevelSpinner;
 
 	private JLabel requieredKeyLabel;
-	private SpinnerNumberModel requieredKeyModel;
-	private JSpinner requieredKeySpinner;
+	private JComboBox<GameKeyEnum> requieredKeyComboBox;
 
 	private JLabel serrureIdLabel;
 	private SpinnerNumberModel serrureIdModel;
@@ -49,11 +50,11 @@ public class DoorPanel extends IdentifiablePanel {
 			Door door) {
 		super(message, parent, drawPanel, levelService, name);
 		this.door = door;
-		
+
 		enableLabel = new JLabel(message.getString("properties.door.enable"), JLabel.TRAILING);
 		enableCheckBox = new JCheckBox();
 		enableLabel.setLabelFor(enableCheckBox);
-		
+
 		typeLabel = new JLabel(message.getString("properties.door.type"), JLabel.TRAILING);
 		typeModel = new SpinnerNumberModel();
 		typeSpinner = new JSpinner();
@@ -69,10 +70,9 @@ public class DoorPanel extends IdentifiablePanel {
 		toLevelLabel.setLabelFor(toLevelSpinner);
 
 		requieredKeyLabel = new JLabel(message.getString("properties.door.requieredKey"), JLabel.TRAILING);
-		requieredKeyModel = new SpinnerNumberModel();
-		requieredKeySpinner = new JSpinner();
-		requieredKeySpinner.setModel(requieredKeyModel);
-		requieredKeyLabel.setLabelFor(requieredKeySpinner);
+		requieredKeyComboBox = new JComboBox<>(GameKeyEnum.values());
+		requieredKeyComboBox.addItem(null);
+		requieredKeyLabel.setLabelFor(requieredKeyComboBox);
 
 		serrureIdLabel = new JLabel(message.getString("properties.lock.serrure"), JLabel.TRAILING);
 		serrureIdModel = new SpinnerNumberModel();
@@ -87,7 +87,7 @@ public class DoorPanel extends IdentifiablePanel {
 		idField.setText(Integer.toString(door.getId()));
 		typeSpinner.setValue(Integer.valueOf(door.getType()));
 		toLevelSpinner.setValue(Integer.valueOf(door.getToLevel()));
-		requieredKeySpinner.setValue(Integer.valueOf(door.getRequieredKey()));
+		requieredKeyComboBox.setSelectedItem(door.getRequieredKey());
 		serrureIdSpinner.setValue(Integer.valueOf(door.getLockId()));
 		lockedCheckBox.setSelected(door.isLocked());
 		enableCheckBox.setSelected(door.isEnable());
@@ -99,7 +99,7 @@ public class DoorPanel extends IdentifiablePanel {
 		this.add(toLevelLabel);
 		this.add(toLevelSpinner);
 		this.add(requieredKeyLabel);
-		this.add(requieredKeySpinner);
+		this.add(requieredKeyComboBox);
 		this.add(serrureIdLabel);
 		this.add(serrureIdSpinner);
 		this.add(lockedLabel);
@@ -134,16 +134,12 @@ public class DoorPanel extends IdentifiablePanel {
 				}
 			}
 		});
-		requieredKeySpinner.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				JSpinner text = (JSpinner) e.getSource();
-				if (text.getValue() != null) {
-					door.setRequieredKey((Integer) text.getValue());
-					levelService.updateDoor(door);
-					drawPanel.repaint();
-					parent.repaint();
-				}
+		requieredKeyComboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				door.setRequieredKey((GameKeyEnum) requieredKeyComboBox.getSelectedItem());
+				levelService.updateDoor(door);
+				drawPanel.repaint();
+				parent.repaint();
 			}
 		});
 		serrureIdSpinner.addChangeListener(new ChangeListener() {

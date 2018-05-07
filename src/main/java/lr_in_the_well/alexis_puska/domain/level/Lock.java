@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lr_in_the_well.alexis_puska.constant.GameKeyEnum;
 
 @Getter
 @Setter
@@ -17,9 +18,9 @@ public class Lock extends Identifiable implements Serializable {
 	private boolean enable;
 	private int x;
 	private int y;
-	private int requieredKeyId;
+	private GameKeyEnum requieredKeyId;
 
-	public Lock(int id, boolean enable, int x, int y, int requieredKeyId) {
+	public Lock(int id, boolean enable, int x, int y, GameKeyEnum requieredKeyId) {
 		super(id);
 		this.enable = enable;
 		this.x = x;

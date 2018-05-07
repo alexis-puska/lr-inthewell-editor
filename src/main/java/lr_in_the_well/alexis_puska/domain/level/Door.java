@@ -5,6 +5,7 @@ import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lr_in_the_well.alexis_puska.constant.GameKeyEnum;
 
 @Getter
 @Setter
@@ -18,10 +19,10 @@ public class Door extends Identifiable implements Serializable {
 	private int type;
 	private boolean locked;
 	private int toLevel;
-	private int requieredKey;
+	private GameKeyEnum requieredKey;
 	private int lockId;
 
-	public Door(int id, boolean enable, int x, int y, int type, boolean locked, int toLevel, int requieredKey, int lockId) {
+	public Door(int id, boolean enable, int x, int y, int type, boolean locked, int toLevel, GameKeyEnum requieredKey, int lockId) {
 		super(id);
 		this.enable = enable;
 		this.x = x;

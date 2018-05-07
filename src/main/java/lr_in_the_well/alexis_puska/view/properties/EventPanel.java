@@ -39,6 +39,8 @@ import javax.swing.event.DocumentListener;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
 import lr_in_the_well.alexis_puska.constant.EnabledElementEnum;
+import lr_in_the_well.alexis_puska.constant.MusicEnum;
+import lr_in_the_well.alexis_puska.constant.SoundEnum;
 import lr_in_the_well.alexis_puska.domain.level.event.EnableElement;
 import lr_in_the_well.alexis_puska.domain.level.event.Event;
 import lr_in_the_well.alexis_puska.domain.level.event.Message;
@@ -143,9 +145,9 @@ public class EventPanel extends JPanel {
 	private Border commonActionBorder;
 	private SpringLayout commonActionLayout;
 	private JLabel songLabel;
-	private JComboBox<String> songComboBox;
+	private JComboBox<MusicEnum> songComboBox;
 	private JLabel soundLabel;
-	private JComboBox<String> soundComboBox;
+	private JComboBox<SoundEnum> soundComboBox;
 	private JLabel darknessLabel;
 	private JTextField darknessTextField;
 	private JLabel iceLabel;
@@ -310,14 +312,17 @@ public class EventPanel extends JPanel {
 		commonActionLayout = new SpringLayout();
 
 		songLabel = new JLabel(message.getString("properties.event.action.common.music"));
-		songComboBox = new JComboBox<>(Constante.MUSIQUE_LIST);
+		songComboBox = new JComboBox<>(MusicEnum.values());
+		songComboBox.addItem(null);
 		songLabel.setToolTipText(message.getString("properties.event.action.common.music.tooltip"));
 		songComboBox.setToolTipText(message.getString("properties.event.action.common.music.tooltip"));
 
 		soundLabel = new JLabel(message.getString("properties.event.action.common.sound"));
-		soundComboBox = new JComboBox<>(Constante.SOUND_LIST);
+		soundComboBox = new JComboBox<>(SoundEnum.values());
+		soundComboBox.addItem(null);
 		soundLabel.setToolTipText(message.getString("properties.event.action.common.sound.tooltip"));
 		soundComboBox.setToolTipText(message.getString("properties.event.action.common.sound.tooltip"));
+		
 
 		darknessLabel = new JLabel(message.getString("properties.event.action.common.darkness"));
 		darknessTextField = new JTextField();
@@ -635,10 +640,11 @@ public class EventPanel extends JPanel {
 			public void windowClosing(WindowEvent windowEvent) {
 				save();
 			}
+
 			@Override
-		    public void windowClosed(WindowEvent windowEvent) {
+			public void windowClosed(WindowEvent windowEvent) {
 				save();
-		    }
+			}
 		});
 
 		/*********************************
@@ -757,13 +763,13 @@ public class EventPanel extends JPanel {
 
 		songComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				String song = (String) songComboBox.getSelectedItem();
+				MusicEnum song = (MusicEnum) songComboBox.getSelectedItem();
 				event.setSong(song);
 			}
 		});
 		soundComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				String sound = (String) soundComboBox.getSelectedItem();
+				SoundEnum sound = (SoundEnum) soundComboBox.getSelectedItem();
 				event.setSound(sound);
 			}
 		});

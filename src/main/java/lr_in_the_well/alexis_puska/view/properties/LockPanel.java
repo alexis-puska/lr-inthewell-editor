@@ -5,13 +5,11 @@ import java.awt.event.ItemListener;
 import java.util.ResourceBundle;
 
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
+import lr_in_the_well.alexis_puska.constant.GameKeyEnum;
 import lr_in_the_well.alexis_puska.domain.level.Lock;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
@@ -25,8 +23,7 @@ public class LockPanel extends IdentifiablePanel {
 	private JLabel enableLabel;
 	private JCheckBox enableCheckBox;
 	private JLabel requieredKeyLabel;
-	private SpinnerNumberModel requieredKeyModel;
-	private JSpinner requieredKeySpinner;
+	private JComboBox<GameKeyEnum> requieredKeyComboBox;
 
 	public LockPanel(ResourceBundle message, JPanel parent, DrawPanel drawPanel, LevelService levelService, String name,
 			Lock lock) {
@@ -36,10 +33,8 @@ public class LockPanel extends IdentifiablePanel {
 		enableCheckBox = new JCheckBox();
 		enableLabel.setLabelFor(enableCheckBox);
 		requieredKeyLabel = new JLabel(message.getString("properties.lock.requiredKey"), JLabel.TRAILING);
-		requieredKeyModel = new SpinnerNumberModel();
-		requieredKeySpinner = new JSpinner();
-		requieredKeySpinner.setModel(requieredKeyModel);
-		requieredKeyLabel.setLabelFor(requieredKeySpinner);
+		requieredKeyComboBox = new JComboBox<>();
+		requieredKeyLabel.setLabelFor(requieredKeyComboBox);
 		enableCheckBox.setSelected(lock.isEnable());
 
 		requieredKeyLabel.setToolTipText(message.getString("properties.lock.requiredKey.description"));
@@ -48,13 +43,13 @@ public class LockPanel extends IdentifiablePanel {
 		requieredKeyLabel.setToolTipText(message.getString("properties.lock.serrure.description"));
 
 		idField.setText(Integer.toString(lock.getId()));
-		requieredKeySpinner.setValue(Integer.valueOf(lock.getRequieredKeyId()));
+		requieredKeyComboBox.setSelectedItem(lock.getRequieredKeyId());
 		enableCheckBox.setSelected(lock.isEnable());
-		
+
 		this.add(enableLabel);
 		this.add(enableCheckBox);
 		this.add(requieredKeyLabel);
-		this.add(requieredKeySpinner);
+		this.add(requieredKeyComboBox);
 
 		addListeners();
 		SpringUtilities.makeCompactGrid(this, 3, 2, 6, 6, 6, 6);
@@ -62,16 +57,12 @@ public class LockPanel extends IdentifiablePanel {
 	}
 
 	public void addListeners() {
-		requieredKeySpinner.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				JSpinner text = (JSpinner) e.getSource();
-				if (text.getValue() != null) {
-					lock.setRequieredKeyId((Integer) text.getValue());
-					levelService.updateLock(lock);
-					drawPanel.repaint();
-					parent.repaint();
-				}
+		requieredKeyComboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				lock.setRequieredKeyId((GameKeyEnum) requieredKeyComboBox.getSelectedItem());
+				levelService.updateLock(lock);
+				drawPanel.repaint();
+				parent.repaint();
 			}
 		});
 		enableCheckBox.addItemListener(new ItemListener() {
