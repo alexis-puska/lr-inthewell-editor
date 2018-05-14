@@ -1284,10 +1284,6 @@ public class App extends JFrame {
 			y = 500;
 		}
 
-		
-		
-		
-		
 		int caseX = (x - OFFSET) / Constante.GRID_SIZE;
 		int caseY = CoordinateUtils.clicGridY(y);
 		int invY = CoordinateUtils.clickY(y);
@@ -1402,7 +1398,6 @@ public class App extends JFrame {
 
 		int caseX = (x - OFFSET) / Constante.GRID_SIZE;
 		int caseY = CoordinateUtils.clicGridY(y);
-		int invY = CoordinateUtils.clickY(y);
 		switch (action) {
 		case DRAW_VERTICAL_PLATFORM:
 		case DRAW_HORIZONTAL_PLATFORM:
@@ -1445,10 +1440,7 @@ public class App extends JFrame {
 	}
 
 	private void click(int x, int y) {
-
-		int caseY = CoordinateUtils.clicGridY(y);
 		int invY = CoordinateUtils.clickY(y);
-		
 		switch (action) {
 		case SELECT:
 			selectElement(x - OFFSET, invY);
