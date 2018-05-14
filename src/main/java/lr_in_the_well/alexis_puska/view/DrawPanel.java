@@ -30,6 +30,7 @@ import lr_in_the_well.alexis_puska.domain.level.Vortex;
 import lr_in_the_well.alexis_puska.domain.level.event.Event;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
+import lr_in_the_well.alexis_puska.utils.CoordinateUtils;
 
 public class DrawPanel extends Canvas {
 
@@ -101,7 +102,7 @@ public class DrawPanel extends Canvas {
 			g2.setStroke(new BasicStroke(2));
 
 			g2.drawString("S", (sp.getX() * Constante.GRID_SIZE + 2) + OFFSET,
-					(sp.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+					(CoordinateUtils.invGridY(sp.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE);
 
 			g2.setStroke(savedStrock);
 		}
@@ -116,7 +117,7 @@ public class DrawPanel extends Canvas {
 			g2.setFont(font);
 			g2.setStroke(new BasicStroke(2));
 			g2.drawString("E", (sp.getX() * Constante.GRID_SIZE + 2) + OFFSET,
-					(sp.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+					(CoordinateUtils.invGridY(sp.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE);
 			g2.setStroke(savedStrock);
 		}
 	}
@@ -130,7 +131,7 @@ public class DrawPanel extends Canvas {
 			g2.setFont(font);
 			g2.setStroke(new BasicStroke(2));
 			g2.drawString("P", (sp.getX() * Constante.GRID_SIZE + 2) + OFFSET,
-					(sp.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+					(CoordinateUtils.invGridY(sp.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE);
 			g2.setStroke(savedStrock);
 		}
 	}
@@ -191,7 +192,8 @@ public class DrawPanel extends Canvas {
 		for (Item item : levelService.getCurrentLevel().getItems()) {
 			BufferedImage bf = spriteService.getSprite("objects", item.getItemId());
 			g2.drawImage(bf, null, item.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10 + OFFSET,
-					((item.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+					((CoordinateUtils.invGridY(item.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE)
+							- bf.getHeight());
 		}
 	}
 
@@ -199,7 +201,8 @@ public class DrawPanel extends Canvas {
 		for (Lock lock : levelService.getCurrentLevel().getLock()) {
 			BufferedImage bf = spriteService.getSprite("serrure", 1);
 			g2.drawImage(bf, null, lock.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10 + OFFSET,
-					((lock.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+					((CoordinateUtils.invGridY(lock.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE)
+							- bf.getHeight());
 		}
 	}
 
@@ -207,18 +210,18 @@ public class DrawPanel extends Canvas {
 		for (Decor decor : levelService.getCurrentLevel().getDecor()) {
 			if (decor.isBack() != onBackground) {
 				BufferedImage bf = spriteService.getDecor(decor.getIndexAnim());
-				g2.drawImage(bf, null, decor.getX(), decor.getY());
+				g2.drawImage(bf, null, decor.getX(), CoordinateUtils.drawY(decor.getY(), bf.getHeight()));
 				g2.setColor(Color.BLUE);
-				g2.fillRect(decor.getX() - 5, decor.getY() - 5, 10, 10);
+				g2.fillRect(decor.getX() - 5, CoordinateUtils.drawY(decor.getY(), 0) - 5, 10, 10);
 			} else {
 				float alpha = 0.2f;
 				Composite saved = g2.getComposite();
 				AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
 				g2.setComposite(ac);
 				BufferedImage bf = spriteService.getDecor(decor.getIndexAnim());
-				g2.drawImage(bf, null, decor.getX(), decor.getY());
+				g2.drawImage(bf, null, decor.getX(), CoordinateUtils.drawY(decor.getY(), bf.getHeight()));
 				g2.setColor(Color.BLUE);
-				g2.fillRect(decor.getX() - 5, decor.getY() - 5, 10, 10);
+				g2.fillRect(decor.getX() - 5, CoordinateUtils.drawY(decor.getY(), 0) - 5, 10, 10);
 
 				g2.setComposite(saved);
 			}
@@ -235,7 +238,8 @@ public class DrawPanel extends Canvas {
 			}
 			BufferedImage bf = spriteService.getSprite("doors", index);
 			g2.drawImage(bf, null, door.getX() * Constante.GRID_SIZE - (bf.getWidth() / 2) + 10 + OFFSET,
-					((door.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight());
+					((CoordinateUtils.invGridY(door.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE)
+							- bf.getHeight());
 			if (!door.isLocked()) {
 				drawDisabledFlag(g2, door.getX(), door.getY());
 			}
@@ -249,19 +253,20 @@ public class DrawPanel extends Canvas {
 			AffineTransform trans = new AffineTransform();
 			if (pick.getDirection() == 1) {
 				trans.rotate((Math.PI / 2), (pick.getX() * Constante.GRID_SIZE) + OFFSET,
-						pick.getY() * Constante.GRID_SIZE);
+						CoordinateUtils.invGridY(pick.getY()) * Constante.GRID_SIZE);
 				trans.translate(0, -Constante.GRID_SIZE);
 			} else if (pick.getDirection() == 2) {
 				trans.rotate((Math.PI), (pick.getX() * Constante.GRID_SIZE) + OFFSET,
-						pick.getY() * Constante.GRID_SIZE);
+						CoordinateUtils.invGridY(pick.getY()) * Constante.GRID_SIZE);
 				trans.translate(-Constante.GRID_SIZE, -Constante.GRID_SIZE);
 			} else if (pick.getDirection() == 3) {
 				trans.rotate(3 * (Math.PI / 2), (pick.getX() * Constante.GRID_SIZE) + OFFSET,
-						pick.getY() * Constante.GRID_SIZE);
+						CoordinateUtils.invGridY(pick.getY()) * Constante.GRID_SIZE);
 				trans.translate(-Constante.GRID_SIZE, 0);
 			}
 			g2.transform(trans);
-			g2.drawImage(bf, (pick.getX() * Constante.GRID_SIZE) + OFFSET, pick.getY() * Constante.GRID_SIZE, null);
+			g2.drawImage(bf, (pick.getX() * Constante.GRID_SIZE) + OFFSET,
+					CoordinateUtils.invGridY(pick.getY()) * Constante.GRID_SIZE, null);
 			g2.setTransform(backup); // restore previous transform
 			if (!pick.isEnable()) {
 				drawDisabledFlag(g2, pick.getX(), pick.getY());
@@ -277,7 +282,7 @@ public class DrawPanel extends Canvas {
 		g2.setStroke(new BasicStroke(2));
 		for (Event event : levelService.getCurrentLevel().getEvent()) {
 			g2.drawString("Ev", (event.getX() * Constante.GRID_SIZE) + OFFSET,
-					(event.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+					(CoordinateUtils.invGridY(event.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE);
 		}
 		g2.setStroke(savedStrock);
 	}
@@ -288,7 +293,8 @@ public class DrawPanel extends Canvas {
 			g2.drawImage(bf,
 					(vortex.getX() * Constante.GRID_SIZE - ((int) (bf.getWidth() * vortex.getZoomX()) / 2) + 10)
 							+ OFFSET,
-					((vortex.getY() * Constante.GRID_SIZE) + Constante.GRID_SIZE) - bf.getHeight(),
+					((CoordinateUtils.invGridY(vortex.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE)
+							- bf.getHeight(),
 					(int) (bf.getWidth() * vortex.getZoomX()), (int) (bf.getHeight() * vortex.getZoomY()), null);
 			if (!vortex.isEnable()) {
 				drawDisabledFlag(g2, vortex.getX(), vortex.getY());
@@ -307,26 +313,42 @@ public class DrawPanel extends Canvas {
 		for (Platform platform : levelService.getCurrentLevel().getPlatform()) {
 
 			if (platform.isVertical()) {
+				
+				
+				/**
+				 * AffineTransform backup = g2.getTransform();
+					AffineTransform trans = new AffineTransform();
+					trans.rotate((Math.PI / 2), (rayon.getX() + i) * Constante.GRID_SIZE,
+							rayon.getY() * Constante.GRID_SIZE);
+					trans.translate(0, -Constante.GRID_SIZE - OFFSET);
+					g2.transform(trans);
+					g2.drawImage(bf, ((rayon.getX() + i) * Constante.GRID_SIZE),
+							CoordinateUtils.invGridY(rayon.getY()) * Constante.GRID_SIZE, null);
+					g2.setTransform(backup); // restore previous transform
+				 */
+				
+				
 
 				AffineTransform backup = g2.getTransform();
 				AffineTransform trans = new AffineTransform();
-				trans.rotate((Math.PI / 2), platform.getX() * Constante.GRID_SIZE,
-						platform.getY() * Constante.GRID_SIZE); // the points to
-																// rotate around
-																// (the center
-																// in my
+				trans.rotate((3*Math.PI / 2), platform.getX() * Constante.GRID_SIZE,
+						CoordinateUtils.invGridY(platform.getY()) * Constante.GRID_SIZE); // the points to
+				// rotate around
+				// (the center
+				// in my
 				// example, your left side for your problem)
-				trans.translate(-Constante.GRID_SIZE, -Constante.GRID_SIZE - OFFSET);
+				trans.translate(-Constante.GRID_SIZE, Constante.GRID_SIZE - OFFSET);
 				g2.transform(trans);
 				g2.drawImage(bfv.getSubimage(0, 0, platform.getLength() * Constante.GRID_SIZE, Constante.GRID_SIZE),
-						(platform.getX() * Constante.GRID_SIZE + Constante.GRID_SIZE),
-						platform.getY() * Constante.GRID_SIZE, null);
+						(platform.getX() * Constante.GRID_SIZE ),
+						CoordinateUtils.invGridY(platform.getY()) * Constante.GRID_SIZE, null);
 
 				g2.setTransform(backup); // restore previous transform
 
 			} else {
 				g2.drawImage(bf.getSubimage(0, 0, platform.getLength() * Constante.GRID_SIZE, Constante.GRID_SIZE),
-						(platform.getX() * Constante.GRID_SIZE) + OFFSET, platform.getY() * Constante.GRID_SIZE, null);
+						(platform.getX() * Constante.GRID_SIZE) + OFFSET,
+						CoordinateUtils.invGridY(platform.getY()) * Constante.GRID_SIZE, null);
 
 			}
 			if (!platform.isDisplayed()) {
@@ -345,18 +367,19 @@ public class DrawPanel extends Canvas {
 			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType() * 2);
 			if (rayon.isVertical()) {
 				for (int i = rayon.getY(); i < rayon.getY() + rayon.getLength(); i++) {
-					g2.drawImage(bf, (rayon.getX() * Constante.GRID_SIZE) + OFFSET, i * Constante.GRID_SIZE, null);
+					g2.drawImage(bf, (rayon.getX() * Constante.GRID_SIZE) + OFFSET,
+							CoordinateUtils.invGridY(i) * Constante.GRID_SIZE, null);
 				}
 			} else {
 				for (int i = 0; i < rayon.getLength(); i++) {
 					AffineTransform backup = g2.getTransform();
 					AffineTransform trans = new AffineTransform();
 					trans.rotate((Math.PI / 2), (rayon.getX() + i) * Constante.GRID_SIZE,
-							rayon.getY() * Constante.GRID_SIZE);
+							CoordinateUtils.invGridY(rayon.getY()) * Constante.GRID_SIZE);
 					trans.translate(0, -Constante.GRID_SIZE - OFFSET);
 					g2.transform(trans);
-					g2.drawImage(bf, ((rayon.getX() + i) * Constante.GRID_SIZE), rayon.getY() * Constante.GRID_SIZE,
-							null);
+					g2.drawImage(bf, ((rayon.getX() + i) * Constante.GRID_SIZE),
+							CoordinateUtils.invGridY(rayon.getY()) * Constante.GRID_SIZE, null);
 					g2.setTransform(backup); // restore previous transform
 				}
 			}
@@ -374,19 +397,20 @@ public class DrawPanel extends Canvas {
 			if (teleporter.isVertical()) {
 				for (int i = teleporter.getY(); i < teleporter.getY() + teleporter.getLength(); i++) {
 					g2.drawImage(bf.getSubimage(0, 0, Constante.GRID_SIZE, Constante.GRID_SIZE),
-							(teleporter.getX() * Constante.GRID_SIZE) + OFFSET, i * Constante.GRID_SIZE, null);
+							(teleporter.getX() * Constante.GRID_SIZE) + OFFSET,
+							CoordinateUtils.invGridY(i) * Constante.GRID_SIZE, null);
 				}
 			} else {
 				for (int i = 0; i < teleporter.getLength(); i++) {
 					AffineTransform backup = g2.getTransform();
 					AffineTransform trans = new AffineTransform();
 					trans.rotate((Math.PI / 2), (teleporter.getX() + i) * Constante.GRID_SIZE,
-							teleporter.getY() * Constante.GRID_SIZE);
+							CoordinateUtils.invGridY(teleporter.getY()) * Constante.GRID_SIZE);
 					trans.translate(0, -Constante.GRID_SIZE - OFFSET);
 					g2.transform(trans);
 					g2.drawImage(bf.getSubimage(0, 0, Constante.GRID_SIZE, Constante.GRID_SIZE),
-							((teleporter.getX() + i) * Constante.GRID_SIZE), teleporter.getY() * Constante.GRID_SIZE,
-							null);
+							((teleporter.getX() + i) * Constante.GRID_SIZE),
+							CoordinateUtils.invGridY(teleporter.getY()) * Constante.GRID_SIZE, null);
 					g2.setTransform(backup); // restore previous transform
 				}
 			}
@@ -455,7 +479,7 @@ public class DrawPanel extends Canvas {
 				break;
 			}
 			int x = ((ennemie.getX() * Constante.GRID_SIZE) + (Constante.GRID_SIZE / 2) - (bf.getWidth() / 2)) + OFFSET;
-			int y = ((ennemie.getY() + 1) * Constante.GRID_SIZE) - bf.getHeight();
+			int y = ((CoordinateUtils.invGridY(ennemie.getY()) + 1) * Constante.GRID_SIZE) - bf.getHeight();
 			g2.drawImage(bf, x, y, null);
 		}
 	}

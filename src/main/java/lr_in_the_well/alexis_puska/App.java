@@ -59,6 +59,7 @@ import lr_in_the_well.alexis_puska.domain.level.event.Event;
 import lr_in_the_well.alexis_puska.service.FileService;
 import lr_in_the_well.alexis_puska.service.LevelService;
 import lr_in_the_well.alexis_puska.service.SpriteService;
+import lr_in_the_well.alexis_puska.utils.CoordinateUtils;
 import lr_in_the_well.alexis_puska.utils.SpringUtilities;
 import lr_in_the_well.alexis_puska.view.BackgroundDrawPanel;
 import lr_in_the_well.alexis_puska.view.DrawPanel;
@@ -1279,12 +1280,17 @@ public class App extends JFrame {
 		if (x > 400) {
 			x = 400;
 		}
-		if (y > 480) {
-			y = 480;
+		if (y > 500) {
+			y = 500;
 		}
 
+		
+		
+		
+		
 		int caseX = (x - OFFSET) / Constante.GRID_SIZE;
-		int caseY = y / Constante.GRID_SIZE;
+		int caseY = CoordinateUtils.clicGridY(y);
+		int invY = CoordinateUtils.clickY(y);
 
 		switch (action) {
 		case DRAW_VERTICAL_PLATFORM:
@@ -1306,7 +1312,7 @@ public class App extends JFrame {
 			this.addItem(caseX, caseY);
 			break;
 		case ADD_DECOR:
-			this.addDecor(x, y);
+			this.addDecor(x, invY);
 			break;
 		case ADD_LOCK:
 			this.addLock(caseX, caseY);
@@ -1390,12 +1396,13 @@ public class App extends JFrame {
 		if (x > 400) {
 			x = 400;
 		}
-		if (y > 480) {
-			y = 480;
+		if (y > 500) {
+			y = 500;
 		}
 
 		int caseX = (x - OFFSET) / Constante.GRID_SIZE;
-		int caseY = y / Constante.GRID_SIZE;
+		int caseY = CoordinateUtils.clicGridY(y);
+		int invY = CoordinateUtils.clickY(y);
 		switch (action) {
 		case DRAW_VERTICAL_PLATFORM:
 		case DRAW_HORIZONTAL_PLATFORM:
@@ -1439,12 +1446,15 @@ public class App extends JFrame {
 
 	private void click(int x, int y) {
 
+		int caseY = CoordinateUtils.clicGridY(y);
+		int invY = CoordinateUtils.clickY(y);
+		
 		switch (action) {
 		case SELECT:
-			selectElement(x - OFFSET, y);
+			selectElement(x - OFFSET, invY);
 			break;
 		case DELETE:
-			deleteElement(x - OFFSET, y);
+			deleteElement(x - OFFSET, invY);
 			break;
 		case DRAW_VERTICAL_PLATFORM:
 		case DRAW_HORIZONTAL_PLATFORM:
