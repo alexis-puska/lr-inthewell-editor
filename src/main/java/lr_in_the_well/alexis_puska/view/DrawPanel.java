@@ -241,7 +241,7 @@ public class DrawPanel extends Canvas {
 					((CoordinateUtils.invGridY(door.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE)
 							- bf.getHeight());
 			if (!door.isLocked()) {
-				drawDisabledFlag(g2, door.getX(), door.getY());
+				drawDisabledFlag(g2, door.getX(), CoordinateUtils.invGridY(door.getY()));
 			}
 		}
 	}
@@ -269,7 +269,7 @@ public class DrawPanel extends Canvas {
 					CoordinateUtils.invGridY(pick.getY()) * Constante.GRID_SIZE, null);
 			g2.setTransform(backup); // restore previous transform
 			if (!pick.isEnable()) {
-				drawDisabledFlag(g2, pick.getX(), pick.getY());
+				drawDisabledFlag(g2, pick.getX(), CoordinateUtils.invGridY(pick.getY()));
 			}
 		}
 	}
@@ -297,7 +297,7 @@ public class DrawPanel extends Canvas {
 							- bf.getHeight(),
 					(int) (bf.getWidth() * vortex.getZoomX()), (int) (bf.getHeight() * vortex.getZoomY()), null);
 			if (!vortex.isEnable()) {
-				drawDisabledFlag(g2, vortex.getX(), vortex.getY());
+				drawDisabledFlag(g2, vortex.getX(), CoordinateUtils.invGridY(vortex.getY()));
 			}
 		}
 	}
@@ -352,7 +352,7 @@ public class DrawPanel extends Canvas {
 
 			}
 			if (!platform.isDisplayed()) {
-				drawDisabledFlag(g2, platform.getX(), platform.getY());
+				drawDisabledFlag(g2, platform.getX(), CoordinateUtils.invGridY(platform.getY()));
 			}
 		}
 	}
