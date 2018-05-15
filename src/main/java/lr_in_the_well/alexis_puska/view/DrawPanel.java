@@ -313,37 +313,16 @@ public class DrawPanel extends Canvas {
 		for (Platform platform : levelService.getCurrentLevel().getPlatform()) {
 
 			if (platform.isVertical()) {
-				
-				
-				/**
-				 * AffineTransform backup = g2.getTransform();
-					AffineTransform trans = new AffineTransform();
-					trans.rotate((Math.PI / 2), (rayon.getX() + i) * Constante.GRID_SIZE,
-							rayon.getY() * Constante.GRID_SIZE);
-					trans.translate(0, -Constante.GRID_SIZE - OFFSET);
-					g2.transform(trans);
-					g2.drawImage(bf, ((rayon.getX() + i) * Constante.GRID_SIZE),
-							CoordinateUtils.invGridY(rayon.getY()) * Constante.GRID_SIZE, null);
-					g2.setTransform(backup); // restore previous transform
-				 */
-				
-				
-
 				AffineTransform backup = g2.getTransform();
 				AffineTransform trans = new AffineTransform();
-				trans.rotate((3*Math.PI / 2), platform.getX() * Constante.GRID_SIZE,
+				trans.rotate((3 * Math.PI / 2), platform.getX() * Constante.GRID_SIZE,
 						CoordinateUtils.invGridY(platform.getY()) * Constante.GRID_SIZE); // the points to
-				// rotate around
-				// (the center
-				// in my
-				// example, your left side for your problem)
 				trans.translate(-Constante.GRID_SIZE, Constante.GRID_SIZE - OFFSET);
 				g2.transform(trans);
 				g2.drawImage(bfv.getSubimage(0, 0, platform.getLength() * Constante.GRID_SIZE, Constante.GRID_SIZE),
-						(platform.getX() * Constante.GRID_SIZE ),
+						(platform.getX() * Constante.GRID_SIZE),
 						CoordinateUtils.invGridY(platform.getY()) * Constante.GRID_SIZE, null);
-
-				g2.setTransform(backup); // restore previous transform
+				g2.setTransform(backup);
 
 			} else {
 				g2.drawImage(bf.getSubimage(0, 0, platform.getLength() * Constante.GRID_SIZE, Constante.GRID_SIZE),
