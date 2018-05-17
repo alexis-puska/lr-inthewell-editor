@@ -87,7 +87,7 @@ public class DoorPanel extends IdentifiablePanel {
 		idField.setText(Integer.toString(door.getId()));
 		typeSpinner.setValue(Integer.valueOf(door.getType()));
 		toLevelSpinner.setValue(Integer.valueOf(door.getToLevel()));
-		requieredKeyComboBox.setSelectedItem(door.getRequieredKey());
+		requieredKeyComboBox.setSelectedItem(door.getKey());
 		serrureIdSpinner.setValue(Integer.valueOf(door.getLockId()));
 		lockedCheckBox.setSelected(door.isLocked());
 		enableCheckBox.setSelected(door.isEnable());
@@ -136,7 +136,7 @@ public class DoorPanel extends IdentifiablePanel {
 		});
 		requieredKeyComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				door.setRequieredKey((GameKeyEnum) requieredKeyComboBox.getSelectedItem());
+				door.setKey((GameKeyEnum) requieredKeyComboBox.getSelectedItem());
 				levelService.updateDoor(door);
 				drawPanel.repaint();
 				parent.repaint();

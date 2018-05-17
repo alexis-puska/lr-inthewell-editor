@@ -21,10 +21,8 @@ import lr_in_the_well.alexis_puska.domain.level.Item;
 import lr_in_the_well.alexis_puska.domain.level.Lock;
 import lr_in_the_well.alexis_puska.domain.level.Pick;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
+import lr_in_the_well.alexis_puska.domain.level.Position;
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
-import lr_in_the_well.alexis_puska.domain.level.StartEffectObjets;
-import lr_in_the_well.alexis_puska.domain.level.StartPlayer;
-import lr_in_the_well.alexis_puska.domain.level.StartPointObjets;
 import lr_in_the_well.alexis_puska.domain.level.Teleporter;
 import lr_in_the_well.alexis_puska.domain.level.Vortex;
 import lr_in_the_well.alexis_puska.domain.level.event.Event;
@@ -93,7 +91,7 @@ public class DrawPanel extends Canvas {
 	}
 
 	private void drawStartPlayer(Graphics2D g2) {
-		StartPlayer sp = levelService.getCurrentLevel().getStartPlayers();
+		Position sp = levelService.getCurrentLevel().getStartPlayers();
 		if (sp != null) {
 			Stroke savedStrock = g2.getStroke();
 			g2.setColor(Color.GREEN);
@@ -109,7 +107,7 @@ public class DrawPanel extends Canvas {
 	}
 
 	private void drawEffectObject(Graphics2D g2) {
-		StartEffectObjets sp = levelService.getCurrentLevel().getStartEffectObjets();
+		Position sp = levelService.getCurrentLevel().getStartEffectObjets();
 		if (sp != null) {
 			Stroke savedStrock = g2.getStroke();
 			g2.setColor(Color.CYAN);
@@ -123,7 +121,7 @@ public class DrawPanel extends Canvas {
 	}
 
 	private void drawPontObject(Graphics2D g2) {
-		StartPointObjets sp = levelService.getCurrentLevel().getStartPointObjets();
+		Position sp = levelService.getCurrentLevel().getStartPointObjets();
 		if (sp != null) {
 			Stroke savedStrock = g2.getStroke();
 			g2.setColor(Color.YELLOW);
@@ -343,7 +341,7 @@ public class DrawPanel extends Canvas {
 	 */
 	private void drawRayon(Graphics2D g2) {
 		for (Rayon rayon : levelService.getCurrentLevel().getRayon()) {
-			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType() * 2);
+			BufferedImage bf = spriteService.getSprite("rayon", rayon.getType().getIndex());
 			if (rayon.isVertical()) {
 				for (int i = rayon.getY(); i < rayon.getY() + rayon.getLength(); i++) {
 					g2.drawImage(bf, (rayon.getX() * Constante.GRID_SIZE) + OFFSET,
@@ -405,55 +403,55 @@ public class DrawPanel extends Canvas {
 		BufferedImage bf = spriteService.getSprite("cerise", 0);
 		for (Ennemie ennemie : levelService.getCurrentLevel().getEnnemies()) {
 			switch (ennemie.getType()) {
-			case 0:
+			case CERISE:
 				bf = spriteService.getSprite("cerise", 0);
 				break;
-			case 1:
+			case ORANGE:
 				bf = spriteService.getSprite("orange", 0);
 				break;
-			case 2:
+			case POMME:
 				bf = spriteService.getSprite("pomme", 0);
 				break;
-			case 3:
+			case BANANE:
 				bf = spriteService.getSprite("banane", 0);
 				break;
-			case 4:
+			case CITRON:
 				bf = spriteService.getSprite("citron", 0);
 				break;
-			case 5:
+			case PRUNE:
 				bf = spriteService.getSprite("bombinos", 0);
 				break;
-			case 6:
+			case POIRE:
 				bf = spriteService.getSprite("poire", 0);
 				break;
-			case 7:
+			case ABRICOT:
 				bf = spriteService.getSprite("abricot", 0);
 				break;
-			case 8:
+			case LITCHI:
 				bf = spriteService.getSprite("litchi", 0);
 				break;
-			case 9:
+			case FRAISE:
 				bf = spriteService.getSprite("fraise", 0);
 				break;
-			case 10:
+			case KIWI:
 				bf = spriteService.getSprite("kiwi", 0);
 				break;
-			case 11:
+			case PASTEQUE:
 				bf = spriteService.getSprite("pasteque", 0);
 				break;
-			case 12:
+			case ANNANAS:
 				bf = spriteService.getSprite("ananas", 0);
 				break;
-			case 13:
+			case BLOB:
 				bf = spriteService.getSprite("blob", 0);
 				break;
-			case 14:
+			case FRAMBOISE:
 				bf = spriteService.getSprite("framboise", 0);
 				break;
-			case 15:
+			case ABRICOT_NAIN:
 				bf = spriteService.getSprite("nainbricot", 0);
 				break;
-			case 16:
+			case SCIE:
 				bf = spriteService.getSprite("scie", 0);
 				break;
 			}

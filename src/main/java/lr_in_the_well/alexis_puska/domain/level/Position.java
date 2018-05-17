@@ -11,9 +11,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class StartPlayer implements Serializable {
+public class Position implements Serializable {
 
-    private static final long serialVersionUID = -6867679477182974708L;
+    private static final long serialVersionUID = -3148349064427411770L;
     private int x;
     private int y;
 }

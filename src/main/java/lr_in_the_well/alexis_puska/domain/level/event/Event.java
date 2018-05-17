@@ -23,7 +23,7 @@ public class Event extends Identifiable implements Serializable {
 	 ***************************************/
 	
 	//nombre de fois déclanchable
-	private boolean onlyOnce; 
+	private boolean onlyOnce;
 	private boolean triggered;
 	
 	//declanchement par proximité
@@ -31,6 +31,7 @@ public class Event extends Identifiable implements Serializable {
 	private int x;
 	private int y;
 	private int d;
+	private int itemId;
 	
 	//declanchement par decompte
 	private boolean time;
@@ -67,6 +68,7 @@ public class Event extends Identifiable implements Serializable {
 		this.y = y;
 		this.darknessValue = -1;
 		this.iceValue = -1;
+		this.itemId = -1;
 	}
 	
 	/*

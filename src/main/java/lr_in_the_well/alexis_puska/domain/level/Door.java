@@ -19,10 +19,10 @@ public class Door extends Identifiable implements Serializable {
 	private int type;
 	private boolean locked;
 	private int toLevel;
-	private GameKeyEnum requieredKey;
+	private GameKeyEnum key;
 	private int lockId;
 
-	public Door(int id, boolean enable, int x, int y, int type, boolean locked, int toLevel, GameKeyEnum requieredKey, int lockId) {
+	public Door(int id, boolean enable, int x, int y, int type, boolean locked, int toLevel, GameKeyEnum key, int lockId) {
 		super(id);
 		this.enable = enable;
 		this.x = x;
@@ -30,7 +30,7 @@ public class Door extends Identifiable implements Serializable {
 		this.type = type;
 		this.locked = locked;
 		this.toLevel = toLevel;
-		this.requieredKey = requieredKey;
+		this.key = key;
 		this.lockId = lockId;
 	}
 }

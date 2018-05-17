@@ -43,6 +43,7 @@ import org.apache.log4j.Logger;
 
 import lr_in_the_well.alexis_puska.constant.ActionEnum;
 import lr_in_the_well.alexis_puska.constant.Constante;
+import lr_in_the_well.alexis_puska.constant.EnnemieTypeEnum;
 import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.domain.level.Door;
 import lr_in_the_well.alexis_puska.domain.level.Ennemie;
@@ -1335,55 +1336,55 @@ public class App extends JFrame {
 			this.addObjectEffect(caseX, caseY);
 			break;
 		case ADD_CERISE:
-			this.addEnnemie(caseX, caseY, 0);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.CERISE);
 			break;
 		case ADD_ORANGE:
-			this.addEnnemie(caseX, caseY, 1);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.ORANGE);
 			break;
 		case ADD_POMME:
-			this.addEnnemie(caseX, caseY, 2);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.POMME);
 			break;
 		case ADD_BANANE:
-			this.addEnnemie(caseX, caseY, 3);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.BANANE);
 			break;
 		case ADD_LITCHI:
-			this.addEnnemie(caseX, caseY, 8);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.LITCHI);
 			break;
 		case ADD_FRAISE:
-			this.addEnnemie(caseX, caseY, 9);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.FRAISE);
 			break;
 		case ADD_FRAMBOISE:
-			this.addEnnemie(caseX, caseY, 14);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.FRAMBOISE);
 			break;
 		case ADD_CITRON:
-			this.addEnnemie(caseX, caseY, 4);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.CITRON);
 			break;
 		case ADD_ABRICOT:
-			this.addEnnemie(caseX, caseY, 7);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.ABRICOT);
 			break;
 		case ADD_ABRICOT_NAIN:
-			this.addEnnemie(caseX, caseY, 15);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.ABRICOT_NAIN);
 			break;
 		case ADD_ANANAS:
-			this.addEnnemie(caseX, caseY, 12);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.ANNANAS);
 			break;
 		case ADD_KIWI:
-			this.addEnnemie(caseX, caseY, 10);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.KIWI);
 			break;
 		case ADD_PASTEQUE:
-			this.addEnnemie(caseX, caseY, 11);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.PASTEQUE);
 			break;
 		case ADD_PRUNE:
-			this.addEnnemie(caseX, caseY, 5);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.PRUNE);
 			break;
 		case ADD_SCIE:
-			this.addEnnemie(caseX, caseY, 16);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.SCIE);
 			break;
 		case ADD_POIRE:
-			this.addEnnemie(caseX, caseY, 6);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.POIRE);
 			break;
 		case ADD_BLOB:
-			this.addEnnemie(caseX, caseY, 13);
+			this.addEnnemie(caseX, caseY, EnnemieTypeEnum.BLOB);
 			break;
 		}
 	}
@@ -1510,7 +1511,7 @@ public class App extends JFrame {
 		repaint();
 	}
 
-	private void addEnnemie(int x, int y, int type) {
+	private void addEnnemie(int x, int y, EnnemieTypeEnum type) {
 		levelService.addEnnemie(x, y, type);
 		repaint();
 	}

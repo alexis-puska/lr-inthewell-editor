@@ -95,6 +95,8 @@ public class EventPanel extends JPanel {
 	private JSpinner ySpinner;
 	private JLabel dLabel;
 	private JSpinner dSpinner;
+	private JLabel itemIdLabel;
+	private JSpinner itemIdSpinner;
 
 	private JPanel countDownPanel;
 	private Border countDownBorder;
@@ -258,6 +260,9 @@ public class EventPanel extends JPanel {
 		ySpinner = new JSpinner();
 		dLabel = new JLabel(message.getString("properties.event.trigger.near.d"));
 		dSpinner = new JSpinner();
+		itemIdLabel = new JLabel(message.getString("properties.event.trigger.near.itemId"));
+		itemIdSpinner = new JSpinner();
+		
 
 		countDownPanel = new JPanel();
 		countDownBorder = BorderFactory
@@ -386,7 +391,9 @@ public class EventPanel extends JPanel {
 		nearTriggerPanel.add(ySpinner);
 		nearTriggerPanel.add(dLabel);
 		nearTriggerPanel.add(dSpinner);
-		SpringUtilities.makeCompactGrid(nearTriggerPanel, 4, 2, 6, 6, 6, 6);
+		nearTriggerPanel.add(itemIdLabel);
+		nearTriggerPanel.add(itemIdSpinner);
+		SpringUtilities.makeCompactGrid(nearTriggerPanel, 5, 2, 6, 6, 6, 6);
 
 		countDownPanel.setBorder(countDownBorder);
 		countDownPanel.setLayout(countDouwnLayout);
@@ -589,6 +596,7 @@ public class EventPanel extends JPanel {
 		xSpinner.setValue((Integer) event.getX());
 		ySpinner.setValue((Integer) event.getY());
 		dSpinner.setValue((Integer) event.getD());
+		itemIdSpinner.setValue((Integer) event.getItemId());
 		//
 		countDownCheckBox.setSelected(event.isTime());
 		countDownValueSpinner.setValue((Integer) event.getTimeout());
@@ -687,6 +695,15 @@ public class EventPanel extends JPanel {
 				JSpinner text = (JSpinner) e.getSource();
 				if (text.getValue() != null) {
 					event.setD((Integer) text.getValue());
+				}
+			}
+		});
+		itemIdSpinner.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				JSpinner text = (JSpinner) e.getSource();
+				if (text.getValue() != null) {
+					event.setItemId((Integer) text.getValue());
 				}
 			}
 		});

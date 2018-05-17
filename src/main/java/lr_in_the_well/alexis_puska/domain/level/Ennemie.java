@@ -5,6 +5,7 @@ import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lr_in_the_well.alexis_puska.constant.EnnemieTypeEnum;
 
 @Getter
 @Setter
@@ -15,9 +16,9 @@ public class Ennemie extends Identifiable implements Serializable {
 	private boolean enable;
 	private int x;
 	private int y;
-	private int type;
+	private EnnemieTypeEnum type;
 
-	public Ennemie(int id, boolean enable, int x, int y, int type) {
+	public Ennemie(int id, boolean enable, int x, int y, EnnemieTypeEnum type) {
 		super(id);
 		this.enable = enable;
 		this.x = x;

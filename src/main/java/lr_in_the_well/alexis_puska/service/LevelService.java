@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import lr_in_the_well.alexis_puska.constant.Constante;
+import lr_in_the_well.alexis_puska.constant.EnnemieTypeEnum;
+import lr_in_the_well.alexis_puska.constant.RayonTypeEnum;
 import lr_in_the_well.alexis_puska.domain.StartDimension;
 import lr_in_the_well.alexis_puska.domain.level.Decor;
 import lr_in_the_well.alexis_puska.domain.level.Door;
@@ -18,10 +20,8 @@ import lr_in_the_well.alexis_puska.domain.level.LevelName;
 import lr_in_the_well.alexis_puska.domain.level.Lock;
 import lr_in_the_well.alexis_puska.domain.level.Pick;
 import lr_in_the_well.alexis_puska.domain.level.Platform;
+import lr_in_the_well.alexis_puska.domain.level.Position;
 import lr_in_the_well.alexis_puska.domain.level.Rayon;
-import lr_in_the_well.alexis_puska.domain.level.StartEffectObjets;
-import lr_in_the_well.alexis_puska.domain.level.StartPlayer;
-import lr_in_the_well.alexis_puska.domain.level.StartPointObjets;
 import lr_in_the_well.alexis_puska.domain.level.Teleporter;
 import lr_in_the_well.alexis_puska.domain.level.Type;
 import lr_in_the_well.alexis_puska.domain.level.Vortex;
@@ -427,12 +427,13 @@ public class LevelService {
 				r.setLength(lx);
 				r.setY(y);
 			}
+			r.setType(RayonTypeEnum.BLACK);
 			level.getRayon().add(r);
 			saveCurrentLevel();
 		}
 	}
 
-	public void addEnnemie(int x, int y, int type) {
+	public void addEnnemie(int x, int y, EnnemieTypeEnum type) {
 		if (currentLevel != null) {
 			currentLevel.getEnnemies()
 					.add(new Ennemie(getIdFromIdentifiable(currentLevel.getEnnemies()), true, x, y, type));
@@ -487,21 +488,21 @@ public class LevelService {
 
 	public void addPlayerSpawn(int x, int y) {
 		if (currentLevel != null) {
-			currentLevel.setStartPlayers(new StartPlayer(x, y));
+			currentLevel.setStartPlayers(new Position(x, y));
 			saveCurrentLevel();
 		}
 	}
 
 	public void addObjectPoint(int x, int y) {
 		if (currentLevel != null) {
-			currentLevel.setStartPointObjets(new StartPointObjets(x, y));
+			currentLevel.setStartPointObjets(new Position(x, y));
 			saveCurrentLevel();
 		}
 	}
 
 	public void addObjectEffect(int x, int y) {
 		if (currentLevel != null) {
-			currentLevel.setStartEffectObjets(new StartEffectObjets(x, y));
+			currentLevel.setStartEffectObjets(new Position(x, y));
 			saveCurrentLevel();
 		}
 	}

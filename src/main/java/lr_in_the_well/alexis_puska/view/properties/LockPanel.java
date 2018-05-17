@@ -33,7 +33,8 @@ public class LockPanel extends IdentifiablePanel {
 		enableCheckBox = new JCheckBox();
 		enableLabel.setLabelFor(enableCheckBox);
 		requieredKeyLabel = new JLabel(message.getString("properties.lock.requiredKey"), JLabel.TRAILING);
-		requieredKeyComboBox = new JComboBox<>();
+		requieredKeyComboBox = new JComboBox<GameKeyEnum>(GameKeyEnum.values());
+		requieredKeyComboBox.addItem(null);
 		requieredKeyLabel.setLabelFor(requieredKeyComboBox);
 		enableCheckBox.setSelected(lock.isEnable());
 
@@ -43,7 +44,7 @@ public class LockPanel extends IdentifiablePanel {
 		requieredKeyLabel.setToolTipText(message.getString("properties.lock.serrure.description"));
 
 		idField.setText(Integer.toString(lock.getId()));
-		requieredKeyComboBox.setSelectedItem(lock.getRequieredKeyId());
+		requieredKeyComboBox.setSelectedItem(lock.getKey());
 		enableCheckBox.setSelected(lock.isEnable());
 
 		this.add(enableLabel);
@@ -59,7 +60,7 @@ public class LockPanel extends IdentifiablePanel {
 	public void addListeners() {
 		requieredKeyComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				lock.setRequieredKeyId((GameKeyEnum) requieredKeyComboBox.getSelectedItem());
+				lock.setKey((GameKeyEnum) requieredKeyComboBox.getSelectedItem());
 				levelService.updateLock(lock);
 				drawPanel.repaint();
 				parent.repaint();

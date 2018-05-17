@@ -18,14 +18,14 @@ public class Lock extends Identifiable implements Serializable {
 	private boolean enable;
 	private int x;
 	private int y;
-	private GameKeyEnum requieredKeyId;
+	private GameKeyEnum key;
 
-	public Lock(int id, boolean enable, int x, int y, GameKeyEnum requieredKeyId) {
+	public Lock(int id, boolean enable, int x, int y, GameKeyEnum key) {
 		super(id);
 		this.enable = enable;
 		this.x = x;
 		this.y = y;
-		this.requieredKeyId = requieredKeyId;
+		this.key = key;
 	}
 
 }
