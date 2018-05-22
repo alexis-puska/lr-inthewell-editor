@@ -283,6 +283,7 @@ public class LevelService {
 		if (currentLevel != null) {
 			Platform p = new Platform();
 			p.setId(getIdFromIdentifiable(currentLevel.getPlatform()));
+			p.setEnable(true);
 			if (vertical) {
 				p.setVertical(true);
 				p.setDisplayed(true);
