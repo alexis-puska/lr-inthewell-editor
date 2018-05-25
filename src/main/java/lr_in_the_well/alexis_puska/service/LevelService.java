@@ -467,7 +467,7 @@ public class LevelService {
 
 	public void addLock(int x, int y) {
 		if (currentLevel != null) {
-			currentLevel.getLock().add(new Lock(getIdFromIdentifiable(currentLevel.getLock()), true, x, y, null));
+			currentLevel.getLock().add(new Lock(getIdFromIdentifiable(currentLevel.getLock()), false, x, y, null));
 			saveCurrentLevel();
 		}
 	}
