@@ -14,6 +14,8 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -808,6 +810,11 @@ public class App extends JFrame {
 				int returnVal = loadFileChooser.showOpenDialog(panelNavigation);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					absolutePathFile = loadFileChooser.getSelectedFile().getAbsolutePath();
+					try {
+						saveFileChooser.setCurrentDirectory(loadFileChooser.getSelectedFile().getCanonicalFile());
+					} catch (IOException e1) {
+						System.out.println("Set save path failed !");
+					}
 					try {
 						levelService.putLevelFile(
 								fileService.readJsonFile(new FileInputStream(new File(absolutePathFile))));
