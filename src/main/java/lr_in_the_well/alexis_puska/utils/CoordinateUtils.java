@@ -44,4 +44,12 @@ public class CoordinateUtils {
 	public static int invGridY(int y) {
 		return 24 - y;
 	}
+	
+	/** 
+	 * @param y libgdx y coordinate
+	 * @return y java coordinate
+	 */
+	public static double invGridY(double y) {
+		return 24.0 - y;
+	}
 }

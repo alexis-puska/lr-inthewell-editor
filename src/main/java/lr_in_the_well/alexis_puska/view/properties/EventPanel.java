@@ -29,6 +29,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.event.CaretListener;
@@ -90,11 +91,17 @@ public class EventPanel extends JPanel {
 	private JLabel onNearestLabel;
 	private JCheckBox onNearestCheckBox;
 	private JLabel xLabel;
+	private SpinnerNumberModel modelX;
 	private JSpinner xSpinner;
 	private JLabel yLabel;
+	private SpinnerNumberModel modelY;
 	private JSpinner ySpinner;
-	private JLabel dLabel;
-	private JSpinner dSpinner;
+	private JLabel dxLabel;
+	private SpinnerNumberModel modelDX;
+	private JSpinner dxSpinner;
+	private JLabel dyLabel;
+	private SpinnerNumberModel modelDY;
+	private JSpinner dySpinner;
 	private JLabel itemIdLabel;
 	private JSpinner itemIdSpinner;
 
@@ -255,14 +262,19 @@ public class EventPanel extends JPanel {
 		onNearestLabel = new JLabel(message.getString("properties.event.trigger.near.label"));
 		onNearestCheckBox = new JCheckBox();
 		xLabel = new JLabel(message.getString("properties.event.trigger.near.x"));
-		xSpinner = new JSpinner();
+		modelX = new SpinnerNumberModel(0.0, 0.0, 20.0, 0.5);
+		xSpinner = new JSpinner(modelX);
 		yLabel = new JLabel(message.getString("properties.event.trigger.near.y"));
-		ySpinner = new JSpinner();
-		dLabel = new JLabel(message.getString("properties.event.trigger.near.d"));
-		dSpinner = new JSpinner();
+		modelY = new SpinnerNumberModel(0.0, 0.0, 25.0, 0.5);
+		ySpinner = new JSpinner(modelY);
+		dxLabel = new JLabel(message.getString("properties.event.trigger.near.dx"));
+		modelDX = new SpinnerNumberModel(0.0, 0.0, 20.0, 0.5);
+		dxSpinner = new JSpinner(modelDX);
+		dyLabel = new JLabel(message.getString("properties.event.trigger.near.dy"));
+		modelDY = new SpinnerNumberModel(0.0, 0.0, 25.0, 0.5);
+		dySpinner = new JSpinner(modelDY);
 		itemIdLabel = new JLabel(message.getString("properties.event.trigger.near.itemId"));
 		itemIdSpinner = new JSpinner();
-		
 
 		countDownPanel = new JPanel();
 		countDownBorder = BorderFactory
@@ -327,7 +339,6 @@ public class EventPanel extends JPanel {
 		soundComboBox.addItem(null);
 		soundLabel.setToolTipText(message.getString("properties.event.action.common.sound.tooltip"));
 		soundComboBox.setToolTipText(message.getString("properties.event.action.common.sound.tooltip"));
-		
 
 		darknessLabel = new JLabel(message.getString("properties.event.action.common.darkness"));
 		darknessTextField = new JTextField();
@@ -389,11 +400,13 @@ public class EventPanel extends JPanel {
 		nearTriggerPanel.add(xSpinner);
 		nearTriggerPanel.add(yLabel);
 		nearTriggerPanel.add(ySpinner);
-		nearTriggerPanel.add(dLabel);
-		nearTriggerPanel.add(dSpinner);
+		nearTriggerPanel.add(dxLabel);
+		nearTriggerPanel.add(dxSpinner);
+		nearTriggerPanel.add(dyLabel);
+		nearTriggerPanel.add(dySpinner);
 		nearTriggerPanel.add(itemIdLabel);
 		nearTriggerPanel.add(itemIdSpinner);
-		SpringUtilities.makeCompactGrid(nearTriggerPanel, 5, 2, 6, 6, 6, 6);
+		SpringUtilities.makeCompactGrid(nearTriggerPanel, 6, 2, 6, 6, 6, 6);
 
 		countDownPanel.setBorder(countDownBorder);
 		countDownPanel.setLayout(countDouwnLayout);
@@ -593,9 +606,10 @@ public class EventPanel extends JPanel {
 		onlyOnceCheckBox.setSelected(event.isOnlyOnce());
 
 		onNearestCheckBox.setSelected(event.isNear());
-		xSpinner.setValue((Integer) event.getX());
-		ySpinner.setValue((Integer) event.getY());
-		dSpinner.setValue((Integer) event.getD());
+		xSpinner.setValue((Double) event.getX());
+		ySpinner.setValue((Double) event.getY());
+		dxSpinner.setValue((Double) event.getDx());
+		dySpinner.setValue((Double) event.getDy());
 		itemIdSpinner.setValue((Integer) event.getItemId());
 		//
 		countDownCheckBox.setSelected(event.isTime());
@@ -674,7 +688,7 @@ public class EventPanel extends JPanel {
 			public void stateChanged(ChangeEvent e) {
 				JSpinner text = (JSpinner) e.getSource();
 				if (text.getValue() != null) {
-					event.setX((Integer) text.getValue());
+					event.setX((Double) text.getValue());
 					drawPanel.repaint();
 				}
 			}
@@ -684,17 +698,26 @@ public class EventPanel extends JPanel {
 			public void stateChanged(ChangeEvent e) {
 				JSpinner text = (JSpinner) e.getSource();
 				if (text.getValue() != null) {
-					event.setY((Integer) text.getValue());
+					event.setY((Double) text.getValue());
 					drawPanel.repaint();
 				}
 			}
 		});
-		dSpinner.addChangeListener(new ChangeListener() {
+		dxSpinner.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				JSpinner text = (JSpinner) e.getSource();
 				if (text.getValue() != null) {
-					event.setD((Integer) text.getValue());
+					event.setDx((Double) text.getValue());
+				}
+			}
+		});
+		dySpinner.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				JSpinner text = (JSpinner) e.getSource();
+				if (text.getValue() != null) {
+					event.setDy((Double) text.getValue());
 				}
 			}
 		});

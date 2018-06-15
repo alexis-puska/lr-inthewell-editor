@@ -28,9 +28,10 @@ public class Event extends Identifiable implements Serializable {
 	
 	//declanchement par proximité
 	private boolean near;
-	private int x;
-	private int y;
-	private int d;
+	private double x;
+	private double y;
+	private double dx;
+	private double dy;
 	private int itemId;
 	
 	//declanchement par decompte

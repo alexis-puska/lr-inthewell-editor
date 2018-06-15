@@ -335,6 +335,7 @@ public class LevelService {
 		if (currentLevel != null) {
 			Level level = currentLevel;
 			Teleporter t = new Teleporter();
+			t.setEnable(true);
 			t.setId(getIdFromIdentifiable(level.getTeleporter()));
 			if (x2 > 19) {
 				x2 = 19;
@@ -386,6 +387,7 @@ public class LevelService {
 		if (currentLevel != null) {
 			Level level = currentLevel;
 			Rayon r = new Rayon();
+			r.setEnable(true);
 			r.setId(getIdFromIdentifiable(level.getRayon()));
 			if (x2 > 19) {
 				x2 = 19;
@@ -790,7 +792,7 @@ public class LevelService {
 				}
 			}
 			for (Event e : currentLevel.getEvent()) {
-				if (e.getX() == caseX && e.getY() == caseY) {
+				if ((int)e.getX() == caseX && (int)e.getY() == caseY) {
 					identified.add(e);
 				}
 			}

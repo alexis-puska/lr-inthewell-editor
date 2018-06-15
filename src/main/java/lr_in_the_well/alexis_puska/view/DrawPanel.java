@@ -279,8 +279,8 @@ public class DrawPanel extends Canvas {
 		g2.setFont(font);
 		g2.setStroke(new BasicStroke(2));
 		for (Event event : levelService.getCurrentLevel().getEvent()) {
-			g2.drawString("Ev", (event.getX() * Constante.GRID_SIZE) + OFFSET,
-					(CoordinateUtils.invGridY(event.getY()) * Constante.GRID_SIZE) + Constante.GRID_SIZE);
+			g2.drawString("Ev", (int)(event.getX() * (double)Constante.GRID_SIZE) + OFFSET,
+					(int)(CoordinateUtils.invGridY(event.getY()) * (double)Constante.GRID_SIZE) + Constante.GRID_SIZE);
 		}
 		g2.setStroke(savedStrock);
 	}
