@@ -25,7 +25,11 @@ public class TeleporterPanel extends IdentifiablePanel {
 	private Teleporter teleporter;
 
 	private JLabel enableLabel;
+	private JLabel invXLabel;
+	private JLabel invYLabel;
 	private JCheckBox enableCheckBox;
+	private JCheckBox invXCheckBox;
+	private JCheckBox invYCheckBox;
 
 	private JLabel destinationLabel;
 	private JTextField destinationTextField;
@@ -36,6 +40,10 @@ public class TeleporterPanel extends IdentifiablePanel {
 		this.teleporter = teleporter;
 		enableLabel = new JLabel(message.getString("properties.teleporter.enable"), JLabel.TRAILING);
 		enableCheckBox = new JCheckBox();
+		invXLabel = new JLabel(message.getString("properties.teleporter.invX"), JLabel.TRAILING);
+		invXCheckBox = new JCheckBox();
+		invYLabel = new JLabel(message.getString("properties.teleporter.invY"), JLabel.TRAILING);
+		invYCheckBox = new JCheckBox();
 		enableLabel.setLabelFor(enableCheckBox);
 		destinationLabel = new JLabel(message.getString("properties.teleporter.destination"), JLabel.TRAILING);
 		destinationTextField = new JTextField();
@@ -44,12 +52,18 @@ public class TeleporterPanel extends IdentifiablePanel {
 		destinationLabel.setToolTipText(message.getString("properties.teleporter.destination.description"));
 		this.add(enableLabel);
 		this.add(enableCheckBox);
+		this.add(invXLabel);
+		this.add(invXCheckBox);
+		this.add(invYLabel);
+		this.add(invYCheckBox);
 		this.add(destinationLabel);
 		this.add(destinationTextField);
 		idField.setText(Integer.toString(teleporter.getId()));
 		destinationTextField.setText(teleporter.getDestinations());
 		enableCheckBox.setSelected(teleporter.isEnable());
-		SpringUtilities.makeCompactGrid(this, 3, 2, 6, 6, 6, 6);
+		invXCheckBox.setSelected(teleporter.isInvX());
+		invYCheckBox.setSelected(teleporter.isInvY());
+		SpringUtilities.makeCompactGrid(this, 5, 2, 6, 6, 6, 6);
 		addListeners();
 		this.parent.updateUI();
 	}
@@ -102,6 +116,20 @@ public class TeleporterPanel extends IdentifiablePanel {
 		enableCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				teleporter.setEnable(enableCheckBox.isSelected());
+				levelService.updateTeleporter(teleporter);
+				drawPanel.repaint();
+			}
+		});
+		invXCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				teleporter.setInvX(invXCheckBox.isSelected());
+				levelService.updateTeleporter(teleporter);
+				drawPanel.repaint();
+			}
+		});
+		invYCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				teleporter.setInvY(invYCheckBox.isSelected());
 				levelService.updateTeleporter(teleporter);
 				drawPanel.repaint();
 			}
