@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-		<jackson.version>2.9.5</jackson.version>
+		<jackson.version>2.9.8</jackson.version>
 		<lombok.version>1.16.20</lombok.version>
 	</properties>
 
